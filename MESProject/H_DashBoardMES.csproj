@@ -58,6 +58,18 @@
     <Compile Include="Faulty.Designer.cs">
       <DependentUpon>Faulty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lot.Designer.cs">
+      <DependentUpon>Lot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialStock.Designer.cs">
+      <DependentUpon>MaterialStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="MixForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Faulty.resx">
       <DependentUpon>Faulty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lot.resx">
+      <DependentUpon>Lot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialStock.resx">
+      <DependentUpon>MaterialStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MixForm.resx">
       <DependentUpon>MixForm.cs</DependentUpon>
