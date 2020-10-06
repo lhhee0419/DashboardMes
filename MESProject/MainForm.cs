@@ -19,6 +19,7 @@ namespace MESProject
         }
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
             //ProcCombo.SelectedIndex = 0; //콤보박스 초기값설정
@@ -38,8 +39,8 @@ namespace MESProject
                 MessageBox.Show("사출");
             }    
 
+
         }
 
-    
     }
 }

@@ -34,8 +34,8 @@
             this.radiobutton4 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.CheckBtn = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // radioButton1
@@ -110,31 +110,31 @@
             this.radioButton6.Text = "기타";
             this.radioButton6.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // CheckBtn
             // 
-            this.button1.Location = new System.Drawing.Point(52, 189);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(98, 52);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "확인";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CheckBtn.Location = new System.Drawing.Point(52, 189);
+            this.CheckBtn.Name = "CheckBtn";
+            this.CheckBtn.Size = new System.Drawing.Size(98, 52);
+            this.CheckBtn.TabIndex = 6;
+            this.CheckBtn.Text = "확인";
+            this.CheckBtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ExitBtn
             // 
-            this.button2.Location = new System.Drawing.Point(208, 189);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(98, 52);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "닫기";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ExitBtn.Location = new System.Drawing.Point(208, 189);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(98, 52);
+            this.ExitBtn.TabIndex = 7;
+            this.ExitBtn.Text = "닫기";
+            this.ExitBtn.UseVisualStyleBackColor = true;
             // 
             // Stopworking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 253);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ExitBtn);
+            this.Controls.Add(this.CheckBtn);
             this.Controls.Add(this.radioButton6);
             this.Controls.Add(this.radioButton5);
             this.Controls.Add(this.radiobutton4);
@@ -156,7 +156,7 @@
         private System.Windows.Forms.RadioButton radiobutton4;
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button CheckBtn;
+        private System.Windows.Forms.Button ExitBtn;
     }
 }

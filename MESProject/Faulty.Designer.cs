@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.CheckBtn = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,23 +38,23 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // CheckBtn
             // 
-            this.button1.Location = new System.Drawing.Point(244, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 47);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "확인";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CheckBtn.Location = new System.Drawing.Point(244, 284);
+            this.CheckBtn.Name = "CheckBtn";
+            this.CheckBtn.Size = new System.Drawing.Size(94, 47);
+            this.CheckBtn.TabIndex = 0;
+            this.CheckBtn.Text = "확인";
+            this.CheckBtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // ExitBtn
             // 
-            this.button2.Location = new System.Drawing.Point(367, 284);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 47);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "닫기";
-            this.button2.UseVisualStyleBackColor = true;
+            this.ExitBtn.Location = new System.Drawing.Point(367, 284);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(94, 47);
+            this.ExitBtn.TabIndex = 1;
+            this.ExitBtn.Text = "닫기";
+            this.ExitBtn.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -105,8 +105,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ExitBtn);
+            this.Controls.Add(this.CheckBtn);
             this.Name = "Faulty";
             this.Text = "Faulty";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -118,8 +118,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button CheckBtn;
+        private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

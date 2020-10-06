@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
+            this.InquiryBtn = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -70,14 +70,14 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(260, 30);
             this.dateTimePicker1.TabIndex = 17;
             // 
-            // button1
+            // InquiryBtn
             // 
-            this.button1.Location = new System.Drawing.Point(623, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 50);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "조회";
-            this.button1.UseVisualStyleBackColor = true;
+            this.InquiryBtn.Location = new System.Drawing.Point(623, 25);
+            this.InquiryBtn.Name = "InquiryBtn";
+            this.InquiryBtn.Size = new System.Drawing.Size(124, 50);
+            this.InquiryBtn.TabIndex = 12;
+            this.InquiryBtn.Text = "조회";
+            this.InquiryBtn.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -98,7 +98,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.InquiryBtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "WorkLog";
             this.Text = "WorkLog";
@@ -114,7 +114,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button InquiryBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

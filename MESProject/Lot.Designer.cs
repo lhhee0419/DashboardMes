@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.AddBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -44,14 +44,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "LOT 중량";
             // 
-            // button1
+            // AddBtn
             // 
-            this.button1.Location = new System.Drawing.Point(112, 176);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 47);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "추가";
-            this.button1.UseVisualStyleBackColor = true;
+            this.AddBtn.Location = new System.Drawing.Point(112, 176);
+            this.AddBtn.Name = "AddBtn";
+            this.AddBtn.Size = new System.Drawing.Size(94, 47);
+            this.AddBtn.TabIndex = 1;
+            this.AddBtn.Text = "추가";
+            this.AddBtn.UseVisualStyleBackColor = true;
             // 
             // ExitBtn
             // 
@@ -76,7 +76,7 @@
             this.ClientSize = new System.Drawing.Size(382, 253);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.ExitBtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.label1);
             this.Name = "Lot";
             this.Text = "Lot";
@@ -88,7 +88,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.TextBox textBox1;
     }
