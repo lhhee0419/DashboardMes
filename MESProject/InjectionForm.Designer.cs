@@ -31,10 +31,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -68,18 +70,9 @@
             this.button1.Text = "LOT 추가";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(26, 466);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 52);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "불량등록";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(323, 466);
+            this.button3.Location = new System.Drawing.Point(166, 392);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 52);
             this.button3.TabIndex = 4;
@@ -88,7 +81,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(480, 466);
+            this.button4.Location = new System.Drawing.Point(166, 466);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(108, 52);
             this.button4.TabIndex = 5;
@@ -104,19 +97,48 @@
             this.button5.Text = "닫기";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // sForm1
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(26, 466);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(108, 52);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "LOT 삭제";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(632, 392);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(108, 52);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "원재료 재고조회";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(492, 392);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(108, 52);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "불량 등록";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // InjectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "sForm1";
+            this.Name = "InjectionForm";
             this.Text = "sForm1";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
@@ -129,9 +151,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
