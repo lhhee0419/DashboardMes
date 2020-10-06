@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button5 = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -39,14 +39,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // button5
+            // ExitBtn
             // 
-            this.button5.Location = new System.Drawing.Point(640, 461);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(108, 52);
-            this.button5.TabIndex = 13;
-            this.button5.Text = "닫기";
-            this.button5.UseVisualStyleBackColor = true;
+            this.ExitBtn.Location = new System.Drawing.Point(640, 461);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(108, 52);
+            this.ExitBtn.TabIndex = 13;
+            this.ExitBtn.Text = "닫기";
+            this.ExitBtn.UseVisualStyleBackColor = true;
             // 
             // button4
             // 
@@ -104,19 +104,19 @@
             this.dataGridView1.Size = new System.Drawing.Size(714, 145);
             this.dataGridView1.TabIndex = 7;
             // 
-            // bForm
+            // MixForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "bForm";
+            this.Name = "MixForm";
             this.Text = "bForm";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -126,7 +126,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;

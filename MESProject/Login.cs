@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace MESProject
 {
-    public partial class EquipManage : Form
+    public partial class Login : Form
     {
-        public EquipManage()
+        public Login()
         {
             InitializeComponent();
+        }
+
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            //로그인 버튼을 클릭
+            MainForm mainform = new MainForm();
+            mainform.Show();
         }
     }
 }
