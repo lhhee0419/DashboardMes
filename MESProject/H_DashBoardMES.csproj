@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EquipManage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EquipManage.Designer.cs">
-      <DependentUpon>EquipManage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Faulty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,9 +102,6 @@
     <Compile Include="WorkLog.Designer.cs">
       <DependentUpon>WorkLog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="EquipManage.resx">
-      <DependentUpon>EquipManage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Faulty.resx">
       <DependentUpon>Faulty.cs</DependentUpon>
     </EmbeddedResource>
