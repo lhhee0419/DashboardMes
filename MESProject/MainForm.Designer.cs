@@ -45,7 +45,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 132);
+            this.dataGridView1.Location = new System.Drawing.Point(34, 188);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 27;
@@ -54,16 +54,17 @@
             // 
             // InquiryBtn
             // 
-            this.InquiryBtn.Location = new System.Drawing.Point(609, 65);
+            this.InquiryBtn.Location = new System.Drawing.Point(657, 115);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(120, 51);
             this.InquiryBtn.TabIndex = 1;
             this.InquiryBtn.Text = "조회";
             this.InquiryBtn.UseVisualStyleBackColor = true;
+            this.InquiryBtn.Click += new System.EventHandler(this.InquiryBtn_Click);
             // 
             // WostBtn
             // 
-            this.WostBtn.Location = new System.Drawing.Point(22, 448);
+            this.WostBtn.Location = new System.Drawing.Point(34, 504);
             this.WostBtn.Name = "WostBtn";
             this.WostBtn.Size = new System.Drawing.Size(111, 59);
             this.WostBtn.TabIndex = 2;
@@ -72,7 +73,7 @@
             // 
             // WoLogBtn
             // 
-            this.WoLogBtn.Location = new System.Drawing.Point(169, 448);
+            this.WoLogBtn.Location = new System.Drawing.Point(181, 504);
             this.WoLogBtn.Name = "WoLogBtn";
             this.WoLogBtn.Size = new System.Drawing.Size(109, 59);
             this.WoLogBtn.TabIndex = 3;
@@ -81,7 +82,7 @@
             // 
             // ProdStatusBtn
             // 
-            this.ProdStatusBtn.Location = new System.Drawing.Point(433, 448);
+            this.ProdStatusBtn.Location = new System.Drawing.Point(445, 504);
             this.ProdStatusBtn.Name = "ProdStatusBtn";
             this.ProdStatusBtn.Size = new System.Drawing.Size(113, 59);
             this.ProdStatusBtn.TabIndex = 4;
@@ -90,7 +91,7 @@
             // 
             // EquipmanageBtn
             // 
-            this.EquipmanageBtn.Location = new System.Drawing.Point(592, 448);
+            this.EquipmanageBtn.Location = new System.Drawing.Point(604, 504);
             this.EquipmanageBtn.Name = "EquipmanageBtn";
             this.EquipmanageBtn.Size = new System.Drawing.Size(110, 59);
             this.EquipmanageBtn.TabIndex = 5;
@@ -100,23 +101,23 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(22, 65);
+            this.dateTimePicker1.Location = new System.Drawing.Point(23, 121);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(264, 30);
+            this.dateTimePicker1.Size = new System.Drawing.Size(275, 30);
             this.dateTimePicker1.TabIndex = 6;
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(322, 66);
+            this.dateTimePicker2.Location = new System.Drawing.Point(334, 122);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(256, 30);
+            this.dateTimePicker2.Size = new System.Drawing.Size(281, 30);
             this.dateTimePicker2.TabIndex = 7;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(289, 73);
+            this.label1.Location = new System.Drawing.Point(301, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 15);
             this.label1.TabIndex = 8;
@@ -124,16 +125,17 @@
             // 
             // ProcCombo
             // 
+            this.ProcCombo.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ProcCombo.FormattingEnabled = true;
-            this.ProcCombo.Location = new System.Drawing.Point(581, 12);
+            this.ProcCombo.Location = new System.Drawing.Point(593, 49);
             this.ProcCombo.Name = "ProcCombo";
-            this.ProcCombo.Size = new System.Drawing.Size(121, 23);
+            this.ProcCombo.Size = new System.Drawing.Size(121, 28);
             this.ProcCombo.TabIndex = 9;
             this.ProcCombo.SelectedIndexChanged += new System.EventHandler(this.ProcCombo_SelectedIndexChanged);
             // 
             // vScrollBar1
             // 
-            this.vScrollBar1.Location = new System.Drawing.Point(726, 132);
+            this.vScrollBar1.Location = new System.Drawing.Point(738, 188);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(21, 288);
             this.vScrollBar1.TabIndex = 10;
@@ -142,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.ProcCombo);
             this.Controls.Add(this.label1);
@@ -155,7 +157,6 @@
             this.Controls.Add(this.InquiryBtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MainForm";
-            this.Text = "Form1";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
