@@ -23,6 +23,7 @@ namespace MESProject
             //로그인 버튼을 클릭
             MainForm mainform = new MainForm();
             mainform.Show();
+            
         }
     }
 }
