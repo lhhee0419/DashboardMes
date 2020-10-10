@@ -1,4 +1,5 @@
 ﻿using System;
+using MetroFramework.Forms;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,13 +11,15 @@ using System.Windows.Forms;
 
 namespace MESProject
 {
-    public partial class MainForm : Form
+    public partial class MainForm : MetroForm
     {
         public MainForm()
         {
             InitializeComponent();
+            this.Style = MetroFramework.MetroColorStyle.White;
             
         }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
 
@@ -32,15 +35,24 @@ namespace MESProject
 
             if (ProcCombo.SelectedIndex == 0)
             {
-                MessageBox.Show("배합");
+                //배합 콤보박스 선택
             }
             else if(ProcCombo.SelectedIndex ==1 )
             {
-                MessageBox.Show("사출");
-            }    
+                //사출 콤보박스 선택
+            }
 
 
         }
 
+        private void InquiryBtn_Click(object sender, EventArgs e)
+        {
+            //조회 버튼 클릭시
+            DateTime date1 = dateTimePicker1.Value;
+            DateTime date2 = dateTimePicker2.Value;
+
+
+
+        }
     }
 }
