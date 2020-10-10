@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.InquiryBtn = new System.Windows.Forms.Button();
+            this.WostBtn = new System.Windows.Forms.Button();
+            this.WoLogBtn = new System.Windows.Forms.Button();
+            this.ProdStatusBtn = new System.Windows.Forms.Button();
+            this.EquipmanageBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,50 +52,50 @@
             this.dataGridView1.Size = new System.Drawing.Size(707, 288);
             this.dataGridView1.TabIndex = 0;
             // 
-            // button1
+            // InquiryBtn
             // 
-            this.button1.Location = new System.Drawing.Point(609, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 51);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "조회";
-            this.button1.UseVisualStyleBackColor = true;
+            this.InquiryBtn.Location = new System.Drawing.Point(609, 65);
+            this.InquiryBtn.Name = "InquiryBtn";
+            this.InquiryBtn.Size = new System.Drawing.Size(120, 51);
+            this.InquiryBtn.TabIndex = 1;
+            this.InquiryBtn.Text = "조회";
+            this.InquiryBtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // WostBtn
             // 
-            this.button2.Location = new System.Drawing.Point(22, 448);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 59);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "작업시작";
-            this.button2.UseVisualStyleBackColor = true;
+            this.WostBtn.Location = new System.Drawing.Point(22, 448);
+            this.WostBtn.Name = "WostBtn";
+            this.WostBtn.Size = new System.Drawing.Size(111, 59);
+            this.WostBtn.TabIndex = 2;
+            this.WostBtn.Text = "작업시작";
+            this.WostBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // WoLogBtn
             // 
-            this.button3.Location = new System.Drawing.Point(169, 448);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 59);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "작업일지";
-            this.button3.UseVisualStyleBackColor = true;
+            this.WoLogBtn.Location = new System.Drawing.Point(169, 448);
+            this.WoLogBtn.Name = "WoLogBtn";
+            this.WoLogBtn.Size = new System.Drawing.Size(109, 59);
+            this.WoLogBtn.TabIndex = 3;
+            this.WoLogBtn.Text = "작업일지";
+            this.WoLogBtn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // ProdStatusBtn
             // 
-            this.button4.Location = new System.Drawing.Point(433, 448);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 59);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "생산현황";
-            this.button4.UseVisualStyleBackColor = true;
+            this.ProdStatusBtn.Location = new System.Drawing.Point(433, 448);
+            this.ProdStatusBtn.Name = "ProdStatusBtn";
+            this.ProdStatusBtn.Size = new System.Drawing.Size(113, 59);
+            this.ProdStatusBtn.TabIndex = 4;
+            this.ProdStatusBtn.Text = "생산현황";
+            this.ProdStatusBtn.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // EquipmanageBtn
             // 
-            this.button5.Location = new System.Drawing.Point(592, 448);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(110, 59);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "설비관리";
-            this.button5.UseVisualStyleBackColor = true;
+            this.EquipmanageBtn.Location = new System.Drawing.Point(592, 448);
+            this.EquipmanageBtn.Name = "EquipmanageBtn";
+            this.EquipmanageBtn.Size = new System.Drawing.Size(110, 59);
+            this.EquipmanageBtn.TabIndex = 5;
+            this.EquipmanageBtn.Text = "설비관리";
+            this.EquipmanageBtn.UseVisualStyleBackColor = true;
             // 
             // dateTimePicker1
             // 
@@ -148,11 +148,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.EquipmanageBtn);
+            this.Controls.Add(this.ProdStatusBtn);
+            this.Controls.Add(this.WoLogBtn);
+            this.Controls.Add(this.WostBtn);
+            this.Controls.Add(this.InquiryBtn);
             this.Controls.Add(this.dataGridView1);
             this.Name = "MainForm";
             this.Text = "Form1";
@@ -166,11 +166,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button InquiryBtn;
+        private System.Windows.Forms.Button WostBtn;
+        private System.Windows.Forms.Button WoLogBtn;
+        private System.Windows.Forms.Button ProdStatusBtn;
+        private System.Windows.Forms.Button EquipmanageBtn;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label1;

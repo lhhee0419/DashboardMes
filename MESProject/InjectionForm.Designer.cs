@@ -30,13 +30,13 @@
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.LotaddBtn = new System.Windows.Forms.Button();
+            this.StopBtn = new System.Windows.Forms.Button();
+            this.EndBtn = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
+            this.LotDelBtn = new System.Windows.Forms.Button();
+            this.StockBtn = new System.Windows.Forms.Button();
+            this.FaultyBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -61,81 +61,81 @@
             this.dataGridView2.Size = new System.Drawing.Size(714, 145);
             this.dataGridView2.TabIndex = 1;
             // 
-            // button1
+            // LotaddBtn
             // 
-            this.button1.Location = new System.Drawing.Point(26, 392);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 52);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "LOT 추가";
-            this.button1.UseVisualStyleBackColor = true;
+            this.LotaddBtn.Location = new System.Drawing.Point(26, 392);
+            this.LotaddBtn.Name = "LotaddBtn";
+            this.LotaddBtn.Size = new System.Drawing.Size(108, 52);
+            this.LotaddBtn.TabIndex = 2;
+            this.LotaddBtn.Text = "LOT 추가";
+            this.LotaddBtn.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // StopBtn
             // 
-            this.button3.Location = new System.Drawing.Point(166, 392);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 52);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "작업중지";
-            this.button3.UseVisualStyleBackColor = true;
+            this.StopBtn.Location = new System.Drawing.Point(166, 392);
+            this.StopBtn.Name = "StopBtn";
+            this.StopBtn.Size = new System.Drawing.Size(108, 52);
+            this.StopBtn.TabIndex = 4;
+            this.StopBtn.Text = "작업중지";
+            this.StopBtn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // EndBtn
             // 
-            this.button4.Location = new System.Drawing.Point(166, 466);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 52);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "작업종료";
-            this.button4.UseVisualStyleBackColor = true;
+            this.EndBtn.Location = new System.Drawing.Point(166, 466);
+            this.EndBtn.Name = "EndBtn";
+            this.EndBtn.Size = new System.Drawing.Size(108, 52);
+            this.EndBtn.TabIndex = 5;
+            this.EndBtn.Text = "작업종료";
+            this.EndBtn.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // ExitBtn
             // 
-            this.button5.Location = new System.Drawing.Point(632, 466);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(108, 52);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "닫기";
-            this.button5.UseVisualStyleBackColor = true;
+            this.ExitBtn.Location = new System.Drawing.Point(632, 466);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(108, 52);
+            this.ExitBtn.TabIndex = 6;
+            this.ExitBtn.Text = "닫기";
+            this.ExitBtn.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // LotDelBtn
             // 
-            this.button2.Location = new System.Drawing.Point(26, 466);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 52);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "LOT 삭제";
-            this.button2.UseVisualStyleBackColor = true;
+            this.LotDelBtn.Location = new System.Drawing.Point(26, 466);
+            this.LotDelBtn.Name = "LotDelBtn";
+            this.LotDelBtn.Size = new System.Drawing.Size(108, 52);
+            this.LotDelBtn.TabIndex = 7;
+            this.LotDelBtn.Text = "LOT 삭제";
+            this.LotDelBtn.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // StockBtn
             // 
-            this.button6.Location = new System.Drawing.Point(632, 392);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(108, 52);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "원재료 재고조회";
-            this.button6.UseVisualStyleBackColor = true;
+            this.StockBtn.Location = new System.Drawing.Point(632, 392);
+            this.StockBtn.Name = "StockBtn";
+            this.StockBtn.Size = new System.Drawing.Size(108, 52);
+            this.StockBtn.TabIndex = 9;
+            this.StockBtn.Text = "원재료 재고조회";
+            this.StockBtn.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // FaultyBtn
             // 
-            this.button7.Location = new System.Drawing.Point(492, 392);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(108, 52);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "불량 등록";
-            this.button7.UseVisualStyleBackColor = true;
+            this.FaultyBtn.Location = new System.Drawing.Point(492, 392);
+            this.FaultyBtn.Name = "FaultyBtn";
+            this.FaultyBtn.Size = new System.Drawing.Size(108, 52);
+            this.FaultyBtn.TabIndex = 8;
+            this.FaultyBtn.Text = "불량 등록";
+            this.FaultyBtn.UseVisualStyleBackColor = true;
             // 
             // InjectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.StockBtn);
+            this.Controls.Add(this.FaultyBtn);
+            this.Controls.Add(this.LotDelBtn);
+            this.Controls.Add(this.ExitBtn);
+            this.Controls.Add(this.EndBtn);
+            this.Controls.Add(this.StopBtn);
+            this.Controls.Add(this.LotaddBtn);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.dataGridView1);
             this.Name = "InjectionForm";
@@ -150,12 +150,12 @@
 
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button LotaddBtn;
+        private System.Windows.Forms.Button StopBtn;
+        private System.Windows.Forms.Button EndBtn;
+        private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.Button LotDelBtn;
+        private System.Windows.Forms.Button StockBtn;
+        private System.Windows.Forms.Button FaultyBtn;
     }
 }
