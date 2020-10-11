@@ -16,6 +16,7 @@ namespace MESProject
 {
     public partial class MainForm : Form
     {
+        private static Login login = new Login();
         public MainForm()
         {
             InitializeComponent();
@@ -33,19 +34,7 @@ namespace MESProject
 
             Common.SetGridDesign(WoGrid);
 
-            if (ProcCombo.SelectedIndex == 0)
-            {
-                string select_wo_mix = $"SELECT W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0001' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
-                Common.DB_Connection(select_wo_mix, WoGrid);
-               
-
-            }
-            else if (ProcCombo.SelectedIndex == 1)
-            {
-                string select_wo_injection = $"SELECT W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
-                Common.DB_Connection(select_wo_injection, WoGrid);
-                
-            }
+            DataSearch();
 
             if (WoGrid.Rows.Count > 0)
             {
@@ -63,8 +52,7 @@ namespace MESProject
 
         }
 
-
-        private void InquiryBtn_Click(object sender, EventArgs e)
+        private void DataSearch()
         {
             //조회버튼 클릭시 
             DateTime date1 = dateTimePicker1.Value;
@@ -84,8 +72,11 @@ namespace MESProject
                 Common.DB_Connection(select_wo_injection, WoGrid);
 
             }
+        }
 
-
+        private void InquiryBtn_Click(object sender, EventArgs e)
+        {
+            DataSearch();
 
         }
         public void Create_Tab()
@@ -137,7 +128,8 @@ namespace MESProject
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             //로그아웃버튼
-            this.Close();
+            login.Show();
+            this.Hide();
         }
 
         bool isMove;
