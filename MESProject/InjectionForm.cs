@@ -19,7 +19,7 @@ namespace MESProject
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            //닫기 버튼 
+            //닫기 버튼
             this.Close();
         }
     }

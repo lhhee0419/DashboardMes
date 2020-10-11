@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Oracle.ManagedDataAccess.Client;
 using Microsoft.SqlServer.Server;
+using System.Runtime.CompilerServices;
 
 namespace MESProject
 {
@@ -22,20 +23,6 @@ namespace MESProject
 
         }
 
-        static public void SetGridDesign(DataGridView Grid)
-        {
-
-            Grid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-            Grid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            Grid.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-            Grid.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
-            Grid.BackgroundColor = Color.White;
-            Grid.EnableHeadersVisualStyles = false;
-            Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
-            Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
 
@@ -43,32 +30,23 @@ namespace MESProject
             ProcCombo.Items.AddRange(proc);
             ProcCombo.SelectedIndex = 0; //콤보박스 초기값설정
 
-            SetGridDesign(WoGrid);
-
-
-        }
-
-
-
-
-
-
- 
-
-        private void ProcCombo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //콤보박스 선택시 이벤트
+            Common.SetGridDesign(WoGrid);
 
             if (ProcCombo.SelectedIndex == 0)
             {
-                //배합 콤보박스 선택
+                string select_wo_mix = $"SELECT W.WOID as 작업지시코드 , W.PRODID as 제품코드, P.PRODNAME as 제품명, W.WOSTAT as 작업상태, W.PLANQTY as 계획수량 ,W.PRODQTY as 생산수량,COUNT(*) AS 불량수량, W.PLANDTTM as 계획날짜, W.ETC as 비고 FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0001' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                Common.DB_Connection(select_wo_mix, WoGrid);
 
             }
             else if (ProcCombo.SelectedIndex == 1)
             {
-                //사출 콤보박스 선택
+                string select_wo_injection = $"SELECT W.WOID as 작업지시코드 , W.PRODID as 제품코드, P.PRODNAME as 제품명, W.WOSTAT as 작업상태, W.PLANQTY as 계획수량 ,W.PRODQTY as 생산수량,COUNT(*) AS 불량수량, W.PLANDTTM as 계획날짜, W.ETC as 비고 FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                Common.DB_Connection(select_wo_injection, WoGrid);
             }
+
+
         }
+
 
         private void InquiryBtn_Click(object sender, EventArgs e)
         {
@@ -76,22 +54,22 @@ namespace MESProject
             DateTime date1 = dateTimePicker1.Value;
             DateTime date2 = dateTimePicker2.Value;
 
-            //MessageBox.Show(Convert.ToString(date1));            //string sql = $"select * from workorder where plandttm >={Convert.ToString(date1)} and  plandttm <={Convert.ToString(date2)}";
-            string sql = $"select * from workorder where plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}'";
-            OracleDataAdapter adapter = new OracleDataAdapter(sql, DBHelper.DBconn);
-            DataTable data_table = new DataTable();
-            adapter.Fill(data_table);
-            WoGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            WoGrid.DataSource = data_table;
+            if (ProcCombo.SelectedIndex == 0)
+            {
+                //배합 콤보박스 선택
+                string select_wo_mix = $"SELECT W.WOID as 작업지시코드 , W.PRODID as 제품코드, P.PRODNAME as 제품명, W.WOSTAT as 작업상태, W.PLANQTY as 계획수량 ,W.PRODQTY as 생산수량,COUNT(*) AS 불량수량, W.PLANDTTM as 계획날짜, W.ETC as 비고 FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0001' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                Common.DB_Connection(select_wo_mix, WoGrid);
 
-            /* WoGrid.Columns[0].HeaderText = "작업지시코드";
-             WoGrid.Columns[1].HeaderText = "제품코드";
-            WoGrid.Columns[2].HeaderText = "제품명";
-            WoGrid.Columns[3].HeaderText = "작업상태";
-            WoGrid.Columns[4].HeaderText = "계획수량";
-            WoGrid.Columns[5].HeaderText = "생산수량";
-            WoGrid.Columns[6].HeaderText = "불량수량";
-            WoGrid.Columns[7].HeaderText = "비고" */
+            }
+            else if (ProcCombo.SelectedIndex == 1)
+            {
+                //사출 콤보박스 선택
+                string select_wo_injection = $"SELECT W.WOID as 작업지시코드 , W.PRODID as 제품코드, P.PRODNAME as 제품명, W.WOSTAT as 작업상태, W.PLANQTY as 계획수량 ,W.PRODQTY as 생산수량,COUNT(*) AS 불량수량, W.PLANDTTM as 계획날짜, W.ETC as 비고 FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                Common.DB_Connection(select_wo_injection, WoGrid);
+            }
+
+
+
         }
 
         private void WostBtn_Click(object sender, EventArgs e)
@@ -139,3 +117,11 @@ namespace MESProject
         }
     }
 }
+/*WoGrid.Columns[0].HeaderText = "작업지시코드";
+WoGrid.Columns[1].HeaderText = "제품코드";
+WoGrid.Columns[2].HeaderText = "제품명";
+WoGrid.Columns[3].HeaderText = "작업상태";
+WoGrid.Columns[4].HeaderText = "계획수량";
+WoGrid.Columns[5].HeaderText = "생산수량";
+WoGrid.Columns[6].HeaderText = "불량수량";
+WoGrid.Columns[7].HeaderText = "비고";*/
