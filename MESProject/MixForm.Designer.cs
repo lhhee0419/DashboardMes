@@ -112,7 +112,7 @@
             this.StopBtn.Name = "StopBtn";
             this.StopBtn.Size = new System.Drawing.Size(108, 52);
             this.StopBtn.TabIndex = 11;
-            this.StopBtn.Text = "작업중지";
+            this.StopBtn.Text = "작업중지/재시작";
             this.StopBtn.UseVisualStyleBackColor = true;
             // 
             // LotaddBtn
@@ -128,7 +128,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ClientSize = new System.Drawing.Size(1262, 977);
             this.Controls.Add(this.StockBtn);
             this.Controls.Add(this.FaultyBtn);
             this.Controls.Add(this.LotDelBtn);

@@ -96,12 +96,6 @@
     <Compile Include="MixForm.Designer.cs">
       <DependentUpon>MixForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProductionStatus.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProductionStatus.Designer.cs">
-      <DependentUpon>ProductionStatus.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startworking.cs">
@@ -139,9 +133,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MixForm.resx">
       <DependentUpon>MixForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProductionStatus.resx">
-      <DependentUpon>ProductionStatus.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
