@@ -21,6 +21,7 @@ namespace MESProject
         {
             //닫기 버튼
             this.Close();
+
         }
     }
 }

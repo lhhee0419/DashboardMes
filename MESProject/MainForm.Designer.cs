@@ -62,7 +62,9 @@
             this.maintab.SelectedIndex = 0;
             this.maintab.Size = new System.Drawing.Size(1280, 1024);
             this.maintab.TabIndex = 34;
-
+            this.maintab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseDown);
+            this.maintab.MouseMove += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseMove);
+            this.maintab.MouseUp += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseUp);
             // 
             // tabPage1
             // 
@@ -82,7 +84,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1272, 985);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Main";
+            this.tabPage1.Text = "메인화면";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // logoutbtn
