@@ -62,9 +62,7 @@
             this.maintab.SelectedIndex = 0;
             this.maintab.Size = new System.Drawing.Size(1280, 1024);
             this.maintab.TabIndex = 34;
-            this.maintab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseDown);
-            this.maintab.MouseMove += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseMove);
-            this.maintab.MouseUp += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseUp);
+
             // 
             // tabPage1
             // 

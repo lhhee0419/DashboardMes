@@ -41,7 +41,7 @@ namespace MESProject
             }
             else if (ProcCombo.SelectedIndex == 1)
             {
-                string select_wo_injection = $"SELECT W.WOID as 작업지시코드 , W.PRODID as 제품코드, P.PRODNAME as 제품명, W.WOSTAT as 작업상태, W.PLANQTY as 계획수량 ,W.PRODQTY as 생산수량,COUNT(*) AS 불량수량, W.PLANDTTM as 계획날짜, W.ETC as 비고 FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                string select_wo_injection = $"W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 Common.DB_Connection(select_wo_injection, WoGrid);
             }
 
@@ -67,6 +67,7 @@ namespace MESProject
                 //사출 콤보박스 선택
                 string select_wo_injection = $"SELECT W.WOID as 작업지시코드 , W.PRODID as 제품코드, P.PRODNAME as 제품명, W.WOSTAT as 작업상태, W.PLANQTY as 계획수량 ,W.PRODQTY as 생산수량,COUNT(*) AS 불량수량, W.PLANDTTM as 계획날짜, W.ETC as 비고 FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 Common.DB_Connection(select_wo_injection, WoGrid);
+
             }
 
 
@@ -75,7 +76,7 @@ namespace MESProject
 
         private void WostBtn_Click(object sender, EventArgs e)
         {
-            //작업시작 버튼
+            //작업시작 버튼                                                                               
             Startworking startworkingForm = new Startworking();
             startworkingForm.TopLevel = false;
             maintab.TabPages.Add((maintab.TabPages.Count + 1).ToString());
@@ -92,25 +93,7 @@ namespace MESProject
         {
             maintab.TabPages.Remove(maintab.SelectedTab);
         }
-        bool isMove;
-        Point fpt;
-        private void maintab_MouseDown(object sender, MouseEventArgs e)
-        {
-            isMove = true;
-            fpt = new Point(e.X, e.Y);
-        }
-
-        private void maintab_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
-                Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
-        }
-
-        private void maintab_MouseUp(object sender, MouseEventArgs e)
-        {
-            isMove = false;
-        }
-
+                                                                                                                                                                      
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             //로그아웃버튼
@@ -119,11 +102,4 @@ namespace MESProject
         }
     }
 }
-/*WoGrid.Columns[0].HeaderText = "작업지시코드";
-WoGrid.Columns[1].HeaderText = "제품코드";
-WoGrid.Columns[2].HeaderText = "제품명";
-WoGrid.Columns[3].HeaderText = "작업상태";
-WoGrid.Columns[4].HeaderText = "계획수량";
-WoGrid.Columns[5].HeaderText = "생산수량";
-WoGrid.Columns[6].HeaderText = "불량수량";
-WoGrid.Columns[7].HeaderText = "비고";*/
+/**/
