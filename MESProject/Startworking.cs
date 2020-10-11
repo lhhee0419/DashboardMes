@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace MESProject
 {
-    public partial class InjectionForm : Form
+    public partial class Startworking : Form
     {
-        public InjectionForm()
+        public Startworking()
         {
             InitializeComponent();
+        }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            //닫기 버튼 
+            this.Close();
         }
     }
 }

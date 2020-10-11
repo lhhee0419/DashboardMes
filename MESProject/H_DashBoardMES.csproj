@@ -98,11 +98,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="InjectionForm.cs">
+    <Compile Include="Startworking.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InjectionForm.Designer.cs">
-      <DependentUpon>InjectionForm.cs</DependentUpon>
+    <Compile Include="Startworking.Designer.cs">
+      <DependentUpon>Startworking.cs</DependentUpon>
     </Compile>
     <Compile Include="Stopworking.cs">
       <SubType>Form</SubType>
@@ -143,8 +143,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="InjectionForm.resx">
-      <DependentUpon>InjectionForm.cs</DependentUpon>
+    <EmbeddedResource Include="Startworking.resx">
+      <DependentUpon>Startworking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stopworking.resx">
       <DependentUpon>Stopworking.cs</DependentUpon>

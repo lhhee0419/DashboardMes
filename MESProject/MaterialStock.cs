@@ -15,6 +15,7 @@ namespace MESProject
         public MaterialStock()
         {
             InitializeComponent();
+            
         }
 
     }
