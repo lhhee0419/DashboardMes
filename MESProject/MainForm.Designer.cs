@@ -32,7 +32,6 @@
             this.InquiryBtn = new System.Windows.Forms.Button();
             this.WostBtn = new System.Windows.Forms.Button();
             this.WoLogBtn = new System.Windows.Forms.Button();
-            this.ProdStatusBtn = new System.Windows.Forms.Button();
             this.EquipmanageBtn = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -80,15 +79,6 @@
             this.WoLogBtn.Text = "작업일지";
             this.WoLogBtn.UseVisualStyleBackColor = true;
             // 
-            // ProdStatusBtn
-            // 
-            this.ProdStatusBtn.Location = new System.Drawing.Point(445, 504);
-            this.ProdStatusBtn.Name = "ProdStatusBtn";
-            this.ProdStatusBtn.Size = new System.Drawing.Size(113, 59);
-            this.ProdStatusBtn.TabIndex = 4;
-            this.ProdStatusBtn.Text = "생산현황";
-            this.ProdStatusBtn.UseVisualStyleBackColor = true;
-            // 
             // EquipmanageBtn
             // 
             this.EquipmanageBtn.Location = new System.Drawing.Point(604, 504);
@@ -100,6 +90,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Location = new System.Drawing.Point(23, 121);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -108,6 +99,7 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker2.Location = new System.Drawing.Point(334, 122);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -144,14 +136,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1280, 1024);
             this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.ProcCombo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.EquipmanageBtn);
-            this.Controls.Add(this.ProdStatusBtn);
             this.Controls.Add(this.WoLogBtn);
             this.Controls.Add(this.WostBtn);
             this.Controls.Add(this.InquiryBtn);
@@ -170,7 +161,6 @@
         private System.Windows.Forms.Button InquiryBtn;
         private System.Windows.Forms.Button WostBtn;
         private System.Windows.Forms.Button WoLogBtn;
-        private System.Windows.Forms.Button ProdStatusBtn;
         private System.Windows.Forms.Button EquipmanageBtn;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;

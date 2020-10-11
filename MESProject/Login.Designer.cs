@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.IDtextBox = new System.Windows.Forms.TextBox();
+            this.PWDtextBox = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -55,21 +55,21 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "비밀번호";
             // 
-            // textBox1
+            // IDtextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox1.Location = new System.Drawing.Point(391, 135);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 45);
-            this.textBox1.TabIndex = 2;
+            this.IDtextBox.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IDtextBox.Location = new System.Drawing.Point(391, 135);
+            this.IDtextBox.Name = "IDtextBox";
+            this.IDtextBox.Size = new System.Drawing.Size(200, 45);
+            this.IDtextBox.TabIndex = 2;
             // 
-            // textBox2
+            // PWDtextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.textBox2.Location = new System.Drawing.Point(391, 212);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 45);
-            this.textBox2.TabIndex = 3;
+            this.PWDtextBox.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.PWDtextBox.Location = new System.Drawing.Point(391, 212);
+            this.PWDtextBox.Name = "PWDtextBox";
+            this.PWDtextBox.Size = new System.Drawing.Size(200, 45);
+            this.PWDtextBox.TabIndex = 3;
             // 
             // LoginButton
             // 
@@ -88,8 +88,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
             this.Controls.Add(this.LoginButton);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PWDtextBox);
+            this.Controls.Add(this.IDtextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Login";
@@ -103,8 +103,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox IDtextBox;
+        private System.Windows.Forms.TextBox PWDtextBox;
         private System.Windows.Forms.Button LoginButton;
     }
 }

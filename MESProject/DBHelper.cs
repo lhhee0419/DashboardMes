@@ -46,7 +46,7 @@ namespace MESProject
                 DBconnString = string.Format("Data Source=(DESCRIPTION="
                     + "(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.0.169)"
                     + "(PORT=1521)))(CONNECT_DATA= (SERVER = DEDICATED)"
-                    + "(SERVICE_NAME = xe))); User Id = sys; Password = smart123; ");
+                    + "(SERVICE_NAME = xe))); User Id = b1s4; Password = smart123; ");
                 conn = new OracleConnection(DBconnString);
             }
             try
