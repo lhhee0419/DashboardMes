@@ -36,5 +36,14 @@ namespace MESProject
             adapter.Fill(data_table);
             gridView.DataSource = data_table;
         }
+
+        static public DataTable DB_Connection(string sql)
+        {
+            OracleDataAdapter adapter = new OracleDataAdapter(sql, DBHelper.DBconn);
+            DataTable data_table = new DataTable();
+            adapter.Fill(data_table);
+            return data_table;
+        }
+
     }
 }
