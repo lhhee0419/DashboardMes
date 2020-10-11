@@ -32,7 +32,6 @@
             this.maintab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.logoutbtn = new System.Windows.Forms.Button();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.ProcCombo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
@@ -57,7 +56,7 @@
             // maintab
             // 
             this.maintab.Controls.Add(this.tabPage1);
-            this.maintab.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold);
+            this.maintab.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold);
             this.maintab.Location = new System.Drawing.Point(0, 0);
             this.maintab.Name = "maintab";
             this.maintab.SelectedIndex = 0;
@@ -70,7 +69,6 @@
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.logoutbtn);
-            this.tabPage1.Controls.Add(this.vScrollBar1);
             this.tabPage1.Controls.Add(this.ProcCombo);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.dateTimePicker2);
@@ -81,10 +79,10 @@
             this.tabPage1.Controls.Add(this.InquiryBtn);
             this.tabPage1.Controls.Add(this.WoGrid);
             this.tabPage1.Font = new System.Drawing.Font("굴림", 9F);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Location = new System.Drawing.Point(4, 35);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1272, 995);
+            this.tabPage1.Size = new System.Drawing.Size(1272, 985);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -100,13 +98,6 @@
             this.logoutbtn.UseVisualStyleBackColor = true;
             this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
             // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(1224, 196);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(21, 506);
-            this.vScrollBar1.TabIndex = 55;
-            // 
             // ProcCombo
             // 
             this.ProcCombo.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -115,7 +106,6 @@
             this.ProcCombo.Name = "ProcCombo";
             this.ProcCombo.Size = new System.Drawing.Size(121, 33);
             this.ProcCombo.TabIndex = 54;
-            this.ProcCombo.SelectedIndexChanged += new System.EventHandler(this.ProcCombo_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -187,11 +177,11 @@
             // WoGrid
             // 
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WoGrid.Location = new System.Drawing.Point(44, 196);
+            this.WoGrid.Location = new System.Drawing.Point(22, 196);
             this.WoGrid.Name = "WoGrid";
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
-            this.WoGrid.Size = new System.Drawing.Size(1177, 506);
+            this.WoGrid.Size = new System.Drawing.Size(1223, 506);
             this.WoGrid.TabIndex = 46;
             // 
             // MainForm
@@ -217,7 +207,6 @@
         private System.Windows.Forms.TabControl maintab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button logoutbtn;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.ComboBox ProcCombo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
