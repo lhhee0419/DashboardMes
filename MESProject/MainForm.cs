@@ -24,10 +24,27 @@ namespace MESProject
 
         }
 
+        private void login_check()
+        {
+            Login login = new Login();
+            //login DialogResult Value
+            DialogResult result = login.ShowDialog();
+            //로그인 실패시
+            if (result != DialogResult.OK)
+            {
+                MessageBox.Show("프로그램 종료");
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("로그인 성공");
+            }
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
-
-
+            login_check();
+            
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
             ProcCombo.SelectedIndex = 0; //콤보박스 초기값설정
@@ -128,8 +145,7 @@ namespace MESProject
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             //로그아웃버튼
-            login.Show();
-            this.Hide();
+            login_check();
         }
 
         bool isMove;

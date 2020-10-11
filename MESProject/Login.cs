@@ -35,11 +35,10 @@ namespace MESProject
                 //조회된 결과가 1일 경우 로그인 성공, login창 숨김.
                 if (data_Table.Rows[0][0].ToString() == "1")
                 {
-                    IDtextBox.Text = string.Empty;
-                    PWDtextBox.Text = string.Empty;
-                    MessageBox.Show("로그인되었습니다.");
-                    mainform.Show();
-                    this.Hide();
+                    //MessageBox.Show("로그인되었습니다.");
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                    
                 }
                 //textbox이 빈 값일 경우 나타나는 메세지
                 else if(IDtextBox.Text =="" || PWDtextBox.Text=="")
