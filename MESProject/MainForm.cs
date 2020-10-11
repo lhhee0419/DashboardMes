@@ -33,23 +33,12 @@ namespace MESProject
 
             Common.SetGridDesign(WoGrid);
 
-            if (ProcCombo.SelectedIndex == 0)
-            {
-                string select_wo_mix = $"SELECT W.WOID as 작업지시코드 , W.PRODID as 제품코드, P.PRODNAME as 제품명, W.WOSTAT as 작업상태, W.PLANQTY as 계획수량 ,W.PRODQTY as 생산수량,COUNT(*) AS 불량수량, W.PLANDTTM as 계획날짜, W.ETC as 비고 FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0001' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
-                Common.DB_Connection(select_wo_mix, WoGrid);
-
-            }
-            else if (ProcCombo.SelectedIndex == 1)
-            {
-                string select_wo_injection = $"W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE  W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
-                Common.DB_Connection(select_wo_injection, WoGrid);
-            }
+            DataSearch();
 
 
         }
 
-
-        private void InquiryBtn_Click(object sender, EventArgs e)
+        private void DataSearch()
         {
             //조회버튼 클릭시 
             DateTime date1 = dateTimePicker1.Value;
@@ -69,8 +58,11 @@ namespace MESProject
                 Common.DB_Connection(select_wo_injection, WoGrid);
 
             }
+        }
 
-
+        private void InquiryBtn_Click(object sender, EventArgs e)
+        {
+            DataSearch();
 
         }
 

@@ -44,59 +44,59 @@
             // WoGrid
             // 
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WoGrid.Location = new System.Drawing.Point(27, 23);
+            this.WoGrid.Location = new System.Drawing.Point(64, 88);
             this.WoGrid.Name = "WoGrid";
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
-            this.WoGrid.Size = new System.Drawing.Size(630, 117);
+            this.WoGrid.Size = new System.Drawing.Size(1128, 256);
             this.WoGrid.TabIndex = 0;
             // 
             // LotGrid
             // 
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(28, 157);
+            this.LotGrid.Location = new System.Drawing.Point(64, 368);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
-            this.LotGrid.Size = new System.Drawing.Size(632, 165);
+            this.LotGrid.Size = new System.Drawing.Size(1128, 264);
             this.LotGrid.TabIndex = 1;
             // 
             // LotaddBtn
             // 
-            this.LotaddBtn.Font = new System.Drawing.Font("굴림", 13F);
-            this.LotaddBtn.Location = new System.Drawing.Point(28, 343);
+            this.LotaddBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.LotaddBtn.Location = new System.Drawing.Point(64, 648);
             this.LotaddBtn.Name = "LotaddBtn";
-            this.LotaddBtn.Size = new System.Drawing.Size(127, 61);
+            this.LotaddBtn.Size = new System.Drawing.Size(164, 73);
             this.LotaddBtn.TabIndex = 2;
             this.LotaddBtn.Text = "LOT 추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
             // 
             // StopBtn
             // 
-            this.StopBtn.Font = new System.Drawing.Font("굴림", 13F);
-            this.StopBtn.Location = new System.Drawing.Point(180, 343);
+            this.StopBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.StopBtn.Location = new System.Drawing.Point(248, 648);
             this.StopBtn.Name = "StopBtn";
-            this.StopBtn.Size = new System.Drawing.Size(125, 61);
+            this.StopBtn.Size = new System.Drawing.Size(164, 73);
             this.StopBtn.TabIndex = 4;
             this.StopBtn.Text = "작업중지/재시작";
             this.StopBtn.UseVisualStyleBackColor = true;
             // 
             // EndBtn
             // 
-            this.EndBtn.Font = new System.Drawing.Font("굴림", 13F);
-            this.EndBtn.Location = new System.Drawing.Point(181, 419);
+            this.EndBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.EndBtn.Location = new System.Drawing.Point(248, 736);
             this.EndBtn.Name = "EndBtn";
-            this.EndBtn.Size = new System.Drawing.Size(125, 61);
+            this.EndBtn.Size = new System.Drawing.Size(164, 73);
             this.EndBtn.TabIndex = 5;
             this.EndBtn.Text = "작업종료";
             this.EndBtn.UseVisualStyleBackColor = true;
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("굴림", 13F);
-            this.ExitBtn.Location = new System.Drawing.Point(520, 419);
+            this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.ExitBtn.Location = new System.Drawing.Point(1032, 736);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(134, 56);
+            this.ExitBtn.Size = new System.Drawing.Size(164, 73);
             this.ExitBtn.TabIndex = 6;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -104,30 +104,30 @@
             // 
             // LotDelBtn
             // 
-            this.LotDelBtn.Font = new System.Drawing.Font("굴림", 13F);
-            this.LotDelBtn.Location = new System.Drawing.Point(28, 419);
+            this.LotDelBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.LotDelBtn.Location = new System.Drawing.Point(64, 736);
             this.LotDelBtn.Name = "LotDelBtn";
-            this.LotDelBtn.Size = new System.Drawing.Size(127, 61);
+            this.LotDelBtn.Size = new System.Drawing.Size(164, 73);
             this.LotDelBtn.TabIndex = 7;
             this.LotDelBtn.Text = "LOT 삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
             // 
             // StockBtn
             // 
-            this.StockBtn.Font = new System.Drawing.Font("굴림", 13F);
-            this.StockBtn.Location = new System.Drawing.Point(520, 343);
+            this.StockBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.StockBtn.Location = new System.Drawing.Point(1032, 648);
             this.StockBtn.Name = "StockBtn";
-            this.StockBtn.Size = new System.Drawing.Size(137, 61);
+            this.StockBtn.Size = new System.Drawing.Size(164, 73);
             this.StockBtn.TabIndex = 9;
             this.StockBtn.Text = "원재료 재고조회";
             this.StockBtn.UseVisualStyleBackColor = true;
             // 
             // FaultyBtn
             // 
-            this.FaultyBtn.Font = new System.Drawing.Font("굴림", 13F);
-            this.FaultyBtn.Location = new System.Drawing.Point(374, 343);
+            this.FaultyBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.FaultyBtn.Location = new System.Drawing.Point(840, 648);
             this.FaultyBtn.Name = "FaultyBtn";
-            this.FaultyBtn.Size = new System.Drawing.Size(129, 61);
+            this.FaultyBtn.Size = new System.Drawing.Size(164, 73);
             this.FaultyBtn.TabIndex = 8;
             this.FaultyBtn.Text = "불량 등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
@@ -150,6 +150,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Startworking";
             this.Text = "sForm1";
+            this.Load += new System.EventHandler(this.Startworking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             this.ResumeLayout(false);
