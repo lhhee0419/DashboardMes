@@ -35,37 +35,35 @@ namespace MESProject
 
             odr.Fill(dataTable);
 
-
-            //if (IDtextBox.Text is null || PWDtextBox.Text is null)
-            //    throw new Exception("아이디 혹은 패스워드를 입력하세요.");
-
             try
             {
                 if (dataTable.Rows[0][0].ToString() == "1")
                 {
-                    this.Hide();
+                    IDtextBox.Text = string.Empty;
+                    PWDtextBox.Text = string.Empty;
                     MessageBox.Show("로그인되었습니다.");
                     MainForm mainform = new MainForm();
                     mainform.Show();
-                    //this.Close();
-                    
+                    Application.Run(mainform);
+                    this.Dispose();
                 }
+
                 else if(IDtextBox.Text =="" || PWDtextBox.Text=="")
                 {
                     MessageBox.Show("아이디 혹은 패스워드를 입력하세요.");
                 }
+
                 else
                 {
                     MessageBox.Show("로그인 정보가 일치하지 않습니다.");
-                    IDtextBox.Clear();
-                    PWDtextBox.Clear();
-                    IDtextBox.Focus();
+                    IDtextBox.Text = string.Empty;
+                    PWDtextBox.Text = string.Empty;
                 }
                 
             }
             catch (Exception)
             {
-                MessageBox.Show("예외 발생");
+                //MessageBox.Show("예외 발생");
             }
         }
     }

@@ -65,9 +65,12 @@ namespace MESProject
         }
 
         private void logoutbtn_Click(object sender, EventArgs e)
-        {   
+        {
             //로그아웃버튼
             this.Close();
+
+            Login login = new Login();
+            login.Show();
         }
 
 
