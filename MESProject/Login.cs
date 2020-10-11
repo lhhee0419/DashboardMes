@@ -24,21 +24,16 @@ namespace MESProject
         //로그인 버튼을 클릭
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string strConn = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)" +
-                "(HOST = 192.168.0.169)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User Id=b1s4;Password=smart123;";
+            //select_ID에 쿼리문을 저장
+            string select_ID = $"select count(*) from employee where EMPLOYEEID = '" + IDtextBox.Text + "' and EMPLOYEEPASSWORD='" + PWDtextBox.Text + "'";
             
-            OracleConnection conn = new OracleConnection(strConn);
-            conn.Open();
+            //select_ID로 조회된 결과를 data_Table에 return값을 저장함
+            DataTable data_Table = Common.DB_Connection(select_ID);
             
-            OracleDataAdapter odr = new OracleDataAdapter("select count(*) from employee where EMPLOYEEID = '" + IDtextBox.Text + "' and EMPLOYEEPASSWORD='" + PWDtextBox.Text + "'", conn);
-            
-            DataTable dataTable = new DataTable();
-
-            odr.Fill(dataTable);
-
             try
             {
-                if (dataTable.Rows[0][0].ToString() == "1")
+                //조회된 결과가 1일 경우 로그인 성공, login창 숨김.
+                if (data_Table.Rows[0][0].ToString() == "1")
                 {
                     IDtextBox.Text = string.Empty;
                     PWDtextBox.Text = string.Empty;
@@ -46,12 +41,13 @@ namespace MESProject
                     mainform.Show();
                     this.Hide();
                 }
-
+                //textbox이 빈 값일 경우 나타나는 메세지
                 else if(IDtextBox.Text =="" || PWDtextBox.Text=="")
                 {
                     MessageBox.Show("아이디 혹은 패스워드를 입력하세요.");
                 }
 
+                //정보가 일치하지 않을경우 textbox를 초기화하고 IDtextbox에 커서를 맞춤.
                 else
                 {
                     MessageBox.Show("로그인 정보가 일치하지 않습니다.");
@@ -63,7 +59,7 @@ namespace MESProject
             }
             catch (Exception)
             {
-                //MessageBox.Show("예외 발생");
+                MessageBox.Show("예외 발생");
             }
         }
     }
