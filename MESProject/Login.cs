@@ -20,29 +20,39 @@ namespace MESProject
             this.Style = MetroFramework.MetroColorStyle.White;
         }
 
-
+        //로그인 버튼을 클릭
         private void LoginButton_Click(object sender, EventArgs e)
         {
             string strConn = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)" +
                 "(HOST = 192.168.0.169)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=xe)));User Id=b1s4;Password=smart123;";
             
             OracleConnection conn = new OracleConnection(strConn);
-
             conn.Open();
-
             
-            OracleDataAdapter odr = new OracleDataAdapter("select count(*) from employee where 1=1", conn);
+            OracleDataAdapter odr = new OracleDataAdapter("select count(*) from employee where EMPLOYEEID = '" + IDtextBox.Text + "' and EMPLOYEEPASSWORD='" + PWDtextBox.Text + "'", conn);
             
             DataTable dataTable = new DataTable();
 
             odr.Fill(dataTable);
-            MessageBox.Show(dataTable.Rows[0][0].ToString());
-            
-            if (dataTable.Rows[0][0].ToString() == "1")
+
+
+            //if (IDtextBox.Text is null || PWDtextBox.Text is null)
+            //    throw new Exception("아이디 혹은 패스워드를 입력하세요.");
+
+            try
+            {
+                if (dataTable.Rows[0][0].ToString() == "1")
                 {
+                    this.Hide();
                     MessageBox.Show("로그인되었습니다.");
                     MainForm mainform = new MainForm();
                     mainform.Show();
+                    //this.Close();
+                    
+                }
+                else if(IDtextBox.Text =="" || PWDtextBox.Text=="")
+                {
+                    MessageBox.Show("아이디 혹은 패스워드를 입력하세요.");
                 }
                 else
                 {
@@ -51,8 +61,12 @@ namespace MESProject
                     PWDtextBox.Clear();
                     IDtextBox.Focus();
                 }
-
-            //로그인 버튼을 클릭
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("예외 발생");
+            }
         }
     }
 }
