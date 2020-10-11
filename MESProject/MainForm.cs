@@ -15,6 +15,7 @@ namespace MESProject
 {
     public partial class MainForm : Form
     {
+        private static Login login = new Login();
         public MainForm()
         {
             InitializeComponent();
@@ -135,7 +136,8 @@ namespace MESProject
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             //로그아웃버튼
-            this.Close();
+            login.Show();
+            this.Hide();
         }
     }
 }

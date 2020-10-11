@@ -1,6 +1,6 @@
 ﻿namespace MESProject
 {
-    partial class InjectionForm
+    partial class Startworking
     {
         /// <summary>
         /// Required designer variable.

@@ -14,6 +14,7 @@ namespace MESProject
 {
     public partial class Login : MetroForm
     {
+        private static MainForm mainform = new MainForm();
         public Login()
         {
             InitializeComponent();
@@ -42,10 +43,8 @@ namespace MESProject
                     IDtextBox.Text = string.Empty;
                     PWDtextBox.Text = string.Empty;
                     MessageBox.Show("로그인되었습니다.");
-                    MainForm mainform = new MainForm();
                     mainform.Show();
-                    Application.Run(mainform);
-                    this.Dispose();
+                    this.Hide();
                 }
 
                 else if(IDtextBox.Text =="" || PWDtextBox.Text=="")
@@ -58,6 +57,7 @@ namespace MESProject
                     MessageBox.Show("로그인 정보가 일치하지 않습니다.");
                     IDtextBox.Text = string.Empty;
                     PWDtextBox.Text = string.Empty;
+                    IDtextBox.Focus();
                 }
                 
             }
