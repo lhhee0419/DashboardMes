@@ -107,6 +107,7 @@
             this.Controls.Add(this.IDtextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);

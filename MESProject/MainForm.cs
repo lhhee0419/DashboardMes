@@ -177,7 +177,7 @@ namespace MESProject
         private void WoLogBtn_Click(object sender, EventArgs e)
         {
             //작업일지 버튼
-
+            Create_Tab();
         }
 
         private void WoGrid_MouseClick(object sender, MouseEventArgs e)
