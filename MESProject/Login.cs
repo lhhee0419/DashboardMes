@@ -12,13 +12,13 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace MESProject
 {
-    public partial class Login : MetroForm
+    public partial class Login : Form
     {
         private static MainForm mainform = new MainForm();
         public Login()
         {
             InitializeComponent();
-            this.Style = MetroFramework.MetroColorStyle.White;
+            //this.Style = MetroFramework.MetroColorStyle.White;
         }
 
         //로그인 버튼을 클릭
@@ -39,7 +39,7 @@ namespace MESProject
                     PWDtextBox.Text = string.Empty;
                     MessageBox.Show("로그인되었습니다.");
                     mainform.Show();
-                    this.Hide();
+                   //this.Hide();
                 }
                 //textbox이 빈 값일 경우 나타나는 메세지
                 else if(IDtextBox.Text =="" || PWDtextBox.Text=="")
