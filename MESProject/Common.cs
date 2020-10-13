@@ -46,5 +46,33 @@ namespace MESProject
             return data_table;
         }
 
+        static public void Create_Tab(string name, string text, Form form, TabControl tab)
+        {
+
+            if (tab.TabPages.Count > 1)
+            {
+                for (int i = 0; i < tab.TabPages.Count; i++)
+                {
+                    if (tab.TabPages[i].Name == $"{name}")
+                    {
+                        tab.SelectedIndex = i;
+                        return;
+                    }
+                }
+            }
+            else
+            {
+
+                form.TopLevel = false;
+                tab.TabPages.Add((tab.TabPages.Count + 1).ToString());
+                tab.TabPages[tab.TabPages.Count - 1].Controls.Add(form);
+                tab.SelectedIndex = tab.TabPages.Count - 1;
+                tab.SelectedTab.Text = $"{text}";
+                tab.SelectedTab.Name = $"{name}";
+                //maintab.TabPages[maintab.TabPages.Count - 1].Controls.Add(startworkingForm);
+                form.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                form.Show();
+            }
+        }
     }
 }
