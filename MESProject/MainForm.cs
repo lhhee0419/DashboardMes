@@ -146,7 +146,9 @@ namespace MESProject
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             //로그아웃버튼
-            
+            this.Close();
+            Application.Restart();
+
             login_check();
            
         }
