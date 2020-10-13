@@ -33,6 +33,7 @@
             this.IDtextBox = new System.Windows.Forms.TextBox();
             this.PWDtextBox = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
+            this.ExitBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -62,6 +63,7 @@
             this.IDtextBox.Name = "IDtextBox";
             this.IDtextBox.Size = new System.Drawing.Size(200, 45);
             this.IDtextBox.TabIndex = 2;
+            this.IDtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IDTextbox_Enter);
             // 
             // PWDtextBox
             // 
@@ -70,6 +72,7 @@
             this.PWDtextBox.Name = "PWDtextBox";
             this.PWDtextBox.Size = new System.Drawing.Size(200, 45);
             this.PWDtextBox.TabIndex = 3;
+            this.PWDtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PwdTextbox_Enter);
             // 
             // LoginButton
             // 
@@ -82,11 +85,23 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
+            // ExitBtn
+            // 
+            this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.ExitBtn.Location = new System.Drawing.Point(576, 392);
+            this.ExitBtn.Name = "ExitBtn";
+            this.ExitBtn.Size = new System.Drawing.Size(131, 63);
+            this.ExitBtn.TabIndex = 5;
+            this.ExitBtn.Text = "나가기";
+            this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
+            this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PWDtextBox);
             this.Controls.Add(this.IDtextBox);
@@ -106,5 +121,6 @@
         private System.Windows.Forms.TextBox IDtextBox;
         private System.Windows.Forms.TextBox PWDtextBox;
         private System.Windows.Forms.Button LoginButton;
+        private System.Windows.Forms.Button ExitBtn;
     }
 }
