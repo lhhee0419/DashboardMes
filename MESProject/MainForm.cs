@@ -97,45 +97,16 @@ namespace MESProject
             DataSearch();
 
         }
-        public void Create_Tab()
-        {
-
-            if (maintab.TabPages.Count > 1)
-            {
-                for (int i = 0; i < maintab.TabPages.Count; i++)
-                {
-                    if (maintab.TabPages[i].Name == "startworking")
-                    {
-                        maintab.SelectedIndex = i;
-                        return;
-                    }
-                }
-            }
-            else
-            {
-                Startworking startworkingForm = new Startworking();
-                startworkingForm.TopLevel = false;
-                maintab.TabPages.Add((maintab.TabPages.Count + 1).ToString());
-                maintab.TabPages[maintab.TabPages.Count - 1].Controls.Add(startworkingForm);
-                maintab.SelectedIndex = maintab.TabPages.Count - 1;
-                maintab.SelectedTab.Text = "작업시작";
-                maintab.SelectedTab.Name = "startworking";
-                //maintab.TabPages[maintab.TabPages.Count - 1].Controls.Add(startworkingForm);
-                startworkingForm.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-                startworkingForm.Selected_woid = woid;
-                startworkingForm.Show();
-                startworkingForm.FormClosed += Form_closing;
-            }
-           
-           
-        }
+ 
 
         private void WostBtn_Click(object sender, EventArgs e)
         {
             //작업시작 버튼
-            
-            Create_Tab();
-            
+            Startworking startworkingForm = new Startworking();
+            startworkingForm.Selected_woid = woid;
+            Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+            startworkingForm.FormClosed += Form_closing;
+
 
         }
         public void Form_closing(object sender, FormClosedEventArgs e)
