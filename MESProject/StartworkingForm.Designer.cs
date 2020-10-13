@@ -111,6 +111,7 @@
             this.LotaddBtn.TabIndex = 21;
             this.LotaddBtn.Text = "LOT 추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
+            this.LotaddBtn.Click += new System.EventHandler(this.LotaddBtn_Click);
             // 
             // LotGrid
             // 

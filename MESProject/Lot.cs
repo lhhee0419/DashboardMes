@@ -17,6 +17,17 @@ namespace MESProject
             InitializeComponent();
         }
 
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            //닫기버튼
+            this.Close();
+        }
 
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            //추가버튼
+           
+
+        }
     }
 }

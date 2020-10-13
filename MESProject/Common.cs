@@ -35,6 +35,7 @@ namespace MESProject
             DataTable data_table = new DataTable();
             adapter.Fill(data_table);
             gridView.DataSource = data_table;
+            gridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         static public DataTable DB_Connection(string sql)
