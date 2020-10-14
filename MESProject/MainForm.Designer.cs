@@ -41,6 +41,7 @@
             this.WostBtn = new System.Windows.Forms.Button();
             this.InquiryBtn = new System.Windows.Forms.Button();
             this.WoGrid = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
             this.maintab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
@@ -68,6 +69,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.logoutbtn);
             this.tabPage1.Controls.Add(this.ProcCombo);
             this.tabPage1.Controls.Add(this.label1);
@@ -178,7 +180,7 @@
             // WoGrid
             // 
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WoGrid.Location = new System.Drawing.Point(22, 196);
+            this.WoGrid.Location = new System.Drawing.Point(23, 196);
             this.WoGrid.Name = "WoGrid";
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
@@ -186,6 +188,15 @@
             this.WoGrid.Size = new System.Drawing.Size(1223, 506);
             this.WoGrid.TabIndex = 46;
             this.WoGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WoGrid_MouseClick);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(751, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 15);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "label2";
             // 
             // MainForm
             // 
@@ -219,6 +230,7 @@
         private System.Windows.Forms.Button WostBtn;
         private System.Windows.Forms.Button InquiryBtn;
         private System.Windows.Forms.DataGridView WoGrid;
+        private System.Windows.Forms.Label label2;
     }
 }
 
