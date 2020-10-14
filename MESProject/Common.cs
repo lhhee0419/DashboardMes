@@ -59,6 +59,15 @@ namespace MESProject
                         return;
                     }
                 }
+                form.TopLevel = false;
+                tab.TabPages.Add((tab.TabPages.Count + 1).ToString());
+                tab.TabPages[tab.TabPages.Count - 1].Controls.Add(form);
+                tab.SelectedIndex = tab.TabPages.Count - 1;
+                tab.SelectedTab.Text = $"{text}";
+                tab.SelectedTab.Name = $"{name}";
+                tab.TabPages[tab.TabPages.Count - 1].Controls.Add(form);
+                form.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+                form.Show();
             }
             else
             {
@@ -69,7 +78,7 @@ namespace MESProject
                 tab.SelectedIndex = tab.TabPages.Count - 1;
                 tab.SelectedTab.Text = $"{text}";
                 tab.SelectedTab.Name = $"{name}";
-                //maintab.TabPages[maintab.TabPages.Count - 1].Controls.Add(startworkingForm);
+                tab.TabPages[tab.TabPages.Count - 1].Controls.Add(form);
                 form.WindowState = System.Windows.Forms.FormWindowState.Maximized;
                 form.Show();
             }

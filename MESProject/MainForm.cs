@@ -103,8 +103,13 @@ namespace MESProject
         {
             //작업시작 버튼
             Startworking startworkingForm = new Startworking();
-            startworkingForm.Selected_woid = woid;
-            Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+            
+            if(woid != "")
+            {
+                startworkingForm.Selected_woid = woid;
+                Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+            }
+  
             startworkingForm.FormClosed += Form_closing;
 
 
@@ -119,14 +124,13 @@ namespace MESProject
             //로그아웃버튼
             this.Close();
             Application.Restart();
-
             login_check();
            
         }
 
         bool isMove;
         Point fpt;
-        public string woid;
+        public string woid ="";
 
         private void maintab_MouseDown(object sender, MouseEventArgs e)
         {
@@ -148,6 +152,9 @@ namespace MESProject
         private void WoLogBtn_Click(object sender, EventArgs e)
         {
             //작업일지 버튼
+            WorkLog workLogForm = new WorkLog();
+            Common.Create_Tab("workLogForm", "작업일지", workLogForm, maintab);
+            workLogForm.FormClosed += Form_closing;
 
         }
 
