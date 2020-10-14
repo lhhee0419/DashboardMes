@@ -147,8 +147,10 @@ namespace MESProject
 
         private void WoLogBtn_Click(object sender, EventArgs e)
         {
+            WorkLog worklogform = new WorkLog();
+            Common.Create_Tab("WorkLog","작업일지",worklogform,maintab);
+            worklogform.FormClosed += Form_closing;
             //작업일지 버튼
-            Create_Tab();
         }
 
         private void WoGrid_MouseClick(object sender, MouseEventArgs e)
