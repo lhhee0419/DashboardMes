@@ -70,7 +70,7 @@
             // InquiryBtn
             // 
             this.InquiryBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InquiryBtn.Location = new System.Drawing.Point(808, 72);
+            this.InquiryBtn.Location = new System.Drawing.Point(824, 64);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(166, 66);
             this.InquiryBtn.TabIndex = 12;
@@ -86,14 +86,14 @@
             this.WLGrid.RowHeadersWidth = 51;
             this.WLGrid.RowTemplate.Height = 27;
             this.WLGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WLGrid.Size = new System.Drawing.Size(946, 350);
+            this.WLGrid.Size = new System.Drawing.Size(968, 350);
             this.WLGrid.TabIndex = 11;
             this.WLGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WLGrid_MouseClick);
             // 
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ExitBtn.Location = new System.Drawing.Point(808, 544);
+            this.ExitBtn.Location = new System.Drawing.Point(824, 544);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(166, 66);
             this.ExitBtn.TabIndex = 12;
@@ -113,11 +113,11 @@
             // LotGrid
             // 
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(24, 496);
+            this.LotGrid.Location = new System.Drawing.Point(24, 504);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
-            this.LotGrid.Size = new System.Drawing.Size(695, 208);
+            this.LotGrid.Size = new System.Drawing.Size(760, 160);
             this.LotGrid.TabIndex = 11;
             // 
             // WorkLog
