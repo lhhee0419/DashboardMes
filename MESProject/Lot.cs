@@ -16,10 +16,19 @@ namespace MESProject
         bool isMove;
         Point fpt;
         public string woid;
-        
-        public Lot()
+
+        private Startworking startworkingForm = null;
+        public Lot(Startworking startworkingForm)
         {
             InitializeComponent();
+            this.startworkingForm = startworkingForm;
+            this.FormClosing += Lot_FormClosing;
+        }
+
+
+        private void Lot_Load(object sender, EventArgs e)
+        {
+            woid = startworkingForm.Selected_woid;
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -31,8 +40,7 @@ namespace MESProject
         private void AddBtn_Click(object sender, EventArgs e)
         {
             //추가버튼
-            int Qty = Convert.ToInt32(LotAdd_tb.Text);
-            
+            int Qty = (LotAdd_tb.Text == "")? 0:Convert.ToInt32(LotAdd_tb.Text);
             if(woid != "")
             {
                 for (int i = 0; i < Qty; i++)
@@ -40,6 +48,8 @@ namespace MESProject
                     string add_lot = $" INSERT INTO LOT(LOTID, WOID, EQPTID,PROCID) VALUES((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT), '{woid}',(SELECT EQPTID FROM EQUIPMENT WHERE EQPTSTATS = 'DOWN'),(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}'))";
                     Common.DB_Connection(add_lot);
                 }
+                MessageBox.Show($" LOT {Qty}개 추가 되었습니다. ");
+                this.Close();
             }
 
 
@@ -62,11 +72,9 @@ namespace MESProject
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
 
-        private void Lot_Load(object sender, EventArgs e)
+        private void Lot_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Startworking startworkingForm = new Startworking();
-            woid = startworkingForm.Selected_woid;
-            MessageBox.Show(woid);
+            startworkingForm.Inquiry_lot();
         }
     }
 }

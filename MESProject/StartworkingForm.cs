@@ -38,7 +38,12 @@ namespace MESProject
                 WoGrid.Columns[8].HeaderText = "작업지시 시작일";
                 WoGrid.Columns[9].HeaderText = "비고";
             }
-            string Selected_lot = $"SELECT LOTID, LOTSTAT, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END  , LOTSTDTTM,LOTEDDTTM FROM LOT L,DEFECTLOT D WHERE WOID = '{Selected_woid}'";
+            Inquiry_lot();
+        }
+
+        public void Inquiry_lot()
+        {
+            string Selected_lot = $"SELECT LOTID, LOTSTAT, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END  , LOTSTDTTM,LOTEDDTTM FROM LOT L WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(Selected_lot, LotGrid);
             if (LotGrid.Rows.Count > 0)
             {
@@ -48,7 +53,6 @@ namespace MESProject
                 LotGrid.Columns[3].HeaderText = "시작시간";
                 LotGrid.Columns[4].HeaderText = "종료시간";
             }
-
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -60,8 +64,10 @@ namespace MESProject
         private void LotaddBtn_Click(object sender, EventArgs e)
         {
             //LOT추가 버튼
-            Lot lotForm = new Lot();
+            Lot lotForm = new Lot(this);
             lotForm.ShowDialog();
+
         }
+
     }
 }
