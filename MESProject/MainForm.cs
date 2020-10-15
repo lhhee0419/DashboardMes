@@ -16,7 +16,11 @@ namespace MESProject
 {
     public partial class MainForm : Form
     {
-       // private static Login login = new Login();
+        // 창 이동 변수 선언
+        bool isMove;
+        Point fpt;
+
+        public string woid = "";
         public MainForm()
         {
             InitializeComponent();
@@ -100,17 +104,16 @@ namespace MESProject
         private void WostBtn_Click(object sender, EventArgs e)
         {
             //작업시작 버튼
-            Startworking startworkingForm = new Startworking();
-            
+            Startworking startworkingForm = new Startworking();  
             if(woid != "")
             {
                 startworkingForm.Selected_woid = woid;
                 Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
             }
             startworkingForm.FormClosed += Form_closing;
-
-
         }
+
+        
         public void Form_closing(object sender, FormClosedEventArgs e)
         {
             maintab.TabPages.Remove(maintab.SelectedTab);
@@ -125,9 +128,7 @@ namespace MESProject
            
         }
 
-        bool isMove;
-        Point fpt;
-        public string woid ="";
+        
 
         private void maintab_MouseDown(object sender, MouseEventArgs e)
         {

@@ -11,13 +11,13 @@ using System.Windows.Forms;
 namespace MESProject
 {
     public partial class Lot : Form
-    {
+    {   
+
         bool isMove;
         Point fpt;
-        string woid="";
-   
-
-        public Lot()
+        public string woid;
+        
+        public Lot(Startworking startworkingForm)
         {
             InitializeComponent();
         }

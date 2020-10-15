@@ -13,6 +13,7 @@ namespace MESProject
     public partial class Startworking : Form
     {   
         public string Selected_woid { get; set; }
+        
         public Startworking()
         {
             InitializeComponent();
@@ -22,7 +23,6 @@ namespace MESProject
         {
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-            
             string select_wo_mix = $"SELECT W.WOID, P.PRODID ,P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, COUNT(*), W.PLANDTTM, W.WOSTDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE W.WOID = '{Selected_woid}' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC ";
             Common.DB_Connection(select_wo_mix, WoGrid);
             if (WoGrid.Rows.Count > 0)
