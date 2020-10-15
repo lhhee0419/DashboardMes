@@ -15,6 +15,8 @@ namespace MESProject
         bool isMove;
         Point fpt;
         string woid="";
+   
+
         public Lot()
         {
             InitializeComponent();
@@ -63,7 +65,7 @@ namespace MESProject
         private void Lot_Load(object sender, EventArgs e)
         {
             Startworking startworkingForm = new Startworking();
-            woid =startworkingForm.Selected_woid;
+            woid = startworkingForm.Selected_woid;
             MessageBox.Show(woid);
         }
     }
