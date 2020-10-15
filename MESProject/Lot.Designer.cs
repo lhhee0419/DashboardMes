@@ -32,7 +32,6 @@
             this.AddBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LotAdd_tb = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -74,21 +73,11 @@
             this.LotAdd_tb.Size = new System.Drawing.Size(136, 25);
             this.LotAdd_tb.TabIndex = 2;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(237, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "label2";
-            // 
             // Lot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 253);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.LotAdd_tb);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.AddBtn);
@@ -96,6 +85,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Lot";
             this.Text = "Lot";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Lot_FormClosing);
             this.Load += new System.EventHandler(this.Lot_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Lot_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Lot_MouseMove);
@@ -111,6 +101,5 @@
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.TextBox LotAdd_tb;
-        private System.Windows.Forms.Label label2;
     }
 }

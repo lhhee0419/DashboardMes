@@ -15,11 +15,13 @@ namespace MESProject
         bool isMove;
         Point fpt;
         string woid="";
-   
 
-        public Lot()
+        private Startworking startworkingForm = null;
+        public Lot(Startworking startworkingForm)
         {
             InitializeComponent();
+            this.startworkingForm = startworkingForm;
+            this.FormClosing += Lot_FormClosing;
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -31,9 +33,9 @@ namespace MESProject
         private void AddBtn_Click(object sender, EventArgs e)
         {
             //추가버튼
-            int Qty = Convert.ToInt32(LotAdd_tb.Text);
+            int Qty = (LotAdd_tb.Text=="")? 0: Convert.ToInt32(LotAdd_tb.Text);
             
-            if(woid != "")
+            if (woid != "")
             {
                 for (int i = 0; i < Qty; i++)
                 {
@@ -41,6 +43,8 @@ namespace MESProject
                     Common.DB_Connection(add_lot);
                 }
             }
+            MessageBox.Show($"LOT {Qty}개 추가 되었습니다.");
+            this.Close();
 
 
         }
@@ -64,9 +68,13 @@ namespace MESProject
 
         private void Lot_Load(object sender, EventArgs e)
         {
-            Startworking startworkingForm = new Startworking();
             woid = startworkingForm.Selected_woid;
-            MessageBox.Show(woid);
+
+        }
+
+        private void Lot_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            startworkingForm.Inquiry_Lot();
         }
     }
 }
