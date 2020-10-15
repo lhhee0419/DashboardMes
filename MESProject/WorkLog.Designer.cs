@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -40,13 +39,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.WLGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             this.SuspendLayout();
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(968, 176);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(30, 350);
-            this.vScrollBar1.TabIndex = 21;
             // 
             // label1
             // 
@@ -78,7 +70,7 @@
             // InquiryBtn
             // 
             this.InquiryBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InquiryBtn.Location = new System.Drawing.Point(800, 70);
+            this.InquiryBtn.Location = new System.Drawing.Point(808, 72);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(166, 66);
             this.InquiryBtn.TabIndex = 12;
@@ -89,12 +81,14 @@
             // WLGrid
             // 
             this.WLGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WLGrid.Location = new System.Drawing.Point(22, 176);
+            this.WLGrid.Location = new System.Drawing.Point(24, 144);
             this.WLGrid.Name = "WLGrid";
             this.WLGrid.RowHeadersWidth = 51;
             this.WLGrid.RowTemplate.Height = 27;
+            this.WLGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WLGrid.Size = new System.Drawing.Size(946, 350);
             this.WLGrid.TabIndex = 11;
+            this.WLGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WLGrid_MouseClick);
             // 
             // ExitBtn
             // 
@@ -119,19 +113,20 @@
             // LotGrid
             // 
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(24, 528);
+            this.LotGrid.Location = new System.Drawing.Point(24, 496);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
-            this.LotGrid.Size = new System.Drawing.Size(695, 350);
+            this.LotGrid.Size = new System.Drawing.Size(695, 208);
             this.LotGrid.TabIndex = 11;
             // 
             // WorkLog
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1262, 977);
             this.Controls.Add(this.ProcCombo);
-            this.Controls.Add(this.vScrollBar1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
@@ -151,8 +146,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.VScrollBar vScrollBar1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
