@@ -16,12 +16,10 @@ namespace MESProject
 {
     public partial class MainForm : Form
     {
-        //private static Login login = new Login();
+       // private static Login login = new Login();
         public MainForm()
         {
             InitializeComponent();
-            // this.Style = MetroFramework.MetroColorStyle.White;
-
         }
 
         private void login_check()
@@ -109,7 +107,6 @@ namespace MESProject
                 startworkingForm.Selected_woid = woid;
                 Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
             }
-  
             startworkingForm.FormClosed += Form_closing;
 
 

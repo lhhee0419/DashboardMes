@@ -12,6 +12,9 @@ namespace MESProject
 {
     public partial class Lot : Form
     {
+        bool isMove;
+        Point fpt;
+        string woid="";
         public Lot()
         {
             InitializeComponent();
@@ -25,11 +28,43 @@ namespace MESProject
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-
-
             //추가버튼
-           
+            int Qty = Convert.ToInt32(LotAdd_tb.Text);
+            
+            if(woid != "")
+            {
+                for (int i = 0; i < Qty; i++)
+                {
+                    string add_lot = $" INSERT INTO LOT(LOTID, WOID, EQPTID,PROCID) VALUES((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT), '{woid}',(SELECT EQPTID FROM EQUIPMENT WHERE EQPTSTATS = 'DOWN'),(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}'))";
+                    Common.DB_Connection(add_lot);
+                }
+            }
 
+
+        }
+
+        private void Lot_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMove = true;
+            fpt = new Point(e.X, e.Y);
+        }
+
+        private void Lot_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMove = false;
+        }
+
+        private void Lot_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
+                Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
+        }
+
+        private void Lot_Load(object sender, EventArgs e)
+        {
+            Startworking startworkingForm = new Startworking();
+            woid =startworkingForm.Selected_woid;
+            MessageBox.Show(woid);
         }
     }
 }
