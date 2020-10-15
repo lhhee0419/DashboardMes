@@ -17,7 +17,7 @@ namespace MESProject
         Point fpt;
         public string woid;
         
-        public Lot(Startworking startworkingForm)
+        public Lot()
         {
             InitializeComponent();
         }
