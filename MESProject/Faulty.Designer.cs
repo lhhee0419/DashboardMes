@@ -31,16 +31,15 @@
             this.CheckBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LotID_Grid = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Defect_Grid = new System.Windows.Forms.DataGridView();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.D_color = new System.Windows.Forms.RadioButton();
+            this.D_Scratch = new System.Windows.Forms.RadioButton();
+            this.D_Crack = new System.Windows.Forms.RadioButton();
+            this.D_STED = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotID_Grid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Defect_Grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,13 +66,23 @@
             // LotID_Grid
             // 
             this.LotID_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LotID_Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
             this.LotID_Grid.Location = new System.Drawing.Point(32, 72);
             this.LotID_Grid.Name = "LotID_Grid";
             this.LotID_Grid.RowHeadersWidth = 51;
             this.LotID_Grid.RowTemplate.Height = 27;
+            this.LotID_Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LotID_Grid.Size = new System.Drawing.Size(672, 400);
             this.LotID_Grid.TabIndex = 2;
-            this.LotID_Grid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LotID_Grid_MouseClick);
+            this.LotID_Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LotID_Grid_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Width = 125;
             // 
             // label1
             // 
@@ -95,74 +104,66 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "불량요인";
             // 
-            // Defect_Grid
+            // D_color
             // 
-            this.Defect_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Defect_Grid.Location = new System.Drawing.Point(64, 480);
-            this.Defect_Grid.MultiSelect = false;
-            this.Defect_Grid.Name = "Defect_Grid";
-            this.Defect_Grid.RowHeadersWidth = 51;
-            this.Defect_Grid.RowTemplate.Height = 27;
-            this.Defect_Grid.Size = new System.Drawing.Size(448, 272);
-            this.Defect_Grid.TabIndex = 5;
-            this.Defect_Grid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Defect_Grid_MouseClick);
+            this.D_color.AutoSize = true;
+            this.D_color.Location = new System.Drawing.Point(24, 208);
+            this.D_color.Name = "D_color";
+            this.D_color.Size = new System.Drawing.Size(58, 19);
+            this.D_color.TabIndex = 6;
+            this.D_color.TabStop = true;
+            this.D_color.Text = "색상";
+            this.D_color.UseVisualStyleBackColor = true;
+            this.D_color.Click += new System.EventHandler(this.D_color_Click);
             // 
-            // radioButton1
+            // D_Scratch
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(32, 32);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(111, 19);
-            this.radioButton1.TabIndex = 6;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "radioButton1";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.D_Scratch.AutoSize = true;
+            this.D_Scratch.Location = new System.Drawing.Point(24, 152);
+            this.D_Scratch.Name = "D_Scratch";
+            this.D_Scratch.Size = new System.Drawing.Size(58, 19);
+            this.D_Scratch.TabIndex = 7;
+            this.D_Scratch.TabStop = true;
+            this.D_Scratch.Text = "기스";
+            this.D_Scratch.UseVisualStyleBackColor = true;
+            this.D_Scratch.Click += new System.EventHandler(this.D_Scratch_Click);
             // 
-            // radioButton2
+            // D_Crack
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(32, 72);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(111, 19);
-            this.radioButton2.TabIndex = 7;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.D_Crack.AutoSize = true;
+            this.D_Crack.Location = new System.Drawing.Point(24, 40);
+            this.D_Crack.Name = "D_Crack";
+            this.D_Crack.Size = new System.Drawing.Size(73, 19);
+            this.D_Crack.TabIndex = 8;
+            this.D_Crack.TabStop = true;
+            this.D_Crack.Text = "갈라짐";
+            this.D_Crack.UseVisualStyleBackColor = true;
+            this.D_Crack.Click += new System.EventHandler(this.D_Crack_Click);
             // 
-            // radioButton3
+            // D_STED
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(32, 120);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(111, 19);
-            this.radioButton3.TabIndex = 8;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(32, 176);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(111, 19);
-            this.radioButton4.TabIndex = 9;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.D_STED.AutoSize = true;
+            this.D_STED.Location = new System.Drawing.Point(24, 96);
+            this.D_STED.Name = "D_STED";
+            this.D_STED.Size = new System.Drawing.Size(94, 19);
+            this.D_STED.TabIndex = 9;
+            this.D_STED.TabStop = true;
+            this.D_STED.Text = "시작/종료";
+            this.D_STED.UseVisualStyleBackColor = true;
+            this.D_STED.Click += new System.EventHandler(this.D_STED_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Location = new System.Drawing.Point(752, 80);
+            this.groupBox1.Controls.Add(this.D_color);
+            this.groupBox1.Controls.Add(this.D_STED);
+            this.groupBox1.Controls.Add(this.D_Scratch);
+            this.groupBox1.Controls.Add(this.D_Crack);
+            this.groupBox1.Location = new System.Drawing.Point(768, 104);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 272);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "불량요인 선택";
             // 
             // Faulty
             // 
@@ -170,7 +171,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 768);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.Defect_Grid);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LotID_Grid);
@@ -181,7 +181,6 @@
             this.Text = "Faulty";
             this.Load += new System.EventHandler(this.Faulty_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LotID_Grid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Defect_Grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -196,11 +195,11 @@
         private System.Windows.Forms.DataGridView LotID_Grid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView Defect_Grid;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton D_color;
+        private System.Windows.Forms.RadioButton D_Scratch;
+        private System.Windows.Forms.RadioButton D_Crack;
+        private System.Windows.Forms.RadioButton D_STED;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
     }
 }
