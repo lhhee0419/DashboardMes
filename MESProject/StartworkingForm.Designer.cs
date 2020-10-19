@@ -50,6 +50,7 @@
             this.StockBtn.TabIndex = 27;
             this.StockBtn.Text = "원재료 재고조회";
             this.StockBtn.UseVisualStyleBackColor = true;
+            this.StockBtn.Click += new System.EventHandler(this.StockBtn_Click);
             // 
             // FaultyBtn
             // 
@@ -70,6 +71,7 @@
             this.LotDelBtn.TabIndex = 25;
             this.LotDelBtn.Text = "LOT 삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
+            this.LotDelBtn.Click += new System.EventHandler(this.LotDelBtn_Click);
             // 
             // ExitBtn
             // 
@@ -120,6 +122,7 @@
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
+            this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LotGrid.Size = new System.Drawing.Size(632, 165);
             this.LotGrid.TabIndex = 20;
             // 

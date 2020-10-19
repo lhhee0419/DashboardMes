@@ -185,7 +185,6 @@
             this.WoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WoGrid.Size = new System.Drawing.Size(1223, 506);
             this.WoGrid.TabIndex = 46;
-            this.WoGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WoGrid_MouseClick);
             // 
             // MainForm
             // 
