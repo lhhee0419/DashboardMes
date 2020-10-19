@@ -28,130 +28,135 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ExitBtn = new System.Windows.Forms.Button();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.MtrlGrid1 = new System.Windows.Forms.DataGridView();
+            this.silo1 = new System.Windows.Forms.PictureBox();
+            this.silo2 = new System.Windows.Forms.PictureBox();
+            this.MtrlGrid2 = new System.Windows.Forms.DataGridView();
+            this.silo3 = new System.Windows.Forms.PictureBox();
+            this.MtrlGrid3 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.MtrlGrid1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MtrlGrid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MtrlGrid3)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(848, 560);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 27;
-            this.dataGridView2.Size = new System.Drawing.Size(344, 254);
-            this.dataGridView2.TabIndex = 0;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Location = new System.Drawing.Point(464, 88);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(344, 448);
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(528, 24);
+            this.label1.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(375, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(212, 25);
+            this.label1.Size = new System.Drawing.Size(208, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "원재료 재고 조회";
             // 
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F);
-            this.ExitBtn.Location = new System.Drawing.Point(1008, 840);
+            this.ExitBtn.Location = new System.Drawing.Point(869, 574);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(94, 47);
+            this.ExitBtn.Size = new System.Drawing.Size(110, 60);
             this.ExitBtn.TabIndex = 3;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
-            // dataGridView4
+            // MtrlGrid1
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(464, 560);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.RowHeadersWidth = 51;
-            this.dataGridView4.RowTemplate.Height = 27;
-            this.dataGridView4.Size = new System.Drawing.Size(344, 254);
-            this.dataGridView4.TabIndex = 0;
+            this.MtrlGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MtrlGrid1.Location = new System.Drawing.Point(42, 400);
+            this.MtrlGrid1.Name = "MtrlGrid1";
+            this.MtrlGrid1.RowHeadersWidth = 51;
+            this.MtrlGrid1.RowTemplate.Height = 27;
+            this.MtrlGrid1.Size = new System.Drawing.Size(240, 150);
+            this.MtrlGrid1.TabIndex = 4;
             // 
-            // dataGridView5
+            // silo1
             // 
-            this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView5.Location = new System.Drawing.Point(80, 560);
-            this.dataGridView5.Name = "dataGridView5";
-            this.dataGridView5.RowHeadersWidth = 51;
-            this.dataGridView5.RowTemplate.Height = 27;
-            this.dataGridView5.Size = new System.Drawing.Size(344, 254);
-            this.dataGridView5.TabIndex = 0;
+            this.silo1.Location = new System.Drawing.Point(42, 93);
+            this.silo1.Name = "silo1";
+            this.silo1.Size = new System.Drawing.Size(240, 278);
+            this.silo1.TabIndex = 5;
+            this.silo1.TabStop = false;
             // 
-            // pictureBox1
+            // silo2
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(80, 88);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(344, 448);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.silo2.Location = new System.Drawing.Point(360, 93);
+            this.silo2.Name = "silo2";
+            this.silo2.Size = new System.Drawing.Size(240, 278);
+            this.silo2.TabIndex = 7;
+            this.silo2.TabStop = false;
             // 
-            // pictureBox2
+            // MtrlGrid2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(848, 88);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(344, 448);
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
+            this.MtrlGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MtrlGrid2.Location = new System.Drawing.Point(360, 400);
+            this.MtrlGrid2.Name = "MtrlGrid2";
+            this.MtrlGrid2.RowHeadersWidth = 51;
+            this.MtrlGrid2.RowTemplate.Height = 27;
+            this.MtrlGrid2.Size = new System.Drawing.Size(240, 150);
+            this.MtrlGrid2.TabIndex = 6;
+            // 
+            // silo3
+            // 
+            this.silo3.Location = new System.Drawing.Point(678, 93);
+            this.silo3.Name = "silo3";
+            this.silo3.Size = new System.Drawing.Size(240, 278);
+            this.silo3.TabIndex = 9;
+            this.silo3.TabStop = false;
+            // 
+            // MtrlGrid3
+            // 
+            this.MtrlGrid3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MtrlGrid3.Location = new System.Drawing.Point(678, 400);
+            this.MtrlGrid3.Name = "MtrlGrid3";
+            this.MtrlGrid3.RowHeadersWidth = 51;
+            this.MtrlGrid3.RowTemplate.Height = 27;
+            this.MtrlGrid3.Size = new System.Drawing.Size(240, 150);
+            this.MtrlGrid3.TabIndex = 8;
             // 
             // MaterialStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 977);
+            this.ClientSize = new System.Drawing.Size(991, 646);
+            this.Controls.Add(this.silo3);
+            this.Controls.Add(this.MtrlGrid3);
+            this.Controls.Add(this.silo2);
+            this.Controls.Add(this.MtrlGrid2);
+            this.Controls.Add(this.silo1);
+            this.Controls.Add(this.MtrlGrid1);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.dataGridView5);
-            this.Controls.Add(this.dataGridView4);
-            this.Controls.Add(this.dataGridView2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MaterialStock";
             this.Text = "MaterialStock";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.Load += new System.EventHandler(this.MaterialStock_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaterialStock_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MaterialStock_MouseMove);
+            ((System.ComponentModel.ISupportInitialize)(this.MtrlGrid1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MtrlGrid2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MtrlGrid3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button ExitBtn;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridView MtrlGrid1;
+        private System.Windows.Forms.PictureBox silo1;
+        private System.Windows.Forms.PictureBox silo2;
+        private System.Windows.Forms.DataGridView MtrlGrid2;
+        private System.Windows.Forms.PictureBox silo3;
+        private System.Windows.Forms.DataGridView MtrlGrid3;
     }
 }

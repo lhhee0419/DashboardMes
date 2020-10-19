@@ -23,8 +23,9 @@ namespace MESProject
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
 
-            string select_wo =  $"SELECT W.WOID, P.PRODID ,P.PRODNAME, W.WOSTAT, W.PLANQTY,"+
-                                $"W.PRODQTY, COUNT(*), W.PLANDTTM, W.WOSTDTTM, W.ETC "+
+            string select_wo =  $"SELECT W.WOID, P.PRODID ,P.PRODNAME, "+
+                                $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '시작' WHEN 'E' THEN '종료' END," +
+                                $"W.PLANQTY,W.PRODQTY, COUNT(*), W.PLANDTTM, W.WOSTDTTM, W.ETC " +
                                 $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D "+
                                 $"WHERE W.WOID = '{Selected_woid}' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID "+
                                 $"GROUP BY W.WOID, P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC ";
@@ -97,7 +98,8 @@ namespace MESProject
         private void StockBtn_Click(object sender, EventArgs e)
         {
             //원재료 재고조회 버튼
-
+            MaterialStock materialStockForm = new MaterialStock();
+            materialStockForm.ShowDialog();
         }
     }
 }
