@@ -31,7 +31,6 @@
             this.CheckBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LotID_Grid = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.D_color = new System.Windows.Forms.RadioButton();
@@ -66,8 +65,6 @@
             // LotID_Grid
             // 
             this.LotID_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotID_Grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
             this.LotID_Grid.Location = new System.Drawing.Point(32, 72);
             this.LotID_Grid.Name = "LotID_Grid";
             this.LotID_Grid.RowHeadersWidth = 51;
@@ -76,13 +73,6 @@
             this.LotID_Grid.Size = new System.Drawing.Size(672, 400);
             this.LotID_Grid.TabIndex = 2;
             this.LotID_Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LotID_Grid_CellClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
             // 
             // label1
             // 
@@ -200,6 +190,5 @@
         private System.Windows.Forms.RadioButton D_Crack;
         private System.Windows.Forms.RadioButton D_STED;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column1;
     }
 }
