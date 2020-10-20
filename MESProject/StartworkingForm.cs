@@ -13,6 +13,7 @@ namespace MESProject
     public partial class Startworking : Form
     {
         public string Selected_woid { get; set; }
+        public string woid { get; set; }
         public Startworking()
         {
             InitializeComponent();
@@ -101,5 +102,16 @@ namespace MESProject
             MaterialStock materialStockForm = new MaterialStock();
             materialStockForm.ShowDialog();
         }
+
+        private void FaultyBtn_Click(object sender, EventArgs e)
+        {
+            //불량등록 버튼
+            // Faulty 폼으로 woid값 전달
+            string woid = WoGrid.Rows[0].Cells[0].Value.ToString();
+            Faulty faulty = new Faulty(woid);
+            faulty.Owner = this;
+            faulty.ShowDialog();
+        }
+
     }
 }

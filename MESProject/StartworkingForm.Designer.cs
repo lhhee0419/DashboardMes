@@ -61,6 +61,7 @@
             this.FaultyBtn.TabIndex = 26;
             this.FaultyBtn.Text = "불량 등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
+            this.FaultyBtn.Click += new System.EventHandler(this.FaultyBtn_Click);
             // 
             // LotDelBtn
             // 
