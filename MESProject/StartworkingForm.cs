@@ -13,7 +13,6 @@ namespace MESProject
     public partial class Startworking : Form
     {
         public string Selected_woid { get; set; }
-        public string woid { get; set; }
         public Startworking()
         {
             InitializeComponent();
