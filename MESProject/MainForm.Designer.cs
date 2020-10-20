@@ -56,7 +56,7 @@
             // maintab
             // 
             this.maintab.Controls.Add(this.tabPage1);
-            this.maintab.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold);
+            this.maintab.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.maintab.Location = new System.Drawing.Point(0, 0);
             this.maintab.Name = "maintab";
             this.maintab.SelectedIndex = 0;
@@ -78,7 +78,7 @@
             this.tabPage1.Controls.Add(this.WostBtn);
             this.tabPage1.Controls.Add(this.InquiryBtn);
             this.tabPage1.Controls.Add(this.WoGrid);
-            this.tabPage1.Font = new System.Drawing.Font("굴림", 9F);
+            this.tabPage1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.tabPage1.Location = new System.Drawing.Point(4, 35);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -89,7 +89,7 @@
             // 
             // logoutbtn
             // 
-            this.logoutbtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.logoutbtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.logoutbtn.Location = new System.Drawing.Point(1057, 732);
             this.logoutbtn.Name = "logoutbtn";
             this.logoutbtn.Size = new System.Drawing.Size(164, 73);
@@ -118,6 +118,7 @@
             // 
             // dateTimePicker2
             // 
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker2.Location = new System.Drawing.Point(464, 116);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -126,6 +127,7 @@
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Location = new System.Drawing.Point(44, 116);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -134,7 +136,7 @@
             // 
             // EquipmanageBtn
             // 
-            this.EquipmanageBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.EquipmanageBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.EquipmanageBtn.Location = new System.Drawing.Point(541, 732);
             this.EquipmanageBtn.Name = "EquipmanageBtn";
             this.EquipmanageBtn.Size = new System.Drawing.Size(164, 73);
@@ -144,7 +146,7 @@
             // 
             // WoLogBtn
             // 
-            this.WoLogBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.WoLogBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.WoLogBtn.Location = new System.Drawing.Point(303, 732);
             this.WoLogBtn.Name = "WoLogBtn";
             this.WoLogBtn.Size = new System.Drawing.Size(163, 73);
@@ -155,7 +157,7 @@
             // 
             // WostBtn
             // 
-            this.WostBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.WostBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.WostBtn.Location = new System.Drawing.Point(57, 732);
             this.WostBtn.Name = "WostBtn";
             this.WostBtn.Size = new System.Drawing.Size(165, 73);
@@ -166,7 +168,7 @@
             // 
             // InquiryBtn
             // 
-            this.InquiryBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.InquiryBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.InquiryBtn.Location = new System.Drawing.Point(1079, 101);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(166, 66);
@@ -185,7 +187,6 @@
             this.WoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WoGrid.Size = new System.Drawing.Size(1223, 506);
             this.WoGrid.TabIndex = 46;
-            this.WoGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WoGrid_MouseClick);
             // 
             // MainForm
             // 

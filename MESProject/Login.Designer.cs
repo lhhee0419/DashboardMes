@@ -39,20 +39,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("문체부 돋음체", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(173, 147);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 33);
+            this.label1.Size = new System.Drawing.Size(117, 34);
             this.label1.TabIndex = 0;
             this.label1.Text = "아이디";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("문체부 돋음체", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(173, 224);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 33);
+            this.label2.Size = new System.Drawing.Size(151, 34);
             this.label2.TabIndex = 1;
             this.label2.Text = "비밀번호";
             // 
@@ -76,7 +76,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LoginButton.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.LoginButton.Location = new System.Drawing.Point(264, 375);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(255, 91);
@@ -87,7 +87,7 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F);
+            this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ExitBtn.Location = new System.Drawing.Point(576, 392);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(131, 63);

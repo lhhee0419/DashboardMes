@@ -79,7 +79,15 @@ namespace MESProject
             if (ProcCombo.SelectedIndex == 0)
             {
                 //배합 콤보박스 선택
-                string select_wo_mix = $"SELECT W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0001' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                // string select_wo_mix = $"SELECT W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0001' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                string select_wo_mix =  $"SELECT W.WOID, W.PRODID, P.PRODNAME, "+
+                                        $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '시작' WHEN 'E' THEN '종료' END,"+
+                                        $"W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC "+
+                                        $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
+                                        $"WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' AND  " +
+                                        $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0001' " +
+                                        $"AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID " +
+                                        $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 Common.DB_Connection(select_wo_mix, WoGrid);
                 WoGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -87,7 +95,14 @@ namespace MESProject
             else if (ProcCombo.SelectedIndex == 1)
             {
                 //사출 콤보박스 선택
-                string select_wo_injection = $"SELECT W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0002' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
+                string select_wo_injection =   $"SELECT W.WOID, W.PRODID, P.PRODNAME, " +
+                                               $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '시작' WHEN 'E' THEN '종료' END," +
+                                               $"W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC " +
+                                               $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
+                                               $"WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' AND  " +
+                                               $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0002' " +
+                                               $"AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID " +
+                                               $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 Common.DB_Connection(select_wo_injection, WoGrid);
 
             }
@@ -104,7 +119,15 @@ namespace MESProject
         private void WostBtn_Click(object sender, EventArgs e)
         {
             //작업시작 버튼
-            Startworking startworkingForm = new Startworking();  
+            for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
+            {
+
+                if (WoGrid.Rows[i].Selected == true)
+                {
+                    woid = WoGrid.Rows[i].Cells[0].Value.ToString();
+                }
+            }
+            Startworking startworkingForm = new Startworking(); 
             if(woid != "")
             {
                 startworkingForm.Selected_woid = woid;
@@ -153,19 +176,6 @@ namespace MESProject
             WorkLog workLogForm = new WorkLog();
             Common.Create_Tab("workLogForm", "작업일지", workLogForm, maintab);
             workLogForm.FormClosed += Form_closing;
-
-        }
-
-        private void WoGrid_MouseClick(object sender, MouseEventArgs e)
-        {
-            for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
-            {
-
-                if (WoGrid.Rows[i].Selected == true)
-                {
-                    woid = WoGrid.Rows[i].Cells[0].Value.ToString();
-                }
-            }
 
         }
     }
