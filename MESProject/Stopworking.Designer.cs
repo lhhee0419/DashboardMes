@@ -127,6 +127,7 @@
             this.ExitBtn.TabIndex = 7;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
+            this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
             // Stopworking
             // 

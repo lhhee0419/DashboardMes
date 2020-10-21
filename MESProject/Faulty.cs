@@ -18,10 +18,11 @@ namespace MESProject
         //불량요인을 저장
         string defect_code;
         //불량 등록할 Lot_id 저장
-        string defect_lotid;
+        string Checked_defect_Lotid;
+        string Unchecked_defect_Lotid;
         //라디오버튼
         string rad = "미선택";
-        //flag
+        //List 선언
         List<string> lotid = new List<string>();
 
         private void RadClick(object sender, EventArgs e, string name, string code)
@@ -57,7 +58,7 @@ namespace MESProject
             Common.SetGridDesign(LotID_Grid);
 
             //LotID_Grid 쿼리
-            string LotId_Grid_Data = $"SELECT LOTID, LOTSTDTTM, LOTEDDTTM FROM LOT L, WORKORDER W WHERE W.WOID = '{woid}' AND W.WOID=L.WOID AND L.LOTID NOT IN (SELECT  DEFECT_LOTID FROM DEFECTLOT)";
+            string LotId_Grid_Data = $"SELECT LOTID, LOTSTDTTM, LOTEDDTTM FROM LOT L, WORKORDER W WHERE W.WOID = '{woid}' AND W.WOID=L.WOID AND L.LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT)";
             Common.DB_Connection(LotId_Grid_Data, LotID_Grid);
             LotID_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -76,28 +77,12 @@ namespace MESProject
             checkBoxColumn.Width = 30;
             checkBoxColumn.Name = "checkBoxColumn";
             LotID_Grid.Columns.Insert(0, checkBoxColumn);
-
-            LotID_Grid.CellContentClick += new DataGridViewCellEventHandler(LotID_Grid_CellClick);
-
-
         }
 
-        //public void isChecked(bool Checked)
-        //{
-        //    if (Checked)
-        //    {
-        //        for (int i = 0; i < LotID_Grid.Rows.Count - 1; i++)
-        //        {
-        //            LotID_Grid.Rows[i].Cells[0].Value = true;
-        //            defect_lotid = LotID_Grid.Rows[i].Cells[1].Value.ToString();
-        //            MessageBox.Show($"{defect_lotid} 체크되었습니다.");
-        //        }
-        //    }
-        //}
         private void LotID_Grid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // CheckBox 행이 클릭되었는지 확인합니다.
-            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            if (e.RowIndex >=0 && e.ColumnIndex >= 0)
             {
                 // GridView 행을 참조합니다.
                 DataGridViewRow row = LotID_Grid.Rows[e.RowIndex];
@@ -110,12 +95,14 @@ namespace MESProject
                 {
                     MessageBox.Show("선택된 LOTID :" + row.Cells[1].Value);
                     //defect_lotid에 체크된 lotid를 저장함.
-                    defect_lotid = Convert.ToString(row.Cells[1].Value);
-                    lotid.Add(defect_lotid);
+                    Checked_defect_Lotid = Convert.ToString(row.Cells[1].Value);
+                    lotid.Add(Checked_defect_Lotid);
                 }
                 else if(Convert.ToBoolean(row.Cells["checkBoxColumn"].Value) == false)
                 {
                     MessageBox.Show("해제된 LOTID :" + row.Cells[1].Value);
+                    Unchecked_defect_Lotid = Convert.ToString(row.Cells[1].Value);
+                    lotid.Remove(Unchecked_defect_Lotid);
                 }
             }
         }
@@ -145,14 +132,23 @@ namespace MESProject
         private void CheckBtn_Click(object sender, EventArgs e)
         {
             //확인 버튼 클릭
-            // list의 
-            foreach (string a in lotid)
+            try
             {
-                string add_defectlot = $"insert into defectlot values('{a}',1,'','{rad}')";
-                Common.DB_Connection(add_defectlot);
+                //lotid에 저장된 defect_lotid 를 출력
+                foreach (string D_Lotid in lotid)
+                {
+                    string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,'','{rad}')";
+                    Common.DB_Connection(add_defectlot);
+                }
+                MessageBox.Show("불량 등록이 완료되었습니다.");
+                this.Close();
             }
-            MessageBox.Show("불량 등록이 완료되었습니다.");
-            this.Close();
+            //예외 발생
+            catch(Exception E)
+            {
+                MessageBox.Show(E.Message);
+            }
+
 
         }
     }
