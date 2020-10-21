@@ -46,27 +46,21 @@ namespace MESProject
         private void MainForm_Load(object sender, EventArgs e)
         {
             login_check();
-            
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
             ProcCombo.SelectedIndex = 0; //콤보박스 초기값설정
-
             Common.SetGridDesign(WoGrid);
-
             DataSearch();
-
             if (WoGrid.Rows.Count > 0)
             {
-                WoGrid.Columns[0].HeaderText = "작업지시코드";
-                WoGrid.Columns[1].HeaderText = "제품코드";
-                WoGrid.Columns[2].HeaderText = "제품명";
-                WoGrid.Columns[3].HeaderText = "작업상태";
-                WoGrid.Columns[4].HeaderText = "계획수량";
-                WoGrid.Columns[5].HeaderText = "생산수량";
-                WoGrid.Columns[6].HeaderText = "불량수량";
-                WoGrid.Columns[7].HeaderText = "계획날짜";
-                WoGrid.Columns[8].HeaderText = "비고";        
+                string[] header = new string[] { "작업지시코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "비고" };
+                for (int i = 0; i < header.Length; i++)
+                {
+                    WoGrid.Columns[i].HeaderText = $"{header[i]}";
+
+                }
             }
+            
         }
 
 
@@ -79,9 +73,8 @@ namespace MESProject
             if (ProcCombo.SelectedIndex == 0)
             {
                 //배합 콤보박스 선택
-                // string select_wo_mix = $"SELECT W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0001' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 string select_wo_mix =  $"SELECT W.WOID, W.PRODID, P.PRODNAME, "+
-                                        $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '시작' WHEN 'E' THEN '종료' END,"+
+                                        $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT," +
                                         $"W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC "+
                                         $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
                                         $"WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' AND  " +
@@ -96,7 +89,7 @@ namespace MESProject
             {
                 //사출 콤보박스 선택
                 string select_wo_injection =   $"SELECT W.WOID, W.PRODID, P.PRODNAME, " +
-                                               $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '시작' WHEN 'E' THEN '종료' END," +
+                                               $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT," +
                                                $"W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC " +
                                                $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
                                                $"WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' AND  " +
@@ -104,14 +97,31 @@ namespace MESProject
                                                $"AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID " +
                                                $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 Common.DB_Connection(select_wo_injection, WoGrid);
+            }
 
+        }
+        public void SetRowColor()
+        {
+            for (int i = 0; i < WoGrid.Rows.Count-1; i++)
+            {
+                if (WoGrid.Rows[i].Displayed)
+                {
+                    if (WoGrid.Columns.Contains("WOSTAT"))   
+                    {
+                        if (WoGrid.Rows[i].Cells["WOSTAT"].Value.ToString().Contains("진행중"))
+                        {   
+                            WoGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+                            
+                        }
+                    }
+                }
             }
         }
-
         private void InquiryBtn_Click(object sender, EventArgs e)
         {
             //조회 버튼 클릭 시
             DataSearch();
+            SetRowColor();
 
         }
  
