@@ -104,6 +104,7 @@
             this.StopBtn.TabIndex = 22;
             this.StopBtn.Text = "작업중지/재시작";
             this.StopBtn.UseVisualStyleBackColor = true;
+            this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
             // LotaddBtn
             // 

@@ -16,5 +16,10 @@ namespace MESProject
         {
             InitializeComponent();
         }
+
+        private void ExitBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

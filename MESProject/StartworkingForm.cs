@@ -13,6 +13,8 @@ namespace MESProject
     public partial class Startworking : Form
     {
         public string Selected_woid { get; set; }
+
+        int num = 0;
         public Startworking()
         {
             InitializeComponent();
@@ -20,9 +22,15 @@ namespace MESProject
 
         private void Startworking_Load(object sender, EventArgs e)
         {
+            //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
 
+            //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
+            Common.DB_Connection(update_wostat);
+
+            //WoGrid에 표시될 데이터 가져오기
             string select_wo =  $"SELECT W.WOID, P.PRODID ,P.PRODNAME, "+
                                 $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '시작' WHEN 'E' THEN '종료' END," +
                                 $"W.PLANQTY,W.PRODQTY, COUNT(*), W.PLANDTTM, W.WOSTDTTM, W.ETC " +
@@ -46,11 +54,11 @@ namespace MESProject
             }
             Inquiry_Lot();
 
-
-
         }
+
         public void Inquiry_Lot()
         {
+            //LotGrid에 표시될 데이터 가져오기
             string Selected_lot = $"SELECT LOTID, LOTSTAT, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID "+
                                   $"FROM DEFECTLOT WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END  , LOTSTDTTM,LOTEDDTTM "+
                                   $"FROM LOT L WHERE WOID = '{Selected_woid}' ORDER BY LOTID";
@@ -112,5 +120,10 @@ namespace MESProject
             faulty.ShowDialog();
         }
 
+        private void StopBtn_Click(object sender, EventArgs e)
+        {
+            Stopworking stopworking = new Stopworking();
+            stopworking.ShowDialog();
+        }
     }
 }

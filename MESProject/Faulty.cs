@@ -15,14 +15,12 @@ namespace MESProject
     public partial class Faulty : Form
     {
         string woid;
-        //불량요인을 저장
-        string defect_code;
         //불량 등록할 Lot_id 저장
         string Checked_defect_Lotid;
         string Unchecked_defect_Lotid;
         //라디오버튼
         string rad = "미선택";
-        //flag
+        //List 선언
         List<string> lotid = new List<string>();
 
         private void RadClick(object sender, EventArgs e, string name, string code)
@@ -58,7 +56,7 @@ namespace MESProject
             Common.SetGridDesign(LotID_Grid);
 
             //LotID_Grid 쿼리
-            string LotId_Grid_Data = $"SELECT LOTID, LOTSTDTTM, LOTEDDTTM FROM LOT L, WORKORDER W WHERE W.WOID = '{woid}' AND W.WOID=L.WOID";
+            string LotId_Grid_Data = $"SELECT LOTID, LOTSTDTTM, LOTEDDTTM FROM LOT L, WORKORDER W WHERE W.WOID = '{woid}' AND W.WOID=L.WOID AND L.LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT)";
             Common.DB_Connection(LotId_Grid_Data, LotID_Grid);
             LotID_Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //컬럼명
