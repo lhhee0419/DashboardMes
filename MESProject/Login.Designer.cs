@@ -42,7 +42,7 @@
             this.label1.Font = new System.Drawing.Font("문체부 돋음체", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(173, 147);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 34);
+            this.label1.Size = new System.Drawing.Size(117, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "아이디";
             // 
@@ -52,7 +52,7 @@
             this.label2.Font = new System.Drawing.Font("문체부 돋음체", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.Location = new System.Drawing.Point(173, 224);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(151, 34);
+            this.label2.Size = new System.Drawing.Size(151, 33);
             this.label2.TabIndex = 1;
             this.label2.Text = "비밀번호";
             // 
@@ -110,6 +110,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.Text = "Login";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Login_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
