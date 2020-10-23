@@ -13,8 +13,6 @@ namespace MESProject
     public partial class Startworking : Form
     {
         public string Selected_woid { get; set; }
-
-        int num = 0;
         public Startworking()
         {
             InitializeComponent();
@@ -27,12 +25,12 @@ namespace MESProject
             Common.SetGridDesign(LotGrid);
 
             //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
-            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
-            Common.DB_Connection(update_wostat);
+            //string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
+            //Common.DB_Connection(update_wostat);
 
             //WoGrid에 표시될 데이터 가져오기
             string select_wo =  $"SELECT W.WOID, P.PRODID ,P.PRODNAME, "+
-                                $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '시작' WHEN 'E' THEN '종료' END," +
+                                $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END," +
                                 $"W.PLANQTY,W.PRODQTY, COUNT(*), W.PLANDTTM, W.WOSTDTTM, W.ETC " +
                                 $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D "+
                                 $"WHERE W.WOID = '{Selected_woid}' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID "+
@@ -122,7 +120,9 @@ namespace MESProject
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
-            Stopworking stopworking = new Stopworking();
+            string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
+            // stopworking 폼으로 woid값 전달
+            Stopworking stopworking = new Stopworking(woid, lotid);
             stopworking.ShowDialog();
         }
     }
