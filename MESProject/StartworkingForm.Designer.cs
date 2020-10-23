@@ -130,6 +130,7 @@
             // 
             // WoGrid
             // 
+            this.WoGrid.AllowUserToAddRows = false;
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WoGrid.Location = new System.Drawing.Point(25, 30);
             this.WoGrid.Name = "WoGrid";

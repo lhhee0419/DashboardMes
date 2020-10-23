@@ -65,7 +65,8 @@ namespace MESProject
             Common.SetGridDesign(LotID_Grid);
 
             //LotID_Grid 쿼리
-            string LotId_Grid_Data = $"SELECT LOTID, LOTSTDTTM, LOTEDDTTM FROM LOT L, WORKORDER W WHERE W.WOID = '{woid}' AND W.WOID=L.WOID AND L.LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT)";
+            string LotId_Grid_Data = $"SELECT LOTID, LOTSTDTTM, LOTEDDTTM FROM LOT L, WORKORDER W WHERE W.WOID = '{woid}'" +
+                                     $" AND W.WOID=L.WOID AND L.LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT)";
             Common.DB_Connection(LotId_Grid_Data, LotID_Grid);
 
             //컬럼명

@@ -28,87 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radiobutton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.SWF_REST = new System.Windows.Forms.RadioButton();
+            this.SWF_ERROR = new System.Windows.Forms.RadioButton();
+            this.SWF_CHECK = new System.Windows.Forms.RadioButton();
+            this.SWF_MEAL = new System.Windows.Forms.RadioButton();
+            this.SWF_ACCIDENT = new System.Windows.Forms.RadioButton();
+            this.SWF_ETC = new System.Windows.Forms.RadioButton();
             this.CheckBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // radioButton1
+            // SWF_REST
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.radioButton1.Location = new System.Drawing.Point(33, 45);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(117, 24);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "쉬는 시간";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.SWF_REST.AutoSize = true;
+            this.SWF_REST.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_REST.Location = new System.Drawing.Point(17, 34);
+            this.SWF_REST.Name = "SWF_REST";
+            this.SWF_REST.Size = new System.Drawing.Size(117, 24);
+            this.SWF_REST.TabIndex = 0;
+            this.SWF_REST.Text = "쉬는 시간";
+            this.SWF_REST.UseVisualStyleBackColor = true;
+            this.SWF_REST.Click += new System.EventHandler(this.STW_RT_Click);
             // 
-            // radioButton2
+            // SWF_ERROR
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.radioButton2.Location = new System.Drawing.Point(33, 91);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(110, 24);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "설비오류";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.SWF_ERROR.AutoSize = true;
+            this.SWF_ERROR.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_ERROR.Location = new System.Drawing.Point(17, 80);
+            this.SWF_ERROR.Name = "SWF_ERROR";
+            this.SWF_ERROR.Size = new System.Drawing.Size(110, 24);
+            this.SWF_ERROR.TabIndex = 1;
+            this.SWF_ERROR.Text = "설비오류";
+            this.SWF_ERROR.UseVisualStyleBackColor = true;
+            this.SWF_ERROR.Click += new System.EventHandler(this.SWF_ERROR_Click);
             // 
-            // radioButton3
+            // SWF_CHECK
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.radioButton3.Location = new System.Drawing.Point(33, 141);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(110, 24);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "설비점검";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.SWF_CHECK.AutoSize = true;
+            this.SWF_CHECK.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_CHECK.Location = new System.Drawing.Point(17, 130);
+            this.SWF_CHECK.Name = "SWF_CHECK";
+            this.SWF_CHECK.Size = new System.Drawing.Size(110, 24);
+            this.SWF_CHECK.TabIndex = 2;
+            this.SWF_CHECK.Text = "설비점검";
+            this.SWF_CHECK.UseVisualStyleBackColor = true;
+            this.SWF_CHECK.Click += new System.EventHandler(this.SWF_CHECK_Click);
             // 
-            // radiobutton4
+            // SWF_MEAL
             // 
-            this.radiobutton4.AutoSize = true;
-            this.radiobutton4.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.radiobutton4.Location = new System.Drawing.Point(208, 45);
-            this.radiobutton4.Name = "radiobutton4";
-            this.radiobutton4.Size = new System.Drawing.Size(117, 24);
-            this.radiobutton4.TabIndex = 3;
-            this.radiobutton4.TabStop = true;
-            this.radiobutton4.Text = "식사 시간";
-            this.radiobutton4.UseVisualStyleBackColor = true;
+            this.SWF_MEAL.AutoSize = true;
+            this.SWF_MEAL.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_MEAL.Location = new System.Drawing.Point(192, 34);
+            this.SWF_MEAL.Name = "SWF_MEAL";
+            this.SWF_MEAL.Size = new System.Drawing.Size(117, 24);
+            this.SWF_MEAL.TabIndex = 3;
+            this.SWF_MEAL.Text = "식사 시간";
+            this.SWF_MEAL.UseVisualStyleBackColor = true;
+            this.SWF_MEAL.Click += new System.EventHandler(this.STW_MEAL_Click);
             // 
-            // radioButton5
+            // SWF_ACCIDENT
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.radioButton5.Location = new System.Drawing.Point(208, 91);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(70, 24);
-            this.radioButton5.TabIndex = 4;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "사고";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.SWF_ACCIDENT.AutoSize = true;
+            this.SWF_ACCIDENT.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_ACCIDENT.Location = new System.Drawing.Point(192, 80);
+            this.SWF_ACCIDENT.Name = "SWF_ACCIDENT";
+            this.SWF_ACCIDENT.Size = new System.Drawing.Size(70, 24);
+            this.SWF_ACCIDENT.TabIndex = 4;
+            this.SWF_ACCIDENT.Text = "사고";
+            this.SWF_ACCIDENT.UseVisualStyleBackColor = true;
+            this.SWF_ACCIDENT.Click += new System.EventHandler(this.SWF_ACCIDENT_Click);
             // 
-            // radioButton6
+            // SWF_ETC
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.radioButton6.Location = new System.Drawing.Point(208, 141);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(70, 24);
-            this.radioButton6.TabIndex = 5;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "기타";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.SWF_ETC.AutoSize = true;
+            this.SWF_ETC.Font = new System.Drawing.Font("굴림", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_ETC.Location = new System.Drawing.Point(192, 130);
+            this.SWF_ETC.Name = "SWF_ETC";
+            this.SWF_ETC.Size = new System.Drawing.Size(70, 24);
+            this.SWF_ETC.TabIndex = 5;
+            this.SWF_ETC.Text = "기타";
+            this.SWF_ETC.UseVisualStyleBackColor = true;
+            this.SWF_ETC.Click += new System.EventHandler(this.SWF_ETC_Click);
             // 
             // CheckBtn
             // 
@@ -118,6 +120,7 @@
             this.CheckBtn.TabIndex = 6;
             this.CheckBtn.Text = "확인";
             this.CheckBtn.UseVisualStyleBackColor = true;
+            this.CheckBtn.Click += new System.EventHandler(this.CheckBtn_Click);
             // 
             // ExitBtn
             // 
@@ -129,35 +132,48 @@
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.SWF_ACCIDENT);
+            this.groupBox1.Controls.Add(this.SWF_REST);
+            this.groupBox1.Controls.Add(this.SWF_ERROR);
+            this.groupBox1.Controls.Add(this.SWF_ETC);
+            this.groupBox1.Controls.Add(this.SWF_CHECK);
+            this.groupBox1.Controls.Add(this.SWF_MEAL);
+            this.groupBox1.Location = new System.Drawing.Point(32, 16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(328, 168);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "작업중지요인";
+            // 
             // Stopworking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 253);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.CheckBtn);
-            this.Controls.Add(this.radioButton6);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.radiobutton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
             this.Name = "Stopworking";
             this.Text = "Stopworking";
+            this.Load += new System.EventHandler(this.Stopworking_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radiobutton4;
-        private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.RadioButton radioButton6;
+        private System.Windows.Forms.RadioButton SWF_REST;
+        private System.Windows.Forms.RadioButton SWF_ERROR;
+        private System.Windows.Forms.RadioButton SWF_CHECK;
+        private System.Windows.Forms.RadioButton SWF_MEAL;
+        private System.Windows.Forms.RadioButton SWF_ACCIDENT;
+        private System.Windows.Forms.RadioButton SWF_ETC;
         private System.Windows.Forms.Button CheckBtn;
         private System.Windows.Forms.Button ExitBtn;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
