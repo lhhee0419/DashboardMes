@@ -21,6 +21,7 @@ namespace MESProject
         {
             // Grid 디자인 세팅
             Common.SetGridDesign(WLGrid);
+            WLGrid.Font = new Font("Fixsys", 12 ,FontStyle.Regular);
             Common.SetGridDesign(LotGrid);
 
             //콤보박스 초기값설정
@@ -32,18 +33,14 @@ namespace MESProject
             DataSearch();
             if (WLGrid.Rows.Count > 0)
             {
-                WLGrid.Columns[0].HeaderText = "작업지시코드";
-                WLGrid.Columns[1].HeaderText = "제품명"; 
-                WLGrid.Columns[2].HeaderText = "작업상태";
-                WLGrid.Columns[3].HeaderText = "설비코드";
-                WLGrid.Columns[4].HeaderText = "계획수량";
-                WLGrid.Columns[5].HeaderText = "생산수량";
-                WLGrid.Columns[6].HeaderText = "불량수량";
-                WLGrid.Columns[7].HeaderText = "작업시작일";
-                WLGrid.Columns[8].HeaderText = "작업완료일";
-                WLGrid.Columns[9].HeaderText = "계획일자";
-                WLGrid.Columns[10].HeaderText = "비고";
+                string[] header = new string[] { "작업코드", "제품명", "작업상태", "설비코드", "계획수량", "생산수량", "불량수량", "작업시작일", "작업완료일", "계획일자", "비고" };
+                for (int i = 0; i < header.Length; i++)
+                {
+                    WLGrid.Columns[i].HeaderText = $"{header[i]}";
+
+                }
             }
+
             // LotGrid 컬럼명
             string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
             Common.DB_Connection(Selected_lot, LotGrid);
@@ -71,7 +68,17 @@ namespace MESProject
             if (ProcCombo.SelectedIndex == 0)
             {
                 //배합 콤보박스 선택 PROCID='P0001'
-                string select_wo_mix = $"SELECT W.WOID, P.PRODNAME, W.WOSTAT, E.EQPTID, W.PLANQTY, W.PRODQTY, COUNT(*), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0001' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.WOID = L.WOID AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
+                string select_wo_mix =  "SELECT W.WOID, P.PRODNAME, "+
+                                        "CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT," +
+                                        "E.EQPTID, W.PLANQTY, W.PRODQTY, COUNT(*), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC " +
+                                        "FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D "+
+                                        "WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0001' AND "+
+                                        $"plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' AND "+
+                                        $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND "+
+                                        "W.WOID = L.WOID AND W.PRODID = P.PRODID AND "+
+                                        "L.LOTID = D.DEFECT_LOTID "+
+                                        "GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY,"+
+                                        "W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
                 Common.DB_Connection(select_wo_mix, WLGrid);
                 WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -79,7 +86,17 @@ namespace MESProject
             else if (ProcCombo.SelectedIndex == 1)
             {
                 //사출 콤보박스 선택 PROCID='P0002'
-                string select_wo_injection = $"SELECT W.WOID, P.PRODNAME, W.WOSTAT, E.EQPTID, W.PLANQTY,W.PRODQTY, COUNT(*), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0002' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.WOID = L.WOID AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
+                string select_wo_injection = "SELECT W.WOID, P.PRODNAME, " +
+                                             "CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT," +
+                                             "E.EQPTID, W.PLANQTY, W.PRODQTY, COUNT(*), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC " +
+                                             "FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D " +
+                                             "WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0002' AND " +
+                                             $"plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' AND " +
+                                             $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND " +
+                                             "W.WOID = L.WOID AND W.PRODID = P.PRODID AND " +
+                                             "L.LOTID = D.DEFECT_LOTID " +
+                                             "GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY," +
+                                             "W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
                 Common.DB_Connection(select_wo_injection, WLGrid);
                 WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -120,6 +137,10 @@ namespace MESProject
             }
         }
 
-        
+        private void WLGrid_DataSourceChanged(object sender, EventArgs e)
+        {
+            WLGrid.AutoResizeColumns(
+                DataGridViewAutoSizeColumnsMode.AllCells);
+        }
     }
 }

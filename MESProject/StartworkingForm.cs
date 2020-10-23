@@ -26,9 +26,9 @@ namespace MESProject
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
 
-            //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
+/*            //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
             string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
-            Common.DB_Connection(update_wostat);
+            Common.DB_Connection(update_wostat);*/
 
             //WoGrid에 표시될 데이터 가져오기
             string select_wo =  $"SELECT W.WOID, P.PRODID ,P.PRODNAME, "+
@@ -114,8 +114,7 @@ namespace MESProject
         {
             //불량등록 버튼
             // Faulty 폼으로 woid값 전달
-            string woid = WoGrid.Rows[0].Cells[0].Value.ToString();
-            Faulty faulty = new Faulty(woid);
+            Faulty faulty = new Faulty(this);
             faulty.Owner = this;
             faulty.ShowDialog();
         }
@@ -125,5 +124,7 @@ namespace MESProject
             Stopworking stopworking = new Stopworking();
             stopworking.ShowDialog();
         }
+
+
     }
 }

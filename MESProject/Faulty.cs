@@ -32,24 +32,31 @@ namespace MESProject
 
             if (Rbtn.Checked == true)
             {
-                MessageBox.Show(name);
                 rad = code;
             }
             else if (Rbtn.Checked == false)
                 return;
         }
-
-        public Faulty(string woid_data)
+        private Startworking StartworkingForm = null;
+        public Faulty(Startworking startworking)
         {
             InitializeComponent();
             //Startworking 폼에서 woid_data 가져오기
-            this.woid = woid_data;
+            this.StartworkingForm = startworking;
+            woid = StartworkingForm.Selected_woid;
+            this.FormClosing += Faulty_FormClosing;
+        }
+
+        private void Faulty_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            StartworkingForm.Inquiry_Lot();
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             //닫기 버튼
             this.Close();
+
         }
 
         private void Faulty_Load(object sender, EventArgs e)
@@ -75,6 +82,7 @@ namespace MESProject
             checkBoxColumn.Width = 10;
             checkBoxColumn.Name = "checkBoxColumn";
             LotID_Grid.Columns.Insert(0, checkBoxColumn);
+ 
         }
 
         private void LotID_Grid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -135,7 +143,7 @@ namespace MESProject
                     string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,'','{rad}')";
                     Common.DB_Connection(add_defectlot);
                 }
-                MessageBox.Show("불량 등록이 완료되었습니다.");
+                MessageBox.Show("불량 등록이 완료되었습니다.");       
                 this.Close();
             }
             //예외 발생
@@ -146,5 +154,7 @@ namespace MESProject
 
 
         }
+
     }
+
 }
