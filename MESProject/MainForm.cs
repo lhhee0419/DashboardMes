@@ -109,7 +109,8 @@ namespace MESProject
                     if (WoGrid.Columns.Contains("WOSTAT"))   
                     {
                         if (WoGrid.Rows[i].Cells["WOSTAT"].Value.ToString().Contains("진행중"))
-                        {   
+                        {
+                            WoGrid.FirstDisplayedCell = WoGrid.Rows[i].Cells[0];
                             WoGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
                             
                         }

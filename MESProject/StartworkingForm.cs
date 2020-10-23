@@ -97,7 +97,7 @@ namespace MESProject
             }
             string delete_lot = $"DELETE FROM LOT WHERE LOTID = '{woid}'";
             Common.DB_Connection(delete_lot);
-            MessageBox.Show($"LOT ID: {woid}가 삭제 되었습니다.");
+            //MessageBox.Show($"LOT코드: {woid}가 삭제 되었습니다.");
             Inquiry_Lot();
         }
 

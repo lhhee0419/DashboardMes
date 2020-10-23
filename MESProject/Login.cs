@@ -89,5 +89,24 @@ namespace MESProject
         {
             this.Close();
         }
+
+        bool isMove;
+        Point fpt;
+        private void Login_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMove = true;
+            fpt = new Point(e.X, e.Y);
+        }
+
+        private void Login_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMove = false;
+        }
+
+        private void Login_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
+                Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
+        }
     }
 }

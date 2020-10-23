@@ -46,8 +46,7 @@ namespace MESProject
                                     $"FROM WORKORDER WHERE WOID = '{woid}'))";
                     Common.DB_Connection(add_lot);
                 }
-            }
-            MessageBox.Show($"LOT {Qty}개 추가 되었습니다.");
+            }    
             this.Close();
 
 
