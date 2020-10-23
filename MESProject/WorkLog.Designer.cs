@@ -88,7 +88,6 @@
             this.WLGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WLGrid.Size = new System.Drawing.Size(968, 350);
             this.WLGrid.TabIndex = 11;
-            this.WLGrid.DataSourceChanged += new System.EventHandler(this.WLGrid_DataSourceChanged);
             this.WLGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WLGrid_MouseClick);
             // 
             // ExitBtn

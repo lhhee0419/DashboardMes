@@ -21,7 +21,6 @@ namespace MESProject
         {
             // Grid 디자인 세팅
             Common.SetGridDesign(WLGrid);
-            WLGrid.Font = new Font("Fixsys", 12 ,FontStyle.Regular);
             Common.SetGridDesign(LotGrid);
 
             //콤보박스 초기값설정
@@ -33,14 +32,18 @@ namespace MESProject
             DataSearch();
             if (WLGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "작업코드", "제품명", "작업상태", "설비코드", "계획수량", "생산수량", "불량수량", "작업시작일", "작업완료일", "계획일자", "비고" };
-                for (int i = 0; i < header.Length; i++)
-                {
-                    WLGrid.Columns[i].HeaderText = $"{header[i]}";
-
-                }
+                WLGrid.Columns[0].HeaderText = "작업지시코드";
+                WLGrid.Columns[1].HeaderText = "제품명"; 
+                WLGrid.Columns[2].HeaderText = "작업상태";
+                WLGrid.Columns[3].HeaderText = "설비코드";
+                WLGrid.Columns[4].HeaderText = "계획수량";
+                WLGrid.Columns[5].HeaderText = "생산수량";
+                WLGrid.Columns[6].HeaderText = "불량수량";
+                WLGrid.Columns[7].HeaderText = "작업시작일";
+                WLGrid.Columns[8].HeaderText = "작업완료일";
+                WLGrid.Columns[9].HeaderText = "계획일자";
+                WLGrid.Columns[10].HeaderText = "비고";
             }
-
             // LotGrid 컬럼명
             string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
             Common.DB_Connection(Selected_lot, LotGrid);

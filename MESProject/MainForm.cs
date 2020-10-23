@@ -53,7 +53,7 @@ namespace MESProject
             DataSearch();
             if (WoGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "작업코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "비고" };
+                string[] header = new string[] { "작업지시코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "비고" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
@@ -82,7 +82,7 @@ namespace MESProject
                                         $"AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID " +
                                         $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 Common.DB_Connection(select_wo_mix, WoGrid);
-                
+                WoGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             }
             else if (ProcCombo.SelectedIndex == 1)
@@ -188,12 +188,6 @@ namespace MESProject
             Common.Create_Tab("workLogForm", "작업일지", workLogForm, maintab);
             workLogForm.FormClosed += Form_closing;
 
-        }
-
-        private void WoGrid_DataSourceChanged(object sender, EventArgs e)
-        {
-            WoGrid.AutoResizeColumns(
-                DataGridViewAutoSizeColumnsMode.AllCells);
         }
     }
 }
