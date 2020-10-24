@@ -79,22 +79,20 @@ namespace MESProject
         private void CheckBtn_Click(object sender, EventArgs e)
         {
 
-            //EQPTID 값변경 필요,
-            // STOPWK INSERT -- EQPTID??
-            string Update_StopWorking = $"INSERT INTO STOPWK select L.EQPTID,TO_TIMESTAMP(SYSDATE, 'YY/MM/DD HH:MI:SS.FF6') STOPWKDTTM, S.STOPWKID " +
-                                        $"from lot L, STOPWK S where lotid = '{woid}' AND S.EQPTID = L.EQPTID";
-            //INSERT INTO STOPWK select L.EQPTID,TO_TIMESTAMP(SYSDATE, 'YY/MM/DD HH:MI:SS.FF6') STOPWKDTTM, S.STOPWKID from lot L, STOPWK S where lotid = 'L202010110001' AND S.EQPTID = L.EQPTID;
+            // STOPWK INSERT EQPTID , TIMESTAMP , STOPWKID
+            string Update_StopWorking = $"INSERT INTO STOPWK select L.EQPTID,TO_CHAR(SYSDATE, 'YY/MM/DD HH:MI:SS'), F.STOPWKID " +
+                                        $"from lot L, STOPWKFACTOR F, EQUIPMENT E where lotid = '{lotID}' AND E.EQPTID = L.EQPTID AND F.STOPWKID='{rad}'";
             Common.DB_Connection(Update_StopWorking);
 
             //WORKORDER WOSTAT 상태 변경
             string update_Wostat = $"UPDATE WORKORDER W SET W.WOSTAT='P' WHERE W.WOID = '{woid}'";
+            Common.DB_Connection(update_Wostat);
 
-            //EQPTSTATS 변경 ---- 조인??
-            string update_EQPTStats = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'DOWN', WHERE EQPTID = 'MX001'";
-
-            //MessageBox.Show($"{woid}");
-            //string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
-            //Common.DB_Connection(update_wostat);
+            //EQPTSTATS 변경
+            string update_EQPTStats = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'DOWN' WHERE EQPTID IN (SELECT EQPTID FROM LOT WHERE LOTID='{rad}')";
+            Common.DB_Connection(update_EQPTStats);
+            MessageBox.Show("등록되었습니다.");
+            this.Close();
         }
     }
 }
