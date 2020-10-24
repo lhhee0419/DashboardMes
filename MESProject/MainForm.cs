@@ -53,14 +53,14 @@ namespace MESProject
             DataSearch();
             if (WoGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "작업지시코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "비고" };
+                string[] header = new string[] { "작업코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "비고" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
 
                 }
             }
-            
+
         }
 
 
@@ -73,22 +73,22 @@ namespace MESProject
             if (ProcCombo.SelectedIndex == 0)
             {
                 //배합 콤보박스 선택
-                string select_wo_mix =  $"SELECT W.WOID, W.PRODID, P.PRODNAME, "+
+                string select_wo_mix = $"SELECT W.WOID, W.PRODID, P.PRODNAME, " +
                                         $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT," +
-                                        $"W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC "+
+                                        $"W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC " +
                                         $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
                                         $"WHERE plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' AND  " +
                                         $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.PROCID = 'P0001' " +
                                         $"AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID " +
                                         $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC ";
                 Common.DB_Connection(select_wo_mix, WoGrid);
-                WoGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
 
             }
             else if (ProcCombo.SelectedIndex == 1)
             {
                 //사출 콤보박스 선택
-                string select_wo_injection =   $"SELECT W.WOID, W.PRODID, P.PRODNAME, " +
+                string select_wo_injection = $"SELECT W.WOID, W.PRODID, P.PRODNAME, " +
                                                $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT," +
                                                $"W.PLANQTY,W.PRODQTY,COUNT(*), W.PLANDTTM, W.ETC " +
                                                $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
@@ -102,17 +102,17 @@ namespace MESProject
         }
         public void SetRowColor()
         {
-            for (int i = 0; i < WoGrid.Rows.Count-1; i++)
+            for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
                 if (WoGrid.Rows[i].Displayed)
                 {
-                    if (WoGrid.Columns.Contains("WOSTAT"))   
+                    if (WoGrid.Columns.Contains("WOSTAT"))
                     {
                         if (WoGrid.Rows[i].Cells["WOSTAT"].Value.ToString().Contains("진행중"))
                         {
                             WoGrid.FirstDisplayedCell = WoGrid.Rows[i].Cells[0];
                             WoGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
-                            
+
                         }
                     }
                 }
@@ -125,7 +125,7 @@ namespace MESProject
             SetRowColor();
 
         }
- 
+
 
         private void WostBtn_Click(object sender, EventArgs e)
         {
@@ -138,8 +138,8 @@ namespace MESProject
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
                 }
             }
-            Startworking startworkingForm = new Startworking(); 
-            if(woid != "")
+            Startworking startworkingForm = new Startworking();
+            if (woid != "")
             {
                 startworkingForm.Selected_woid = woid;
                 Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
@@ -147,22 +147,22 @@ namespace MESProject
             startworkingForm.FormClosed += Form_closing;
         }
 
-        
+
         public void Form_closing(object sender, FormClosedEventArgs e)
         {
             maintab.TabPages.Remove(maintab.SelectedTab);
         }
-                                                                                                                                                                      
+
         private void logoutbtn_Click(object sender, EventArgs e)
         {
             //로그아웃버튼
             this.Close();
             Application.Restart();
             login_check();
-           
+
         }
 
-        
+
 
         private void maintab_MouseDown(object sender, MouseEventArgs e)
         {
@@ -188,6 +188,12 @@ namespace MESProject
             Common.Create_Tab("workLogForm", "작업일지", workLogForm, maintab);
             workLogForm.FormClosed += Form_closing;
 
+        }
+
+        private void WoGrid_DataSourceChanged(object sender, EventArgs e)
+        {
+            WoGrid.AutoResizeColumns(
+               DataGridViewAutoSizeColumnsMode.AllCells);
         }
     }
 }

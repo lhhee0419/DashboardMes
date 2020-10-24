@@ -22,6 +22,7 @@ namespace MESProject
             // Grid 디자인 세팅
             Common.SetGridDesign(WLGrid);
             Common.SetGridDesign(LotGrid);
+            WLGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
 
             //콤보박스 초기값설정
             string[] proc = { "배합", "사출" };
@@ -32,17 +33,12 @@ namespace MESProject
             DataSearch();
             if (WLGrid.Rows.Count > 0)
             {
-                WLGrid.Columns[0].HeaderText = "작업지시코드";
-                WLGrid.Columns[1].HeaderText = "제품명"; 
-                WLGrid.Columns[2].HeaderText = "작업상태";
-                WLGrid.Columns[3].HeaderText = "설비코드";
-                WLGrid.Columns[4].HeaderText = "계획수량";
-                WLGrid.Columns[5].HeaderText = "생산수량";
-                WLGrid.Columns[6].HeaderText = "불량수량";
-                WLGrid.Columns[7].HeaderText = "작업시작일";
-                WLGrid.Columns[8].HeaderText = "작업완료일";
-                WLGrid.Columns[9].HeaderText = "계획일자";
-                WLGrid.Columns[10].HeaderText = "비고";
+                string[] header = new string[] { "작업코드", "제품명", "작업상태", "설비코드", "계획수량", "생산수량", "불량수량", "작업시작일", "작업완료일", "계획일자", "비고" };
+                for (int i = 0; i < header.Length; i++)
+                {
+                    WLGrid.Columns[i].HeaderText = $"{header[i]}";
+
+                }
             }
             // LotGrid 컬럼명
             string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
@@ -71,7 +67,7 @@ namespace MESProject
             if (ProcCombo.SelectedIndex == 0)
             {
                 //배합 콤보박스 선택 PROCID='P0001'
-                string select_wo_mix = $"SELECT W.WOID, P.PRODNAME, CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END, " +
+                string select_wo_mix = $"SELECT W.WOID, P.PRODNAME, CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT, " +
                                        $"E.EQPTID, W.PLANQTY, W.PRODQTY, COUNT(*), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC" +
                                        $" FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D " +
                                        $"WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0001' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  " +
@@ -100,6 +96,7 @@ namespace MESProject
         {
             //조회버튼
             DataSearch();
+            SetRowColor();
         }
 
         public string woid;
@@ -111,11 +108,8 @@ namespace MESProject
             {
 
                 if (WLGrid.Rows[i].Selected == true)
-                {
-                    
-
+                {               
                     woid = WLGrid.Rows[i].Cells[0].Value.ToString();
-
                     string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
                     Common.DB_Connection(Selected_lot, LotGrid);
                     LotGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -127,6 +121,24 @@ namespace MESProject
                 LotGrid.Columns[1].HeaderText = "시작시간";
                 LotGrid.Columns[2].HeaderText = "종료시간";
                 LotGrid.Columns[3].HeaderText = "불량";
+            }
+        }
+        public void SetRowColor()
+        {
+            for (int i = 0; i < WLGrid.Rows.Count - 1; i++)
+            {
+                if (WLGrid.Rows[i].Displayed)
+                {
+                    if (WLGrid.Columns.Contains("WOSTAT"))
+                    {
+                        if (WLGrid.Rows[i].Cells["WOSTAT"].Value.ToString().Contains("진행중"))
+                        {
+                            WLGrid.FirstDisplayedCell = WLGrid.Rows[i].Cells[0];
+                            WLGrid.Rows[i].DefaultCellStyle.BackColor = Color.Yellow;
+
+                        }
+                    }
+                }
             }
         }
 
