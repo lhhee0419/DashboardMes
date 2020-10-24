@@ -41,7 +41,10 @@ namespace MESProject
                 }
             }
             // LotGrid 컬럼명
-            string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
+            string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, "+
+                $"CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT "+
+                $"WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D "+
+                $"WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
             Common.DB_Connection(Selected_lot, LotGrid);
 
             if (LotGrid.Rows.Count > 0)
@@ -68,10 +71,10 @@ namespace MESProject
             {
                 //배합 콤보박스 선택 PROCID='P0001'
                 string select_wo_mix = $"SELECT W.WOID, P.PRODNAME, CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT, " +
-                                       $"E.EQPTID, W.PLANQTY, W.PRODQTY, COUNT(*), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC" +
+                                       $"E.EQPTID, W.PLANQTY,COUNT(*),COUNT(D.DEFECT_LOTID), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC" +
                                        $" FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D " +
                                        $"WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0001' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  " +
-                                       $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.WOID = L.WOID AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P') " +
+                                       $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.WOID = L.WOID(+) AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID(+) AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P') " +
                                        $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
                 Common.DB_Connection(select_wo_mix, WLGrid);
                 WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -81,10 +84,10 @@ namespace MESProject
             {
                 //사출 콤보박스 선택 PROCID='P0002'
                 string select_wo_injection = $"SELECT W.WOID, P.PRODNAME, CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END, " +
-                                             $"E.EQPTID, W.PLANQTY,W.PRODQTY, COUNT(*), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC " +
+                                             $"E.EQPTID, W.PLANQTY, COUNT(*),COUNT(D.DEFECT_LOTID), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC " +
                                              $"FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D WHERE W.PROCID = E.PROCID AND " +
                                              $"W.PROCID = 'P0002' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' " +
-                                             $"AND W.WOID = L.WOID AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')" +
+                                             $"AND W.WOID = L.WOID(+) AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID(+) AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')" +
                                              $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
                 Common.DB_Connection(select_wo_injection, WLGrid);
                 WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -110,7 +113,11 @@ namespace MESProject
                 if (WLGrid.Rows[i].Selected == true)
                 {               
                     woid = WLGrid.Rows[i].Cells[0].Value.ToString();
-                    string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
+                    string Selected_lot =   $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM,"+
+                                            $"CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END "+
+                                            $"FROM LOT L, DEFECTLOT D "+
+                                            $"WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
+
                     Common.DB_Connection(Selected_lot, LotGrid);
                     LotGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
