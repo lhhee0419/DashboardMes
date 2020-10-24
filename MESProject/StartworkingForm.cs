@@ -25,8 +25,8 @@ namespace MESProject
             Common.SetGridDesign(LotGrid);
 
             //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
-            //string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
-            //Common.DB_Connection(update_wostat);
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
+            Common.DB_Connection(update_wostat);
 
             //WoGrid에 표시될 데이터 가져오기
             string select_wo =  $"SELECT W.WOID, P.PRODID ,P.PRODNAME, "+

@@ -32,6 +32,7 @@ namespace MESProject
 
             if (Rbtn.Checked == true)
             {
+                MessageBox.Show(name);
                 rad = code;
             }
             else if (Rbtn.Checked == false)

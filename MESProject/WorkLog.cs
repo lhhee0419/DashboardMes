@@ -130,6 +130,10 @@ namespace MESProject
             }
         }
 
-        
+        private void WLGrid_DataSourceChanged(object sender, EventArgs e)
+        {
+            WLGrid.AutoResizeColumns(
+                DataGridViewAutoSizeColumnsMode.AllCells);
+        }
     }
 }
