@@ -119,9 +119,11 @@
             // 
             // LotGrid
             // 
+            this.LotGrid.AllowUserToAddRows = false;
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LotGrid.Location = new System.Drawing.Point(26, 164);
             this.LotGrid.Name = "LotGrid";
+            this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -134,10 +136,12 @@
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WoGrid.Location = new System.Drawing.Point(25, 30);
             this.WoGrid.Name = "WoGrid";
+            this.WoGrid.RowHeadersVisible = false;
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.Size = new System.Drawing.Size(767, 117);
             this.WoGrid.TabIndex = 19;
+            this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
             // 
             // Startworking
             // 
