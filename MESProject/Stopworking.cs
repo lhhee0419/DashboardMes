@@ -18,17 +18,14 @@ namespace MESProject
         //woid
         string woid;
         string lotID;
+        private Startworking startworking;
 
-        public Stopworking(string woid_data, string lotid)
+        public Stopworking(string woid_data, string lotid, Startworking startworking)
         {
             InitializeComponent();
             this.woid = woid_data;
             this.lotID = lotid;
-        }
-
-        private void Stopworking_Load(object sender, EventArgs e)
-        {
-
+            this.startworking = startworking;
         }
         private void RadClick(object sender, EventArgs e, string name, string code)
         {
@@ -80,19 +77,24 @@ namespace MESProject
         {
 
             // STOPWK INSERT EQPTID , TIMESTAMP , STOPWKID
-            string Update_StopWorking = $"INSERT INTO STOPWK select L.EQPTID,TO_CHAR(SYSDATE, 'YY/MM/DD HH:MI:SS'), F.STOPWKID " +
+            string Update_StopWorking = $"INSERT INTO STOPWK select L.EQPTID,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), F.STOPWKID " +
                                         $"from lot L, STOPWKFACTOR F, EQUIPMENT E where lotid = '{lotID}' AND E.EQPTID = L.EQPTID AND F.STOPWKID='{rad}'";
             Common.DB_Connection(Update_StopWorking);
 
-            //WORKORDER WOSTAT 상태 변경
-            string update_Wostat = $"UPDATE WORKORDER W SET W.WOSTAT='P' WHERE W.WOID = '{woid}'";
+            //WORKORDER WOSTAT, STOPWKEDDTTM 변경
+            string update_Wostat = $"UPDATE WORKORDER W SET W.WOSTAT='P', W.STOPWKEDDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE W.WOID = '{woid}'";
             Common.DB_Connection(update_Wostat);
+
 
             //EQPTSTATS 변경
             string update_EQPTStats = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'DOWN' WHERE EQPTID IN (SELECT EQPTID FROM LOT WHERE LOTID='{rad}')";
             Common.DB_Connection(update_EQPTStats);
-            MessageBox.Show("등록되었습니다.");
+            MessageBox.Show("중지되었습니다.");
             this.Close();
+            //테이블 재조회
+            startworking.Inquiry_Woid();
+            startworking.Inquiry_Lot();
+            
         }
     }
 }

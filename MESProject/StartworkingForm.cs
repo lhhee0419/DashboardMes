@@ -25,21 +25,28 @@ namespace MESProject
             Common.SetGridDesign(LotGrid);
 
             //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
-            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(update_wostat);
 
+            Inquiry_Woid();
+            Inquiry_Lot();
+
+        }
+        public void Inquiry_Woid()
+        {
             //WoGrid에 표시될 데이터 가져오기
-            string select_wo =  $"SELECT W.WOID, P.PRODID ,P.PRODNAME, "+
+            string select_wo = $"SELECT W.WOID, P.PRODID ,P.PRODNAME, " +
                                 $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END," +
                                 $"W.PLANQTY,W.PRODQTY, COUNT(*), W.PLANDTTM, W.WOSTDTTM, W.ETC " +
-                                $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D "+
-                                $"WHERE W.WOID = '{Selected_woid}' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID "+
+                                $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
+                                $"WHERE W.WOID = '{Selected_woid}' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID " +
                                 $"GROUP BY W.WOID, P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC ";
 
             Common.DB_Connection(select_wo, WoGrid);
             if (WoGrid.Rows.Count > 0)
             {
                 WoGrid.Columns[0].HeaderText = "작업지시코드";
+
                 WoGrid.Columns[1].HeaderText = "제품코드";
                 WoGrid.Columns[2].HeaderText = "제품명";
                 WoGrid.Columns[3].HeaderText = "작업상태";
@@ -50,10 +57,7 @@ namespace MESProject
                 WoGrid.Columns[8].HeaderText = "작업지시 시작일";
                 WoGrid.Columns[9].HeaderText = "비고";
             }
-            Inquiry_Lot();
-
         }
-
         public void Inquiry_Lot()
         {
             //LotGrid에 표시될 데이터 가져오기
@@ -120,10 +124,29 @@ namespace MESProject
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
+            string woid = WoGrid.Rows[0].Cells[0].Value.ToString();
             string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
             // stopworking 폼으로 woid값 전달
-            Stopworking stopworking = new Stopworking(woid, lotid);
-            stopworking.ShowDialog();
+            if (WoGrid.Rows[0].Cells[3].Value.ToString() == "진행중" )
+            {
+                //WOSTATS가 진행중일 경우 STOPWORKING 폼을 오픈
+                Stopworking stopworking = new Stopworking(woid, lotid, this);
+                stopworking.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("재시작");
+                //재시작시 작업상태를 진행중(S), STOPWKEDDTTM을 SYSDATE로 변경, 해당하는 EQPTID에 EQPTSTATS를 RUN으로 변경
+                string update_wostat = $"UPDATE WORKORDER W SET W.WOSTAT ='S', W.ETC = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
+                Common.DB_Connection(update_wostat);
+
+                //EQPTID에 EQPTSTATS를 RUN으로 변경
+                string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID IN(SELECT EQPTID FROM LOT WHERE LOTID = '{lotid}')";
+                Common.DB_Connection(Update_EQPTSTATS);
+                //테이블 재조회
+                Inquiry_Lot();
+                Inquiry_Woid();
+            }
         }
     }
 }

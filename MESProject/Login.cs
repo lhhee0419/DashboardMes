@@ -43,6 +43,16 @@ namespace MESProject
         //로그인 버튼을 클릭
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            //textbox가 빈 값일 경우 나타나는 메세지
+            if (string.IsNullOrEmpty(IDtextBox.Text))
+            {
+                MessageBox.Show("아이디를 입력해주세요.");
+            }
+            else if (string.IsNullOrEmpty(PWDtextBox.Text))
+            {
+                MessageBox.Show("비밀번호를 입력해주세요");
+            }
+
             //select_ID에 쿼리문을 저장
             string select_ID = $"select count(*) from employee where EMPLOYEEID = '" + IDtextBox.Text + "' and EMPLOYEEPASSWORD='" + PWDtextBox.Text + "'";
 
@@ -56,16 +66,6 @@ namespace MESProject
                 {
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                }
-
-                //textbox가 빈 값일 경우 나타나는 메세지
-                else if (string.IsNullOrEmpty(IDtextBox.Text))
-                {
-                    MessageBox.Show("아이디를 입력해주세요.");
-                }
-                else if (string.IsNullOrEmpty(PWDtextBox.Text))
-                {
-                    MessageBox.Show("비밀번호를 입력해주세요");
                 }
 
                 //정보가 일치하지 않을경우 ID,PWDtextbox를 초기화하고 IDtextbox에 커서를 이동.
