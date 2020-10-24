@@ -157,7 +157,6 @@
             this.Controls.Add(this.CheckBtn);
             this.Name = "Stopworking";
             this.Text = "Stopworking";
-            this.Load += new System.EventHandler(this.Stopworking_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

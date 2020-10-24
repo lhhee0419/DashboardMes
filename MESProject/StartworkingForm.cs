@@ -25,9 +25,15 @@ namespace MESProject
             Common.SetGridDesign(LotGrid);
 
             //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
-            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_DATE(SYSDATE, 'YY/MM/DD') WHERE WOID = '{Selected_woid}'";
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(update_wostat);
 
+            Inquiry_Woid();
+            Inquiry_Lot();
+
+        }
+        public void Inquiry_Woid()
+        {
             //WoGrid에 표시될 데이터 가져오기
             string select_wo = $"SELECT W.WOID, P.PRODID ,P.PRODNAME, " +
                                 $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END," +
@@ -46,10 +52,7 @@ namespace MESProject
 
                 }
             }
-            Inquiry_Lot();
-
         }
-
         public void Inquiry_Lot()
         {
             //LotGrid에 표시될 데이터 가져오기
@@ -116,15 +119,29 @@ namespace MESProject
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
+            string woid = WoGrid.Rows[0].Cells[0].Value.ToString();
             string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
             // stopworking 폼으로 woid값 전달
-            Stopworking stopworking = new Stopworking(woid, lotid);
-            stopworking.ShowDialog();
-        }
+            if (WoGrid.Rows[0].Cells[3].Value.ToString() == "진행중" )
+            {
+                //WOSTATS가 진행중일 경우 STOPWORKING 폼을 오픈
+                Stopworking stopworking = new Stopworking(woid, lotid, this);
+                stopworking.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("재시작");
+                //재시작시 작업상태를 진행중(S), STOPWKEDDTTM을 SYSDATE로 변경, 해당하는 EQPTID에 EQPTSTATS를 RUN으로 변경
+                string update_wostat = $"UPDATE WORKORDER W SET W.WOSTAT ='S', W.ETC = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
+                Common.DB_Connection(update_wostat);
 
-        private void WoGrid_DataSourceChanged(object sender, EventArgs e)
-        {
-          // WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                //EQPTID에 EQPTSTATS를 RUN으로 변경
+                string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID IN(SELECT EQPTID FROM LOT WHERE LOTID = '{lotid}')";
+                Common.DB_Connection(Update_EQPTSTATS);
+                //테이블 재조회
+                Inquiry_Lot();
+                Inquiry_Woid();
+            }
         }
     }
 }
