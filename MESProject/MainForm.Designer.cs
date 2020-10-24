@@ -56,11 +56,11 @@
             // maintab
             // 
             this.maintab.Controls.Add(this.tabPage1);
-            this.maintab.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.maintab.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.maintab.Location = new System.Drawing.Point(0, 0);
             this.maintab.Name = "maintab";
             this.maintab.SelectedIndex = 0;
-            this.maintab.Size = new System.Drawing.Size(1280, 1024);
+            this.maintab.Size = new System.Drawing.Size(1552, 858);
             this.maintab.TabIndex = 34;
             this.maintab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseDown);
             this.maintab.MouseMove += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseMove);
@@ -79,10 +79,10 @@
             this.tabPage1.Controls.Add(this.InquiryBtn);
             this.tabPage1.Controls.Add(this.WoGrid);
             this.tabPage1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.tabPage1.Location = new System.Drawing.Point(4, 35);
+            this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1272, 985);
+            this.tabPage1.Size = new System.Drawing.Size(1544, 817);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "메인화면";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -90,9 +90,9 @@
             // logoutbtn
             // 
             this.logoutbtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.logoutbtn.Location = new System.Drawing.Point(1057, 732);
+            this.logoutbtn.Location = new System.Drawing.Point(1303, 699);
             this.logoutbtn.Name = "logoutbtn";
-            this.logoutbtn.Size = new System.Drawing.Size(164, 73);
+            this.logoutbtn.Size = new System.Drawing.Size(222, 97);
             this.logoutbtn.TabIndex = 56;
             this.logoutbtn.Text = "로그아웃";
             this.logoutbtn.UseVisualStyleBackColor = true;
@@ -100,11 +100,11 @@
             // 
             // ProcCombo
             // 
-            this.ProcCombo.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ProcCombo.Font = new System.Drawing.Font("굴림", 16F);
             this.ProcCombo.FormattingEnabled = true;
-            this.ProcCombo.Location = new System.Drawing.Point(953, 29);
+            this.ProcCombo.Location = new System.Drawing.Point(1110, 16);
             this.ProcCombo.Name = "ProcCombo";
-            this.ProcCombo.Size = new System.Drawing.Size(121, 33);
+            this.ProcCombo.Size = new System.Drawing.Size(150, 35);
             this.ProcCombo.TabIndex = 54;
             // 
             // label1
@@ -119,27 +119,27 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 16F);
             this.dateTimePicker2.Location = new System.Drawing.Point(464, 116);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(333, 36);
+            this.dateTimePicker2.Size = new System.Drawing.Size(399, 38);
             this.dateTimePicker2.TabIndex = 52;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 16F);
             this.dateTimePicker1.Location = new System.Drawing.Point(44, 116);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(327, 36);
+            this.dateTimePicker1.Size = new System.Drawing.Size(393, 38);
             this.dateTimePicker1.TabIndex = 51;
             // 
             // EquipmanageBtn
             // 
             this.EquipmanageBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.EquipmanageBtn.Location = new System.Drawing.Point(541, 732);
+            this.EquipmanageBtn.Location = new System.Drawing.Point(641, 699);
             this.EquipmanageBtn.Name = "EquipmanageBtn";
-            this.EquipmanageBtn.Size = new System.Drawing.Size(164, 73);
+            this.EquipmanageBtn.Size = new System.Drawing.Size(222, 97);
             this.EquipmanageBtn.TabIndex = 50;
             this.EquipmanageBtn.Text = "설비관리";
             this.EquipmanageBtn.UseVisualStyleBackColor = true;
@@ -147,9 +147,9 @@
             // WoLogBtn
             // 
             this.WoLogBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.WoLogBtn.Location = new System.Drawing.Point(303, 732);
+            this.WoLogBtn.Location = new System.Drawing.Point(330, 699);
             this.WoLogBtn.Name = "WoLogBtn";
-            this.WoLogBtn.Size = new System.Drawing.Size(163, 73);
+            this.WoLogBtn.Size = new System.Drawing.Size(222, 97);
             this.WoLogBtn.TabIndex = 49;
             this.WoLogBtn.Text = "작업일지";
             this.WoLogBtn.UseVisualStyleBackColor = true;
@@ -158,9 +158,9 @@
             // WostBtn
             // 
             this.WostBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.WostBtn.Location = new System.Drawing.Point(57, 732);
+            this.WostBtn.Location = new System.Drawing.Point(23, 699);
             this.WostBtn.Name = "WostBtn";
-            this.WostBtn.Size = new System.Drawing.Size(165, 73);
+            this.WostBtn.Size = new System.Drawing.Size(222, 97);
             this.WostBtn.TabIndex = 48;
             this.WostBtn.Text = "작업시작";
             this.WostBtn.UseVisualStyleBackColor = true;
@@ -169,9 +169,9 @@
             // InquiryBtn
             // 
             this.InquiryBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InquiryBtn.Location = new System.Drawing.Point(1079, 101);
+            this.InquiryBtn.Location = new System.Drawing.Point(1303, 75);
             this.InquiryBtn.Name = "InquiryBtn";
-            this.InquiryBtn.Size = new System.Drawing.Size(166, 66);
+            this.InquiryBtn.Size = new System.Drawing.Size(222, 97);
             this.InquiryBtn.TabIndex = 47;
             this.InquiryBtn.Text = "조회";
             this.InquiryBtn.UseVisualStyleBackColor = true;
@@ -186,7 +186,7 @@
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WoGrid.Size = new System.Drawing.Size(1223, 506);
+            this.WoGrid.Size = new System.Drawing.Size(1502, 470);
             this.WoGrid.TabIndex = 46;
             this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
             // 
@@ -194,11 +194,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1280, 1024);
+            this.ClientSize = new System.Drawing.Size(1559, 857);
             this.Controls.Add(this.maintab);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.maintab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

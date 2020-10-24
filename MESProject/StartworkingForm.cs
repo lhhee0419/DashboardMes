@@ -49,9 +49,11 @@ namespace MESProject
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
+                    WoGrid.Columns[i].ReadOnly = true;
 
                 }
             }
+            WoGrid.RowTemplate.Height = 80;
         }
         public void Inquiry_Lot()
         {
@@ -62,11 +64,12 @@ namespace MESProject
             Common.DB_Connection(Selected_lot, LotGrid);
             if (LotGrid.Rows.Count > 0)
             {
-                LotGrid.Columns[0].HeaderText = "LOT코드";
-                LotGrid.Columns[1].HeaderText = "LOT상태";
-                LotGrid.Columns[2].HeaderText = "LOT불량";
-                LotGrid.Columns[3].HeaderText = "시작시간";
-                LotGrid.Columns[4].HeaderText = "종료시간";
+                string[] header = new string[] { "LOT코드", "LOT상태", "LOT불량", "시작시간", "종료시간" };
+                for (int i = 0; i < header.Length; i++)
+                {
+                    LotGrid.Columns[i].HeaderText = "LOT코드";
+                    LotGrid.Columns[i].ReadOnly = true;
+                }
             }
         }
 
@@ -142,6 +145,11 @@ namespace MESProject
                 Inquiry_Lot();
                 Inquiry_Woid();
             }
+        }
+
+        private void EndBtn_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

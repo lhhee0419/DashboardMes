@@ -44,9 +44,9 @@
             // StockBtn
             // 
             this.StockBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StockBtn.Location = new System.Drawing.Point(635, 350);
+            this.StockBtn.Location = new System.Drawing.Point(1312, 588);
             this.StockBtn.Name = "StockBtn";
-            this.StockBtn.Size = new System.Drawing.Size(157, 61);
+            this.StockBtn.Size = new System.Drawing.Size(222, 97);
             this.StockBtn.TabIndex = 27;
             this.StockBtn.Text = "원재료 재고조회";
             this.StockBtn.UseVisualStyleBackColor = true;
@@ -55,9 +55,9 @@
             // FaultyBtn
             // 
             this.FaultyBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.FaultyBtn.Location = new System.Drawing.Point(454, 350);
+            this.FaultyBtn.Location = new System.Drawing.Point(1008, 588);
             this.FaultyBtn.Name = "FaultyBtn";
-            this.FaultyBtn.Size = new System.Drawing.Size(147, 61);
+            this.FaultyBtn.Size = new System.Drawing.Size(222, 97);
             this.FaultyBtn.TabIndex = 26;
             this.FaultyBtn.Text = "불량 등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // LotDelBtn
             // 
             this.LotDelBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.LotDelBtn.Location = new System.Drawing.Point(26, 350);
+            this.LotDelBtn.Location = new System.Drawing.Point(25, 588);
             this.LotDelBtn.Name = "LotDelBtn";
-            this.LotDelBtn.Size = new System.Drawing.Size(147, 61);
+            this.LotDelBtn.Size = new System.Drawing.Size(222, 97);
             this.LotDelBtn.TabIndex = 25;
             this.LotDelBtn.Text = "LOT 삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.ExitBtn.Location = new System.Drawing.Point(635, 426);
+            this.ExitBtn.Location = new System.Drawing.Point(1312, 707);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(154, 61);
+            this.ExitBtn.Size = new System.Drawing.Size(222, 97);
             this.ExitBtn.TabIndex = 24;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -88,19 +88,20 @@
             // EndBtn
             // 
             this.EndBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.EndBtn.Location = new System.Drawing.Point(208, 426);
+            this.EndBtn.Location = new System.Drawing.Point(334, 707);
             this.EndBtn.Name = "EndBtn";
-            this.EndBtn.Size = new System.Drawing.Size(148, 61);
+            this.EndBtn.Size = new System.Drawing.Size(222, 97);
             this.EndBtn.TabIndex = 23;
             this.EndBtn.Text = "작업종료";
             this.EndBtn.UseVisualStyleBackColor = true;
+            this.EndBtn.Click += new System.EventHandler(this.EndBtn_Click);
             // 
             // StopBtn
             // 
             this.StopBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StopBtn.Location = new System.Drawing.Point(208, 350);
+            this.StopBtn.Location = new System.Drawing.Point(334, 588);
             this.StopBtn.Name = "StopBtn";
-            this.StopBtn.Size = new System.Drawing.Size(148, 61);
+            this.StopBtn.Size = new System.Drawing.Size(222, 97);
             this.StopBtn.TabIndex = 22;
             this.StopBtn.Text = "작업중지/재시작";
             this.StopBtn.UseVisualStyleBackColor = true;
@@ -109,9 +110,9 @@
             // LotaddBtn
             // 
             this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LotaddBtn.Location = new System.Drawing.Point(26, 426);
+            this.LotaddBtn.Location = new System.Drawing.Point(25, 707);
             this.LotaddBtn.Name = "LotaddBtn";
-            this.LotaddBtn.Size = new System.Drawing.Size(147, 61);
+            this.LotaddBtn.Size = new System.Drawing.Size(222, 97);
             this.LotaddBtn.TabIndex = 21;
             this.LotaddBtn.Text = "LOT 추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
@@ -119,15 +120,14 @@
             // 
             // LotGrid
             // 
-            this.LotGrid.AllowUserToAddRows = false;
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(26, 164);
+            this.LotGrid.Location = new System.Drawing.Point(25, 215);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(766, 165);
+            this.LotGrid.Size = new System.Drawing.Size(1509, 355);
             this.LotGrid.TabIndex = 20;
             // 
             // WoGrid
@@ -139,16 +139,15 @@
             this.WoGrid.RowHeadersVisible = false;
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
-            this.WoGrid.Size = new System.Drawing.Size(767, 117);
+            this.WoGrid.Size = new System.Drawing.Size(1509, 154);
             this.WoGrid.TabIndex = 19;
-            this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
             // 
             // Startworking
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1262, 977);
+            this.ClientSize = new System.Drawing.Size(1552, 858);
             this.Controls.Add(this.StockBtn);
             this.Controls.Add(this.FaultyBtn);
             this.Controls.Add(this.LotDelBtn);

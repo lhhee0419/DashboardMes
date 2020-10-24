@@ -44,7 +44,8 @@ namespace MESProject
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {
+        {   
+            
             login_check();
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
@@ -57,6 +58,7 @@ namespace MESProject
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
+                    WoGrid.Columns[i].ReadOnly = true;
 
                 }
             }

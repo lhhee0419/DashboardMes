@@ -51,7 +51,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("굴림", 15F);
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("굴림", 17F);
             this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 15F);
             this.dateTimePicker2.Location = new System.Drawing.Point(408, 78);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -60,7 +60,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("굴림", 15F);
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("굴림", 17F);
             this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 15F);
             this.dateTimePicker1.Location = new System.Drawing.Point(22, 75);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -70,9 +70,9 @@
             // InquiryBtn
             // 
             this.InquiryBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InquiryBtn.Location = new System.Drawing.Point(824, 64);
+            this.InquiryBtn.Location = new System.Drawing.Point(1355, 50);
             this.InquiryBtn.Name = "InquiryBtn";
-            this.InquiryBtn.Size = new System.Drawing.Size(166, 66);
+            this.InquiryBtn.Size = new System.Drawing.Size(166, 80);
             this.InquiryBtn.TabIndex = 12;
             this.InquiryBtn.Text = "조회";
             this.InquiryBtn.UseVisualStyleBackColor = true;
@@ -83,20 +83,21 @@
             this.WLGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WLGrid.Location = new System.Drawing.Point(24, 144);
             this.WLGrid.Name = "WLGrid";
+            this.WLGrid.ReadOnly = true;
+            this.WLGrid.RowHeadersVisible = false;
             this.WLGrid.RowHeadersWidth = 51;
             this.WLGrid.RowTemplate.Height = 27;
             this.WLGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WLGrid.Size = new System.Drawing.Size(968, 350);
+            this.WLGrid.Size = new System.Drawing.Size(1497, 305);
             this.WLGrid.TabIndex = 11;
-            this.WLGrid.DataSourceChanged += new System.EventHandler(this.WLGrid_DataSourceChanged);
             this.WLGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WLGrid_MouseClick);
             // 
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ExitBtn.Location = new System.Drawing.Point(824, 544);
+            this.ExitBtn.Location = new System.Drawing.Point(1355, 739);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(166, 66);
+            this.ExitBtn.Size = new System.Drawing.Size(166, 80);
             this.ExitBtn.TabIndex = 12;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -104,29 +105,32 @@
             // 
             // ProcCombo
             // 
-            this.ProcCombo.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ProcCombo.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ProcCombo.FormattingEnabled = true;
-            this.ProcCombo.Location = new System.Drawing.Point(744, 16);
+            this.ProcCombo.Location = new System.Drawing.Point(1195, 12);
             this.ProcCombo.Name = "ProcCombo";
-            this.ProcCombo.Size = new System.Drawing.Size(121, 33);
+            this.ProcCombo.Size = new System.Drawing.Size(121, 35);
             this.ProcCombo.TabIndex = 55;
             // 
             // LotGrid
             // 
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(24, 504);
+            this.LotGrid.Location = new System.Drawing.Point(24, 469);
             this.LotGrid.Name = "LotGrid";
+            this.LotGrid.ReadOnly = true;
+            this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
-            this.LotGrid.Size = new System.Drawing.Size(760, 160);
+            this.LotGrid.Size = new System.Drawing.Size(1497, 244);
             this.LotGrid.TabIndex = 11;
             // 
             // WorkLog
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1262, 977);
+            this.ClientSize = new System.Drawing.Size(1552, 858);
             this.Controls.Add(this.ProcCombo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker2);
@@ -137,6 +141,7 @@
             this.Controls.Add(this.WLGrid);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WorkLog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WorkLog";
             this.Load += new System.EventHandler(this.WorkLog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.WLGrid)).EndInit();
