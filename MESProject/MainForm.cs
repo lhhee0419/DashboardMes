@@ -20,10 +20,6 @@ namespace MESProject
         bool isMove;
         Point fpt;
         public static string User_ID { get; set; }
-        // EQPT 조회하기 위한 변수
-        string Mainform_PROC_COMBOBOX = "";
-        //Equipment에서 가져온 EQPTID
-        public static string Equipment_EQPTID { get; set; }
         public string woid = "";
         public MainForm()
         {
@@ -38,12 +34,11 @@ namespace MESProject
             //로그인 실패시
             if (result != DialogResult.OK)
             {
-                MessageBox.Show("프로그램 종료");
                 this.Close();
             }
             else
             {
-                MessageBox.Show("로그인 성공");
+
             }
         }
 
@@ -154,53 +149,41 @@ namespace MESProject
         private void WostBtn_Click(object sender, EventArgs e)
         {
             //작업시작 버튼
+            //작업시작시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
+            Common.DB_Connection(update_wostat);
 
-            if(ProcCombo.SelectedIndex ==0)
-            {
-                Equipment.Mainform_PROC_COMBOBOX = "MX";
-            }
-            else
-            {
-                Equipment.Mainform_PROC_COMBOBOX = "IM";
-            }
+            StartForm_Create();
+        }
 
+        private void WoGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //더블클릭시 
+            StartForm_Create();
+        }
+
+        private void StartForm_Create()
+        {
+            //StartForm 생성
             for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
 
                 if (WoGrid.Rows[i].Selected == true)
                 {
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
-                    Equipment.woid = woid;
                 }
             }
-            Equipment_check();
+            Startworking startworkingForm = new Startworking(woid);
+            if (woid != "")
+            {
+                startworkingForm.Selected_woid = woid;
 
+                Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+            }
+            startworkingForm.FormClosed += Form_closing;
 
         }
-        private void Equipment_check()
-        {
-            Equipment equipment = new Equipment();
-            DialogResult result = equipment.ShowDialog();
-            //설비창 닫기
-            if (result != DialogResult.OK)
-            {
-                //mainform
-            }
-            else
-            {
-                Startworking startworkingForm = new Startworking(woid);
-                if (woid != "")
-                {
-                    startworkingForm.Selected_woid = woid;
-
-                    Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
-                }
-                startworkingForm.FormClosed += Form_closing;
-                //성공할시 (Equipment 확인버튼)
-                MessageBox.Show($"WOID : {woid}, EQPTID : {Equipment_EQPTID}");
-            }
-        }
-
+        
 
         public void Form_closing(object sender, FormClosedEventArgs e)
         {
@@ -248,6 +231,7 @@ namespace MESProject
         {
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+
     }
 }
 

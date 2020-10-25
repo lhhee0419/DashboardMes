@@ -132,7 +132,7 @@ namespace MESProject
                 //lotid에 저장된 defect_lotid 를 출력
                 foreach (string D_Lotid in lotid)
                 {
-                    string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,'','{rad}')";
+                    string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{rad}')";
                     Common.DB_Connection(add_defectlot);
                 }
                 MessageBox.Show("불량 등록이 완료되었습니다.");

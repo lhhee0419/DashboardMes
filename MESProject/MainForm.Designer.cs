@@ -190,6 +190,7 @@
             this.WoGrid.Size = new System.Drawing.Size(1502, 470);
             this.WoGrid.TabIndex = 46;
             this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
+            this.WoGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WoGrid_CellDoubleClick);
             // 
             // MainForm
             // 
