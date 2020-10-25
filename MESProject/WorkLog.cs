@@ -72,7 +72,7 @@ namespace MESProject
             {
                 //배합 콤보박스 선택 PROCID='P0001'
                 string select_wo_mix = $"SELECT W.WOID, P.PRODNAME, CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT, " +
-                                       $"E.EQPTID, W.PLANQTY,W.PRODQTY,COUNT(D.DEFECT_LOTID), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC " +
+                                       $"E.EQPTID, W.PLANQTY,NVL(W.PRODQTY,0),COUNT(D.DEFECT_LOTID), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC " +
                                        $"FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D " +
                                        $"WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0001' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  " +
                                        $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.WOID = L.WOID(+) AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID(+) AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P') " +
@@ -152,5 +152,9 @@ namespace MESProject
             }
         }
 
+        private void WLGrid_DataSourceChanged(object sender, EventArgs e)
+        {
+            WLGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
     }
 }

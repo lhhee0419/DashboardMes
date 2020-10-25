@@ -43,10 +43,10 @@
             // SWF_REST
             // 
             this.SWF_REST.AutoSize = true;
-            this.SWF_REST.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_REST.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SWF_REST.Location = new System.Drawing.Point(72, 60);
             this.SWF_REST.Name = "SWF_REST";
-            this.SWF_REST.Size = new System.Drawing.Size(154, 32);
+            this.SWF_REST.Size = new System.Drawing.Size(159, 32);
             this.SWF_REST.TabIndex = 0;
             this.SWF_REST.Text = "쉬는 시간";
             this.SWF_REST.UseVisualStyleBackColor = true;
@@ -55,7 +55,7 @@
             // SWF_ERROR
             // 
             this.SWF_ERROR.AutoSize = true;
-            this.SWF_ERROR.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_ERROR.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SWF_ERROR.Location = new System.Drawing.Point(72, 139);
             this.SWF_ERROR.Name = "SWF_ERROR";
             this.SWF_ERROR.Size = new System.Drawing.Size(145, 32);
@@ -67,7 +67,7 @@
             // SWF_CHECK
             // 
             this.SWF_CHECK.AutoSize = true;
-            this.SWF_CHECK.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_CHECK.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SWF_CHECK.Location = new System.Drawing.Point(72, 215);
             this.SWF_CHECK.Name = "SWF_CHECK";
             this.SWF_CHECK.Size = new System.Drawing.Size(145, 32);
@@ -79,10 +79,10 @@
             // SWF_MEAL
             // 
             this.SWF_MEAL.AutoSize = true;
-            this.SWF_MEAL.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_MEAL.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SWF_MEAL.Location = new System.Drawing.Point(336, 60);
             this.SWF_MEAL.Name = "SWF_MEAL";
-            this.SWF_MEAL.Size = new System.Drawing.Size(154, 32);
+            this.SWF_MEAL.Size = new System.Drawing.Size(159, 32);
             this.SWF_MEAL.TabIndex = 3;
             this.SWF_MEAL.Text = "식사 시간";
             this.SWF_MEAL.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@
             // SWF_ACCIDENT
             // 
             this.SWF_ACCIDENT.AutoSize = true;
-            this.SWF_ACCIDENT.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_ACCIDENT.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SWF_ACCIDENT.Location = new System.Drawing.Point(336, 139);
             this.SWF_ACCIDENT.Name = "SWF_ACCIDENT";
             this.SWF_ACCIDENT.Size = new System.Drawing.Size(89, 32);
@@ -103,7 +103,7 @@
             // SWF_ETC
             // 
             this.SWF_ETC.AutoSize = true;
-            this.SWF_ETC.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SWF_ETC.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.SWF_ETC.Location = new System.Drawing.Point(336, 215);
             this.SWF_ETC.Name = "SWF_ETC";
             this.SWF_ETC.Size = new System.Drawing.Size(89, 32);
@@ -142,7 +142,7 @@
             this.groupBox1.Controls.Add(this.SWF_ETC);
             this.groupBox1.Controls.Add(this.SWF_CHECK);
             this.groupBox1.Controls.Add(this.SWF_MEAL);
-            this.groupBox1.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox1.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox1.Location = new System.Drawing.Point(32, 16);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(550, 309);
@@ -154,6 +154,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(620, 432);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ExitBtn);

@@ -39,11 +39,12 @@ namespace MESProject
             {
                 for (int i = 0; i < Qty; i++)
                 {
-                    string add_lot= $" INSERT INTO LOT(LOTID, WOID, EQPTID,PROCID) "+
-                                    $"VALUES((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD')"+
-                                    $"|| NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT), '{woid}',"+
-                                    $"(SELECT EQPTID FROM EQUIPMENT WHERE EQPTSTATS = 'DOWN'),(SELECT PROCID "+
-                                    $"FROM WORKORDER WHERE WOID = '{woid}'))";
+                    string add_lot= $" INSERT INTO " +
+                                    $"LOT(LOTID, WOID, EQPTID,PROCID) "+
+                                    $"VALUES((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD')|| NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT)" +
+                                    $",'{woid}'"+
+                                    $",(SELECT EQPTID FROM EQUIPMENT WHERE EQPTSTATS = 'DOWN')" +
+                                    $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}'))";
                     Common.DB_Connection(add_lot);
                 }
             }    

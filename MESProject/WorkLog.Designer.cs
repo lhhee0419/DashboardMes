@@ -90,6 +90,7 @@
             this.WLGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WLGrid.Size = new System.Drawing.Size(1497, 305);
             this.WLGrid.TabIndex = 11;
+            this.WLGrid.DataSourceChanged += new System.EventHandler(this.WLGrid_DataSourceChanged);
             this.WLGrid.MouseClick += new System.Windows.Forms.MouseEventHandler(this.WLGrid_MouseClick);
             // 
             // ExitBtn
@@ -121,6 +122,7 @@
             this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
+            this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LotGrid.Size = new System.Drawing.Size(1497, 244);
             this.LotGrid.TabIndex = 11;
             // 
@@ -130,6 +132,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
             this.Controls.Add(this.ProcCombo);
             this.Controls.Add(this.label1);
