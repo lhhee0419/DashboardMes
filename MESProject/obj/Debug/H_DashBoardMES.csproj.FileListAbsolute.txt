@@ -102,3 +102,4 @@ C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\H_DashBoardMES.csproj.C
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\H_DashBoardMES.csproj.CopyComplete
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.exe
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.pdb
+C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.Equipment.resources
