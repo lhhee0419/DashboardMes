@@ -21,7 +21,6 @@ namespace MESProject
         Point fpt;
         public static string User_ID { get; set; }
         // EQPT 조회하기 위한 변수
-        string Mainform_PROC_COMBOBOX = "";
         //Equipment에서 가져온 EQPTID
         public static string Equipment_EQPTID { get; set; }
         public string woid = "";
@@ -38,12 +37,10 @@ namespace MESProject
             //로그인 실패시
             if (result != DialogResult.OK)
             {
-                MessageBox.Show("프로그램 종료");
                 this.Close();
             }
             else
             {
-                MessageBox.Show("로그인 성공");
             }
         }
 
@@ -154,15 +151,30 @@ namespace MESProject
         private void WostBtn_Click(object sender, EventArgs e)
         {
             //작업시작 버튼
+            for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
+            {
 
-            if(ProcCombo.SelectedIndex ==0)
-            {
-                Equipment.Mainform_PROC_COMBOBOX = "MX";
+                if (WoGrid.Rows[i].Selected == true)
+                {
+                    woid = WoGrid.Rows[i].Cells[0].Value.ToString();
+                }
             }
-            else
+            Startworking startworkingForm = new Startworking();
+            if (woid != "")
             {
-                Equipment.Mainform_PROC_COMBOBOX = "IM";
+                startworkingForm.Selected_woid = woid;
+                Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
             }
+            startworkingForm.FormClosed += Form_closing;
+/*            
+                        if(ProcCombo.SelectedIndex ==0)
+                        {
+                            Equipment.Mainform_PROC_COMBOBOX = "MX";
+                        }
+                        else
+                        {
+                            Equipment.Mainform_PROC_COMBOBOX = "IM";
+                        }
 
             for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
@@ -173,11 +185,11 @@ namespace MESProject
                     Equipment.woid = woid;
                 }
             }
-            Equipment_check();
+            Equipment_check();*/
 
 
         }
-        private void Equipment_check()
+/*        private void Equipment_check()
         {
             Equipment equipment = new Equipment();
             DialogResult result = equipment.ShowDialog();
@@ -192,14 +204,11 @@ namespace MESProject
                 if (woid != "")
                 {
                     startworkingForm.Selected_woid = woid;
-
                     Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
                 }
                 startworkingForm.FormClosed += Form_closing;
-                //성공할시 (Equipment 확인버튼)
-                MessageBox.Show($"WOID : {woid}, EQPTID : {Equipment_EQPTID}");
             }
-        }
+        }*/
 
 
         public void Form_closing(object sender, FormClosedEventArgs e)

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,9 +25,13 @@ namespace MESProject
             Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+           // Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Grid.Font = new Font("Fixsys", 15, FontStyle.Regular);
 
+        }
+        static public void SetColumnWidth(DataGridView dataGridView,int IndexCol,int widthCol)
+        {   
+            dataGridView.Columns[IndexCol].Width = widthCol;
         }
 
         static public void DB_Connection(string sql, DataGridView gridView)

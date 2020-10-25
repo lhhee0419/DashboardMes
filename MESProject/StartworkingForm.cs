@@ -14,12 +14,10 @@ namespace MESProject
     public partial class Startworking : Form
     {
         public string Selected_woid { get; set; }
-        public string Main_woid;
         public static string EQPTID { get; set; }
-        public Startworking(string MainForm_woid)
+        public Startworking()
         {
             InitializeComponent();
-            this.Main_woid = MainForm_woid;
         }
 
         private void Startworking_Load(object sender, EventArgs e)
@@ -32,43 +30,50 @@ namespace MESProject
             string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(update_wostat);
 
-            //EQUIPMENT STATS = RUN 변경
+/*            //EQUIPMENT STATS = RUN 변경
             string update_EQPT_Stats = $"UPDATE EQUIPMENT SET EQPTSTATS = 'RUN' WHERE EQPTID = '{EQPTID}'";
-            Common.DB_Connection(update_EQPT_Stats);
+            Common.DB_Connection(update_EQPT_Stats);*/
 
             //UPDATE EQUIPMENT SET EQPTSTATS = 'RUN' WHERE EQPTID = '';
-
             Inquiry_Woid();
             Inquiry_Lot();
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
+            LotGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            silo1.Image = Properties.Resources.silo1;
+            silo1.SizeMode = PictureBoxSizeMode.StretchImage;
+            silo2.Image = Properties.Resources.silo1;
+            silo2.SizeMode = PictureBoxSizeMode.StretchImage;
+            silo3.Image = Properties.Resources.silo1;
+            silo3.SizeMode = PictureBoxSizeMode.StretchImage;
+            MixingMachine1.Image = Properties.Resources.mixing;
+            MixingMachine1.SizeMode = PictureBoxSizeMode.StretchImage;
+            MixingMachine2.Image = Properties.Resources.mixing;
+            MixingMachine2.SizeMode = PictureBoxSizeMode.StretchImage;
         }
         public void Inquiry_Woid()
         {
             //WoGrid에 표시될 데이터 가져오기
-            string select_wo =  $"SELECT " +
-                                    $"W.WOID" +
-                                    $",P.PRODID " +
-                                    $",P.PRODNAME " +
-                                    $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END" +
-                                    $",W.PLANQTY" +
-                                    $",NVL(W.PRODQTY,0)" +
-                                    $",COUNT(D.DEFECT_LOTID)" +
-                                    $",W.PLANDTTM" +
-                                    $",W.WOSTDTTM" +
-                                    $",W.ETC " +
-                                $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
-                                $"WHERE W.WOID = '{Selected_woid}' " +
-                                    $"AND W.PRODID = P.PRODID " +
-                                    $"AND W.WOID = L.WOID(+) " +
-                                    $"AND L.LOTID = D.DEFECT_LOTID(+) " +
-                                $"GROUP BY W.WOID, P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC ";
-
+            string select_wo =  $"SELECT \n" +
+                                    $"P.PRODID  \n" +
+                                    $",P.PRODNAME  \n" +
+                                    $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END \n" +
+                                    $",W.PLANQTY \n" +
+                                    $",NVL(W.PRODQTY,0) \n" +
+                                    $",COUNT(D.DEFECT_LOTID) \n" +
+                                    $",W.PLANDTTM \n" +
+                                    $",W.WOSTDTTM \n" +
+                                    $",W.ETC  \n" +
+                                $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D  \n" +
+                                $"WHERE W.WOID = '{Selected_woid}'  \n" +
+                                    $"AND W.PRODID = P.PRODID  \n" +
+                                    $"AND W.WOID = L.WOID(+)  \n" +
+                                    $"AND L.LOTID = D.DEFECT_LOTID(+)  \n" +
+                                $"GROUP BY P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC  \n";
             Common.DB_Connection(select_wo, WoGrid);
             if (WoGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "작업코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "작업지시 시작일", "비고" };
+                string[] header = new string[] { "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "작업지시 시작일", "비고" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
@@ -135,7 +140,6 @@ namespace MESProject
             }
             string delete_lot = $" UPDATE LOT SET LOTSTAT = 'D' WHERE LOTID = '{woid}'";
             Common.DB_Connection(delete_lot);
-            //MessageBox.Show($"LOT코드: {woid}가 삭제 되었습니다.");
             Inquiry_Lot();
         }
 
@@ -175,8 +179,8 @@ namespace MESProject
                 Common.DB_Connection(update_wostat);
 
                 //EQPTID에 EQPTSTATS를 RUN으로 변경
-                string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID IN(SELECT EQPTID FROM LOT WHERE LOTID = '{lotid}')";
-                Common.DB_Connection(Update_EQPTSTATS);
+/*                string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID IN(SELECT EQPTID FROM LOT WHERE LOTID = '{lotid}')";
+                Common.DB_Connection(Update_EQPTSTATS);*/
                 //테이블 재조회
                 Inquiry_Lot();
                 Inquiry_Woid();

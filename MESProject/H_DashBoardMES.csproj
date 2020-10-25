@@ -170,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\mixing.PNG" />
+    <None Include="Resources\silo1.PNG" />
     <None Include="Resources\silo_red.png" />
     <None Include="Resources\silo.png" />
     <None Include="Resources\siloImage.png" />

@@ -43,6 +43,7 @@
             this.label1.Size = new System.Drawing.Size(117, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "LOT 수량";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // AddBtn
             // 
@@ -72,6 +73,7 @@
             this.LotAdd_tb.Name = "LotAdd_tb";
             this.LotAdd_tb.Size = new System.Drawing.Size(136, 25);
             this.LotAdd_tb.TabIndex = 2;
+            this.LotAdd_tb.TextChanged += new System.EventHandler(this.LotAdd_tb_TextChanged);
             // 
             // Lot
             // 

@@ -16,7 +16,7 @@ namespace MESProject
         Point fpt;
         string woid="";
         string Userid;
-        
+        string EQPTid;
         private Startworking startworkingForm = null;
         public Lot(Startworking startworkingForm)
         {
@@ -29,6 +29,7 @@ namespace MESProject
         {
             woid = startworkingForm.Selected_woid;
             Userid = MainForm.User_ID;
+            EQPTid = MainForm.Equipment_EQPTID;
 
         }
 
@@ -69,7 +70,7 @@ namespace MESProject
                                         $",'{woid}' \n" +
                                         $",1 \n" +
                                         $",1 \n" +
-                                        $",(SELECT EQPTID FROM EQUIPMENT WHERE EQPTID = 'MX002') \n" +
+                                        $",{EQPTid} \n" +
                                         $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}') \n" +
                                         $",'{Userid}' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
@@ -103,6 +104,16 @@ namespace MESProject
         private void Lot_FormClosing(object sender, FormClosingEventArgs e)
         {
             startworkingForm.Inquiry_Lot();
+        }
+
+        private void LotAdd_tb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
