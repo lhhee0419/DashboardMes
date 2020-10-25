@@ -61,6 +61,12 @@
   <ItemGroup>
     <Compile Include="Common.cs" />
     <Compile Include="DBHelper.cs" />
+    <Compile Include="Equipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Equipment.Designer.cs">
+      <DependentUpon>Equipment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Faulty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +123,9 @@
     <Compile Include="WorkLog.Designer.cs">
       <DependentUpon>WorkLog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Equipment.resx">
+      <DependentUpon>Equipment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Faulty.resx">
       <DependentUpon>Faulty.cs</DependentUpon>
     </EmbeddedResource>

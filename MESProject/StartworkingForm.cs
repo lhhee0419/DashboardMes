@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,9 +14,12 @@ namespace MESProject
     public partial class Startworking : Form
     {
         public string Selected_woid { get; set; }
-        public Startworking()
+        public string Main_woid;
+        public static string EQPTID { get; set; }
+        public Startworking(string MainForm_woid)
         {
             InitializeComponent();
+            this.Main_woid = MainForm_woid;
         }
 
         private void Startworking_Load(object sender, EventArgs e)
@@ -27,6 +31,12 @@ namespace MESProject
             //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
             string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(update_wostat);
+
+            //EQUIPMENT STATS = RUN 변경
+            string update_EQPT_Stats = $"UPDATE EQUIPMENT SET EQPTSTATS = 'RUN' WHERE EQPTID = '{EQPTID}'";
+            Common.DB_Connection(update_EQPT_Stats);
+
+            //UPDATE EQUIPMENT SET EQPTSTATS = 'RUN' WHERE EQPTID = '';
 
             Inquiry_Woid();
             Inquiry_Lot();
@@ -79,6 +89,8 @@ namespace MESProject
         {
             //닫기버튼
             this.Close();
+            //mainform EQPTID 초기화
+            MainForm.Equipment_EQPTID = "";
         }
 
         private void LotaddBtn_Click(object sender, EventArgs e)
@@ -147,6 +159,7 @@ namespace MESProject
                 Inquiry_Lot();
                 Inquiry_Woid();
             }
+            
         }
     }
 }

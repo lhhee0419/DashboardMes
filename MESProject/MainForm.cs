@@ -19,7 +19,10 @@ namespace MESProject
         // 창 이동 변수 선언
         bool isMove;
         Point fpt;
-
+        // EQPT 조회하기 위한 변수
+        string Mainform_PROC_COMBOBOX = "";
+        //Equipment에서 가져온 EQPTID
+        public static string Equipment_EQPTID { get; set; }
         public string woid = "";
         public MainForm()
         {
@@ -83,8 +86,6 @@ namespace MESProject
                                        $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.PLANDTTM, W.ETC "+
                                        $"ORDER BY (DECODE(WOSTAT,'진행중',0,1))";
                 Common.DB_Connection(select_wo_mix, WoGrid);
-
-
             }
 
 
@@ -135,21 +136,51 @@ namespace MESProject
         private void WostBtn_Click(object sender, EventArgs e)
         {
             //작업시작 버튼
+
+            if(ProcCombo.SelectedIndex ==0)
+            {
+                Equipment.Mainform_PROC_COMBOBOX = "MX";
+            }
+            else
+            {
+                Equipment.Mainform_PROC_COMBOBOX = "IM";
+            }
+
             for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
 
                 if (WoGrid.Rows[i].Selected == true)
                 {
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
+                    Equipment.woid = woid;
                 }
             }
-            Startworking startworkingForm = new Startworking();
-            if (woid != "")
+            Equipment_check();
+
+
+        }
+        private void Equipment_check()
+        {
+            Equipment equipment = new Equipment();
+            DialogResult result = equipment.ShowDialog();
+            //설비창 닫기
+            if (result != DialogResult.OK)
             {
-                startworkingForm.Selected_woid = woid;
-                Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+                //mainform
             }
-            startworkingForm.FormClosed += Form_closing;
+            else
+            {
+                Startworking startworkingForm = new Startworking(woid);
+                if (woid != "")
+                {
+                    startworkingForm.Selected_woid = woid;
+
+                    Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+                }
+                startworkingForm.FormClosed += Form_closing;
+                //성공할시 (Equipment 확인버튼)
+                MessageBox.Show($"WOID : {woid}, EQPTID : {Equipment_EQPTID}");
+            }
         }
 
 
