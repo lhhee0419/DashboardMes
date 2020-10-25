@@ -25,16 +25,7 @@ namespace MESProject
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-            
-            //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
-            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
-            Common.DB_Connection(update_wostat);
 
-/*            //EQUIPMENT STATS = RUN 변경
-            string update_EQPT_Stats = $"UPDATE EQUIPMENT SET EQPTSTATS = 'RUN' WHERE EQPTID = '{EQPTID}'";
-            Common.DB_Connection(update_EQPT_Stats);*/
-
-            //UPDATE EQUIPMENT SET EQPTSTATS = 'RUN' WHERE EQPTID = '';
             Inquiry_Woid();
             Inquiry_Lot();
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
@@ -116,8 +107,6 @@ namespace MESProject
         {
             //닫기버튼
             this.Close();
-            //mainform EQPTID 초기화
-            MainForm.Equipment_EQPTID = "";
         }
 
         private void LotaddBtn_Click(object sender, EventArgs e)

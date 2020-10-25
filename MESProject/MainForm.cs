@@ -151,6 +151,9 @@ namespace MESProject
         private void WostBtn_Click(object sender, EventArgs e)
         {
             //작업시작 버튼
+            //작업시작시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
+            Common.DB_Connection(update_wostat);
             for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
 
@@ -176,6 +179,9 @@ namespace MESProject
                             Equipment.Mainform_PROC_COMBOBOX = "IM";
                         }
 
+        private void StartForm_Create()
+        {
+            //StartForm 생성
             for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
 
@@ -257,6 +263,7 @@ namespace MESProject
         {
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
+
     }
 }
 
