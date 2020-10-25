@@ -70,8 +70,10 @@
             this.LotID_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LotID_Grid.Location = new System.Drawing.Point(32, 72);
             this.LotID_Grid.Name = "LotID_Grid";
+            this.LotID_Grid.RowHeadersVisible = false;
             this.LotID_Grid.RowHeadersWidth = 51;
             this.LotID_Grid.RowTemplate.Height = 27;
+            this.LotID_Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LotID_Grid.Size = new System.Drawing.Size(902, 400);
             this.LotID_Grid.TabIndex = 2;
             this.LotID_Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LotID_Grid_CellClick);

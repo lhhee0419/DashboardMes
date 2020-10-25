@@ -15,13 +15,21 @@ namespace MESProject
         bool isMove;
         Point fpt;
         string woid="";
-
+        string Userid;
+        
         private Startworking startworkingForm = null;
         public Lot(Startworking startworkingForm)
         {
             InitializeComponent();
             this.startworkingForm = startworkingForm;
             this.FormClosing += Lot_FormClosing;
+
+        }
+        private void Lot_Load(object sender, EventArgs e)
+        {
+            woid = startworkingForm.Selected_woid;
+            Userid = MainForm.User_ID;
+
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -39,15 +47,35 @@ namespace MESProject
             {
                 for (int i = 0; i < Qty; i++)
                 {
-                    string add_lot= $" INSERT INTO " +
-                                    $"LOT(LOTID, WOID, EQPTID,PROCID) "+
-                                    $"VALUES((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD')|| NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT)" +
-                                    $",'{woid}'"+
-                                    $",(SELECT EQPTID FROM EQUIPMENT WHERE EQPTSTATS = 'DOWN')" +
-                                    $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}'))";
-                    Common.DB_Connection(add_lot);
-                }
-            }    
+                    string add_lot = $"INSERT INTO LOT( \n" +
+                                         $"LOTID  \n" +
+                                         $", LOTSTAT \n" +
+                                         $", LOTCRDTTM \n" +
+                                         $", LOTSTDTTM \n" +
+                                         $", LOTEDDTTM \n" +
+                                         $", WOID \n" +
+                                         $", LOTCRQTY \n" +
+                                         $", LOTQTY \n" +
+                                         $", EQPTID \n" +
+                                         $", PROCID \n" +
+                                         $", INSUSER \n" +
+                                         $", INSDTTM) \n" +
+                                    $"VALUES \n" +
+                                        $"((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT) \n" +
+                                        $",'C' \n" +
+                                        $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
+                                        $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
+                                        $",'' \n" +
+                                        $",'{woid}' \n" +
+                                        $",1 \n" +
+                                        $",1 \n" +
+                                        $",(SELECT EQPTID FROM EQUIPMENT WHERE EQPTID = 'MX002') \n" +
+                                        $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}') \n" +
+                                        $",'{Userid}' \n" +
+                                        $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
+                            Common.DB_Connection(add_lot);
+                            }
+                        }    
             this.Close();
 
 
@@ -70,11 +98,7 @@ namespace MESProject
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
 
-        private void Lot_Load(object sender, EventArgs e)
-        {
-            woid = startworkingForm.Selected_woid;
 
-        }
 
         private void Lot_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -82,3 +106,6 @@ namespace MESProject
         }
     }
 }
+
+
+

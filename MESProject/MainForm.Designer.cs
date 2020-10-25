@@ -182,6 +182,7 @@
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WoGrid.Location = new System.Drawing.Point(23, 196);
             this.WoGrid.Name = "WoGrid";
+            this.WoGrid.ReadOnly = true;
             this.WoGrid.RowHeadersVisible = false;
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;

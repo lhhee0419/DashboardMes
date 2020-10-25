@@ -14,7 +14,8 @@ namespace MESProject
 {
     public partial class Login : Form
     {
-        private static MainForm mainform = new MainForm();
+       
+        public string ID,Password;
         public Login()
         {
             InitializeComponent();
@@ -43,18 +44,20 @@ namespace MESProject
         //로그인 버튼을 클릭
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            ID = IDtextBox.Text;
+            Password = PWDtextBox.Text;
             //textbox가 빈 값일 경우 나타나는 메세지
-            if (string.IsNullOrEmpty(IDtextBox.Text))
+            if (string.IsNullOrEmpty(ID))
             {
                 MessageBox.Show("아이디를 입력해주세요.");
             }
-            else if (string.IsNullOrEmpty(PWDtextBox.Text))
+            else if (string.IsNullOrEmpty(Password))
             {
                 MessageBox.Show("비밀번호를 입력해주세요");
             }
 
             //select_ID에 쿼리문을 저장
-            string select_ID = $"select count(*) from employee where EMPLOYEEID = '" + IDtextBox.Text + "' and EMPLOYEEPASSWORD='" + PWDtextBox.Text + "'";
+            string select_ID = $"select count(*) from employee where EMPLOYEEID = '" + ID + "' and EMPLOYEEPASSWORD='" + Password + "'";
 
             //select_ID로 조회된 결과를 data_Table에 return값을 저장함
             DataTable data_Table = Common.DB_Connection(select_ID);
@@ -65,6 +68,7 @@ namespace MESProject
                 if (data_Table.Rows[0][0].ToString() == "1")
                 {
                     this.DialogResult = DialogResult.OK;
+                    MainForm.User_ID = ID;
                     this.Close();
                 }
 

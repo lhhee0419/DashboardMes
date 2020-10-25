@@ -19,7 +19,7 @@ namespace MESProject
         // 창 이동 변수 선언
         bool isMove;
         Point fpt;
-
+        public static string User_ID { get; set; }
         public string woid = "";
         public MainForm()
         {
@@ -62,7 +62,7 @@ namespace MESProject
 
                 }
             }
-
+            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
         private void DataSearch()
@@ -81,17 +81,17 @@ namespace MESProject
                                             $",CASE WOSTAT WHEN 'P' THEN '대기'  WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
                                             $",W.PLANQTY \n" +
                                             $",NVL(PRODQTY,0) \n" +
-                                            $", COUNT(D.DEFECT_LOTID) AS 불량수량 \n" +
-                                            $", W.PLANDTTM \n," +
-                                            $"W.ETC \n " +
+                                            $",COUNT(D.DEFECT_LOTID) AS 불량수량 \n" +
+                                            $",W.PLANDTTM \n" +
+                                            $",W.ETC \n " +
                                         $"FROM WORKORDER W \n " +
                                             $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
                                             $"LEFT JOIN LOT L ON W.WOID = L.WOID \n" +
                                             $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
-                                        $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND '{date2.Year}/{date2.Month}/{date2.Day}' \n" +
-                                        $"OR (W.PROCID = 'P0001' AND W.WOSTAT ='S') \n" +
+                                        $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
+                                        $"AND W.PROCID = 'P0001' OR (W.PROCID = 'P0001' AND W.WOSTAT ='S') \n" +
                                         $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.ETC \n" +
-                                        $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) \n";
+                                        $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) ,W.WOID\n";
                 Common.DB_Connection(select_wo_mix, WoGrid);
             }
             else if (ProcCombo.SelectedIndex == 1)
@@ -111,14 +111,15 @@ namespace MESProject
                                                 $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
                                                 $"LEFT JOIN LOT L ON W.WOID = L.WOID \n" +
                                                 $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
-                                            $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND '{date2.Year}/{date2.Month}/{date2.Day}' \n" +
-                                            $"OR (W.PROCID = 'P0002' AND W.WOSTAT ='S') \n" +
+                                            $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}'  AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
+                                            $"AND W.PROCID = 'P0002' OR (W.PROCID = 'P0002' AND W.WOSTAT ='S') \n" +
                                             $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.ETC \n" +
-                                            $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) \n";
+                                            $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)),W.WOID \n";
                 Common.DB_Connection(select_wo_injection, WoGrid);
             }
 
             SetRowColor();
+            
         }
         public void SetRowColor()
         {

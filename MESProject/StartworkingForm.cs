@@ -41,8 +41,9 @@ namespace MESProject
                                     $"W.WOID" +
                                     $",P.PRODID " +
                                     $",P.PRODNAME " +
-                                    $".CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END" +
-                                    $".W.PLANQTY,COUNT(*)" +
+                                    $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END" +
+                                    $",W.PLANQTY" +
+                                    $",NVL(W.PRODQTY,0)" +
                                     $",COUNT(D.DEFECT_LOTID)" +
                                     $",W.PLANDTTM" +
                                     $",W.WOSTDTTM" +
@@ -92,6 +93,7 @@ namespace MESProject
                     LotGrid.Columns[i].HeaderText = $"{header[i]}";
                     LotGrid.Columns[i].ReadOnly = true;
                 }
+
             }
         }
 
@@ -175,3 +177,5 @@ namespace MESProject
         }
     }
 }
+
+

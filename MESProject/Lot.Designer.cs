@@ -85,6 +85,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Lot";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lot";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Lot_FormClosing);
             this.Load += new System.EventHandler(this.Lot_Load);

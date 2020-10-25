@@ -63,6 +63,7 @@
             this.IDtextBox.Name = "IDtextBox";
             this.IDtextBox.Size = new System.Drawing.Size(200, 45);
             this.IDtextBox.TabIndex = 2;
+            this.IDtextBox.Text = "1";
             this.IDtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IDTextbox_Enter);
             // 
             // PWDtextBox
@@ -72,6 +73,7 @@
             this.PWDtextBox.Name = "PWDtextBox";
             this.PWDtextBox.Size = new System.Drawing.Size(200, 45);
             this.PWDtextBox.TabIndex = 3;
+            this.PWDtextBox.Text = "1";
             this.PWDtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PwdTextbox_Enter);
             // 
             // LoginButton
