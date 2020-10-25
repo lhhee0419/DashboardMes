@@ -23,6 +23,7 @@ namespace MESProject
             Common.SetGridDesign(WLGrid);
             Common.SetGridDesign(LotGrid);
             WLGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
 
             //콤보박스 초기값설정
             string[] proc = { "배합", "사출" };
@@ -70,27 +71,63 @@ namespace MESProject
             if (ProcCombo.SelectedIndex == 0)
             {
                 //배합 콤보박스 선택 PROCID='P0001'
-                string select_wo_mix = $"SELECT W.WOID, P.PRODNAME, CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT, " +
-                                       $"E.EQPTID, W.PLANQTY,COUNT(*),COUNT(D.DEFECT_LOTID), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC" +
-                                       $" FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D " +
-                                       $"WHERE W.PROCID = E.PROCID AND W.PROCID = 'P0001' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  " +
-                                       $"plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' AND W.WOID = L.WOID(+) AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID(+) AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P') " +
-                                       $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
+                string select_wo_mix = $"SELECT \n" +
+                                           $"W.WOID \n" +
+                                           $",P.PRODNAME \n" +
+                                           $",CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
+                                           $",E.EQPTID \n" +
+                                           $",W.PLANQTY \n" +
+                                           $",NVL(W.PRODQTY,0) AS 생산수량 \n" +
+                                           $",COUNT(D.DEFECT_LOTID) \n" +
+                                           $",W.WOSTDTTM \n" +
+                                           $",W.WOEDDTTM \n" +
+                                           $",W.PLANDTTM \n" +
+                                           $",W.ETC  \n" +
+                                       $"FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D  \n" +
+                                       $"WHERE W.PROCID = E.PROCID  \n" +
+                                           $"AND W.PROCID = 'P0001'  \n" +
+                                           $"AND PLANDTTM >= '{date1.Year}/{date1.Month}/{date1.Day}'   \n" +
+                                           $"AND PLANDTTM <= TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1  \n" +
+                                           $"AND W.WOID = L.WOID(+)  \n" +
+                                           $"AND W.PRODID = P.PRODID  \n" +
+                                           $"AND L.LOTID = D.DEFECT_LOTID(+)  \n" +
+                                           $"AND WOSTAT <>'D'  \n" +
+                                           $"AND L.EQPTID = E.EQPTID  \n" +
+                                           $"AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')  \n" +
+                                       $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC  \n" +
+                                       $"ORDER BY (DECODE(WOSTAT,'진행중',0,1))";
                 Common.DB_Connection(select_wo_mix, WLGrid);
-                WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             }
             else if (ProcCombo.SelectedIndex == 1)
             {
                 //사출 콤보박스 선택 PROCID='P0002'
-                string select_wo_injection = $"SELECT W.WOID, P.PRODNAME, CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END, " +
-                                             $"E.EQPTID, W.PLANQTY, COUNT(*),COUNT(D.DEFECT_LOTID), W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC " +
-                                             $"FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D WHERE W.PROCID = E.PROCID AND " +
-                                             $"W.PROCID = 'P0002' AND plandttm >= '{date1.Year}/{date1.Month}/{date1.Day}' and  plandttm <= '{date2.Year}/{date2.Month}/{date2.Day}' " +
-                                             $"AND W.WOID = L.WOID(+) AND W.PRODID = P.PRODID AND L.LOTID = D.DEFECT_LOTID(+) AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')" +
-                                             $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC";
+                string select_wo_injection = $"SELECT \n" +
+                                               $"W.WOID \n" +
+                                               $",P.PRODNAME \n" +
+                                               $",CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
+                                               $",E.EQPTID \n" +
+                                               $",W.PLANQTY \n" +
+                                               $",NVL(W.PRODQTY,0) AS 생산수량 \n" +
+                                               $",COUNT(D.DEFECT_LOTID) \n" +
+                                               $",W.WOSTDTTM \n" +
+                                               $",W.WOEDDTTM \n" +
+                                               $",W.PLANDTTM \n" +
+                                               $",W.ETC  \n" +
+                                           $"FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D  \n" +
+                                           $"WHERE W.PROCID = E.PROCID  \n" +
+                                               $"AND W.PROCID = 'P0002'  \n" +
+                                               $"AND PLANDTTM >= '{date1.Year}/{date1.Month}/{date1.Day}'   \n" +
+                                               $"AND PLANDTTM <= TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1  \n" +
+                                               $"AND W.WOID = L.WOID(+)  \n" +
+                                               $"AND W.PRODID = P.PRODID  \n" +
+                                               $"AND L.LOTID = D.DEFECT_LOTID(+)  \n" +
+                                               $"AND WOSTAT <>'D'  \n" +
+                                               $"AND L.EQPTID = E.EQPTID  \n" +
+                                               $"AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')  \n" +
+                                           $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC  \n" +
+                                           $"ORDER BY (DECODE(WOSTAT,'진행중',0,1))";
                 Common.DB_Connection(select_wo_injection, WLGrid);
-                WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             }
         }
@@ -100,6 +137,7 @@ namespace MESProject
             //조회버튼
             DataSearch();
             SetRowColor();
+            WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public string woid;
@@ -151,8 +189,7 @@ namespace MESProject
 
         private void WLGrid_DataSourceChanged(object sender, EventArgs e)
         {
-            WLGrid.AutoResizeColumns(
-                DataGridViewAutoSizeColumnsMode.AllCells);
+            WLGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
     }
 }

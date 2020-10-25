@@ -44,9 +44,10 @@
             // 
             // CheckBtn
             // 
-            this.CheckBtn.Location = new System.Drawing.Point(680, 640);
+            this.CheckBtn.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CheckBtn.Location = new System.Drawing.Point(464, 505);
             this.CheckBtn.Name = "CheckBtn";
-            this.CheckBtn.Size = new System.Drawing.Size(94, 47);
+            this.CheckBtn.Size = new System.Drawing.Size(169, 82);
             this.CheckBtn.TabIndex = 0;
             this.CheckBtn.Text = "확인";
             this.CheckBtn.UseVisualStyleBackColor = true;
@@ -54,9 +55,10 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Location = new System.Drawing.Point(808, 640);
+            this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ExitBtn.Location = new System.Drawing.Point(750, 505);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(94, 47);
+            this.ExitBtn.Size = new System.Drawing.Size(169, 82);
             this.ExitBtn.TabIndex = 1;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -68,29 +70,31 @@
             this.LotID_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LotID_Grid.Location = new System.Drawing.Point(32, 72);
             this.LotID_Grid.Name = "LotID_Grid";
+            this.LotID_Grid.RowHeadersVisible = false;
             this.LotID_Grid.RowHeadersWidth = 51;
             this.LotID_Grid.RowTemplate.Height = 27;
-            this.LotID_Grid.Size = new System.Drawing.Size(672, 400);
+            this.LotID_Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LotID_Grid.Size = new System.Drawing.Size(902, 400);
             this.LotID_Grid.TabIndex = 2;
             this.LotID_Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LotID_Grid_CellClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(160, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 24);
+            this.label1.Size = new System.Drawing.Size(97, 28);
             this.label1.TabIndex = 3;
             this.label1.Text = "LOT ID";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("굴림", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(824, 32);
+            this.label2.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Location = new System.Drawing.Point(1062, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 24);
+            this.label2.Size = new System.Drawing.Size(124, 28);
             this.label2.TabIndex = 4;
             this.label2.Text = "불량요인";
             // 
@@ -99,7 +103,7 @@
             this.D_color.AutoSize = true;
             this.D_color.Location = new System.Drawing.Point(24, 208);
             this.D_color.Name = "D_color";
-            this.D_color.Size = new System.Drawing.Size(58, 19);
+            this.D_color.Size = new System.Drawing.Size(79, 28);
             this.D_color.TabIndex = 6;
             this.D_color.TabStop = true;
             this.D_color.Text = "색상";
@@ -111,7 +115,7 @@
             this.D_Scratch.AutoSize = true;
             this.D_Scratch.Location = new System.Drawing.Point(24, 152);
             this.D_Scratch.Name = "D_Scratch";
-            this.D_Scratch.Size = new System.Drawing.Size(58, 19);
+            this.D_Scratch.Size = new System.Drawing.Size(79, 28);
             this.D_Scratch.TabIndex = 7;
             this.D_Scratch.TabStop = true;
             this.D_Scratch.Text = "기스";
@@ -123,7 +127,7 @@
             this.D_Crack.AutoSize = true;
             this.D_Crack.Location = new System.Drawing.Point(24, 40);
             this.D_Crack.Name = "D_Crack";
-            this.D_Crack.Size = new System.Drawing.Size(73, 19);
+            this.D_Crack.Size = new System.Drawing.Size(103, 28);
             this.D_Crack.TabIndex = 8;
             this.D_Crack.TabStop = true;
             this.D_Crack.Text = "갈라짐";
@@ -135,7 +139,7 @@
             this.D_STED.AutoSize = true;
             this.D_STED.Location = new System.Drawing.Point(24, 96);
             this.D_STED.Name = "D_STED";
-            this.D_STED.Size = new System.Drawing.Size(94, 19);
+            this.D_STED.Size = new System.Drawing.Size(132, 28);
             this.D_STED.TabIndex = 9;
             this.D_STED.TabStop = true;
             this.D_STED.Text = "시작/종료";
@@ -148,7 +152,8 @@
             this.groupBox1.Controls.Add(this.D_STED);
             this.groupBox1.Controls.Add(this.D_Scratch);
             this.groupBox1.Controls.Add(this.D_Crack);
-            this.groupBox1.Location = new System.Drawing.Point(768, 104);
+            this.groupBox1.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox1.Location = new System.Drawing.Point(1015, 143);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 272);
             this.groupBox1.TabIndex = 10;
@@ -159,7 +164,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 768);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1280, 623);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -168,8 +174,12 @@
             this.Controls.Add(this.CheckBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Faulty";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Faulty";
             this.Load += new System.EventHandler(this.Faulty_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Faulty_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Faulty_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Faulty_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.LotID_Grid)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

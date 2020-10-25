@@ -32,7 +32,6 @@ namespace MESProject
 
             if (Rbtn.Checked == true)
             {
-                MessageBox.Show(name);
                 rad = code;
             }
             else if (Rbtn.Checked == false)
@@ -145,6 +144,25 @@ namespace MESProject
                 MessageBox.Show(E.Message);
             }
 
+
+        }
+        bool isMove;
+        Point fpt;
+        private void Faulty_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
+                Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
+        }
+
+        private void Faulty_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMove = false;
+        }
+
+        private void Faulty_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMove = true;
+            fpt = new Point(e.X, e.Y);
 
         }
     }

@@ -22,10 +22,10 @@ namespace MESProject
             Grid.BackgroundColor = Color.White;
             Grid.EnableHeadersVisualStyles = false;
             Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+            Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            Grid.Font = new Font("Fixsys", 14, FontStyle.Regular);
+            Grid.Font = new Font("Fixsys", 15, FontStyle.Regular);
 
         }
 

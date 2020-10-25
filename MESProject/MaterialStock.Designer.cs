@@ -57,7 +57,7 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F);
-            this.ExitBtn.Location = new System.Drawing.Point(869, 574);
+            this.ExitBtn.Location = new System.Drawing.Point(1182, 628);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(110, 60);
             this.ExitBtn.TabIndex = 3;
@@ -85,7 +85,7 @@
             // 
             // silo2
             // 
-            this.silo2.Location = new System.Drawing.Point(360, 93);
+            this.silo2.Location = new System.Drawing.Point(529, 107);
             this.silo2.Name = "silo2";
             this.silo2.Size = new System.Drawing.Size(240, 250);
             this.silo2.TabIndex = 7;
@@ -94,7 +94,7 @@
             // MtrlGrid2
             // 
             this.MtrlGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MtrlGrid2.Location = new System.Drawing.Point(360, 367);
+            this.MtrlGrid2.Location = new System.Drawing.Point(529, 381);
             this.MtrlGrid2.Name = "MtrlGrid2";
             this.MtrlGrid2.RowHeadersWidth = 51;
             this.MtrlGrid2.RowTemplate.Height = 27;
@@ -103,7 +103,7 @@
             // 
             // silo3
             // 
-            this.silo3.Location = new System.Drawing.Point(678, 93);
+            this.silo3.Location = new System.Drawing.Point(989, 107);
             this.silo3.Name = "silo3";
             this.silo3.Size = new System.Drawing.Size(240, 250);
             this.silo3.TabIndex = 9;
@@ -112,7 +112,7 @@
             // MtrlGrid3
             // 
             this.MtrlGrid3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MtrlGrid3.Location = new System.Drawing.Point(678, 367);
+            this.MtrlGrid3.Location = new System.Drawing.Point(989, 381);
             this.MtrlGrid3.Name = "MtrlGrid3";
             this.MtrlGrid3.RowHeadersWidth = 51;
             this.MtrlGrid3.RowTemplate.Height = 27;
@@ -123,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 646);
+            this.ClientSize = new System.Drawing.Size(1317, 710);
             this.Controls.Add(this.silo3);
             this.Controls.Add(this.MtrlGrid3);
             this.Controls.Add(this.silo2);
@@ -134,6 +134,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MaterialStock";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MaterialStock";
             this.Load += new System.EventHandler(this.MaterialStock_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MaterialStock_MouseDown);

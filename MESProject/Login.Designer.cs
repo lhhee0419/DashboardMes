@@ -63,6 +63,7 @@
             this.IDtextBox.Name = "IDtextBox";
             this.IDtextBox.Size = new System.Drawing.Size(200, 45);
             this.IDtextBox.TabIndex = 2;
+            this.IDtextBox.Text = "1";
             this.IDtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.IDTextbox_Enter);
             // 
             // PWDtextBox
@@ -72,6 +73,7 @@
             this.PWDtextBox.Name = "PWDtextBox";
             this.PWDtextBox.Size = new System.Drawing.Size(200, 45);
             this.PWDtextBox.TabIndex = 3;
+            this.PWDtextBox.Text = "1";
             this.PWDtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PwdTextbox_Enter);
             // 
             // LoginButton
@@ -100,6 +102,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(782, 553);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.LoginButton);
@@ -109,6 +112,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Login_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Login_MouseMove);

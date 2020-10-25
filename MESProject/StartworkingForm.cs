@@ -27,7 +27,7 @@ namespace MESProject
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-
+            
             //Form Load시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
             string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(update_wostat);
@@ -40,48 +40,70 @@ namespace MESProject
 
             Inquiry_Woid();
             Inquiry_Lot();
+            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
+            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
         }
         public void Inquiry_Woid()
         {
             //WoGrid에 표시될 데이터 가져오기
-            string select_wo = $"SELECT W.WOID, P.PRODID ,P.PRODNAME, " +
-                                $"CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END," +
-                                $"W.PLANQTY,W.PRODQTY, COUNT(*), W.PLANDTTM, W.WOSTDTTM, W.ETC " +
+            string select_wo =  $"SELECT " +
+                                    $"W.WOID" +
+                                    $",P.PRODID " +
+                                    $",P.PRODNAME " +
+                                    $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END" +
+                                    $",W.PLANQTY" +
+                                    $",NVL(W.PRODQTY,0)" +
+                                    $",COUNT(D.DEFECT_LOTID)" +
+                                    $",W.PLANDTTM" +
+                                    $",W.WOSTDTTM" +
+                                    $",W.ETC " +
                                 $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D " +
-                                $"WHERE W.WOID = '{Selected_woid}' AND W.PRODID = P.PRODID AND W.WOID = L.WOID AND L.LOTID = D.DEFECT_LOTID " +
+                                $"WHERE W.WOID = '{Selected_woid}' " +
+                                    $"AND W.PRODID = P.PRODID " +
+                                    $"AND W.WOID = L.WOID(+) " +
+                                    $"AND L.LOTID = D.DEFECT_LOTID(+) " +
                                 $"GROUP BY W.WOID, P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC ";
 
             Common.DB_Connection(select_wo, WoGrid);
             if (WoGrid.Rows.Count > 0)
             {
-                WoGrid.Columns[0].HeaderText = "작업지시코드";
+                string[] header = new string[] { "작업코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "작업지시 시작일", "비고" };
+                for (int i = 0; i < header.Length; i++)
+                {
+                    WoGrid.Columns[i].HeaderText = $"{header[i]}";
+                    WoGrid.Columns[i].ReadOnly = true;
 
-                WoGrid.Columns[1].HeaderText = "제품코드";
-                WoGrid.Columns[2].HeaderText = "제품명";
-                WoGrid.Columns[3].HeaderText = "작업상태";
-                WoGrid.Columns[4].HeaderText = "계획수량";
-                WoGrid.Columns[5].HeaderText = "생산수량";
-                WoGrid.Columns[6].HeaderText = "불량수량";
-                WoGrid.Columns[7].HeaderText = "계획날짜";
-                WoGrid.Columns[8].HeaderText = "작업지시 시작일";
-                WoGrid.Columns[9].HeaderText = "비고";
+                }
             }
+           WoGrid.RowTemplate.Height = 85;
         }
         public void Inquiry_Lot()
         {
             //LotGrid에 표시될 데이터 가져오기
-            string Selected_lot = $"SELECT LOTID, LOTSTAT, CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID "+
-                                  $"FROM DEFECTLOT WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END  , LOTSTDTTM,LOTEDDTTM "+
-                                  $"FROM LOT L WHERE WOID = '{Selected_woid}' ORDER BY LOTID";
+            string Selected_lot = $"SELECT "+
+                                    $"LOTID" +
+                                    $",LOTSTAT" +
+                                    $",CASE WHEN L.LOTID IN(" +
+                                        $"SELECT DEFECT_LOTID " +
+                                        $"FROM DEFECTLOT " +
+                                        $"WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END" +
+                                    $",LOTSTDTTM" +
+                                    $",LOTEDDTTM " +
+                                  $"FROM LOT L " +
+                                  $"WHERE WOID = '{Selected_woid}' AND LOTSTAT <>'D' " +
+                                  $"ORDER BY LOTID";
+
             Common.DB_Connection(Selected_lot, LotGrid);
             if (LotGrid.Rows.Count > 0)
             {
-                LotGrid.Columns[0].HeaderText = "LOT코드";
-                LotGrid.Columns[1].HeaderText = "LOT상태";
-                LotGrid.Columns[2].HeaderText = "LOT불량";
-                LotGrid.Columns[3].HeaderText = "시작시간";
-                LotGrid.Columns[4].HeaderText = "종료시간";
+                string[] header = new string[] { "LOT코드", "LOT상태", "LOT불량", "시작시간", "종료시간" };
+                for (int i = 0; i < header.Length; i++)
+                {
+                    LotGrid.Columns[i].HeaderText = $"{header[i]}";
+                    LotGrid.Columns[i].ReadOnly = true;
+                }
+
             }
         }
 
@@ -111,7 +133,7 @@ namespace MESProject
                     woid = LotGrid.Rows[i].Cells[0].FormattedValue.ToString();
                 }
             }
-            string delete_lot = $"DELETE FROM LOT WHERE LOTID = '{woid}'";
+            string delete_lot = $" UPDATE LOT SET LOTSTAT = 'D' WHERE LOTID = '{woid}'";
             Common.DB_Connection(delete_lot);
             //MessageBox.Show($"LOT코드: {woid}가 삭제 되었습니다.");
             Inquiry_Lot();
@@ -161,5 +183,12 @@ namespace MESProject
             }
             
         }
+
+        private void EndBtn_Click(object sender, EventArgs e)
+        {
+            //종료버튼
+        }
     }
 }
+
+
