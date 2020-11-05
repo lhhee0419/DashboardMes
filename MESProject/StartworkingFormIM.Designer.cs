@@ -53,14 +53,14 @@
             this.IM1_ProdQty = new System.Windows.Forms.Label();
             this.IM1_ProdQty_Value = new System.Windows.Forms.Label();
             this.CurTime = new System.Windows.Forms.Label();
-            this.IM2 = new System.Windows.Forms.PictureBox();
             this.IM1 = new System.Windows.Forms.PictureBox();
+            this.IM2 = new System.Windows.Forms.PictureBox();
             this.silo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IM2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IM2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -352,26 +352,25 @@
             this.CurTime.TabIndex = 39;
             this.CurTime.Text = "label1";
             // 
+            // IM1
+            // 
+            this.IM1.Image = global::MESProject.Properties.Resources.사출111;
+            this.IM1.Location = new System.Drawing.Point(504, 368);
+            this.IM1.Name = "IM1";
+            this.IM1.Size = new System.Drawing.Size(192, 136);
+            this.IM1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.IM1.TabIndex = 41;
+            this.IM1.TabStop = false;
+            // 
             // IM2
             // 
-            this.IM2.Image = global::MESProject.Properties.Resources.사출2;
+            this.IM2.Image = global::MESProject.Properties.Resources.사출21;
             this.IM2.Location = new System.Drawing.Point(504, 560);
             this.IM2.Name = "IM2";
             this.IM2.Size = new System.Drawing.Size(192, 136);
             this.IM2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IM2.TabIndex = 35;
+            this.IM2.TabIndex = 41;
             this.IM2.TabStop = false;
-            // 
-            // IM1
-            // 
-            this.IM1.BackColor = System.Drawing.Color.White;
-            this.IM1.Image = global::MESProject.Properties.Resources.사출11;
-            this.IM1.Location = new System.Drawing.Point(496, 376);
-            this.IM1.Name = "IM1";
-            this.IM1.Size = new System.Drawing.Size(192, 136);
-            this.IM1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IM1.TabIndex = 34;
-            this.IM1.TabStop = false;
             // 
             // silo
             // 
@@ -379,6 +378,7 @@
             this.silo.Location = new System.Drawing.Point(120, 224);
             this.silo.Name = "silo";
             this.silo.Size = new System.Drawing.Size(88, 112);
+            this.silo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.silo.TabIndex = 28;
             this.silo.TabStop = false;
             // 
@@ -400,6 +400,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
+            this.Controls.Add(this.IM1);
+            this.Controls.Add(this.IM2);
             this.Controls.Add(this.CurTime);
             this.Controls.Add(this.IM1_ProdQty_Value);
             this.Controls.Add(this.IM2_ProdQty_Value);
@@ -416,8 +418,6 @@
             this.Controls.Add(this.IM2_Label1);
             this.Controls.Add(this.IM2_STBtn);
             this.Controls.Add(this.IM1_STBtn);
-            this.Controls.Add(this.IM2);
-            this.Controls.Add(this.IM1);
             this.Controls.Add(this.silo);
             this.Controls.Add(this.StockBtn);
             this.Controls.Add(this.FaultyBtn);
@@ -439,8 +439,8 @@
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Login_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IM2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IM2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -461,8 +461,6 @@
         private System.Windows.Forms.DataGridView WoGrid;
         private System.Windows.Forms.PictureBox silo;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox IM1;
-        private System.Windows.Forms.PictureBox IM2;
         private System.Windows.Forms.Button IM1_STBtn;
         private System.Windows.Forms.Button IM2_STBtn;
         private System.Windows.Forms.Label IM2_Label1;
@@ -479,5 +477,7 @@
         private System.Windows.Forms.Label IM1_ProdQty;
         private System.Windows.Forms.Label IM1_ProdQty_Value;
         private System.Windows.Forms.Label CurTime;
+        private System.Windows.Forms.PictureBox IM2;
+        private System.Windows.Forms.PictureBox IM1;
     }
 }

@@ -84,12 +84,7 @@ namespace MESProject
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             LotGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            silo.Image = Properties.Resources.silo0101;
-            silo.SizeMode = PictureBoxSizeMode.StretchImage;
-            IM1.Image = Properties.Resources.사출11;
-            IM1.SizeMode = PictureBoxSizeMode.StretchImage;
-            IM2.Image = Properties.Resources.사출2;
-            IM2.SizeMode = PictureBoxSizeMode.StretchImage;
+       
 
             BtnEnabled();
 
