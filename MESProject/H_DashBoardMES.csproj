@@ -93,11 +93,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartworkingForm.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="StartworkingFormIM.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StartworkingForm.Designer.cs">
-      <DependentUpon>StartworkingForm.cs</DependentUpon>
+    <Compile Include="StartworkingFormIM.Designer.cs">
+      <DependentUpon>StartworkingFormIM.cs</DependentUpon>
     </Compile>
     <Compile Include="Stopworking.cs">
       <SubType>Form</SubType>
@@ -128,16 +133,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="StartworkingForm.resx">
-      <DependentUpon>StartworkingForm.cs</DependentUpon>
+    <EmbeddedResource Include="StartworkingFormIM.resx">
+      <DependentUpon>StartworkingFormIM.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Stopworking.resx">
       <DependentUpon>Stopworking.cs</DependentUpon>
@@ -161,6 +161,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\silo0101.png" />
+    <None Include="Resources\SILo010.png" />
+    <None Include="Resources\사출11.png" />
+    <None Include="Resources\사출2.png" />
+    <None Include="Resources\통로.png" />
+    <None Include="Resources\위통로.png" />
+    <None Include="Resources\아래통로.png" />
     <None Include="Resources\mixing.PNG" />
     <None Include="Resources\silo1.PNG" />
     <None Include="Resources\silo_red.png" />

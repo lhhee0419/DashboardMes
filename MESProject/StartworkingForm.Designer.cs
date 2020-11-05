@@ -1,6 +1,6 @@
 ﻿namespace MESProject
 {
-    partial class Startworking
+    partial class StartworkingF
     {
         /// <summary>
         /// Required designer variable.
