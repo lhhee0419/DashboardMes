@@ -22,7 +22,7 @@ namespace MESProject
         public static string User_ID { get; set; }
         // EQPT 조회하기 위한 변수
         //Equipment에서 가져온 EQPTID
-        public static string Equipment_EQPTID { get; set; }
+
         public string woid = "";
         public MainForm()
         {
@@ -81,7 +81,7 @@ namespace MESProject
                                             $",P.PRODNAME \n " +
                                             $",CASE WOSTAT WHEN 'P' THEN '대기'  WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
                                             $",W.PLANQTY \n" +
-                                            $",NVL(PRODQTY,0) \n" +
+                                            $",NVL(SUM(L.LOTQTY), 0) \n" +
                                             $",COUNT(D.DEFECT_LOTID) AS 불량수량 \n" +
                                             $",W.PLANDTTM \n" +
                                             $",W.ETC \n " +
@@ -90,8 +90,10 @@ namespace MESProject
                                             $"LEFT JOIN LOT L ON W.WOID = L.WOID \n" +
                                             $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                         $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
-                                        $"AND W.PROCID = 'P0001' OR (W.PROCID = 'P0001' AND W.WOSTAT ='S') \n" +
-                                        $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.ETC \n" +
+                                        $"AND W.PROCID = 'P0001' \n" +
+                                        $"OR (W.PROCID = 'P0001' AND W.WOSTAT ='S') \n" +
+                                        $"AND L.LOTSTAT <> 'D' \n" +
+                                        $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PLANDTTM, W.ETC \n" +
                                         $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) ,W.WOID\n";
                 Common.DB_Connection(select_wo_mix, WoGrid);
             }
@@ -99,23 +101,25 @@ namespace MESProject
             {
                 //사출 콤보박스 선택
                 string select_wo_injection = $"SELECT \n" +
-                                                $"W.WOID \n" +
-                                                $",W.PRODID \n " +
-                                                $",P.PRODNAME \n " +
-                                                $",CASE WOSTAT WHEN 'P' THEN '대기'  WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
-                                                $",W.PLANQTY \n" +
-                                                $",NVL(PRODQTY,0) \n" +
-                                                $", COUNT(D.DEFECT_LOTID) AS 불량수량 \n" +
-                                                $", W.PLANDTTM \n," +
-                                                $"W.ETC \n " +
-                                            $"FROM WORKORDER W \n " +
-                                                $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
-                                                $"LEFT JOIN LOT L ON W.WOID = L.WOID \n" +
-                                                $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
-                                            $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}'  AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
-                                            $"AND W.PROCID = 'P0002' OR (W.PROCID = 'P0002' AND W.WOSTAT ='S') \n" +
-                                            $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.ETC \n" +
-                                            $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)),W.WOID \n";
+                                            $"W.WOID \n" +
+                                            $",W.PRODID \n " +
+                                            $",P.PRODNAME \n " +
+                                            $",CASE WOSTAT WHEN 'P' THEN '대기'  WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
+                                            $",W.PLANQTY \n" +
+                                            $",NVL(SUM(L.LOTQTY), 0) \n" +
+                                            $",COUNT(D.DEFECT_LOTID) AS 불량수량 \n" +
+                                            $",W.PLANDTTM \n" +
+                                            $",W.ETC \n " +
+                                        $"FROM WORKORDER W \n " +
+                                            $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
+                                            $"LEFT JOIN LOT L ON W.WOID = L.WOID \n" +
+                                            $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
+                                        $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
+                                        $"AND W.PROCID = 'P0002' \n" +
+                                        $"OR (W.PROCID = 'P0002' AND W.WOSTAT ='S') \n" +
+                                        $"AND L.LOTSTAT <> 'D' \n" +
+                                        $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PLANDTTM, W.ETC \n" +
+                                        $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) ,W.WOID\n";
                 Common.DB_Connection(select_wo_injection, WoGrid);
             }
 
@@ -169,53 +173,7 @@ namespace MESProject
                 Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
             }
             startworkingForm.FormClosed += Form_closing;
-/*            
-                        if(ProcCombo.SelectedIndex ==0)
-                        {
-                            Equipment.Mainform_PROC_COMBOBOX = "MX";
-                        }
-                        else
-                        {
-                            Equipment.Mainform_PROC_COMBOBOX = "IM";
-                        }
-
-        private void StartForm_Create()
-        {
-            //StartForm 생성
-            for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
-            {
-
-                if (WoGrid.Rows[i].Selected == true)
-                {
-                    woid = WoGrid.Rows[i].Cells[0].Value.ToString();
-                    Equipment.woid = woid;
-                }
-            }
-            Equipment_check();*/
-
-
         }
-/*        private void Equipment_check()
-        {
-            Equipment equipment = new Equipment();
-            DialogResult result = equipment.ShowDialog();
-            //설비창 닫기
-            if (result != DialogResult.OK)
-            {
-                //mainform
-            }
-            else
-            {
-                Startworking startworkingForm = new Startworking(woid);
-                if (woid != "")
-                {
-                    startworkingForm.Selected_woid = woid;
-                    Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
-                }
-                startworkingForm.FormClosed += Form_closing;
-            }
-        }*/
-
 
         public void Form_closing(object sender, FormClosedEventArgs e)
         {
@@ -264,6 +222,24 @@ namespace MESProject
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
 
+        private void WoGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
+            {
+
+                if (WoGrid.Rows[i].Selected == true)
+                {
+                    woid = WoGrid.Rows[i].Cells[0].Value.ToString();
+                }
+            }
+            Startworking startworkingForm = new Startworking();
+            if (woid != "")
+            {
+                startworkingForm.Selected_woid = woid;
+                Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+            }
+            startworkingForm.FormClosed += Form_closing;
+        }
     }
 }
 

@@ -121,6 +121,12 @@
   <data name="mixing" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mixing.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="path1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\통로.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="path2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\통로2.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="silo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\silo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

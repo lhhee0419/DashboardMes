@@ -29,7 +29,7 @@ namespace MESProject
         {
             woid = startworkingForm.Selected_woid;
             Userid = MainForm.User_ID;
-            EQPTid = MainForm.Equipment_EQPTID;
+            EQPTid = Startworking.EQPTID;
 
         }
 
@@ -61,16 +61,16 @@ namespace MESProject
                                          $", PROCID \n" +
                                          $", INSUSER \n" +
                                          $", INSDTTM) \n" +
-                                    $"VALUES \n" +
+                                        $"VALUES \n" +
                                         $"((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT) \n" +
                                         $",'C' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
-                                        $",'' \n" +
+                                        $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",'{woid}' \n" +
                                         $",1 \n" +
                                         $",1 \n" +
-                                        $",{EQPTid} \n" +
+                                        $",'{EQPTid}' \n" +
                                         $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}') \n" +
                                         $",'{Userid}' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
@@ -104,6 +104,7 @@ namespace MESProject
         private void Lot_FormClosing(object sender, FormClosingEventArgs e)
         {
             startworkingForm.Inquiry_Lot();
+            startworkingForm.Inquiry_Woid();
         }
 
         private void LotAdd_tb_TextChanged(object sender, EventArgs e)

@@ -20,7 +20,6 @@ C:\Users\Admin\source\gitmes\MESProject\bin\Debug\MESProject.exe
 C:\Users\Admin\source\gitmes\MESProject\bin\Debug\MESProject.pdb
 C:\Users\Admin\source\gitmes\MESProject\obj\Debug\H_DashBoardMES.csprojAssemblyReference.cache
 C:\Users\Admin\source\gitmes\MESProject\obj\Debug\MESProject.Faulty.resources
-C:\Users\Admin\source\gitmes\MESProject\obj\Debug\MESProject.MixForm.resources
 C:\Users\Admin\source\gitmes\MESProject\obj\Debug\MESProject.MainForm.resources
 C:\Users\Admin\source\gitmes\MESProject\obj\Debug\MESProject.Properties.Resources.resources
 C:\Users\Admin\source\gitmes\MESProject\obj\Debug\MESProject.Stopworking.resources

@@ -161,6 +161,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\통로2.PNG" />
+    <None Include="Resources\통로.PNG" />
     <None Include="Resources\mixing.PNG" />
     <None Include="Resources\silo1.PNG" />
     <None Include="Resources\silo_red.png" />

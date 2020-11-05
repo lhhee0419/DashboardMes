@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.StockBtn = new System.Windows.Forms.Button();
             this.FaultyBtn = new System.Windows.Forms.Button();
             this.LotDelBtn = new System.Windows.Forms.Button();
@@ -42,6 +43,40 @@
             this.silo3 = new System.Windows.Forms.PictureBox();
             this.MixingMachine2 = new System.Windows.Forms.PictureBox();
             this.MixingMachine1 = new System.Windows.Forms.PictureBox();
+            this.path1 = new System.Windows.Forms.PictureBox();
+            this.path2 = new System.Windows.Forms.PictureBox();
+            this.StartBtn1 = new System.Windows.Forms.Button();
+            this.StartBtn2 = new System.Windows.Forms.Button();
+            this.Mixing1_1 = new System.Windows.Forms.Button();
+            this.Mixing1_2 = new System.Windows.Forms.Button();
+            this.Mixing1_3 = new System.Windows.Forms.Button();
+            this.pass1 = new System.Windows.Forms.Button();
+            this.Mixing_End1 = new System.Windows.Forms.Button();
+            this.Mixing_Start1 = new System.Windows.Forms.Button();
+            this.Mixing2_3 = new System.Windows.Forms.Button();
+            this.Mixing2_2 = new System.Windows.Forms.Button();
+            this.Mixing2_1 = new System.Windows.Forms.Button();
+            this.pass2 = new System.Windows.Forms.Button();
+            this.Mixing_End2 = new System.Windows.Forms.Button();
+            this.Mixing_Start2 = new System.Windows.Forms.Button();
+            this.siloName2 = new System.Windows.Forms.Label();
+            this.siloName3 = new System.Windows.Forms.Label();
+            this.siloName1 = new System.Windows.Forms.Label();
+            this.silo2_Qty = new System.Windows.Forms.Label();
+            this.silo1_Qty = new System.Windows.Forms.Label();
+            this.silo3_Qty = new System.Windows.Forms.Label();
+            this.silo10 = new System.Windows.Forms.PictureBox();
+            this.siloName10 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.silo10_Qty = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.timer4 = new System.Windows.Forms.Timer(this.components);
+            this.timer5 = new System.Windows.Forms.Timer(this.components);
+            this.timer6 = new System.Windows.Forms.Timer(this.components);
+            this.timer7 = new System.Windows.Forms.Timer(this.components);
+            this.Mixing1 = new System.Windows.Forms.Label();
+            this.Mixing2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
@@ -49,6 +84,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
             this.SuspendLayout();
             // 
             // StockBtn
@@ -58,7 +96,7 @@
             this.StockBtn.Name = "StockBtn";
             this.StockBtn.Size = new System.Drawing.Size(118, 86);
             this.StockBtn.TabIndex = 27;
-            this.StockBtn.Text = "원재료 재고조회";
+            this.StockBtn.Text = "원재료 재고관리";
             this.StockBtn.UseVisualStyleBackColor = true;
             this.StockBtn.Click += new System.EventHandler(this.StockBtn_Click);
             // 
@@ -120,7 +158,7 @@
             // LotaddBtn
             // 
             this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LotaddBtn.Location = new System.Drawing.Point(25, 725);
+            this.LotaddBtn.Location = new System.Drawing.Point(25, 724);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(118, 86);
             this.LotaddBtn.TabIndex = 21;
@@ -131,66 +169,439 @@
             // LotGrid
             // 
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(882, 142);
+            this.LotGrid.Location = new System.Drawing.Point(938, 113);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(652, 526);
+            this.LotGrid.Size = new System.Drawing.Size(599, 541);
             this.LotGrid.TabIndex = 20;
             // 
             // WoGrid
             // 
             this.WoGrid.AllowUserToAddRows = false;
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WoGrid.Location = new System.Drawing.Point(25, 30);
+            this.WoGrid.Location = new System.Drawing.Point(25, 12);
             this.WoGrid.Name = "WoGrid";
             this.WoGrid.RowHeadersVisible = false;
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
-            this.WoGrid.Size = new System.Drawing.Size(1509, 106);
+            this.WoGrid.Size = new System.Drawing.Size(1509, 91);
             this.WoGrid.TabIndex = 19;
             // 
             // silo1
             // 
-            this.silo1.Location = new System.Drawing.Point(34, 167);
+            this.silo1.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo1.Location = new System.Drawing.Point(86, 154);
             this.silo1.Name = "silo1";
-            this.silo1.Size = new System.Drawing.Size(76, 126);
+            this.silo1.Size = new System.Drawing.Size(104, 126);
+            this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.silo1.TabIndex = 28;
             this.silo1.TabStop = false;
             // 
             // silo2
             // 
-            this.silo2.Location = new System.Drawing.Point(133, 167);
+            this.silo2.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo2.Location = new System.Drawing.Point(255, 152);
             this.silo2.Name = "silo2";
-            this.silo2.Size = new System.Drawing.Size(76, 126);
+            this.silo2.Size = new System.Drawing.Size(104, 126);
+            this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.silo2.TabIndex = 29;
             this.silo2.TabStop = false;
             // 
             // silo3
             // 
-            this.silo3.Location = new System.Drawing.Point(233, 167);
+            this.silo3.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo3.Location = new System.Drawing.Point(417, 152);
             this.silo3.Name = "silo3";
-            this.silo3.Size = new System.Drawing.Size(76, 126);
+            this.silo3.Size = new System.Drawing.Size(104, 126);
+            this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.silo3.TabIndex = 30;
             this.silo3.TabStop = false;
             // 
             // MixingMachine2
             // 
-            this.MixingMachine2.Location = new System.Drawing.Point(415, 347);
+            this.MixingMachine2.Image = global::MESProject.Properties.Resources.mixing;
+            this.MixingMachine2.Location = new System.Drawing.Point(608, 353);
             this.MixingMachine2.Name = "MixingMachine2";
             this.MixingMachine2.Size = new System.Drawing.Size(76, 148);
+            this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MixingMachine2.TabIndex = 32;
             this.MixingMachine2.TabStop = false;
             // 
             // MixingMachine1
             // 
-            this.MixingMachine1.Location = new System.Drawing.Point(315, 347);
+            this.MixingMachine1.Image = global::MESProject.Properties.Resources.mixing;
+            this.MixingMachine1.Location = new System.Drawing.Point(354, 353);
             this.MixingMachine1.Name = "MixingMachine1";
             this.MixingMachine1.Size = new System.Drawing.Size(76, 148);
+            this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MixingMachine1.TabIndex = 31;
             this.MixingMachine1.TabStop = false;
+            // 
+            // path1
+            // 
+            this.path1.Image = global::MESProject.Properties.Resources.path1;
+            this.path1.Location = new System.Drawing.Point(111, 284);
+            this.path1.Name = "path1";
+            this.path1.Size = new System.Drawing.Size(550, 63);
+            this.path1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.path1.TabIndex = 33;
+            this.path1.TabStop = false;
+            // 
+            // path2
+            // 
+            this.path2.Image = global::MESProject.Properties.Resources.path2;
+            this.path2.Location = new System.Drawing.Point(382, 507);
+            this.path2.Name = "path2";
+            this.path2.Size = new System.Drawing.Size(279, 88);
+            this.path2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.path2.TabIndex = 34;
+            this.path2.TabStop = false;
+            // 
+            // StartBtn1
+            // 
+            this.StartBtn1.Font = new System.Drawing.Font("문체부 돋음체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.StartBtn1.Location = new System.Drawing.Point(436, 395);
+            this.StartBtn1.Name = "StartBtn1";
+            this.StartBtn1.Size = new System.Drawing.Size(84, 86);
+            this.StartBtn1.TabIndex = 35;
+            this.StartBtn1.Text = "1호   배합   시작";
+            this.StartBtn1.UseVisualStyleBackColor = true;
+            this.StartBtn1.Click += new System.EventHandler(this.StartBtn1_Click);
+            // 
+            // StartBtn2
+            // 
+            this.StartBtn2.Font = new System.Drawing.Font("문체부 돋음체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.StartBtn2.Location = new System.Drawing.Point(521, 395);
+            this.StartBtn2.Name = "StartBtn2";
+            this.StartBtn2.Size = new System.Drawing.Size(84, 86);
+            this.StartBtn2.TabIndex = 36;
+            this.StartBtn2.Text = "2호   배합   시작";
+            this.StartBtn2.UseVisualStyleBackColor = true;
+            this.StartBtn2.Click += new System.EventHandler(this.StartBtn2_Click);
+            // 
+            // Mixing1_1
+            // 
+            this.Mixing1_1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing1_1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing1_1.FlatAppearance.BorderSize = 0;
+            this.Mixing1_1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1_1.ForeColor = System.Drawing.Color.White;
+            this.Mixing1_1.Location = new System.Drawing.Point(14, 332);
+            this.Mixing1_1.Name = "Mixing1_1";
+            this.Mixing1_1.Size = new System.Drawing.Size(81, 74);
+            this.Mixing1_1.TabIndex = 37;
+            this.Mixing1_1.Text = "1호 이송";
+            this.Mixing1_1.UseVisualStyleBackColor = false;
+            // 
+            // Mixing1_2
+            // 
+            this.Mixing1_2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing1_2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing1_2.FlatAppearance.BorderSize = 0;
+            this.Mixing1_2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1_2.ForeColor = System.Drawing.Color.White;
+            this.Mixing1_2.Location = new System.Drawing.Point(92, 332);
+            this.Mixing1_2.Name = "Mixing1_2";
+            this.Mixing1_2.Size = new System.Drawing.Size(81, 74);
+            this.Mixing1_2.TabIndex = 38;
+            this.Mixing1_2.Text = "2호 이송";
+            this.Mixing1_2.UseVisualStyleBackColor = false;
+            // 
+            // Mixing1_3
+            // 
+            this.Mixing1_3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing1_3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing1_3.FlatAppearance.BorderSize = 0;
+            this.Mixing1_3.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1_3.ForeColor = System.Drawing.Color.White;
+            this.Mixing1_3.Location = new System.Drawing.Point(171, 332);
+            this.Mixing1_3.Name = "Mixing1_3";
+            this.Mixing1_3.Size = new System.Drawing.Size(81, 74);
+            this.Mixing1_3.TabIndex = 39;
+            this.Mixing1_3.Text = "3호 이송";
+            this.Mixing1_3.UseVisualStyleBackColor = false;
+            // 
+            // pass1
+            // 
+            this.pass1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.pass1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.pass1.FlatAppearance.BorderSize = 0;
+            this.pass1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.pass1.ForeColor = System.Drawing.Color.White;
+            this.pass1.Location = new System.Drawing.Point(270, 450);
+            this.pass1.Name = "pass1";
+            this.pass1.Size = new System.Drawing.Size(81, 74);
+            this.pass1.TabIndex = 42;
+            this.pass1.Text = "배출 완료";
+            this.pass1.UseVisualStyleBackColor = false;
+            // 
+            // Mixing_End1
+            // 
+            this.Mixing_End1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing_End1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing_End1.FlatAppearance.BorderSize = 0;
+            this.Mixing_End1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_End1.ForeColor = System.Drawing.Color.White;
+            this.Mixing_End1.Location = new System.Drawing.Point(190, 450);
+            this.Mixing_End1.Name = "Mixing_End1";
+            this.Mixing_End1.Size = new System.Drawing.Size(81, 74);
+            this.Mixing_End1.TabIndex = 41;
+            this.Mixing_End1.Text = "배합 완료";
+            this.Mixing_End1.UseVisualStyleBackColor = false;
+            // 
+            // Mixing_Start1
+            // 
+            this.Mixing_Start1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing_Start1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing_Start1.FlatAppearance.BorderSize = 0;
+            this.Mixing_Start1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_Start1.ForeColor = System.Drawing.Color.White;
+            this.Mixing_Start1.Location = new System.Drawing.Point(111, 450);
+            this.Mixing_Start1.Name = "Mixing_Start1";
+            this.Mixing_Start1.Size = new System.Drawing.Size(81, 74);
+            this.Mixing_Start1.TabIndex = 40;
+            this.Mixing_Start1.Text = "배합 시작";
+            this.Mixing_Start1.UseVisualStyleBackColor = false;
+            // 
+            // Mixing2_3
+            // 
+            this.Mixing2_3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing2_3.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing2_3.FlatAppearance.BorderSize = 0;
+            this.Mixing2_3.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2_3.ForeColor = System.Drawing.Color.White;
+            this.Mixing2_3.Location = new System.Drawing.Point(706, 224);
+            this.Mixing2_3.Name = "Mixing2_3";
+            this.Mixing2_3.Size = new System.Drawing.Size(81, 74);
+            this.Mixing2_3.TabIndex = 51;
+            this.Mixing2_3.Text = "3호 이송";
+            this.Mixing2_3.UseVisualStyleBackColor = false;
+            // 
+            // Mixing2_2
+            // 
+            this.Mixing2_2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing2_2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing2_2.FlatAppearance.BorderSize = 0;
+            this.Mixing2_2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2_2.ForeColor = System.Drawing.Color.White;
+            this.Mixing2_2.Location = new System.Drawing.Point(627, 224);
+            this.Mixing2_2.Name = "Mixing2_2";
+            this.Mixing2_2.Size = new System.Drawing.Size(81, 74);
+            this.Mixing2_2.TabIndex = 50;
+            this.Mixing2_2.Text = "2호 이송";
+            this.Mixing2_2.UseVisualStyleBackColor = false;
+            // 
+            // Mixing2_1
+            // 
+            this.Mixing2_1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing2_1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing2_1.FlatAppearance.BorderSize = 0;
+            this.Mixing2_1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2_1.ForeColor = System.Drawing.Color.White;
+            this.Mixing2_1.Location = new System.Drawing.Point(548, 224);
+            this.Mixing2_1.Name = "Mixing2_1";
+            this.Mixing2_1.Size = new System.Drawing.Size(81, 74);
+            this.Mixing2_1.TabIndex = 49;
+            this.Mixing2_1.Text = "1호 이송";
+            this.Mixing2_1.UseVisualStyleBackColor = false;
+            // 
+            // pass2
+            // 
+            this.pass2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.pass2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pass2.FlatAppearance.BorderSize = 0;
+            this.pass2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.pass2.ForeColor = System.Drawing.Color.White;
+            this.pass2.Location = new System.Drawing.Point(848, 450);
+            this.pass2.Name = "pass2";
+            this.pass2.Size = new System.Drawing.Size(81, 74);
+            this.pass2.TabIndex = 54;
+            this.pass2.Text = "배출 완료";
+            this.pass2.UseVisualStyleBackColor = false;
+            // 
+            // Mixing_End2
+            // 
+            this.Mixing_End2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing_End2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing_End2.FlatAppearance.BorderSize = 0;
+            this.Mixing_End2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_End2.ForeColor = System.Drawing.Color.White;
+            this.Mixing_End2.Location = new System.Drawing.Point(769, 450);
+            this.Mixing_End2.Name = "Mixing_End2";
+            this.Mixing_End2.Size = new System.Drawing.Size(81, 74);
+            this.Mixing_End2.TabIndex = 53;
+            this.Mixing_End2.Text = "배합 완료";
+            this.Mixing_End2.UseVisualStyleBackColor = false;
+            // 
+            // Mixing_Start2
+            // 
+            this.Mixing_Start2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.Mixing_Start2.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Mixing_Start2.FlatAppearance.BorderSize = 0;
+            this.Mixing_Start2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_Start2.ForeColor = System.Drawing.Color.White;
+            this.Mixing_Start2.Location = new System.Drawing.Point(690, 450);
+            this.Mixing_Start2.Name = "Mixing_Start2";
+            this.Mixing_Start2.Size = new System.Drawing.Size(81, 74);
+            this.Mixing_Start2.TabIndex = 52;
+            this.Mixing_Start2.Text = "배합 시작";
+            this.Mixing_Start2.UseVisualStyleBackColor = false;
+            // 
+            // siloName2
+            // 
+            this.siloName2.AutoSize = true;
+            this.siloName2.BackColor = System.Drawing.Color.DimGray;
+            this.siloName2.ForeColor = System.Drawing.Color.White;
+            this.siloName2.Location = new System.Drawing.Point(278, 204);
+            this.siloName2.Name = "siloName2";
+            this.siloName2.Size = new System.Drawing.Size(38, 15);
+            this.siloName2.TabIndex = 56;
+            this.siloName2.Text = "silo2";
+            // 
+            // siloName3
+            // 
+            this.siloName3.AutoSize = true;
+            this.siloName3.BackColor = System.Drawing.Color.DimGray;
+            this.siloName3.ForeColor = System.Drawing.Color.White;
+            this.siloName3.Location = new System.Drawing.Point(439, 204);
+            this.siloName3.Name = "siloName3";
+            this.siloName3.Size = new System.Drawing.Size(38, 15);
+            this.siloName3.TabIndex = 57;
+            this.siloName3.Text = "silo3";
+            // 
+            // siloName1
+            // 
+            this.siloName1.AutoSize = true;
+            this.siloName1.BackColor = System.Drawing.Color.DimGray;
+            this.siloName1.ForeColor = System.Drawing.Color.White;
+            this.siloName1.Location = new System.Drawing.Point(109, 204);
+            this.siloName1.Name = "siloName1";
+            this.siloName1.Size = new System.Drawing.Size(38, 15);
+            this.siloName1.TabIndex = 55;
+            this.siloName1.Text = "silo1";
+            // 
+            // silo2_Qty
+            // 
+            this.silo2_Qty.AutoSize = true;
+            this.silo2_Qty.BackColor = System.Drawing.Color.White;
+            this.silo2_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.silo2_Qty.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.silo2_Qty.Location = new System.Drawing.Point(264, 118);
+            this.silo2_Qty.Name = "silo2_Qty";
+            this.silo2_Qty.Size = new System.Drawing.Size(94, 26);
+            this.silo2_Qty.TabIndex = 59;
+            this.silo2_Qty.Text = "[저장량]";
+            // 
+            // silo1_Qty
+            // 
+            this.silo1_Qty.AutoSize = true;
+            this.silo1_Qty.BackColor = System.Drawing.Color.White;
+            this.silo1_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.silo1_Qty.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.silo1_Qty.Location = new System.Drawing.Point(70, 118);
+            this.silo1_Qty.Name = "silo1_Qty";
+            this.silo1_Qty.Size = new System.Drawing.Size(94, 26);
+            this.silo1_Qty.TabIndex = 60;
+            this.silo1_Qty.Text = "[저장량]";
+            // 
+            // silo3_Qty
+            // 
+            this.silo3_Qty.AutoSize = true;
+            this.silo3_Qty.BackColor = System.Drawing.Color.White;
+            this.silo3_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.silo3_Qty.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.silo3_Qty.Location = new System.Drawing.Point(449, 118);
+            this.silo3_Qty.Name = "silo3_Qty";
+            this.silo3_Qty.Size = new System.Drawing.Size(94, 26);
+            this.silo3_Qty.TabIndex = 61;
+            this.silo3_Qty.Text = "[저장량]";
+            // 
+            // silo10
+            // 
+            this.silo10.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo10.Location = new System.Drawing.Point(477, 601);
+            this.silo10.Name = "silo10";
+            this.silo10.Size = new System.Drawing.Size(104, 126);
+            this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo10.TabIndex = 62;
+            this.silo10.TabStop = false;
+            // 
+            // siloName10
+            // 
+            this.siloName10.AutoSize = true;
+            this.siloName10.BackColor = System.Drawing.Color.DimGray;
+            this.siloName10.ForeColor = System.Drawing.Color.White;
+            this.siloName10.Location = new System.Drawing.Point(497, 653);
+            this.siloName10.Name = "siloName10";
+            this.siloName10.Size = new System.Drawing.Size(46, 15);
+            this.siloName10.TabIndex = 63;
+            this.siloName10.Text = "silo10";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // silo10_Qty
+            // 
+            this.silo10_Qty.AutoSize = true;
+            this.silo10_Qty.BackColor = System.Drawing.Color.White;
+            this.silo10_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.silo10_Qty.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.silo10_Qty.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.silo10_Qty.Location = new System.Drawing.Point(587, 669);
+            this.silo10_Qty.Name = "silo10_Qty";
+            this.silo10_Qty.Size = new System.Drawing.Size(94, 26);
+            this.silo10_Qty.TabIndex = 64;
+            this.silo10_Qty.Text = "[저장량]";
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // timer3
+            // 
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // timer4
+            // 
+            this.timer4.Tick += new System.EventHandler(this.timer4_Tick);
+            // 
+            // timer5
+            // 
+            this.timer5.Tick += new System.EventHandler(this.timer5_Tick);
+            // 
+            // timer6
+            // 
+            this.timer6.Tick += new System.EventHandler(this.timer6_Tick);
+            // 
+            // timer7
+            // 
+            this.timer7.Tick += new System.EventHandler(this.timer7_Tick);
+            // 
+            // Mixing1
+            // 
+            this.Mixing1.AutoSize = true;
+            this.Mixing1.BackColor = System.Drawing.Color.White;
+            this.Mixing1.ForeColor = System.Drawing.Color.Black;
+            this.Mixing1.Location = new System.Drawing.Point(418, 504);
+            this.Mixing1.Name = "Mixing1";
+            this.Mixing1.Size = new System.Drawing.Size(52, 15);
+            this.Mixing1.TabIndex = 65;
+            this.Mixing1.Text = "MX001";
+            // 
+            // Mixing2
+            // 
+            this.Mixing2.AutoSize = true;
+            this.Mixing2.BackColor = System.Drawing.Color.White;
+            this.Mixing2.ForeColor = System.Drawing.Color.Black;
+            this.Mixing2.Location = new System.Drawing.Point(564, 503);
+            this.Mixing2.Name = "Mixing2";
+            this.Mixing2.Size = new System.Drawing.Size(52, 15);
+            this.Mixing2.TabIndex = 66;
+            this.Mixing2.Text = "MX002";
             // 
             // Startworking
             // 
@@ -198,6 +609,33 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
+            this.Controls.Add(this.Mixing2);
+            this.Controls.Add(this.Mixing1);
+            this.Controls.Add(this.silo10_Qty);
+            this.Controls.Add(this.siloName10);
+            this.Controls.Add(this.silo10);
+            this.Controls.Add(this.silo3_Qty);
+            this.Controls.Add(this.silo1_Qty);
+            this.Controls.Add(this.silo2_Qty);
+            this.Controls.Add(this.siloName3);
+            this.Controls.Add(this.siloName2);
+            this.Controls.Add(this.siloName1);
+            this.Controls.Add(this.pass2);
+            this.Controls.Add(this.Mixing_End2);
+            this.Controls.Add(this.Mixing_Start2);
+            this.Controls.Add(this.Mixing2_3);
+            this.Controls.Add(this.Mixing2_2);
+            this.Controls.Add(this.Mixing2_1);
+            this.Controls.Add(this.pass1);
+            this.Controls.Add(this.Mixing_End1);
+            this.Controls.Add(this.Mixing_Start1);
+            this.Controls.Add(this.Mixing1_3);
+            this.Controls.Add(this.Mixing1_2);
+            this.Controls.Add(this.Mixing1_1);
+            this.Controls.Add(this.StartBtn2);
+            this.Controls.Add(this.StartBtn1);
+            this.Controls.Add(this.path2);
+            this.Controls.Add(this.path1);
             this.Controls.Add(this.MixingMachine2);
             this.Controls.Add(this.MixingMachine1);
             this.Controls.Add(this.silo3);
@@ -223,7 +661,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -243,5 +685,39 @@
         private System.Windows.Forms.PictureBox silo3;
         private System.Windows.Forms.PictureBox MixingMachine2;
         private System.Windows.Forms.PictureBox MixingMachine1;
+        private System.Windows.Forms.PictureBox path1;
+        private System.Windows.Forms.PictureBox path2;
+        private System.Windows.Forms.Button StartBtn1;
+        private System.Windows.Forms.Button StartBtn2;
+        private System.Windows.Forms.Button Mixing1_1;
+        private System.Windows.Forms.Button Mixing1_2;
+        private System.Windows.Forms.Button Mixing1_3;
+        private System.Windows.Forms.Button pass1;
+        private System.Windows.Forms.Button Mixing_End1;
+        private System.Windows.Forms.Button Mixing_Start1;
+        private System.Windows.Forms.Button Mixing2_3;
+        private System.Windows.Forms.Button Mixing2_2;
+        private System.Windows.Forms.Button Mixing2_1;
+        private System.Windows.Forms.Button pass2;
+        private System.Windows.Forms.Button Mixing_End2;
+        private System.Windows.Forms.Button Mixing_Start2;
+        private System.Windows.Forms.Label siloName2;
+        private System.Windows.Forms.Label siloName3;
+        private System.Windows.Forms.Label siloName1;
+        private System.Windows.Forms.Label silo2_Qty;
+        private System.Windows.Forms.Label silo1_Qty;
+        private System.Windows.Forms.Label silo3_Qty;
+        private System.Windows.Forms.PictureBox silo10;
+        private System.Windows.Forms.Label siloName10;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label silo10_Qty;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Timer timer4;
+        private System.Windows.Forms.Timer timer5;
+        private System.Windows.Forms.Timer timer6;
+        private System.Windows.Forms.Timer timer7;
+        private System.Windows.Forms.Label Mixing1;
+        private System.Windows.Forms.Label Mixing2;
     }
 }

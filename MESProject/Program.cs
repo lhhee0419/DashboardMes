@@ -16,7 +16,7 @@ namespace MESProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Startworking());
+            Application.Run(new MainForm());
         }
     }
 }

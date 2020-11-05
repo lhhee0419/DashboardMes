@@ -70,6 +70,7 @@
             this.LotID_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LotID_Grid.Location = new System.Drawing.Point(32, 72);
             this.LotID_Grid.Name = "LotID_Grid";
+            this.LotID_Grid.ReadOnly = true;
             this.LotID_Grid.RowHeadersVisible = false;
             this.LotID_Grid.RowHeadersWidth = 51;
             this.LotID_Grid.RowTemplate.Height = 27;
