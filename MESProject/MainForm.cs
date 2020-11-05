@@ -167,11 +167,25 @@ namespace MESProject
                 }
             }
             Startworking startworkingForm = new Startworking();
+            StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
             if (woid != "")
-            {
-                startworkingForm.Selected_woid = woid;
-                Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+            {   
+               
+                if (ProcCombo.SelectedIndex == 0)
+                {
+                    //배합
+                    Startworking.Selected_woid = woid;
+                    Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
+                }
+                if (ProcCombo.SelectedIndex == 1)
+                {
+                    //사출
+                    StartWorkingFormIM.Selected_woid = woid;
+                    Common.Create_Tab("startworkingIM", "작업시작", startWorkingFormIM, maintab);
+                }
+                   
             }
+            startWorkingFormIM.FormClosed += Form_closing;
             startworkingForm.FormClosed += Form_closing;
         }
 
@@ -233,11 +247,20 @@ namespace MESProject
                 }
             }
             Startworking startworkingForm = new Startworking();
-            if (woid != "")
+            StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
+            if (ProcCombo.SelectedIndex == 0)
             {
-                startworkingForm.Selected_woid = woid;
+                //배합
+                Startworking.Selected_woid = woid;
                 Common.Create_Tab("startworking", "작업시작", startworkingForm, maintab);
             }
+            if (ProcCombo.SelectedIndex == 1)
+            {
+                //사출
+                StartWorkingFormIM.Selected_woid = woid;
+                Common.Create_Tab("startworkingIM", "작업시작", startWorkingFormIM, maintab);
+            }
+            startWorkingFormIM.FormClosed += Form_closing;
             startworkingForm.FormClosed += Form_closing;
         }
     }

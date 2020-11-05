@@ -15,7 +15,7 @@ namespace MESProject
 {
     public partial class Startworking : Form
     {
-        public string Selected_woid { get; set; }
+        public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
         public static int time = 1000;
         string Userid, Lotid, CurrQty, woid;
@@ -143,7 +143,7 @@ namespace MESProject
         private void LotaddBtn_Click(object sender, EventArgs e)
         {
             //LOT추가 버튼
-            Lot lotForm = new Lot(this);
+            Lot lotForm = new Lot(Selected_woid, EQPTID);
             lotForm.ShowDialog();
         }
 
@@ -177,8 +177,7 @@ namespace MESProject
             StopTimer();
             //불량등록 버튼
             // Faulty 폼으로 woid값 전달
-            string woid = Selected_woid;
-            Faulty faulty = new Faulty(woid, this);
+            Faulty faulty = new Faulty(Selected_woid);
             faulty.Owner = this;
             faulty.ShowDialog();
         }
@@ -194,7 +193,7 @@ namespace MESProject
             if (WoGrid.Rows[0].Cells[2].Value.ToString() == "진행중")
             {
                 //WOSTATS가 진행중일 경우 STOPWORKING 폼을 오픈
-                Stopworking stopworking = new Stopworking(woid, lotid, this);
+                Stopworking stopworking = new Stopworking(lotid);
                 stopworking.ShowDialog();
             }
             else

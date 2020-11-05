@@ -17,20 +17,19 @@ namespace MESProject
         string woid="";
         string Userid;
         string EQPTid;
-        private Startworking startworkingForm = null;
-        public Lot(Startworking startworkingForm)
+        Startworking startworkingForm = new Startworking();
+        StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
+        public Lot(string Selected_woid, string eqptid)
         {
             InitializeComponent();
-            this.startworkingForm = startworkingForm;
+            EQPTid = eqptid;
+            woid = Selected_woid;
             this.FormClosing += Lot_FormClosing;
 
         }
         private void Lot_Load(object sender, EventArgs e)
         {
-            woid = startworkingForm.Selected_woid;
-            Userid = MainForm.User_ID;
-            EQPTid = Startworking.EQPTID;
-
+            Userid = MainForm.User_ID;  
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -105,6 +104,9 @@ namespace MESProject
         {
             startworkingForm.Inquiry_Lot();
             startworkingForm.Inquiry_Woid();
+            startWorkingFormIM.Inquiry_Lot();
+            startWorkingFormIM.Inquiry_Woid();
+            
         }
 
         private void LotAdd_tb_TextChanged(object sender, EventArgs e)

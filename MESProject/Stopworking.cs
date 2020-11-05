@@ -18,14 +18,14 @@ namespace MESProject
         //woid
         string woid;
         string lotID;
-        private Startworking startworking;
+        private Startworking startworking = new Startworking();
 
-        public Stopworking(string woid_data, string lotid, Startworking startworking)
+        public Stopworking(string lotid)
         {
             InitializeComponent();
-            this.woid = woid_data;
+            this.woid = Startworking.Selected_woid;
             this.lotID = lotid;
-            this.startworking = startworking;
+            
         }
         private void RadClick(object sender, EventArgs e, string name, string code)
         {

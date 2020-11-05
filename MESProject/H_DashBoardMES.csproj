@@ -99,6 +99,12 @@
     <Compile Include="StartworkingForm.Designer.cs">
       <DependentUpon>StartworkingForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StartWorkingFormIM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartWorkingFormIM.Designer.cs">
+      <DependentUpon>StartWorkingFormIM.cs</DependentUpon>
+    </Compile>
     <Compile Include="Stopworking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +145,9 @@
     <EmbeddedResource Include="StartworkingForm.resx">
       <DependentUpon>StartworkingForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="StartWorkingFormIM.resx">
+      <DependentUpon>StartWorkingFormIM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Stopworking.resx">
       <DependentUpon>Stopworking.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +170,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\통로1.png" />
+    <None Include="Resources\사출2.png" />
+    <None Include="Resources\사출111.png" />
+    <None Include="Resources\SILo010.png" />
     <None Include="Resources\통로2.PNG" />
     <None Include="Resources\통로.PNG" />
     <None Include="Resources\mixing.PNG" />

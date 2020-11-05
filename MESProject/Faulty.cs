@@ -22,7 +22,8 @@ namespace MESProject
         string rad = "미선택";
         //List 선언
         List<string> lotid = new List<string>();
-        private Startworking startworking;
+        Startworking startworking = new Startworking();
+        StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
         private void RadClick(object sender, EventArgs e, string name, string code)
         {
             //라디오버튼 클릭 함수
@@ -36,12 +37,12 @@ namespace MESProject
                 return;
         }
 
-        public Faulty(string woid_data,Startworking startworking)
+        public Faulty(string workid)
         {
             InitializeComponent();
             //Startworking 폼에서 woid_data 가져오기
-            this.woid = woid_data;
-            this.startworking = startworking;
+            woid = workid;
+           
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -146,8 +147,6 @@ namespace MESProject
                 }
                 MessageBox.Show("불량 등록이 완료되었습니다.");
                 this.Close();
-                startworking.Inquiry_Woid();
-                startworking.Inquiry_Lot();
             }
             //예외 발생
             catch(Exception E)
@@ -175,6 +174,14 @@ namespace MESProject
             isMove = true;
             fpt = new Point(e.X, e.Y);
 
+        }
+
+        private void Faulty_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            startworking.Inquiry_Lot();
+            startworking.Inquiry_Woid();
+            startWorkingFormIM.Inquiry_Lot();
+            startWorkingFormIM.Inquiry_Woid();
         }
     }
 }

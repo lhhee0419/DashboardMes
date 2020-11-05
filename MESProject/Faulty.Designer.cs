@@ -177,6 +177,7 @@
             this.Name = "Faulty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Faulty";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Faulty_FormClosing);
             this.Load += new System.EventHandler(this.Faulty_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Faulty_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Faulty_MouseMove);
