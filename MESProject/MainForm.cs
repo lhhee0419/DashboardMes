@@ -45,9 +45,10 @@ namespace MESProject
         }
 
         private void MainForm_Load(object sender, EventArgs e)
-        {   
-            
+        {
+
             login_check();
+            //
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
             ProcCombo.SelectedIndex = 0; //콤보박스 초기값설정
@@ -124,7 +125,7 @@ namespace MESProject
             }
 
             SetRowColor();
-            
+
         }
         public void SetRowColor()
         {
@@ -156,8 +157,6 @@ namespace MESProject
         {
             //작업시작 버튼
             //작업시작시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
-            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
-            Common.DB_Connection(update_wostat);
             for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
 
@@ -166,11 +165,13 @@ namespace MESProject
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
                 }
             }
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
+            Common.DB_Connection(update_wostat);
             Startworking startworkingForm = new Startworking();
             StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
             if (woid != "")
-            {   
-               
+            {
+
                 if (ProcCombo.SelectedIndex == 0)
                 {
                     //배합
@@ -183,7 +184,7 @@ namespace MESProject
                     StartWorkingFormIM.Selected_woid = woid;
                     Common.Create_Tab("startworkingIM", "작업시작", startWorkingFormIM, maintab);
                 }
-                   
+
             }
             startWorkingFormIM.FormClosed += Form_closing;
             startworkingForm.FormClosed += Form_closing;
@@ -246,6 +247,8 @@ namespace MESProject
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
                 }
             }
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
+            Common.DB_Connection(update_wostat);
             Startworking startworkingForm = new Startworking();
             StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
             if (ProcCombo.SelectedIndex == 0)
@@ -265,4 +268,3 @@ namespace MESProject
         }
     }
 }
-

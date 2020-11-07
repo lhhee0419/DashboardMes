@@ -89,7 +89,6 @@
             this.Name = "Lot";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lot";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Lot_FormClosing);
             this.Load += new System.EventHandler(this.Lot_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Lot_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Lot_MouseMove);
