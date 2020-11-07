@@ -25,7 +25,7 @@ namespace MESProject
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
         string userid = MainForm.User_ID;
-        string silo010 = "silo010";
+        string silo010 = "SL010";
         string woid;
         bool isMove;
         Point fpt;
@@ -35,6 +35,53 @@ namespace MESProject
         public StartWorkingFormIM()
         {
             InitializeComponent();
+        }
+        
+        private void StartWorkingFormIM_Load(object sender, EventArgs e)
+        {
+            //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
+            EQPTID = "";
+            //실시간 타이머 설정
+            System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
+            MyTimer.Interval = 1000;
+            MyTimer.Tick += new EventHandler(timer_Tick);
+            MyTimer.Enabled = true;
+
+            //DataGridView 디자인
+            Common.SetGridDesign(WoGrid);
+            Common.SetGridDesign(LotGrid);
+
+            // 작업상태를 S(시작)으로 변경
+            string delete_lot = $"UPDATE WORKORDER SET WOSTAT ='S' WHERE WOID ='{Selected_woid}'";
+            Common.DB_Connection(delete_lot);
+
+            Inquiry_Woid();
+            Inquiry_Lot();
+
+            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
+            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            LotGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            BtnEnabled();
+
+            //1,2호기의 생산량 조회
+            string SELECT_PRODQTY = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
+            DataTable dataTable1 = Common.DB_Connection(SELECT_PRODQTY);
+            string N_PRODQTY_VALUE = dataTable1.Rows[0][0].ToString();
+
+            if (EQPTID == "IM001")
+            {
+                IM1_ProdQty_Value.Text = $"{N_PRODQTY_VALUE} EA";
+                IM2_ProdQty_Value.Visible = false;
+                IM2_ProdQty.Visible = false;
+            }
+            else if (EQPTID == "IM002")
+            {
+                IM2_ProdQty_Value.Text = $"{N_PRODQTY_VALUE} EA";
+                IM1_ProdQty_Value.Visible = false;
+                IM1_ProdQty.Visible = false;
+            }
+            Select_Silo_Qty();
         }
         public void BtnEnabled()
         {
@@ -65,49 +112,14 @@ namespace MESProject
             }
         }
 
-        private void StartWorkingFormIM_Load(object sender, EventArgs e)
+
+        private void Select_Silo_Qty()
         {
-            //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
-            EQPTID = "";
-            //실시간 타이머 설정
-            System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
-            MyTimer.Interval = 1000;
-            MyTimer.Tick += new EventHandler(timer_Tick);
-            MyTimer.Enabled = true;
-
-            //DataGridView 디자인
-            Common.SetGridDesign(WoGrid);
-            Common.SetGridDesign(LotGrid);
-
-            string delete_lot = $"UPDATE WORKORDER SET WOSTAT ='S' WHERE WOID ='{woid}'";
-            Common.DB_Connection(delete_lot);
-
-            Inquiry_Woid();
-            Inquiry_Lot();
-
-            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
-            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
-            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            LotGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            BtnEnabled();
-
-            //1,2호기의 생산량 조회
-            string SELECT_PRODQTY = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
-            DataTable dataTable1 = Common.DB_Connection(SELECT_PRODQTY);
-            string N_PRODQTY_VALUE = dataTable1.Rows[0][0].ToString();
-
-            if (EQPTID == "IM001")
-            {
-                IM1_ProdQty_Value.Text = $"{N_PRODQTY_VALUE} EA";
-                IM2_ProdQty_Value.Visible = false;
-                IM2_ProdQty.Visible = false;
-            }
-            else if (EQPTID == "IM002")
-            {
-                IM2_ProdQty_Value.Text = $"{N_PRODQTY_VALUE} EA";
-                IM1_ProdQty_Value.Visible = false;
-                IM1_ProdQty.Visible = false;
-            }
+            // SL010의 현재 재고량 조회
+            string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
+            DataTable dataTable = Common.DB_Connection(SELECT_SL010);
+            string SILO_CURRQTY = dataTable.Rows[0][0].ToString();
+            SL010_CURRQTY.Text = "저장량 : " + SILO_CURRQTY;
         }
         public void Inquiry_Woid()
         {
@@ -185,6 +197,8 @@ namespace MESProject
             //LOT추가 버튼
             Lot lotForm = new Lot(Selected_woid, EQPTID);
             lotForm.ShowDialog();
+            Inquiry_Lot();
+            Inquiry_Woid();
         }
 
         private void LotDelBtn_Click(object sender, EventArgs e)
@@ -222,16 +236,10 @@ namespace MESProject
 
         private void StopBtn_Click(object sender, EventArgs e)
         {
-           
             string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
             // stopworking 폼으로 woid값 전달
             if (WoGrid.Rows[0].Cells[2].Value.ToString() == "진행중")
             {
-                if (myTimer != null)
-                {
-                    fn_stop();
-                }
-
                 //WOSTATS가 진행중일 경우 STOPWORKING 폼을 오픈
                 Stopworking stopworking = new Stopworking(lotid);
                 stopworking.ShowDialog();
@@ -281,16 +289,21 @@ namespace MESProject
             if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
+
+
         //Thread Timer 생성
         public System.Threading.Timer myTimer;
+        
         public void fn_start(TimerCallback callback, int starttime, int sendtime)
         {
             myTimer = new System.Threading.Timer(callback, null, starttime, sendtime);
+            Thread thread = new ThreadStart(mytimer);
         }
+
         public void fn_stop()
         {
             //myTimer 가 null이 아니라면 dispose  ( 예외처리 오류를 없애기위함 )
-            if (myTimer != null)
+            if (th != null)
             {
                 myTimer.Dispose();
             }
@@ -307,14 +320,17 @@ namespace MESProject
             string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - 2 WHERE STORID = '{silo010}'";
             Common.DB_Connection(SILO1_CURRQTY_MINUS);
 
+            //Silo 재고량 재조회
+            Select_Silo_Qty();
+
             // 1호기 일경우 1호기 라벨 백컬러를 사용.
             if (LOT_EquipmentID == "IM001")
             {
-                label_backcolor(IM1_Label1, IM1_Label2, IM1_Label3, IM1_Label4);
+                B_Backcolor(IM1_1, IM1_2, IM1_3, IM1_4);
             }
             else
             {
-                label_backcolor(IM2_Label1, IM2_Label2, IM2_Label3, IM2_Label4);
+                B_Backcolor(IM2_1, IM2_2, IM2_3, IM2_4);
             }
 
             //LOT생성
@@ -343,7 +359,6 @@ namespace MESProject
                                         $",'{userid}' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
             Common.DB_Connection(IM_lotCreate);
-
 
             //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
             string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{LOT_EquipmentID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
@@ -387,45 +402,49 @@ namespace MESProject
 
         private void Btn_Start_Thread(object state)
         {
-            if (IM1_STBtn.Enabled == true)
+            if(IM1_STBtn.Enabled == true)
             {
+                //EQPTID = "IM001";
                 Process_Start("IM001");
             }
-            else if (IM2_STBtn.Enabled == true)
+            else if(IM2_STBtn.Enabled == true)
             {
+                //EQPTID = "IM002";
                 Process_Start("IM002");
             }
         }
-        private void label_backcolor(Label a, Label b, Label c, Label d)
+        private void B_Backcolor(Button a, Button b, Button c, Button d)
         {
-            Label[] labels = new Label[4] { a, b, c, d };
+            Button[] buttons = new Button[4] { a, b, c, d };
             for (int i = 0; i < 4; i++)
             {
                 for (int j = 0; j < 4; j++)
                 {
                     if (i == j)
                     {
-                        labels[j].BackColor = Color.Yellow;
+                        buttons[j].BackColor = Color.Yellow;
                         Delay(500);
                     }
                     else
                     {
-                        labels[i].BackColor = Color.White;
+                        buttons[i].BackColor = Color.FromArgb(51, 153, 255);
                     }
                 }
             }
-            d.BackColor = Color.White;
+            d.BackColor = Color.FromArgb(51, 153, 255);
         }
 
         private void IM1_STBtn_Click(object sender, EventArgs e)
         {
-            Process_Start("IM001");
+            EQPTID = "IM001";
+            IM2_STBtn.Enabled = false;
             thread_start();
         }
 
         private void IM2_STBtn_Click(object sender, EventArgs e)
         {
-            Process_Start("IM002");
+            EQPTID = "IM002";
+            IM1_STBtn.Enabled = false;
             thread_start();
         }
         private void timer_Tick(object sender, EventArgs e)

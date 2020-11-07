@@ -74,7 +74,7 @@ namespace MESProject
 
         private void CheckBtn_Click(object sender, EventArgs e)
         {
-
+            
             // STOPWK INSERT EQPTID , TIMESTAMP , STOPWKID
             string Update_StopWorking = $"INSERT INTO STOPWK select L.EQPTID,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), F.STOPWKID " +
                                         $"from lot L, STOPWKFACTOR F, EQUIPMENT E where lotid = '{lotID}' AND E.EQPTID = L.EQPTID AND F.STOPWKID='{rad}'";
@@ -84,17 +84,16 @@ namespace MESProject
             string update_Wostat = $"UPDATE WORKORDER W SET W.WOSTAT='P', W.STOPWKEDDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE W.WOID = '{woid}'";
             Common.DB_Connection(update_Wostat);
 
-
             //EQPTSTATS 변경
             string update_EQPTStats = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'DOWN' WHERE EQPTID IN (SELECT EQPTID FROM LOT WHERE LOTID='{rad}')";
             Common.DB_Connection(update_EQPTStats);
             MessageBox.Show("중지되었습니다.");
             this.Close();
-
+            
             //테이블 재조회
             startworking.Inquiry_Woid();
             startworking.Inquiry_Lot();
-            
+
         }
 
         bool isMove;
