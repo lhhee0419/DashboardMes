@@ -23,10 +23,6 @@ namespace MESProject
         public Startworking()
         {
             InitializeComponent();
-            PassGif1.Visible = false;
-            PassGif2.Visible = false;
-            PassGif3.Visible = false;
-            MixingP1.Visible = false;
         }
 
         private void Startworking_Load(object sender, EventArgs e)
@@ -298,8 +294,11 @@ namespace MESProject
                                          $", INSUSER \n" +
                                          $", INSDTTM) \n" +
                                         $"VALUES \n" +
-                                        $"((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT) \n" +
-                                        $",'C' \n" +
+                                        $"((SELECT 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || TO_CHAR(LAST_SEQ + 1, 'FM0000') " +
+                                        $"FROM(SELECT NVL(MAX(SUBSTR(LOTID, -4)), 0) LAST_SEQ " +
+                                        $"FROM LOT " +
+                                        $"WHERE LOTID LIKE 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '%'))\n" +
+                                        $",'S' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",'{Selected_woid}' \n" +
@@ -378,16 +377,18 @@ namespace MESProject
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            PassGif1.Visible = true;      
+              
             //1호 이송
             if (EQPTID == "MX001")
             {
+                PassGif1.Visible = true;
                 Mixing1_1.BackColor = Color.FromArgb(255, 128, 0);
                
                
             }
             else if (EQPTID == "MX002")
             {
+                PassGif_2_1.Visible = true;
                 Mixing2_1.BackColor = Color.FromArgb(255, 128, 0);
             }
           
@@ -399,18 +400,20 @@ namespace MESProject
             timer2.Start();
         }
         private void timer2_Tick(object sender, EventArgs e)
-        {
-            PassGif1.Visible = false;
-            PassGif2.Visible = true;
+        {    
             //2호 이송
             if (EQPTID == "MX001")
             {
+                PassGif1.Visible = false;
+                PassGif2.Visible = true;
                 Mixing1_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing1_2.BackColor = Color.FromArgb(255, 128, 0);
                
             }
             else if (EQPTID == "MX002")
             {
+                PassGif_2_1.Visible = false;
+                PassGif_2_2.Visible = true;
                 Mixing2_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_2.BackColor = Color.FromArgb(255, 128, 0);
             }
@@ -423,16 +426,19 @@ namespace MESProject
 
         private void timer3_Tick(object sender, EventArgs e)
         {
-            PassGif2.Visible = false;
-            PassGif3.Visible = true;
+            
             //3호 이송
             if (EQPTID == "MX001")
             {
+                PassGif2.Visible = false;
+                PassGif3.Visible = true;
                 Mixing1_2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing1_3.BackColor = Color.FromArgb(255, 128, 0);
             }
             else if (EQPTID == "MX002")
-            {
+            {   
+                PassGif_2_2.Visible = false;
+                PassGif_2_3.Visible = true;
                 Mixing2_2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_3.BackColor = Color.FromArgb(255, 128, 0);
             }
@@ -448,6 +454,7 @@ namespace MESProject
         private void timer4_Tick(object sender, EventArgs e)
         {
             PassGif3.Visible = false;
+            PassGif_2_3.Visible = false;
             //배합 시작
             if (EQPTID == "MX001")
             {
@@ -488,18 +495,20 @@ namespace MESProject
         private void timer6_Tick(object sender, EventArgs e)
         {
             //배출완료     
-            MixingP1.Visible = true;
+          
             if (EQPTID == "MX001")
             {
+                MixingP1.Visible = true;
                 Mixing_End1.BackColor = Color.FromArgb(51, 153, 255);
                 pass1.BackColor = Color.FromArgb(255, 128, 0);
             }
             else if (EQPTID == "MX002")
             {
+                MixingP2.Visible = true;
                 Mixing_End2.BackColor = Color.FromArgb(51, 153, 255);
                 pass2.BackColor = Color.FromArgb(255, 128, 0);
             }
-            string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE LOTID = '{Lotid}' ";
+            string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
             Common.DB_Connection(lot_eddttm);
             Inquiry_Lot();
             timer6.Stop();
@@ -508,6 +517,7 @@ namespace MESProject
         private void timer7_Tick(object sender, EventArgs e)
         {
             MixingP1.Visible = false;
+            MixingP2.Visible = false;
             if (EQPTID == "MX001")
             {
                 pass1.BackColor = Color.FromArgb(51, 153, 255);

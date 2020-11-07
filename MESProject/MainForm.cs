@@ -157,8 +157,6 @@ namespace MESProject
         {
             //작업시작 버튼
             //작업시작시 작업상태를 진행중(S), 작업시작일을 SYSDATE로 변경
-            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
-            Common.DB_Connection(update_wostat);
             for (int i = 0; i < WoGrid.Rows.Count - 1; i++)
             {
 
@@ -167,6 +165,8 @@ namespace MESProject
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
                 }
             }
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
+            Common.DB_Connection(update_wostat);
             Startworking startworkingForm = new Startworking();
             StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
             if (woid != "")
@@ -247,6 +247,8 @@ namespace MESProject
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
                 }
             }
+            string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
+            Common.DB_Connection(update_wostat);
             Startworking startworkingForm = new Startworking();
             StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
             if (ProcCombo.SelectedIndex == 0)
