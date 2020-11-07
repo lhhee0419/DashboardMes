@@ -115,7 +115,7 @@ namespace MESProject.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap path1_1 {
             get {
-                object obj = ResourceManager.GetObject("path1-1", resourceCulture);
+                object obj = ResourceManager.GetObject("path1_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -125,7 +125,7 @@ namespace MESProject.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap path1_2 {
             get {
-                object obj = ResourceManager.GetObject("path1-2", resourceCulture);
+                object obj = ResourceManager.GetObject("path1_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -135,7 +135,7 @@ namespace MESProject.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap path1_3 {
             get {
-                object obj = ResourceManager.GetObject("path1-3", resourceCulture);
+                object obj = ResourceManager.GetObject("path1_3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
