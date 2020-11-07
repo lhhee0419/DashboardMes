@@ -52,10 +52,6 @@ namespace MESProject
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
 
-            // 작업상태를 S(시작)으로 변경
-            string delete_lot = $"UPDATE WORKORDER SET WOSTAT ='S' WHERE WOID ='{Selected_woid}'";
-            Common.DB_Connection(delete_lot);
-
             Inquiry_Woid();
             Inquiry_Lot();
 
