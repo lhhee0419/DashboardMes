@@ -182,7 +182,6 @@ namespace MESProject
 
         private void StockBtn_Click(object sender, EventArgs e)
         {
-            StopTimer();
             //원재료 재고조회 버튼
             MaterialStock materialStockForm = new MaterialStock();
             materialStockForm.ShowDialog();
@@ -190,7 +189,6 @@ namespace MESProject
 
         private void FaultyBtn_Click(object sender, EventArgs e)
         {
-            StopTimer();
             //불량등록 버튼
             // Faulty 폼으로 woid값 전달
             Faulty faulty = new Faulty(Selected_woid);
@@ -255,6 +253,7 @@ namespace MESProject
             Eqptstat_Changed();
             SetTimer();
             timer1.Start();
+            StartBtn1.Enabled = false;
 
         }
         private void StartBtn2_Click(object sender, EventArgs e)
@@ -264,6 +263,7 @@ namespace MESProject
             Eqptstat_Changed();
             SetTimer();
             timer1.Start();
+            StartBtn2.Enabled = false;
         }
         private void Update_store(char pm, int Qty, string StoreID)
         {
@@ -357,6 +357,11 @@ namespace MESProject
             timer7.Stop();
             if (EQPTID == "MX001")
             {
+                PassGif1.Visible = false;
+                PassGif2.Visible = false;
+                PassGif3.Visible = false;
+                StartBtn1.Enabled = true;
+                MixingP1.Visible = false;
                 Mixing1_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing1_2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing1_3.BackColor = Color.FromArgb(51, 153, 255);
@@ -366,6 +371,11 @@ namespace MESProject
             }
             else if (EQPTID == "MX002")
             {
+                PassGif_2_1.Visible = false;
+                PassGif_2_2.Visible = false;
+                PassGif_2_3.Visible = false;
+                StartBtn2.Enabled = true;
+                MixingP2.Visible = false;
                 Mixing2_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_3.BackColor = Color.FromArgb(51, 153, 255);
