@@ -13,12 +13,12 @@ namespace MESProject
 {
     public partial class Stopworking : Form
     {
+        bool isMove;
+        Point fpt;
         //작업중지요인 값 저장
         string rad = "";
         //woid
-        string woid;
-        string lotID;
-        private Startworking startworking = new Startworking();
+        string woid, lotID;
 
         public Stopworking(string lotid)
         {
@@ -76,29 +76,39 @@ namespace MESProject
         {
 
             // STOPWK INSERT EQPTID , TIMESTAMP , STOPWKID
-            string Update_StopWorking = $"INSERT INTO STOPWK select L.EQPTID,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), F.STOPWKID " +
-                                        $"from lot L, STOPWKFACTOR F, EQUIPMENT E where lotid = '{lotID}' AND E.EQPTID = L.EQPTID AND F.STOPWKID='{rad}'";
+            string Update_StopWorking = $"INSERT INTO STOPWK \n" +
+                                            $"SELECT \n" +
+                                            $"L.EQPTID \n" +
+                                            $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
+                                            $",F.STOPWKID \n" +
+                                            $"FROM \n" +
+                                            $"LOT L \n" +
+                                            $",STOPWKFACTOR F \n" +
+                                            $",EQUIPMENT E \n" +
+                                            $"WHERE LOTID = '{lotID}' \n" +
+                                            $"AND E.EQPTID = L.EQPTID \n" +
+                                            $"AND F.STOPWKID='{rad}' \n";
             Common.DB_Connection(Update_StopWorking);
 
             //WORKORDER WOSTAT='P', STOPWKEDDTTM= SYSDATE 변경
-            string update_Wostat = $"UPDATE WORKORDER W SET W.WOSTAT='P', W.STOPWKEDDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE W.WOID = '{woid}'";
+            string update_Wostat =  $"UPDATE \n" +
+                                        $"WORKORDER W \n" +
+                                    $"SET \n" +
+                                        $"W.WOSTAT='P' \n" +
+                                        $",W.STOPWKEDDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
+                                    $"WHERE W.WOID = '{woid}' \n";
             Common.DB_Connection(update_Wostat);
 
 
             //EQPTSTATS 변경
             string update_EQPTStats = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'DOWN' WHERE EQPTID IN (SELECT EQPTID FROM LOT WHERE LOTID='{rad}')";
             Common.DB_Connection(update_EQPTStats);
+
             MessageBox.Show("중지되었습니다.");
             this.Close();
-
-            //테이블 재조회
-            startworking.Inquiry_Woid();
-            startworking.Inquiry_Lot();
-            
         }
 
-        bool isMove;
-        Point fpt;
+        
         private void Stopworking_MouseDown(object sender, MouseEventArgs e)
         {
             isMove = true;

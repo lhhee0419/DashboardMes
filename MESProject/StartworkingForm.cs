@@ -214,15 +214,25 @@ namespace MESProject
             }
             else
             {
-                MessageBox.Show("재시작");
-                //재시작시 작업상태를 진행중(S), STOPWKEDDTTM을 SYSDATE로 변경, 해당하는 EQPTID에 EQPTSTATS를 RUN으로 변경
-                string update_wostat = $"UPDATE WORKORDER W SET W.WOSTAT ='S' WHERE WOID = '{Selected_woid}'";
-                Common.DB_Connection(update_wostat);
-                //테이블 재조회
-                Inquiry_Lot();
-                Inquiry_Woid();
+                string select_wostat = "SELECT \n" +
+                                     "COUNT(WOID)\n" +
+                                   "FROM \n" +
+                                       "WORKORDER \n" +
+                                   "WHERE WOSTAT='S' \n" +
+                                       "AND PROCID='P0001'";
+                DataTable WostatTable = Common.DB_Connection(select_wostat);
+                int count = Convert.ToInt32(WostatTable.Rows[0][0].ToString());
+                if (count == 0)
+                {
+                    MessageBox.Show("재시작");
+                    //재시작시 작업상태를 진행중(S), STOPWKEDDTTM을 SYSDATE로 변경, 해당하는 EQPTID에 EQPTSTATS를 RUN으로 변경
+                    string update_wostat = $"UPDATE WORKORDER W SET W.WOSTAT ='S' WHERE WOID = '{Selected_woid}'";
+                    Common.DB_Connection(update_wostat);
+                }   
             }
-
+            //테이블 재조회
+            Inquiry_Lot();
+            Inquiry_Woid();
         }
 
         private void EndBtn_Click(object sender, EventArgs e)
