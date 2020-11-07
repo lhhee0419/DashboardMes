@@ -19,27 +19,46 @@ namespace MESProject
         public static string EQPTID { get; set; }
         public static int time = 1000;
         string Userid, Lotid, CurrQty, woid;
+
         public Startworking()
         {
             InitializeComponent();
+            PassGif1.Visible = false;
+            PassGif2.Visible = false;
+            PassGif3.Visible = false;
+            MixingP1.Visible = false;
         }
 
         private void Startworking_Load(object sender, EventArgs e)
         {
-            //DataGridView 디자인
-            Common.SetGridDesign(WoGrid);
-            Common.SetGridDesign(LotGrid);
-            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
-            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             Userid = MainForm.User_ID;
+            timer8.Interval = 1000;
+            timer8.Start();
+            //작업지시서, LOT 조회
             Inquiry_Woid();
             Inquiry_Lot();
-            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            //DataGridView 디자인
+            Common.SetGridDesign(WoGrid);
+            Common.SetGridDesign(LotGrid);   
             Common.SetColumnWidth(LotGrid, 0, 130);
             Common.SetColumnWidth(LotGrid, 1, 30);
             Common.SetColumnWidth(LotGrid, 2, 30);
             Common.SetColumnWidth(LotGrid, 3, 140);
+            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
+            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
+            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            
+           
+            //배합기 작업 버튼 잠금
+            BtnEnabled();
 
+            //저장소 현재량 조회
+            SetStore_CurQty();
+
+        }
+        private  void BtnEnabled()
+        {
             if (LotGrid.Rows.Count > 1)
             {
                 string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
@@ -57,9 +76,9 @@ namespace MESProject
                     StartBtn1.Enabled = false;
                 }
             }
-
-
-
+        }
+        private void SetStore_CurQty()
+        {
             Select_store("SL001");
             silo1_Qty.Text = "저장량: " + CurrQty;
             Update_store('-', 10, "SL002");
@@ -70,7 +89,6 @@ namespace MESProject
             silo3_Qty.Text = "저장량: " + CurrQty;
             Select_store("SL010");
             silo10_Qty.Text = "저장량: " + CurrQty;
-
         }
         public void Inquiry_Woid()
         {
@@ -145,6 +163,8 @@ namespace MESProject
             //LOT추가 버튼
             Lot lotForm = new Lot(Selected_woid, EQPTID);
             lotForm.ShowDialog();
+            Inquiry_Lot();
+            Inquiry_Woid();
         }
 
         private void LotDelBtn_Click(object sender, EventArgs e)
@@ -180,6 +200,8 @@ namespace MESProject
             Faulty faulty = new Faulty(Selected_woid);
             faulty.Owner = this;
             faulty.ShowDialog();
+            Inquiry_Lot();
+            Inquiry_Woid();
         }
 
 
@@ -236,7 +258,7 @@ namespace MESProject
             EQPTID = "MX001";
             Eqptstat_Changed();
             SetTimer();
-            timer1.Start();
+            timer1.Start(); 
 
         }
         private void StartBtn2_Click(object sender, EventArgs e)
@@ -291,6 +313,29 @@ namespace MESProject
             Inquiry_Lot();
             Inquiry_Woid();
         }
+        private static DateTime Delay(int MS)
+
+        {
+
+            DateTime ThisMoment = DateTime.Now;
+
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
+
+            DateTime AfterWards = ThisMoment.Add(duration);
+
+            while (AfterWards >= ThisMoment)
+
+            {
+
+                System.Windows.Forms.Application.DoEvents();
+
+                ThisMoment = DateTime.Now;
+
+            }
+
+            return DateTime.Now;
+
+        }
         public void SetTimer()
         {
             timer1.Interval = time;
@@ -331,31 +376,38 @@ namespace MESProject
             }
 
         }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
+            PassGif1.Visible = true;      
             //1호 이송
             if (EQPTID == "MX001")
             {
                 Mixing1_1.BackColor = Color.FromArgb(255, 128, 0);
+               
+               
             }
             else if (EQPTID == "MX002")
             {
                 Mixing2_1.BackColor = Color.FromArgb(255, 128, 0);
             }
+          
             Update_store('-', 15, "SL001");
             Select_store("SL001");
             silo1_Qty.Text = "저장량: " + CurrQty;
+            
             timer1.Stop();
             timer2.Start();
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
+            PassGif1.Visible = false;
+            PassGif2.Visible = true;
             //2호 이송
             if (EQPTID == "MX001")
             {
                 Mixing1_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing1_2.BackColor = Color.FromArgb(255, 128, 0);
+               
             }
             else if (EQPTID == "MX002")
             {
@@ -371,6 +423,8 @@ namespace MESProject
 
         private void timer3_Tick(object sender, EventArgs e)
         {
+            PassGif2.Visible = false;
+            PassGif3.Visible = true;
             //3호 이송
             if (EQPTID == "MX001")
             {
@@ -393,6 +447,7 @@ namespace MESProject
 
         private void timer4_Tick(object sender, EventArgs e)
         {
+            PassGif3.Visible = false;
             //배합 시작
             if (EQPTID == "MX001")
             {
@@ -413,6 +468,7 @@ namespace MESProject
 
         private void timer5_Tick(object sender, EventArgs e)
         {
+           
             //배합 완료
             if (EQPTID == "MX001")
             {
@@ -432,6 +488,7 @@ namespace MESProject
         private void timer6_Tick(object sender, EventArgs e)
         {
             //배출완료     
+            MixingP1.Visible = true;
             if (EQPTID == "MX001")
             {
                 Mixing_End1.BackColor = Color.FromArgb(51, 153, 255);
@@ -450,6 +507,7 @@ namespace MESProject
         }
         private void timer7_Tick(object sender, EventArgs e)
         {
+            MixingP1.Visible = false;
             if (EQPTID == "MX001")
             {
                 pass1.BackColor = Color.FromArgb(51, 153, 255);
@@ -465,6 +523,11 @@ namespace MESProject
             silo10_Qty.Text = "저장량: " + CurrQty;
             timer7.Stop();
             timer1.Start();
+        }
+        private void timer8_Tick(object sender, EventArgs e)
+        {
+            // 현재시간
+            CurDTTM.Text = System.DateTime.Now.ToString();
         }
     }
 }

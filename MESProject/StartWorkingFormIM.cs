@@ -185,6 +185,8 @@ namespace MESProject
             //LOT추가 버튼
             Lot lotForm = new Lot(Selected_woid, EQPTID);
             lotForm.ShowDialog();
+            Inquiry_Lot();
+            Inquiry_Woid();
         }
 
         private void LotDelBtn_Click(object sender, EventArgs e)

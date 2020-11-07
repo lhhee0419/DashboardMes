@@ -17,24 +17,26 @@ namespace MESProject
         string woid="";
         string Userid;
         string EQPTid;
-        Startworking startworkingForm = new Startworking();
-        StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
         public Lot(string Selected_woid, string eqptid)
         {
             InitializeComponent();
             EQPTid = eqptid;
             woid = Selected_woid;
-            this.FormClosing += Lot_FormClosing;
-
         }
+
+
+
         private void Lot_Load(object sender, EventArgs e)
         {
-            Userid = MainForm.User_ID;  
+            Userid = MainForm.User_ID;
+          
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             //닫기버튼
+            
+           
             this.Close();
         }
 
@@ -75,7 +77,7 @@ namespace MESProject
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
                             Common.DB_Connection(add_lot);
                             }
-                        }    
+                        }
             this.Close();
 
 
@@ -97,18 +99,6 @@ namespace MESProject
             if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
-
-
-
-        private void Lot_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            startworkingForm.Inquiry_Lot();
-            startworkingForm.Inquiry_Woid();
-            startWorkingFormIM.Inquiry_Lot();
-            startWorkingFormIM.Inquiry_Woid();
-            
-        }
-
         private void LotAdd_tb_TextChanged(object sender, EventArgs e)
         {
 
