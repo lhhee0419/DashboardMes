@@ -170,6 +170,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\MixingPath.PNG" />
+    <None Include="Resources\path2-3.gif" />
+    <None Include="Resources\path2-2.gif" />
+    <None Include="Resources\path2-1.gif" />
+    <None Include="Resources\path1-3.gif" />
+    <None Include="Resources\path1-2.gif" />
+    <None Include="Resources\path1-1.gif" />
+    <None Include="Resources\M2.gif" />
+    <None Include="Resources\M1.gif" />
     <None Include="Resources\통로1.png" />
     <None Include="Resources\사출2.png" />
     <None Include="Resources\사출111.png" />
