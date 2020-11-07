@@ -137,7 +137,7 @@
             // EquipmanageBtn
             // 
             this.EquipmanageBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.EquipmanageBtn.Location = new System.Drawing.Point(641, 699);
+            this.EquipmanageBtn.Location = new System.Drawing.Point(501, 699);
             this.EquipmanageBtn.Name = "EquipmanageBtn";
             this.EquipmanageBtn.Size = new System.Drawing.Size(222, 97);
             this.EquipmanageBtn.TabIndex = 50;
@@ -147,7 +147,7 @@
             // WoLogBtn
             // 
             this.WoLogBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.WoLogBtn.Location = new System.Drawing.Point(330, 699);
+            this.WoLogBtn.Location = new System.Drawing.Point(262, 699);
             this.WoLogBtn.Name = "WoLogBtn";
             this.WoLogBtn.Size = new System.Drawing.Size(222, 97);
             this.WoLogBtn.TabIndex = 49;

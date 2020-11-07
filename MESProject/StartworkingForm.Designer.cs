@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Startworking));
             this.StockBtn = new System.Windows.Forms.Button();
             this.FaultyBtn = new System.Windows.Forms.Button();
             this.LotDelBtn = new System.Windows.Forms.Button();
@@ -38,13 +39,6 @@
             this.LotaddBtn = new System.Windows.Forms.Button();
             this.LotGrid = new System.Windows.Forms.DataGridView();
             this.WoGrid = new System.Windows.Forms.DataGridView();
-            this.silo1 = new System.Windows.Forms.PictureBox();
-            this.silo2 = new System.Windows.Forms.PictureBox();
-            this.silo3 = new System.Windows.Forms.PictureBox();
-            this.MixingMachine2 = new System.Windows.Forms.PictureBox();
-            this.MixingMachine1 = new System.Windows.Forms.PictureBox();
-            this.path1 = new System.Windows.Forms.PictureBox();
-            this.path2 = new System.Windows.Forms.PictureBox();
             this.StartBtn1 = new System.Windows.Forms.Button();
             this.StartBtn2 = new System.Windows.Forms.Button();
             this.Mixing1_1 = new System.Windows.Forms.Button();
@@ -65,7 +59,6 @@
             this.silo2_Qty = new System.Windows.Forms.Label();
             this.silo1_Qty = new System.Windows.Forms.Label();
             this.silo3_Qty = new System.Windows.Forms.Label();
-            this.silo10 = new System.Windows.Forms.PictureBox();
             this.siloName10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.silo10_Qty = new System.Windows.Forms.Label();
@@ -77,22 +70,48 @@
             this.timer7 = new System.Windows.Forms.Timer(this.components);
             this.Mixing1 = new System.Windows.Forms.Label();
             this.Mixing2 = new System.Windows.Forms.Label();
+            this.CurDTTM = new System.Windows.Forms.Label();
+            this.timer8 = new System.Windows.Forms.Timer(this.components);
+            this.MixingP1 = new System.Windows.Forms.PictureBox();
+            this.PassGif3 = new System.Windows.Forms.PictureBox();
+            this.PassGif2 = new System.Windows.Forms.PictureBox();
+            this.PassGif1 = new System.Windows.Forms.PictureBox();
+            this.silo10 = new System.Windows.Forms.PictureBox();
+            this.path2 = new System.Windows.Forms.PictureBox();
+            this.MixingMachine2 = new System.Windows.Forms.PictureBox();
+            this.MixingMachine1 = new System.Windows.Forms.PictureBox();
+            this.silo3 = new System.Windows.Forms.PictureBox();
+            this.silo2 = new System.Windows.Forms.PictureBox();
+            this.silo1 = new System.Windows.Forms.PictureBox();
+            this.path1 = new System.Windows.Forms.PictureBox();
+            this.PassGif_2_1 = new System.Windows.Forms.PictureBox();
+            this.PassGif_2_2 = new System.Windows.Forms.PictureBox();
+            this.PassGif_2_3 = new System.Windows.Forms.PictureBox();
+            this.MixingP2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingP1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.path1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.path2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingP2)).BeginInit();
             this.SuspendLayout();
             // 
             // StockBtn
             // 
             this.StockBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StockBtn.Location = new System.Drawing.Point(1012, 725);
+            this.StockBtn.Location = new System.Drawing.Point(1033, 720);
             this.StockBtn.Name = "StockBtn";
             this.StockBtn.Size = new System.Drawing.Size(118, 86);
             this.StockBtn.TabIndex = 27;
@@ -103,7 +122,7 @@
             // FaultyBtn
             // 
             this.FaultyBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.FaultyBtn.Location = new System.Drawing.Point(273, 725);
+            this.FaultyBtn.Location = new System.Drawing.Point(273, 720);
             this.FaultyBtn.Name = "FaultyBtn";
             this.FaultyBtn.Size = new System.Drawing.Size(118, 86);
             this.FaultyBtn.TabIndex = 26;
@@ -114,7 +133,7 @@
             // LotDelBtn
             // 
             this.LotDelBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.LotDelBtn.Location = new System.Drawing.Point(149, 725);
+            this.LotDelBtn.Location = new System.Drawing.Point(149, 720);
             this.LotDelBtn.Name = "LotDelBtn";
             this.LotDelBtn.Size = new System.Drawing.Size(118, 86);
             this.LotDelBtn.TabIndex = 25;
@@ -125,7 +144,7 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.ExitBtn.Location = new System.Drawing.Point(1416, 725);
+            this.ExitBtn.Location = new System.Drawing.Point(1414, 720);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(118, 86);
             this.ExitBtn.TabIndex = 24;
@@ -136,7 +155,7 @@
             // EndBtn
             // 
             this.EndBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.EndBtn.Location = new System.Drawing.Point(1282, 725);
+            this.EndBtn.Location = new System.Drawing.Point(1288, 720);
             this.EndBtn.Name = "EndBtn";
             this.EndBtn.Size = new System.Drawing.Size(118, 86);
             this.EndBtn.TabIndex = 23;
@@ -147,7 +166,7 @@
             // StopBtn
             // 
             this.StopBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StopBtn.Location = new System.Drawing.Point(1149, 725);
+            this.StopBtn.Location = new System.Drawing.Point(1161, 720);
             this.StopBtn.Name = "StopBtn";
             this.StopBtn.Size = new System.Drawing.Size(118, 86);
             this.StopBtn.TabIndex = 22;
@@ -158,7 +177,7 @@
             // LotaddBtn
             // 
             this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LotaddBtn.Location = new System.Drawing.Point(25, 724);
+            this.LotaddBtn.Location = new System.Drawing.Point(25, 720);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(118, 86);
             this.LotaddBtn.TabIndex = 21;
@@ -169,13 +188,13 @@
             // LotGrid
             // 
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(938, 113);
+            this.LotGrid.Location = new System.Drawing.Point(912, 113);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(599, 541);
+            this.LotGrid.Size = new System.Drawing.Size(625, 594);
             this.LotGrid.TabIndex = 20;
             // 
             // WoGrid
@@ -189,76 +208,6 @@
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.Size = new System.Drawing.Size(1509, 91);
             this.WoGrid.TabIndex = 19;
-            // 
-            // silo1
-            // 
-            this.silo1.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo1.Location = new System.Drawing.Point(86, 154);
-            this.silo1.Name = "silo1";
-            this.silo1.Size = new System.Drawing.Size(104, 126);
-            this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo1.TabIndex = 28;
-            this.silo1.TabStop = false;
-            // 
-            // silo2
-            // 
-            this.silo2.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo2.Location = new System.Drawing.Point(255, 152);
-            this.silo2.Name = "silo2";
-            this.silo2.Size = new System.Drawing.Size(104, 126);
-            this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo2.TabIndex = 29;
-            this.silo2.TabStop = false;
-            // 
-            // silo3
-            // 
-            this.silo3.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo3.Location = new System.Drawing.Point(417, 152);
-            this.silo3.Name = "silo3";
-            this.silo3.Size = new System.Drawing.Size(104, 126);
-            this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo3.TabIndex = 30;
-            this.silo3.TabStop = false;
-            // 
-            // MixingMachine2
-            // 
-            this.MixingMachine2.Image = global::MESProject.Properties.Resources.mixing;
-            this.MixingMachine2.Location = new System.Drawing.Point(608, 353);
-            this.MixingMachine2.Name = "MixingMachine2";
-            this.MixingMachine2.Size = new System.Drawing.Size(76, 148);
-            this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MixingMachine2.TabIndex = 32;
-            this.MixingMachine2.TabStop = false;
-            // 
-            // MixingMachine1
-            // 
-            this.MixingMachine1.Image = global::MESProject.Properties.Resources.mixing;
-            this.MixingMachine1.Location = new System.Drawing.Point(354, 353);
-            this.MixingMachine1.Name = "MixingMachine1";
-            this.MixingMachine1.Size = new System.Drawing.Size(76, 148);
-            this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MixingMachine1.TabIndex = 31;
-            this.MixingMachine1.TabStop = false;
-            // 
-            // path1
-            // 
-            this.path1.Image = global::MESProject.Properties.Resources.path1;
-            this.path1.Location = new System.Drawing.Point(111, 284);
-            this.path1.Name = "path1";
-            this.path1.Size = new System.Drawing.Size(550, 63);
-            this.path1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.path1.TabIndex = 33;
-            this.path1.TabStop = false;
-            // 
-            // path2
-            // 
-            this.path2.Image = global::MESProject.Properties.Resources.path2;
-            this.path2.Location = new System.Drawing.Point(382, 507);
-            this.path2.Name = "path2";
-            this.path2.Size = new System.Drawing.Size(279, 88);
-            this.path2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.path2.TabIndex = 34;
-            this.path2.TabStop = false;
             // 
             // StartBtn1
             // 
@@ -331,7 +280,7 @@
             this.pass1.FlatAppearance.BorderSize = 0;
             this.pass1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pass1.ForeColor = System.Drawing.Color.White;
-            this.pass1.Location = new System.Drawing.Point(270, 450);
+            this.pass1.Location = new System.Drawing.Point(299, 503);
             this.pass1.Name = "pass1";
             this.pass1.Size = new System.Drawing.Size(81, 74);
             this.pass1.TabIndex = 42;
@@ -345,7 +294,7 @@
             this.Mixing_End1.FlatAppearance.BorderSize = 0;
             this.Mixing_End1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing_End1.ForeColor = System.Drawing.Color.White;
-            this.Mixing_End1.Location = new System.Drawing.Point(190, 450);
+            this.Mixing_End1.Location = new System.Drawing.Point(219, 503);
             this.Mixing_End1.Name = "Mixing_End1";
             this.Mixing_End1.Size = new System.Drawing.Size(81, 74);
             this.Mixing_End1.TabIndex = 41;
@@ -359,7 +308,7 @@
             this.Mixing_Start1.FlatAppearance.BorderSize = 0;
             this.Mixing_Start1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing_Start1.ForeColor = System.Drawing.Color.White;
-            this.Mixing_Start1.Location = new System.Drawing.Point(111, 450);
+            this.Mixing_Start1.Location = new System.Drawing.Point(140, 503);
             this.Mixing_Start1.Name = "Mixing_Start1";
             this.Mixing_Start1.Size = new System.Drawing.Size(81, 74);
             this.Mixing_Start1.TabIndex = 40;
@@ -415,7 +364,7 @@
             this.pass2.FlatAppearance.BorderSize = 0;
             this.pass2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pass2.ForeColor = System.Drawing.Color.White;
-            this.pass2.Location = new System.Drawing.Point(848, 450);
+            this.pass2.Location = new System.Drawing.Point(825, 503);
             this.pass2.Name = "pass2";
             this.pass2.Size = new System.Drawing.Size(81, 74);
             this.pass2.TabIndex = 54;
@@ -429,7 +378,7 @@
             this.Mixing_End2.FlatAppearance.BorderSize = 0;
             this.Mixing_End2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing_End2.ForeColor = System.Drawing.Color.White;
-            this.Mixing_End2.Location = new System.Drawing.Point(769, 450);
+            this.Mixing_End2.Location = new System.Drawing.Point(746, 503);
             this.Mixing_End2.Name = "Mixing_End2";
             this.Mixing_End2.Size = new System.Drawing.Size(81, 74);
             this.Mixing_End2.TabIndex = 53;
@@ -443,7 +392,7 @@
             this.Mixing_Start2.FlatAppearance.BorderSize = 0;
             this.Mixing_Start2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing_Start2.ForeColor = System.Drawing.Color.White;
-            this.Mixing_Start2.Location = new System.Drawing.Point(690, 450);
+            this.Mixing_Start2.Location = new System.Drawing.Point(667, 503);
             this.Mixing_Start2.Name = "Mixing_Start2";
             this.Mixing_Start2.Size = new System.Drawing.Size(81, 74);
             this.Mixing_Start2.TabIndex = 52;
@@ -454,10 +403,11 @@
             // 
             this.siloName2.AutoSize = true;
             this.siloName2.BackColor = System.Drawing.Color.DimGray;
+            this.siloName2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
             this.siloName2.ForeColor = System.Drawing.Color.White;
-            this.siloName2.Location = new System.Drawing.Point(278, 204);
+            this.siloName2.Location = new System.Drawing.Point(285, 199);
             this.siloName2.Name = "siloName2";
-            this.siloName2.Size = new System.Drawing.Size(38, 15);
+            this.siloName2.Size = new System.Drawing.Size(45, 22);
             this.siloName2.TabIndex = 56;
             this.siloName2.Text = "silo2";
             // 
@@ -465,10 +415,11 @@
             // 
             this.siloName3.AutoSize = true;
             this.siloName3.BackColor = System.Drawing.Color.DimGray;
+            this.siloName3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
             this.siloName3.ForeColor = System.Drawing.Color.White;
-            this.siloName3.Location = new System.Drawing.Point(439, 204);
+            this.siloName3.Location = new System.Drawing.Point(449, 199);
             this.siloName3.Name = "siloName3";
-            this.siloName3.Size = new System.Drawing.Size(38, 15);
+            this.siloName3.Size = new System.Drawing.Size(45, 22);
             this.siloName3.TabIndex = 57;
             this.siloName3.Text = "silo3";
             // 
@@ -476,10 +427,11 @@
             // 
             this.siloName1.AutoSize = true;
             this.siloName1.BackColor = System.Drawing.Color.DimGray;
+            this.siloName1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
             this.siloName1.ForeColor = System.Drawing.Color.White;
-            this.siloName1.Location = new System.Drawing.Point(109, 204);
+            this.siloName1.Location = new System.Drawing.Point(115, 199);
             this.siloName1.Name = "siloName1";
-            this.siloName1.Size = new System.Drawing.Size(38, 15);
+            this.siloName1.Size = new System.Drawing.Size(45, 22);
             this.siloName1.TabIndex = 55;
             this.siloName1.Text = "silo1";
             // 
@@ -519,24 +471,15 @@
             this.silo3_Qty.TabIndex = 61;
             this.silo3_Qty.Text = "[저장량]";
             // 
-            // silo10
-            // 
-            this.silo10.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo10.Location = new System.Drawing.Point(477, 601);
-            this.silo10.Name = "silo10";
-            this.silo10.Size = new System.Drawing.Size(104, 126);
-            this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo10.TabIndex = 62;
-            this.silo10.TabStop = false;
-            // 
             // siloName10
             // 
             this.siloName10.AutoSize = true;
             this.siloName10.BackColor = System.Drawing.Color.DimGray;
+            this.siloName10.Font = new System.Drawing.Font("문체부 돋음체", 13F);
             this.siloName10.ForeColor = System.Drawing.Color.White;
-            this.siloName10.Location = new System.Drawing.Point(497, 653);
+            this.siloName10.Location = new System.Drawing.Point(506, 657);
             this.siloName10.Name = "siloName10";
-            this.siloName10.Size = new System.Drawing.Size(46, 15);
+            this.siloName10.Size = new System.Drawing.Size(54, 22);
             this.siloName10.TabIndex = 63;
             this.siloName10.Text = "silo10";
             // 
@@ -584,24 +527,209 @@
             // Mixing1
             // 
             this.Mixing1.AutoSize = true;
-            this.Mixing1.BackColor = System.Drawing.Color.White;
-            this.Mixing1.ForeColor = System.Drawing.Color.Black;
-            this.Mixing1.Location = new System.Drawing.Point(418, 504);
+            this.Mixing1.BackColor = System.Drawing.Color.Black;
+            this.Mixing1.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1.ForeColor = System.Drawing.Color.White;
+            this.Mixing1.Location = new System.Drawing.Point(366, 466);
             this.Mixing1.Name = "Mixing1";
-            this.Mixing1.Size = new System.Drawing.Size(52, 15);
+            this.Mixing1.Size = new System.Drawing.Size(53, 19);
             this.Mixing1.TabIndex = 65;
             this.Mixing1.Text = "MX001";
             // 
             // Mixing2
             // 
             this.Mixing2.AutoSize = true;
-            this.Mixing2.BackColor = System.Drawing.Color.White;
-            this.Mixing2.ForeColor = System.Drawing.Color.Black;
-            this.Mixing2.Location = new System.Drawing.Point(564, 503);
+            this.Mixing2.BackColor = System.Drawing.Color.Black;
+            this.Mixing2.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2.ForeColor = System.Drawing.Color.White;
+            this.Mixing2.Location = new System.Drawing.Point(618, 466);
             this.Mixing2.Name = "Mixing2";
-            this.Mixing2.Size = new System.Drawing.Size(52, 15);
+            this.Mixing2.Size = new System.Drawing.Size(53, 19);
             this.Mixing2.TabIndex = 66;
             this.Mixing2.Text = "MX002";
+            // 
+            // CurDTTM
+            // 
+            this.CurDTTM.AutoSize = true;
+            this.CurDTTM.BackColor = System.Drawing.Color.White;
+            this.CurDTTM.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.CurDTTM.Location = new System.Drawing.Point(652, 119);
+            this.CurDTTM.Name = "CurDTTM";
+            this.CurDTTM.Size = new System.Drawing.Size(114, 25);
+            this.CurDTTM.TabIndex = 67;
+            this.CurDTTM.Text = "2020-11-06";
+            // 
+            // timer8
+            // 
+            this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
+            // 
+            // MixingP1
+            // 
+            this.MixingP1.Image = global::MESProject.Properties.Resources.M1;
+            this.MixingP1.Location = new System.Drawing.Point(386, 504);
+            this.MixingP1.Name = "MixingP1";
+            this.MixingP1.Size = new System.Drawing.Size(273, 101);
+            this.MixingP1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingP1.TabIndex = 71;
+            this.MixingP1.TabStop = false;
+            this.MixingP1.Visible = false;
+            // 
+            // PassGif3
+            // 
+            this.PassGif3.Image = global::MESProject.Properties.Resources.path1_3;
+            this.PassGif3.Location = new System.Drawing.Point(133, 284);
+            this.PassGif3.Name = "PassGif3";
+            this.PassGif3.Size = new System.Drawing.Size(524, 60);
+            this.PassGif3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassGif3.TabIndex = 70;
+            this.PassGif3.TabStop = false;
+            this.PassGif3.Visible = false;
+            // 
+            // PassGif2
+            // 
+            this.PassGif2.Image = global::MESProject.Properties.Resources.path1_2;
+            this.PassGif2.Location = new System.Drawing.Point(133, 284);
+            this.PassGif2.Name = "PassGif2";
+            this.PassGif2.Size = new System.Drawing.Size(524, 60);
+            this.PassGif2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassGif2.TabIndex = 69;
+            this.PassGif2.TabStop = false;
+            this.PassGif2.Visible = false;
+            // 
+            // PassGif1
+            // 
+            this.PassGif1.Image = ((System.Drawing.Image)(resources.GetObject("PassGif1.Image")));
+            this.PassGif1.Location = new System.Drawing.Point(133, 284);
+            this.PassGif1.Name = "PassGif1";
+            this.PassGif1.Size = new System.Drawing.Size(524, 60);
+            this.PassGif1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassGif1.TabIndex = 68;
+            this.PassGif1.TabStop = false;
+            this.PassGif1.Visible = false;
+            // 
+            // silo10
+            // 
+            this.silo10.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo10.Location = new System.Drawing.Point(477, 604);
+            this.silo10.Name = "silo10";
+            this.silo10.Size = new System.Drawing.Size(104, 137);
+            this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo10.TabIndex = 62;
+            this.silo10.TabStop = false;
+            // 
+            // path2
+            // 
+            this.path2.Image = global::MESProject.Properties.Resources.MixingPath;
+            this.path2.Location = new System.Drawing.Point(386, 504);
+            this.path2.Name = "path2";
+            this.path2.Size = new System.Drawing.Size(273, 101);
+            this.path2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.path2.TabIndex = 34;
+            this.path2.TabStop = false;
+            // 
+            // MixingMachine2
+            // 
+            this.MixingMachine2.Image = global::MESProject.Properties.Resources.mixing;
+            this.MixingMachine2.Location = new System.Drawing.Point(608, 353);
+            this.MixingMachine2.Name = "MixingMachine2";
+            this.MixingMachine2.Size = new System.Drawing.Size(76, 148);
+            this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingMachine2.TabIndex = 32;
+            this.MixingMachine2.TabStop = false;
+            // 
+            // MixingMachine1
+            // 
+            this.MixingMachine1.Image = global::MESProject.Properties.Resources.mixing;
+            this.MixingMachine1.Location = new System.Drawing.Point(356, 353);
+            this.MixingMachine1.Name = "MixingMachine1";
+            this.MixingMachine1.Size = new System.Drawing.Size(76, 148);
+            this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingMachine1.TabIndex = 31;
+            this.MixingMachine1.TabStop = false;
+            // 
+            // silo3
+            // 
+            this.silo3.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo3.Location = new System.Drawing.Point(417, 152);
+            this.silo3.Name = "silo3";
+            this.silo3.Size = new System.Drawing.Size(104, 126);
+            this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo3.TabIndex = 30;
+            this.silo3.TabStop = false;
+            // 
+            // silo2
+            // 
+            this.silo2.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo2.Location = new System.Drawing.Point(255, 152);
+            this.silo2.Name = "silo2";
+            this.silo2.Size = new System.Drawing.Size(104, 126);
+            this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo2.TabIndex = 29;
+            this.silo2.TabStop = false;
+            // 
+            // silo1
+            // 
+            this.silo1.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo1.Location = new System.Drawing.Point(86, 154);
+            this.silo1.Name = "silo1";
+            this.silo1.Size = new System.Drawing.Size(104, 126);
+            this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo1.TabIndex = 28;
+            this.silo1.TabStop = false;
+            // 
+            // path1
+            // 
+            this.path1.Image = global::MESProject.Properties.Resources.path1;
+            this.path1.Location = new System.Drawing.Point(112, 284);
+            this.path1.Name = "path1";
+            this.path1.Size = new System.Drawing.Size(550, 63);
+            this.path1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.path1.TabIndex = 33;
+            this.path1.TabStop = false;
+            // 
+            // PassGif_2_1
+            // 
+            this.PassGif_2_1.Image = global::MESProject.Properties.Resources.path2_1;
+            this.PassGif_2_1.Location = new System.Drawing.Point(132, 284);
+            this.PassGif_2_1.Name = "PassGif_2_1";
+            this.PassGif_2_1.Size = new System.Drawing.Size(525, 60);
+            this.PassGif_2_1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassGif_2_1.TabIndex = 72;
+            this.PassGif_2_1.TabStop = false;
+            this.PassGif_2_1.Visible = false;
+            // 
+            // PassGif_2_2
+            // 
+            this.PassGif_2_2.Image = global::MESProject.Properties.Resources.path2_2;
+            this.PassGif_2_2.Location = new System.Drawing.Point(134, 284);
+            this.PassGif_2_2.Name = "PassGif_2_2";
+            this.PassGif_2_2.Size = new System.Drawing.Size(525, 60);
+            this.PassGif_2_2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassGif_2_2.TabIndex = 73;
+            this.PassGif_2_2.TabStop = false;
+            this.PassGif_2_2.Visible = false;
+            // 
+            // PassGif_2_3
+            // 
+            this.PassGif_2_3.Image = global::MESProject.Properties.Resources.path2_3;
+            this.PassGif_2_3.Location = new System.Drawing.Point(133, 284);
+            this.PassGif_2_3.Name = "PassGif_2_3";
+            this.PassGif_2_3.Size = new System.Drawing.Size(525, 60);
+            this.PassGif_2_3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PassGif_2_3.TabIndex = 74;
+            this.PassGif_2_3.TabStop = false;
+            this.PassGif_2_3.Visible = false;
+            // 
+            // MixingP2
+            // 
+            this.MixingP2.Image = global::MESProject.Properties.Resources.M2;
+            this.MixingP2.Location = new System.Drawing.Point(386, 504);
+            this.MixingP2.Name = "MixingP2";
+            this.MixingP2.Size = new System.Drawing.Size(273, 101);
+            this.MixingP2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingP2.TabIndex = 75;
+            this.MixingP2.TabStop = false;
+            this.MixingP2.Visible = false;
             // 
             // Startworking
             // 
@@ -609,6 +737,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
+            this.Controls.Add(this.MixingP2);
+            this.Controls.Add(this.Mixing1_3);
+            this.Controls.Add(this.Mixing1_2);
+            this.Controls.Add(this.Mixing1_1);
+            this.Controls.Add(this.Mixing2_3);
+            this.Controls.Add(this.Mixing2_2);
+            this.Controls.Add(this.Mixing2_1);
+            this.Controls.Add(this.PassGif_2_3);
+            this.Controls.Add(this.PassGif_2_2);
+            this.Controls.Add(this.PassGif_2_1);
+            this.Controls.Add(this.MixingP1);
+            this.Controls.Add(this.PassGif3);
+            this.Controls.Add(this.PassGif2);
+            this.Controls.Add(this.PassGif1);
+            this.Controls.Add(this.CurDTTM);
             this.Controls.Add(this.Mixing2);
             this.Controls.Add(this.Mixing1);
             this.Controls.Add(this.silo10_Qty);
@@ -623,19 +766,12 @@
             this.Controls.Add(this.pass2);
             this.Controls.Add(this.Mixing_End2);
             this.Controls.Add(this.Mixing_Start2);
-            this.Controls.Add(this.Mixing2_3);
-            this.Controls.Add(this.Mixing2_2);
-            this.Controls.Add(this.Mixing2_1);
             this.Controls.Add(this.pass1);
             this.Controls.Add(this.Mixing_End1);
             this.Controls.Add(this.Mixing_Start1);
-            this.Controls.Add(this.Mixing1_3);
-            this.Controls.Add(this.Mixing1_2);
-            this.Controls.Add(this.Mixing1_1);
             this.Controls.Add(this.StartBtn2);
             this.Controls.Add(this.StartBtn1);
             this.Controls.Add(this.path2);
-            this.Controls.Add(this.path1);
             this.Controls.Add(this.MixingMachine2);
             this.Controls.Add(this.MixingMachine1);
             this.Controls.Add(this.silo3);
@@ -650,20 +786,29 @@
             this.Controls.Add(this.LotaddBtn);
             this.Controls.Add(this.LotGrid);
             this.Controls.Add(this.WoGrid);
+            this.Controls.Add(this.path1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Startworking";
             this.Text = "sForm1";
             this.Load += new System.EventHandler(this.Startworking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingP1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.path1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.path2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingP2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -719,5 +864,15 @@
         private System.Windows.Forms.Timer timer7;
         private System.Windows.Forms.Label Mixing1;
         private System.Windows.Forms.Label Mixing2;
+        private System.Windows.Forms.Label CurDTTM;
+        private System.Windows.Forms.Timer timer8;
+        private System.Windows.Forms.PictureBox PassGif1;
+        private System.Windows.Forms.PictureBox PassGif2;
+        private System.Windows.Forms.PictureBox PassGif3;
+        private System.Windows.Forms.PictureBox MixingP1;
+        private System.Windows.Forms.PictureBox PassGif_2_1;
+        private System.Windows.Forms.PictureBox PassGif_2_2;
+        private System.Windows.Forms.PictureBox PassGif_2_3;
+        private System.Windows.Forms.PictureBox MixingP2;
     }
 }
