@@ -30,7 +30,9 @@ namespace MESProject
         string woid;
         bool isMove;
         Point fpt;
-        
+        string PLANQTY = "";
+        string PRODQTY = "";
+
         //실행중인 스레드 가져오기
         public Thread th = Thread.CurrentThread;
         public StartWorkingFormIM()
@@ -40,6 +42,7 @@ namespace MESProject
 
         private void StartWorkingFormIM_Load(object sender, EventArgs e)
         {
+            ProdQty_check();
             //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
             EQPTID = "";
             //실시간 타이머 설정
@@ -84,8 +87,10 @@ namespace MESProject
                 IM1_ProdQty.Visible = false;
             }
             Select_Silo_Qty();
+
         }
 
+        //-----------------함수
         public void BtnEnabled()
         {
             //LOTGRID에 데이터가 한건이라도 있을경우 첫번째 행의 EQPTID를 가져옴.
@@ -114,7 +119,6 @@ namespace MESProject
                 }
             }
         }
-
 
         private void Select_Silo_Qty()
         {
@@ -185,9 +189,30 @@ namespace MESProject
             }
 
         }
+        private void ProdQty_check()
+        {
+            //string PLANQTY = WoGrid.Rows[0].Cells[3].Value.ToString();
+            //string PRODQTY = WoGrid.Rows[0].Cells[4].Value.ToString();
 
+            //if (Convert.ToInt32(PLANQTY) <= Convert.ToInt32(PRODQTY))
+            //{
+            //    Timer_Stop();
+            //    IM1_STBtn.Enabled = false;
+            //    IM2_STBtn.Enabled = false;
+            //    string UPDATE_WOSTAT_P = $"UPDATE WORKORDER SET WOSTAT = 'E' WHERE WOID = '{Selected_woid}'";
+            //    Common.DB_Connection(UPDATE_WOSTAT_P);
+            //    Inquiry_Woid();
+            //}
+        }
+        private void TEMP_check()
+        { 
+            Random random = new Random();
+            double TEMP = random.Next(29, 30);
+            string INSERT_TEMP = $"SELECT PLANQTY, PRODQTY FROM WORKORDER WHERE WOID = '{Selected_woid}'";
+            DataTable dataTable3 = Common.DB_Connection(INSERT_TEMP);
+        }
 
-
+        //------------------버튼
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             //닫기버튼
@@ -278,8 +303,22 @@ namespace MESProject
             //해당하는 작업지시번호의 상태를 완료(E)로 변경
             string UPDATE_WOSTAT_P = $"UPDATE WORKORDER SET WOSTAT = 'E' WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WOSTAT_P);
+            Inquiry_Woid();
+        }
+        private void IM1_STBtn_Click(object sender, EventArgs e)
+        {
+            EQPTID = "IM001";
+            IM2_STBtn.Enabled = false;
+            Timer_Start();
+            IM1_STBtn.Enabled = false;
+        }
 
-            this.Close();
+        private void IM2_STBtn_Click(object sender, EventArgs e)
+        {
+            EQPTID = "IM002";
+            IM1_STBtn.Enabled = false;
+            Timer_Start();
+            IM2_STBtn.Enabled = false;
         }
 
         private void EndBtn_MouseDown(object sender, MouseEventArgs e)
@@ -300,7 +339,7 @@ namespace MESProject
         }
 
 
-        //공정 타이머
+        //--------------------공정 타이머
         public System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
 
         public void Timer_Start()
@@ -316,10 +355,12 @@ namespace MESProject
             timer1.Dispose();
         }
 
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Interval = 4000;
 
+            //사일로
             string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - 2 WHERE STORID = '{silo010}'";
             Common.DB_Connection(SILO1_CURRQTY_MINUS);
 
@@ -363,6 +404,18 @@ namespace MESProject
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
             Common.DB_Connection(IM_lotCreate);
 
+            
+            //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
+            Delay(1000);
+
+            //LOT EDDTTM 업데이트
+            string SELECT_LOTID = $"SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000'))) FROM LOT";
+            DataTable dataTable = Common.DB_Connection(SELECT_LOTID);
+            string lotid = dataTable.Rows[0][0].ToString();
+
+            string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM= TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS') WHERE LOTID = '{lotid}'";
+            Common.DB_Connection(UPDATE_LOT_EDDTTM);
+
             //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
             string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
             DataTable dataTable1 = Common.DB_Connection(IM_PRODQTY_VALUE);
@@ -376,20 +429,16 @@ namespace MESProject
                 IM2_ProdQty_Value.Text = $"{dataTable1.Rows[0][0].ToString()} EA";
             }
 
+            //DB에 WORKORDER_PRODQTY 업데이트
+            string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET (PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT WHERE WOID ='{Selected_woid}') WHERE WOID = '{Selected_woid}'";
+            DataTable dataTable2 = Common.DB_Connection(UPDATE_WO_PRODQTY);
+
+            ProdQty_check();
+
+            //
             //재조회
             Inquiry_Lot();
             Inquiry_Woid();
-
-            //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-            Delay(1000);
-
-            //LOT EDDTTM 업데이트
-            string SELECT_LOTID = $"SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000'))) FROM LOT";
-            DataTable dataTable = Common.DB_Connection(SELECT_LOTID);
-            string lotid = dataTable.Rows[0][0].ToString();
-
-            string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM= TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS') WHERE LOTID = '{lotid}'";
-            Common.DB_Connection(UPDATE_LOT_EDDTTM);
 
             //LOTGRID 재조회 및 버튼과 라벨 표시
             Inquiry_Lot();
@@ -417,21 +466,7 @@ namespace MESProject
             d.BackColor = Color.FromArgb(51, 153, 255);
         }
 
-        private void IM1_STBtn_Click(object sender, EventArgs e)
-        {
-            EQPTID = "IM001";
-            IM2_STBtn.Enabled = false;
-            Timer_Start();
-            IM1_STBtn.Enabled = false;
-        }
-
-        private void IM2_STBtn_Click(object sender, EventArgs e)
-        {
-            EQPTID = "IM002";
-            IM1_STBtn.Enabled = false;
-            Timer_Start();
-            IM2_STBtn.Enabled = false;
-        }
+        
         private void timer_Tick(object sender, EventArgs e)
         {
             //현재시간을 나타내기 위함
