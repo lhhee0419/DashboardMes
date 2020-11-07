@@ -38,13 +38,6 @@
             this.LotaddBtn = new System.Windows.Forms.Button();
             this.LotGrid = new System.Windows.Forms.DataGridView();
             this.WoGrid = new System.Windows.Forms.DataGridView();
-            this.silo1 = new System.Windows.Forms.PictureBox();
-            this.silo2 = new System.Windows.Forms.PictureBox();
-            this.silo3 = new System.Windows.Forms.PictureBox();
-            this.MixingMachine2 = new System.Windows.Forms.PictureBox();
-            this.MixingMachine1 = new System.Windows.Forms.PictureBox();
-            this.path1 = new System.Windows.Forms.PictureBox();
-            this.path2 = new System.Windows.Forms.PictureBox();
             this.StartBtn1 = new System.Windows.Forms.Button();
             this.StartBtn2 = new System.Windows.Forms.Button();
             this.Mixing1_1 = new System.Windows.Forms.Button();
@@ -65,7 +58,6 @@
             this.silo2_Qty = new System.Windows.Forms.Label();
             this.silo1_Qty = new System.Windows.Forms.Label();
             this.silo3_Qty = new System.Windows.Forms.Label();
-            this.silo10 = new System.Windows.Forms.PictureBox();
             this.siloName10 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.silo10_Qty = new System.Windows.Forms.Label();
@@ -77,16 +69,26 @@
             this.timer7 = new System.Windows.Forms.Timer(this.components);
             this.Mixing1 = new System.Windows.Forms.Label();
             this.Mixing2 = new System.Windows.Forms.Label();
+            this.silo10 = new System.Windows.Forms.PictureBox();
+            this.path2 = new System.Windows.Forms.PictureBox();
+            this.path1 = new System.Windows.Forms.PictureBox();
+            this.MixingMachine2 = new System.Windows.Forms.PictureBox();
+            this.MixingMachine1 = new System.Windows.Forms.PictureBox();
+            this.silo3 = new System.Windows.Forms.PictureBox();
+            this.silo2 = new System.Windows.Forms.PictureBox();
+            this.silo1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.path1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.path2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // StockBtn
@@ -189,76 +191,6 @@
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.Size = new System.Drawing.Size(1509, 91);
             this.WoGrid.TabIndex = 19;
-            // 
-            // silo1
-            // 
-            this.silo1.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo1.Location = new System.Drawing.Point(86, 154);
-            this.silo1.Name = "silo1";
-            this.silo1.Size = new System.Drawing.Size(104, 126);
-            this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo1.TabIndex = 28;
-            this.silo1.TabStop = false;
-            // 
-            // silo2
-            // 
-            this.silo2.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo2.Location = new System.Drawing.Point(255, 152);
-            this.silo2.Name = "silo2";
-            this.silo2.Size = new System.Drawing.Size(104, 126);
-            this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo2.TabIndex = 29;
-            this.silo2.TabStop = false;
-            // 
-            // silo3
-            // 
-            this.silo3.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo3.Location = new System.Drawing.Point(417, 152);
-            this.silo3.Name = "silo3";
-            this.silo3.Size = new System.Drawing.Size(104, 126);
-            this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo3.TabIndex = 30;
-            this.silo3.TabStop = false;
-            // 
-            // MixingMachine2
-            // 
-            this.MixingMachine2.Image = global::MESProject.Properties.Resources.mixing;
-            this.MixingMachine2.Location = new System.Drawing.Point(608, 353);
-            this.MixingMachine2.Name = "MixingMachine2";
-            this.MixingMachine2.Size = new System.Drawing.Size(76, 148);
-            this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MixingMachine2.TabIndex = 32;
-            this.MixingMachine2.TabStop = false;
-            // 
-            // MixingMachine1
-            // 
-            this.MixingMachine1.Image = global::MESProject.Properties.Resources.mixing;
-            this.MixingMachine1.Location = new System.Drawing.Point(354, 353);
-            this.MixingMachine1.Name = "MixingMachine1";
-            this.MixingMachine1.Size = new System.Drawing.Size(76, 148);
-            this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MixingMachine1.TabIndex = 31;
-            this.MixingMachine1.TabStop = false;
-            // 
-            // path1
-            // 
-            this.path1.Image = global::MESProject.Properties.Resources.path1;
-            this.path1.Location = new System.Drawing.Point(111, 284);
-            this.path1.Name = "path1";
-            this.path1.Size = new System.Drawing.Size(550, 63);
-            this.path1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.path1.TabIndex = 33;
-            this.path1.TabStop = false;
-            // 
-            // path2
-            // 
-            this.path2.Image = global::MESProject.Properties.Resources.path2;
-            this.path2.Location = new System.Drawing.Point(382, 507);
-            this.path2.Name = "path2";
-            this.path2.Size = new System.Drawing.Size(279, 88);
-            this.path2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.path2.TabIndex = 34;
-            this.path2.TabStop = false;
             // 
             // StartBtn1
             // 
@@ -519,16 +451,6 @@
             this.silo3_Qty.TabIndex = 61;
             this.silo3_Qty.Text = "[저장량]";
             // 
-            // silo10
-            // 
-            this.silo10.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo10.Location = new System.Drawing.Point(477, 601);
-            this.silo10.Name = "silo10";
-            this.silo10.Size = new System.Drawing.Size(104, 126);
-            this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo10.TabIndex = 62;
-            this.silo10.TabStop = false;
-            // 
             // siloName10
             // 
             this.siloName10.AutoSize = true;
@@ -603,12 +525,103 @@
             this.Mixing2.TabIndex = 66;
             this.Mixing2.Text = "MX002";
             // 
+            // silo10
+            // 
+            this.silo10.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo10.Location = new System.Drawing.Point(477, 601);
+            this.silo10.Name = "silo10";
+            this.silo10.Size = new System.Drawing.Size(104, 126);
+            this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo10.TabIndex = 62;
+            this.silo10.TabStop = false;
+            // 
+            // path2
+            // 
+            this.path2.Image = global::MESProject.Properties.Resources.path2;
+            this.path2.Location = new System.Drawing.Point(382, 507);
+            this.path2.Name = "path2";
+            this.path2.Size = new System.Drawing.Size(279, 88);
+            this.path2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.path2.TabIndex = 34;
+            this.path2.TabStop = false;
+            // 
+            // path1
+            // 
+            this.path1.Image = global::MESProject.Properties.Resources.path1;
+            this.path1.Location = new System.Drawing.Point(111, 284);
+            this.path1.Name = "path1";
+            this.path1.Size = new System.Drawing.Size(550, 63);
+            this.path1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.path1.TabIndex = 33;
+            this.path1.TabStop = false;
+            // 
+            // MixingMachine2
+            // 
+            this.MixingMachine2.Image = global::MESProject.Properties.Resources.mixing;
+            this.MixingMachine2.Location = new System.Drawing.Point(608, 353);
+            this.MixingMachine2.Name = "MixingMachine2";
+            this.MixingMachine2.Size = new System.Drawing.Size(76, 148);
+            this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingMachine2.TabIndex = 32;
+            this.MixingMachine2.TabStop = false;
+            // 
+            // MixingMachine1
+            // 
+            this.MixingMachine1.Image = global::MESProject.Properties.Resources.mixing;
+            this.MixingMachine1.Location = new System.Drawing.Point(354, 353);
+            this.MixingMachine1.Name = "MixingMachine1";
+            this.MixingMachine1.Size = new System.Drawing.Size(76, 148);
+            this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingMachine1.TabIndex = 31;
+            this.MixingMachine1.TabStop = false;
+            // 
+            // silo3
+            // 
+            this.silo3.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo3.Location = new System.Drawing.Point(417, 152);
+            this.silo3.Name = "silo3";
+            this.silo3.Size = new System.Drawing.Size(104, 126);
+            this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo3.TabIndex = 30;
+            this.silo3.TabStop = false;
+            // 
+            // silo2
+            // 
+            this.silo2.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo2.Location = new System.Drawing.Point(255, 152);
+            this.silo2.Name = "silo2";
+            this.silo2.Size = new System.Drawing.Size(104, 126);
+            this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo2.TabIndex = 29;
+            this.silo2.TabStop = false;
+            // 
+            // silo1
+            // 
+            this.silo1.Image = global::MESProject.Properties.Resources.silo1;
+            this.silo1.Location = new System.Drawing.Point(86, 154);
+            this.silo1.Name = "silo1";
+            this.silo1.Size = new System.Drawing.Size(104, 126);
+            this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo1.TabIndex = 28;
+            this.silo1.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::MESProject.Properties.Resources.path1_1;
+            this.pictureBox1.Location = new System.Drawing.Point(255, 381);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(550, 63);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 67;
+            this.pictureBox1.TabStop = false;
+            // 
             // Startworking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Mixing2);
             this.Controls.Add(this.Mixing1);
             this.Controls.Add(this.silo10_Qty);
@@ -656,14 +669,15 @@
             this.Load += new System.EventHandler(this.Startworking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.path1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.path1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.path2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -719,5 +733,6 @@
         private System.Windows.Forms.Timer timer7;
         private System.Windows.Forms.Label Mixing1;
         private System.Windows.Forms.Label Mixing2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
