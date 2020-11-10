@@ -57,7 +57,15 @@ namespace MESProject
 
             Inquiry_Woid();
             Inquiry_Lot();
-
+            //작업지시서 상태가 종료일 때 버튼 사용 금지
+            string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
+            if (wostat == "종료")
+            {
+                EndBtn.Enabled = false;
+                StopBtn.Enabled = false;
+                IM1_STBtn.Enabled = false;
+                IM2_STBtn.Enabled = false;
+            }
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);

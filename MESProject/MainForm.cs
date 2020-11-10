@@ -24,6 +24,7 @@ namespace MESProject
         //Equipment에서 가져온 EQPTID
 
         public string woid = "";
+        string wostat;
         int count = 0;
         public MainForm()
         {
@@ -203,11 +204,12 @@ namespace MESProject
                 if (WoGrid.Rows[i].Selected == true)
                 {
                     woid = WoGrid.Rows[i].Cells[0].Value.ToString();
+                    wostat = WoGrid.Rows[i].Cells[3].Value.ToString();
                 }
             }
 
             //진행중인 작업지시서 수가 0 이면 WOSTAT를 진행중으로 변경
-            if (count == 0)
+            if (wostat != "종료" && count == 0)
             {
                 string update_wostat = $"UPDATE WORKORDER SET WOSTAT ='S', WOSTDTTM = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{woid}'";
                 Common.DB_Connection(update_wostat);
