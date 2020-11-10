@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.StockBtn = new System.Windows.Forms.Button();
             this.FaultyBtn = new System.Windows.Forms.Button();
             this.LotDelBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
@@ -107,45 +106,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.MixingP2)).BeginInit();
             this.SuspendLayout();
             // 
-            // StockBtn
-            // 
-            this.StockBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StockBtn.Location = new System.Drawing.Point(1012, 725);
-            this.StockBtn.Name = "StockBtn";
-            this.StockBtn.Size = new System.Drawing.Size(118, 86);
-            this.StockBtn.TabIndex = 27;
-            this.StockBtn.Text = "원재료 재고관리";
-            this.StockBtn.UseVisualStyleBackColor = true;
-            this.StockBtn.Click += new System.EventHandler(this.StockBtn_Click);
-            // 
             // FaultyBtn
             // 
             this.FaultyBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.FaultyBtn.Location = new System.Drawing.Point(273, 725);
+            this.FaultyBtn.Location = new System.Drawing.Point(311, 722);
             this.FaultyBtn.Name = "FaultyBtn";
-            this.FaultyBtn.Size = new System.Drawing.Size(118, 86);
+            this.FaultyBtn.Size = new System.Drawing.Size(137, 86);
             this.FaultyBtn.TabIndex = 26;
-            this.FaultyBtn.Text = "불량    등록";
+            this.FaultyBtn.Text = "불량 등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
             this.FaultyBtn.Click += new System.EventHandler(this.FaultyBtn_Click);
             // 
             // LotDelBtn
             // 
             this.LotDelBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.LotDelBtn.Location = new System.Drawing.Point(149, 725);
+            this.LotDelBtn.Location = new System.Drawing.Point(167, 722);
             this.LotDelBtn.Name = "LotDelBtn";
-            this.LotDelBtn.Size = new System.Drawing.Size(118, 86);
+            this.LotDelBtn.Size = new System.Drawing.Size(137, 86);
             this.LotDelBtn.TabIndex = 25;
-            this.LotDelBtn.Text = "LOT   삭제";
+            this.LotDelBtn.Text = "LOT 삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
             this.LotDelBtn.Click += new System.EventHandler(this.LotDelBtn_Click);
             // 
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.ExitBtn.Location = new System.Drawing.Point(1416, 725);
+            this.ExitBtn.Location = new System.Drawing.Point(1389, 722);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(118, 86);
+            this.ExitBtn.Size = new System.Drawing.Size(148, 86);
             this.ExitBtn.TabIndex = 24;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -154,9 +142,9 @@
             // EndBtn
             // 
             this.EndBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.EndBtn.Location = new System.Drawing.Point(1282, 725);
+            this.EndBtn.Location = new System.Drawing.Point(1230, 722);
             this.EndBtn.Name = "EndBtn";
-            this.EndBtn.Size = new System.Drawing.Size(118, 86);
+            this.EndBtn.Size = new System.Drawing.Size(148, 86);
             this.EndBtn.TabIndex = 23;
             this.EndBtn.Text = "작업종료";
             this.EndBtn.UseVisualStyleBackColor = true;
@@ -165,9 +153,9 @@
             // StopBtn
             // 
             this.StopBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StopBtn.Location = new System.Drawing.Point(1149, 725);
+            this.StopBtn.Location = new System.Drawing.Point(1071, 722);
             this.StopBtn.Name = "StopBtn";
-            this.StopBtn.Size = new System.Drawing.Size(118, 86);
+            this.StopBtn.Size = new System.Drawing.Size(148, 86);
             this.StopBtn.TabIndex = 22;
             this.StopBtn.Text = "작업중지/재시작";
             this.StopBtn.UseVisualStyleBackColor = true;
@@ -176,11 +164,11 @@
             // LotaddBtn
             // 
             this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LotaddBtn.Location = new System.Drawing.Point(25, 724);
+            this.LotaddBtn.Location = new System.Drawing.Point(25, 722);
             this.LotaddBtn.Name = "LotaddBtn";
-            this.LotaddBtn.Size = new System.Drawing.Size(118, 86);
+            this.LotaddBtn.Size = new System.Drawing.Size(137, 86);
             this.LotaddBtn.TabIndex = 21;
-            this.LotaddBtn.Text = "LOT    추가";
+            this.LotaddBtn.Text = "LOT 추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
             this.LotaddBtn.Click += new System.EventHandler(this.LotaddBtn_Click);
             // 
@@ -193,7 +181,7 @@
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(599, 541);
+            this.LotGrid.Size = new System.Drawing.Size(599, 603);
             this.LotGrid.TabIndex = 20;
             // 
             // WoGrid
@@ -476,7 +464,7 @@
             this.siloName10.BackColor = System.Drawing.Color.DimGray;
             this.siloName10.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.siloName10.ForeColor = System.Drawing.Color.White;
-            this.siloName10.Location = new System.Drawing.Point(504, 649);
+            this.siloName10.Location = new System.Drawing.Point(504, 652);
             this.siloName10.Name = "siloName10";
             this.siloName10.Size = new System.Drawing.Size(57, 24);
             this.siloName10.TabIndex = 63;
@@ -550,7 +538,7 @@
             // silo10
             // 
             this.silo10.Image = global::MESProject.Properties.Resources.silo1;
-            this.silo10.Location = new System.Drawing.Point(477, 601);
+            this.silo10.Location = new System.Drawing.Point(477, 604);
             this.silo10.Name = "silo10";
             this.silo10.Size = new System.Drawing.Size(104, 138);
             this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -570,9 +558,9 @@
             // path1
             // 
             this.path1.Image = global::MESProject.Properties.Resources.path1;
-            this.path1.Location = new System.Drawing.Point(111, 284);
+            this.path1.Location = new System.Drawing.Point(112, 283);
             this.path1.Name = "path1";
-            this.path1.Size = new System.Drawing.Size(550, 66);
+            this.path1.Size = new System.Drawing.Size(550, 64);
             this.path1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.path1.TabIndex = 33;
             this.path1.TabStop = false;
@@ -580,7 +568,7 @@
             // MixingMachine2
             // 
             this.MixingMachine2.Image = global::MESProject.Properties.Resources.mixing;
-            this.MixingMachine2.Location = new System.Drawing.Point(608, 353);
+            this.MixingMachine2.Location = new System.Drawing.Point(607, 353);
             this.MixingMachine2.Name = "MixingMachine2";
             this.MixingMachine2.Size = new System.Drawing.Size(76, 148);
             this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -590,7 +578,7 @@
             // MixingMachine1
             // 
             this.MixingMachine1.Image = global::MESProject.Properties.Resources.mixing;
-            this.MixingMachine1.Location = new System.Drawing.Point(354, 353);
+            this.MixingMachine1.Location = new System.Drawing.Point(357, 353);
             this.MixingMachine1.Name = "MixingMachine1";
             this.MixingMachine1.Size = new System.Drawing.Size(76, 148);
             this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -777,7 +765,6 @@
             this.Controls.Add(this.silo3);
             this.Controls.Add(this.silo2);
             this.Controls.Add(this.silo1);
-            this.Controls.Add(this.StockBtn);
             this.Controls.Add(this.FaultyBtn);
             this.Controls.Add(this.LotDelBtn);
             this.Controls.Add(this.ExitBtn);
@@ -814,8 +801,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button StockBtn;
         private System.Windows.Forms.Button FaultyBtn;
         private System.Windows.Forms.Button LotDelBtn;
         private System.Windows.Forms.Button ExitBtn;

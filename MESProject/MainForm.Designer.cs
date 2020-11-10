@@ -36,11 +36,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.EquipmanageBtn = new System.Windows.Forms.Button();
             this.WoLogBtn = new System.Windows.Forms.Button();
             this.WostBtn = new System.Windows.Forms.Button();
             this.InquiryBtn = new System.Windows.Forms.Button();
             this.WoGrid = new System.Windows.Forms.DataGridView();
+            this.MaterialBtn = new System.Windows.Forms.Button();
             this.maintab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
@@ -68,12 +68,12 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.MaterialBtn);
             this.tabPage1.Controls.Add(this.logoutbtn);
             this.tabPage1.Controls.Add(this.ProcCombo);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.dateTimePicker2);
             this.tabPage1.Controls.Add(this.dateTimePicker1);
-            this.tabPage1.Controls.Add(this.EquipmanageBtn);
             this.tabPage1.Controls.Add(this.WoLogBtn);
             this.tabPage1.Controls.Add(this.WostBtn);
             this.tabPage1.Controls.Add(this.InquiryBtn);
@@ -106,6 +106,7 @@
             this.ProcCombo.Name = "ProcCombo";
             this.ProcCombo.Size = new System.Drawing.Size(150, 35);
             this.ProcCombo.TabIndex = 54;
+            this.ProcCombo.Visible = false;
             // 
             // label1
             // 
@@ -134,20 +135,10 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(393, 38);
             this.dateTimePicker1.TabIndex = 51;
             // 
-            // EquipmanageBtn
-            // 
-            this.EquipmanageBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.EquipmanageBtn.Location = new System.Drawing.Point(641, 699);
-            this.EquipmanageBtn.Name = "EquipmanageBtn";
-            this.EquipmanageBtn.Size = new System.Drawing.Size(222, 97);
-            this.EquipmanageBtn.TabIndex = 50;
-            this.EquipmanageBtn.Text = "설비관리";
-            this.EquipmanageBtn.UseVisualStyleBackColor = true;
-            // 
             // WoLogBtn
             // 
             this.WoLogBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.WoLogBtn.Location = new System.Drawing.Point(330, 699);
+            this.WoLogBtn.Location = new System.Drawing.Point(261, 699);
             this.WoLogBtn.Name = "WoLogBtn";
             this.WoLogBtn.Size = new System.Drawing.Size(222, 97);
             this.WoLogBtn.TabIndex = 49;
@@ -192,6 +183,17 @@
             this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
             this.WoGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WoGrid_CellDoubleClick);
             // 
+            // MaterialBtn
+            // 
+            this.MaterialBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.MaterialBtn.Location = new System.Drawing.Point(499, 699);
+            this.MaterialBtn.Name = "MaterialBtn";
+            this.MaterialBtn.Size = new System.Drawing.Size(222, 97);
+            this.MaterialBtn.TabIndex = 57;
+            this.MaterialBtn.Text = "원재료 재고 관리";
+            this.MaterialBtn.UseVisualStyleBackColor = true;
+            this.MaterialBtn.Click += new System.EventHandler(this.MaterialBtn_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -220,11 +222,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button EquipmanageBtn;
         private System.Windows.Forms.Button WoLogBtn;
         private System.Windows.Forms.Button WostBtn;
         private System.Windows.Forms.Button InquiryBtn;
         private System.Windows.Forms.DataGridView WoGrid;
+        private System.Windows.Forms.Button MaterialBtn;
     }
 }
 

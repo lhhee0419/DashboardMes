@@ -183,8 +183,7 @@ namespace MESProject
         private void StockBtn_Click(object sender, EventArgs e)
         {
             //원재료 재고조회 버튼
-            MaterialStock materialStockForm = new MaterialStock();
-            materialStockForm.ShowDialog();
+           
         }
 
         private void FaultyBtn_Click(object sender, EventArgs e)

@@ -52,6 +52,7 @@ namespace MESProject
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
             ProcCombo.SelectedIndex = 0; //콤보박스 초기값설정
+            Check_Admin();
             Common.SetGridDesign(WoGrid);
             DataSearch();
             if (WoGrid.Rows.Count > 0)
@@ -65,6 +66,33 @@ namespace MESProject
                 }
             }
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+          
+
+        }
+
+        private void Check_Admin()
+        {
+            string admin_yn = $"SELECT PROCID, ADMIN_YN FROM EMP_AUTHORITY WHERE EMPLOYEEID = '{User_ID}'";
+            DataTable dataTable = Common.DB_Connection(admin_yn);
+            string y_n = dataTable.Rows[0][1].ToString();
+            string user_procid = dataTable.Rows[0][0].ToString();
+
+            if (y_n == "Y")
+            {
+                ProcCombo.Visible = true;
+            }
+            else if (y_n == "N")
+            {
+                if (user_procid == "P0001")
+                {
+                    ProcCombo.SelectedIndex = 0;
+                }
+                else if (user_procid == "P0002")
+                {
+                    ProcCombo.SelectedIndex = 1;
+                }
+            }
         }
 
         private void DataSearch()
@@ -109,7 +137,7 @@ namespace MESProject
             else if (ProcCombo.SelectedIndex == 1)
             {
                 //사출 콤보박스 선택
-                string select_wo_injection =$"SELECT \n" +
+                string select_wo_injection = $"SELECT \n" +
                                                 $"W.WOID \n" +
                                                 $",W.PRODID \n " +
                                                 $",P.PRODNAME \n " +
@@ -207,7 +235,7 @@ namespace MESProject
             }
             startWorkingFormIM.FormClosed += Form_closing;
             startworkingForm.FormClosed += Form_closing;
-            
+
         }
 
         public void Form_closing(object sender, FormClosedEventArgs e)
@@ -288,6 +316,13 @@ namespace MESProject
             }
             startWorkingFormIM.FormClosed += Form_closing;
             startworkingForm.FormClosed += Form_closing;
+        }
+
+        private void MaterialBtn_Click(object sender, EventArgs e)
+        {
+            //원재료재고관리
+            MaterialStock materialStockForm = new MaterialStock();
+            materialStockForm.ShowDialog();
         }
     }
 }
