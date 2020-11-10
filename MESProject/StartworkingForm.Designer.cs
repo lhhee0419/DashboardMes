@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Startworking));
             this.FaultyBtn = new System.Windows.Forms.Button();
             this.LotDelBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
@@ -86,6 +87,7 @@
             this.PassGif_2_3 = new System.Windows.Forms.PictureBox();
             this.MixingP1 = new System.Windows.Forms.PictureBox();
             this.MixingP2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
@@ -104,6 +106,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // FaultyBtn
@@ -633,9 +636,8 @@
             this.CurDTTM.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.CurDTTM.Location = new System.Drawing.Point(686, 120);
             this.CurDTTM.Name = "CurDTTM";
-            this.CurDTTM.Size = new System.Drawing.Size(68, 24);
+            this.CurDTTM.Size = new System.Drawing.Size(0, 24);
             this.CurDTTM.TabIndex = 68;
-            this.CurDTTM.Text = "[시간]";
             // 
             // timer8
             // 
@@ -718,12 +720,23 @@
             this.MixingP2.TabStop = false;
             this.MixingP2.Visible = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(672, 165);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 77;
+            this.pictureBox2.TabStop = false;
+            // 
             // Startworking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.MixingP2);
             this.Controls.Add(this.MixingP1);
             this.Controls.Add(this.Mixing1_3);
@@ -795,6 +808,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,5 +872,6 @@
         private System.Windows.Forms.PictureBox PassGif_2_3;
         private System.Windows.Forms.PictureBox MixingP1;
         private System.Windows.Forms.PictureBox MixingP2;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
