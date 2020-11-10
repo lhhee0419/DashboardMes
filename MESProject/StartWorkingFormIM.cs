@@ -30,8 +30,9 @@ namespace MESProject
         string woid;
         bool isMove;
         Point fpt;
-        string PLANQTY = "";
-        string PRODQTY = "";
+        int PLANQTY;
+        int PRODQTY;
+        string LAST_LOTID;
 
         //실행중인 스레드 가져오기
         public Thread th = Thread.CurrentThread;
@@ -42,7 +43,6 @@ namespace MESProject
 
         private void StartWorkingFormIM_Load(object sender, EventArgs e)
         {
-            ProdQty_check();
             //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
             EQPTID = "";
             //실시간 타이머 설정
@@ -83,6 +83,18 @@ namespace MESProject
                 IM1_ProdQty.Visible = false;
             }
             Select_Silo_Qty();
+
+            PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
+            PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
+
+            if (PLANQTY < PRODQTY)
+            {
+                ProdQty_check();
+            }
+            else
+            {
+
+            }
 
         }
 
@@ -187,27 +199,59 @@ namespace MESProject
         }
         private void ProdQty_check()
         {
-            //string PLANQTY = WoGrid.Rows[0].Cells[3].Value.ToString();
-            //string PRODQTY = WoGrid.Rows[0].Cells[4].Value.ToString();
+            Timer_Stop();
+            IM1_STBtn.Enabled = false;
+            IM2_STBtn.Enabled = false;
+            string UPDATE_WOSTAT_P = $"UPDATE WORKORDER SET WOSTAT = 'E' WHERE WOID = '{Selected_woid}'";
+            Common.DB_Connection(UPDATE_WOSTAT_P);
+            Inquiry_Woid();
 
-            //if (Convert.ToInt32(PLANQTY) <= Convert.ToInt32(PRODQTY))
-            //{
-            //    Timer_Stop();
-            //    IM1_STBtn.Enabled = false;
-            //    IM2_STBtn.Enabled = false;
-            //    string UPDATE_WOSTAT_P = $"UPDATE WORKORDER SET WOSTAT = 'E' WHERE WOID = '{Selected_woid}'";
-            //    Common.DB_Connection(UPDATE_WOSTAT_P);
-            //    Inquiry_Woid();
-            //}
+            string DD = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY ROWNUM DESC) WHERE ROWNUM = 1";
+            DataTable dataTable1 = Common.DB_Connection(DD);
+            LAST_LOTID = dataTable1.Rows[0][0].ToString();
+
+            EQPTDATA_TEMP();
+            EQPTDATA_PRESS();
+            
         }
-        private void TEMP_check()
-        { 
+        private void EQPTDATA_TEMP()
+        {
+
             Random random = new Random();
-            double TEMP = random.Next(29, 30);
-            string INSERT_TEMP = $"SELECT PLANQTY, PRODQTY FROM WORKORDER WHERE WOID = '{Selected_woid}'";
-            DataTable dataTable3 = Common.DB_Connection(INSERT_TEMP);
+            int TEMP = random.Next(25,40);
+            
+            string INSERT_TEMP = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
+                                                             $" LOTID," +
+                                                             $" EQPTITEMID," +
+                                                             $" EQPTITEMVALUE," +
+                                                             $" EQPTITEMDTTM)" +
+                                                             $" VALUES(" +
+                                                             $" '{EQPTID}'," +
+                                                             $" '{LAST_LOTID}'," +  //LOTID
+                                                             $" 'ED001'," +
+                                                             $" '{TEMP}'," +
+                                                             $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
+            Common.DB_Connection(INSERT_TEMP);
         }
 
+        private void EQPTDATA_PRESS()
+        {
+            Random random = new Random();
+            int PRESS = random.Next(100, 150);
+
+            string INSERT_PRESS = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
+                                                             $" LOTID," +
+                                                             $" EQPTITEMID," +
+                                                             $" EQPTITEMVALUE," +
+                                                             $" EQPTITEMDTTM)" +
+                                                             $" VALUES(" +
+                                                             $" '{EQPTID}'," +
+                                                             $" '{LAST_LOTID}'," +  //LOTID
+                                                             $" 'ED002'," +
+                                                             $" '{PRESS}'," +
+                                                             $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
+            Common.DB_Connection(INSERT_PRESS);
+        }
         //------------------버튼
         private void ExitBtn_Click(object sender, EventArgs e)
         {
@@ -349,6 +393,7 @@ namespace MESProject
         {
             timer1.Enabled = false;
             timer1.Dispose();
+            timer1.Stop();
         }
 
         
@@ -427,11 +472,8 @@ namespace MESProject
 
             //DB에 WORKORDER_PRODQTY 업데이트
             string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET (PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT WHERE WOID ='{Selected_woid}') WHERE WOID = '{Selected_woid}'";
-            DataTable dataTable2 = Common.DB_Connection(UPDATE_WO_PRODQTY);
+            Common.DB_Connection(UPDATE_WO_PRODQTY);
 
-            ProdQty_check();
-
-            //
             //재조회
             Inquiry_Lot();
             Inquiry_Woid();
@@ -439,6 +481,8 @@ namespace MESProject
             //LOTGRID 재조회 및 버튼과 라벨 표시
             Inquiry_Lot();
             BtnEnabled();
+
+            ProdQty_check();
         }
 
         private void B_Backcolor(Button a, Button b, Button c, Button d)
