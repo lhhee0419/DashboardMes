@@ -281,7 +281,7 @@ namespace MESProject
             {
                 MessageBox.Show("재시작");
                 //재시작시 작업상태를 진행중(S), STOPWKEDDTTM을 SYSDATE로 변경, 해당하는 EQPTID에 EQPTSTATS를 RUN으로 변경
-                string update_wostat = $"UPDATE WORKORDER W SET W.WOSTAT ='S', W.ETC = TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') WHERE WOID = '{Selected_woid}'";
+                string update_wostat = $"UPDATE WORKORDER W SET W.WOSTAT ='S' WHERE WOID = '{Selected_woid}'";
                 Common.DB_Connection(update_wostat);
 
                 //EQPTID에 EQPTSTATS를 RUN으로 변경
