@@ -202,8 +202,6 @@ namespace MESProject
             Timer_Stop();
             IM1_STBtn.Enabled = false;
             IM2_STBtn.Enabled = false;
-            string UPDATE_WOSTAT_P = $"UPDATE WORKORDER SET WOSTAT = 'E' WHERE WOID = '{Selected_woid}'";
-            Common.DB_Connection(UPDATE_WOSTAT_P);
             Inquiry_Woid();
 
             string DD = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY ROWNUM DESC) WHERE ROWNUM = 1";
@@ -284,13 +282,6 @@ namespace MESProject
             Common.DB_Connection(delete_lot);
             Inquiry_Lot();
             Inquiry_Woid();
-        }
-
-        private void StockBtn_Click(object sender, EventArgs e)
-        {
-            //원재료 재고조회 버튼
-            MaterialStock materialStockForm = new MaterialStock();
-            materialStockForm.ShowDialog();
         }
 
         private void FaultyBtn_Click(object sender, EventArgs e)
@@ -471,7 +462,7 @@ namespace MESProject
             }
 
             //DB에 WORKORDER_PRODQTY 업데이트
-            string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET (PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT WHERE WOID ='{Selected_woid}') WHERE WOID = '{Selected_woid}'";
+            string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET (PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT WHERE WOID ='{Selected_woid}' AND LOTSTAT <> 'D') WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WO_PRODQTY);
 
             //재조회
@@ -526,6 +517,11 @@ namespace MESProject
             }
 
             return DateTime.Now;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Timer_Stop();
         }
     }
 }

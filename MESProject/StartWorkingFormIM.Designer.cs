@@ -37,7 +37,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.IM2_STBtn = new System.Windows.Forms.Button();
             this.IM1_STBtn = new System.Windows.Forms.Button();
-            this.StockBtn = new System.Windows.Forms.Button();
             this.FaultyBtn = new System.Windows.Forms.Button();
             this.LotDelBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
@@ -60,19 +59,21 @@
             this.IM2_2 = new System.Windows.Forms.Button();
             this.IM2_1 = new System.Windows.Forms.Button();
             this.SL010_CURRQTY = new System.Windows.Forms.Label();
+            this.EQPTSTOP_BTN = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EQPTSTOP_BTN)).BeginInit();
             this.SuspendLayout();
             // 
             // CurTime
             // 
             this.CurTime.AutoSize = true;
             this.CurTime.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.CurTime.Location = new System.Drawing.Point(504, 728);
+            this.CurTime.Location = new System.Drawing.Point(488, 736);
             this.CurTime.Name = "CurTime";
             this.CurTime.Size = new System.Drawing.Size(83, 25);
             this.CurTime.TabIndex = 68;
@@ -157,17 +158,6 @@
             this.IM1_STBtn.Text = "1호 사출 시작";
             this.IM1_STBtn.UseVisualStyleBackColor = true;
             this.IM1_STBtn.Click += new System.EventHandler(this.IM1_STBtn_Click);
-            // 
-            // StockBtn
-            // 
-            this.StockBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StockBtn.Location = new System.Drawing.Point(1000, 710);
-            this.StockBtn.Name = "StockBtn";
-            this.StockBtn.Size = new System.Drawing.Size(118, 86);
-            this.StockBtn.TabIndex = 50;
-            this.StockBtn.Text = "원재료 재고조회";
-            this.StockBtn.UseVisualStyleBackColor = true;
-            this.StockBtn.Click += new System.EventHandler(this.StockBtn_Click);
             // 
             // FaultyBtn
             // 
@@ -424,12 +414,23 @@
             this.SL010_CURRQTY.TabIndex = 77;
             this.SL010_CURRQTY.Text = "[저장량]";
             // 
+            // EQPTSTOP_BTN
+            // 
+            this.EQPTSTOP_BTN.Location = new System.Drawing.Point(624, 496);
+            this.EQPTSTOP_BTN.Name = "EQPTSTOP_BTN";
+            this.EQPTSTOP_BTN.Size = new System.Drawing.Size(64, 34);
+            this.EQPTSTOP_BTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.EQPTSTOP_BTN.TabIndex = 78;
+            this.EQPTSTOP_BTN.TabStop = false;
+            this.EQPTSTOP_BTN.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // StartWorkingFormIM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1534, 811);
+            this.Controls.Add(this.EQPTSTOP_BTN);
             this.Controls.Add(this.SL010_CURRQTY);
             this.Controls.Add(this.IM2_4);
             this.Controls.Add(this.IM2_3);
@@ -450,7 +451,6 @@
             this.Controls.Add(this.IM2_STBtn);
             this.Controls.Add(this.IM1_STBtn);
             this.Controls.Add(this.silo);
-            this.Controls.Add(this.StockBtn);
             this.Controls.Add(this.FaultyBtn);
             this.Controls.Add(this.LotDelBtn);
             this.Controls.Add(this.ExitBtn);
@@ -470,6 +470,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EQPTSTOP_BTN)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,7 +489,6 @@
         private System.Windows.Forms.Button IM2_STBtn;
         private System.Windows.Forms.Button IM1_STBtn;
         private System.Windows.Forms.PictureBox silo;
-        private System.Windows.Forms.Button StockBtn;
         private System.Windows.Forms.Button FaultyBtn;
         private System.Windows.Forms.Button LotDelBtn;
         private System.Windows.Forms.Button ExitBtn;
@@ -508,5 +508,6 @@
         private System.Windows.Forms.Button IM2_2;
         private System.Windows.Forms.Button IM2_1;
         private System.Windows.Forms.Label SL010_CURRQTY;
+        private System.Windows.Forms.PictureBox EQPTSTOP_BTN;
     }
 }
