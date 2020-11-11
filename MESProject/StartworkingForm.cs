@@ -43,7 +43,6 @@ namespace MESProject
             if(wostat == "종료")
             {
                 EndBtn.Enabled = false;
-                StopBtn.Enabled = false;
                 StartBtn1.Enabled = false;
                 StartBtn2.Enabled = false;
             }
@@ -51,10 +50,11 @@ namespace MESProject
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-            Common.SetColumnWidth(LotGrid, 0, 130);
-            Common.SetColumnWidth(LotGrid, 1, 30);
-            Common.SetColumnWidth(LotGrid, 2, 30);
-            Common.SetColumnWidth(LotGrid, 3, 140);
+            int[] SetCoiumnWidth_LotGrid = new int[] { 130, 30, 30, 140 };
+            for( int i=0;i<SetCoiumnWidth_LotGrid.Length;i++)
+            {
+                Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
+            }
             LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -66,7 +66,7 @@ namespace MESProject
             //저장소 현재량 조회
             SetStore_CurQty();
 
-            //
+            //계획수량 만큼만 돌아가도록
             PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
             PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
 
@@ -272,42 +272,6 @@ namespace MESProject
         }
 
 
-
-        private void StopBtn_Click(object sender, EventArgs e)
-        {
-            StopTimer();
-            string woid = Selected_woid;
-            string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
-            // stopworking 폼으로 woid값 전달
-            if (WoGrid.Rows[0].Cells[2].Value.ToString() == "진행중")
-            {
-                //WOSTATS가 진행중일 경우 STOPWORKING 폼을 오픈
-                Stopworking stopworking = new Stopworking(lotid);
-                stopworking.ShowDialog();
-            }
-            else
-            {
-                string select_wostat = "SELECT \n" +
-                                     "COUNT(WOID)\n" +
-                                   "FROM \n" +
-                                       "WORKORDER \n" +
-                                   "WHERE WOSTAT='S' \n" +
-                                       "AND PROCID='P0001'";
-                DataTable WostatTable = Common.DB_Connection(select_wostat);
-                int count = Convert.ToInt32(WostatTable.Rows[0][0].ToString());
-                if (count == 0)
-                {
-                    MessageBox.Show("재시작");
-                    //재시작시 작업상태를 진행중(S), STOPWKEDDTTM을 SYSDATE로 변경, 해당하는 EQPTID에 EQPTSTATS를 RUN으로 변경
-                    string update_wostat = $"UPDATE WORKORDER W SET W.WOSTAT ='S' WHERE WOID = '{Selected_woid}'";
-                    Common.DB_Connection(update_wostat);
-                }   
-            }
-            //테이블 재조회
-            Inquiry_Lot();
-            Inquiry_Woid();
-        }
-
         private void EndBtn_Click(object sender, EventArgs e)
         {
             //종료버튼
@@ -319,21 +283,21 @@ namespace MESProject
                                     $",WOEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') " +
                                 $"WHERE WOID='{Selected_woid}' ";
             Common.DB_Connection(Wo_eddttm);
-            Eqptstat_Changed();
+            Eqptstat_Changed("DOWN");
             Inquiry_Woid();
-
         }
-        private void Eqptstat_Changed()
+        private void Eqptstat_Changed(string eqptstat)
         {
-            string EqptStat = $"UPDATE EQUIPMENT SET EQPTSTATS = 'DOWN' WHERE EQPTID='{EQPTID}'";
+            string EqptStat = $"UPDATE EQUIPMENT SET EQPTSTATS = '{eqptstat}' WHERE EQPTID='{EQPTID}'";
             Common.DB_Connection(EqptStat);
         }
 
         private void StartBtn1_Click(object sender, EventArgs e)
         {
             //1호 배합시작버튼
+            Stopbtn.Enabled = true;
             EQPTID = "MX001";
-            Eqptstat_Changed();
+            Eqptstat_Changed("RUN");
             SetTimer();
             timer1.Start();
             StartBtn1.Enabled = false;
@@ -342,8 +306,9 @@ namespace MESProject
         private void StartBtn2_Click(object sender, EventArgs e)
         {
             //2호 배합시작버튼
+            Stopbtn.Enabled = true;
             EQPTID = "MX002";
-            Eqptstat_Changed();
+            Eqptstat_Changed("RUN");
             SetTimer();
             timer1.Start();
             StartBtn2.Enabled = false;
@@ -408,32 +373,11 @@ namespace MESProject
             Inquiry_Lot();
             Inquiry_Woid();
         }
-        private static DateTime Delay(int MS)
 
-        {
-
-            DateTime ThisMoment = DateTime.Now;
-
-            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
-
-            DateTime AfterWards = ThisMoment.Add(duration);
-
-            while (AfterWards >= ThisMoment)
-
-            {
-
-                System.Windows.Forms.Application.DoEvents();
-
-                ThisMoment = DateTime.Now;
-
-            }
-
-            return DateTime.Now;
-
-        }
+        
         public void SetTimer()
         {
-            timer1.Interval = time;
+            timer1.Interval = 1000;
             timer2.Interval = time;
             timer3.Interval = time;
             timer4.Interval = time;
@@ -555,7 +499,13 @@ namespace MESProject
             timer4.Start();
         }
 
-
+        private void Stopbtn_Click(object sender, EventArgs e)
+        {
+            // 긴급 중지 버튼
+            StopTimer();
+            Stopbtn.Enabled = false;
+            Eqptstat_Changed("DOWN");
+        }
 
         private void timer4_Tick(object sender, EventArgs e)
         {
@@ -633,16 +583,30 @@ namespace MESProject
             }
             Random random = new Random();
             int num = random.Next(20, 30);
-            Update_store('+', num, "SL010");
-            Select_store("SL010");
-            silo10_Qty.Text = "저장량: " + CurrQty;
-            timer7.Stop();
-            timer1.Start();
+            int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
+            if (silo10_currQty + num > 10000)
+            {
+                num = 10000 - silo10_currQty;
+                Update_store('+', num, "SL010");
+                Select_store("SL010");
+                silo10_Qty.Text = "저장량: " + CurrQty;
+                timer7.Stop();
+                MessageBox.Show("SILO10 저장소가 꽉 찼습니다.");
+            }
+            else
+            {
+                Update_store('+', num, "SL010");
+                Select_store("SL010");
+                silo10_Qty.Text = "저장량: " + CurrQty;
+                timer7.Stop();
+                timer1.Start();
+            }
+           
         }
         private void timer8_Tick(object sender, EventArgs e)
         {
             // 현재시간
-            CurDTTM.Text = System.DateTime.Now.ToString();
+            CurDTTM.Text = DateTime.Now.ToString();
         }
 
     }

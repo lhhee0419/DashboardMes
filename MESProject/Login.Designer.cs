@@ -40,7 +40,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("문체부 돋음체", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(173, 147);
+            this.label1.Location = new System.Drawing.Point(164, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 33);
             this.label1.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("문체부 돋음체", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(173, 224);
+            this.label2.Location = new System.Drawing.Point(164, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(151, 33);
             this.label2.TabIndex = 1;
@@ -59,7 +59,7 @@
             // IDtextBox
             // 
             this.IDtextBox.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IDtextBox.Location = new System.Drawing.Point(391, 135);
+            this.IDtextBox.Location = new System.Drawing.Point(382, 89);
             this.IDtextBox.Name = "IDtextBox";
             this.IDtextBox.Size = new System.Drawing.Size(200, 45);
             this.IDtextBox.TabIndex = 2;
@@ -69,7 +69,7 @@
             // PWDtextBox
             // 
             this.PWDtextBox.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.PWDtextBox.Location = new System.Drawing.Point(391, 212);
+            this.PWDtextBox.Location = new System.Drawing.Point(382, 166);
             this.PWDtextBox.Name = "PWDtextBox";
             this.PWDtextBox.Size = new System.Drawing.Size(200, 45);
             this.PWDtextBox.TabIndex = 3;
@@ -79,9 +79,9 @@
             // LoginButton
             // 
             this.LoginButton.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LoginButton.Location = new System.Drawing.Point(264, 375);
+            this.LoginButton.Location = new System.Drawing.Point(170, 257);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(255, 91);
+            this.LoginButton.Size = new System.Drawing.Size(412, 91);
             this.LoginButton.TabIndex = 4;
             this.LoginButton.Text = "로그인";
             this.LoginButton.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ExitBtn.Location = new System.Drawing.Point(576, 392);
+            this.ExitBtn.Location = new System.Drawing.Point(618, 12);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(131, 63);
             this.ExitBtn.TabIndex = 5;
@@ -103,7 +103,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ClientSize = new System.Drawing.Size(770, 427);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.PWDtextBox);
