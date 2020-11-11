@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartWorkingFormIM));
             this.CurTime = new System.Windows.Forms.Label();
             this.IM1_ProdQty_Value = new System.Windows.Forms.Label();
             this.IM2_ProdQty_Value = new System.Windows.Forms.Label();
@@ -45,11 +46,7 @@
             this.LotaddBtn = new System.Windows.Forms.Button();
             this.LotGrid = new System.Windows.Forms.DataGridView();
             this.WoGrid = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
-            this.IM1 = new System.Windows.Forms.PictureBox();
-            this.IM2 = new System.Windows.Forms.PictureBox();
-            this.silo = new System.Windows.Forms.PictureBox();
             this.IM1_1 = new System.Windows.Forms.Button();
             this.IM1_2 = new System.Windows.Forms.Button();
             this.IM1_3 = new System.Windows.Forms.Button();
@@ -59,25 +56,28 @@
             this.IM2_2 = new System.Windows.Forms.Button();
             this.IM2_1 = new System.Windows.Forms.Button();
             this.SL010_CURRQTY = new System.Windows.Forms.Label();
-            this.EQPTSTOP_BTN = new System.Windows.Forms.PictureBox();
+            this.IM1 = new System.Windows.Forms.PictureBox();
+            this.IM2 = new System.Windows.Forms.PictureBox();
+            this.silo = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.STOP_BTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EQPTSTOP_BTN)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // CurTime
             // 
             this.CurTime.AutoSize = true;
-            this.CurTime.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.CurTime.Location = new System.Drawing.Point(488, 736);
+            this.CurTime.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CurTime.Location = new System.Drawing.Point(88, 672);
             this.CurTime.Name = "CurTime";
-            this.CurTime.Size = new System.Drawing.Size(83, 25);
+            this.CurTime.Size = new System.Drawing.Size(89, 19);
             this.CurTime.TabIndex = 68;
-            this.CurTime.Text = "label1";
+            this.CurTime.Text = "현재시간";
             // 
             // IM1_ProdQty_Value
             // 
@@ -140,7 +140,7 @@
             // IM2_STBtn
             // 
             this.IM2_STBtn.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IM2_STBtn.Location = new System.Drawing.Point(340, 343);
+            this.IM2_STBtn.Location = new System.Drawing.Point(340, 352);
             this.IM2_STBtn.Name = "IM2_STBtn";
             this.IM2_STBtn.Size = new System.Drawing.Size(120, 80);
             this.IM2_STBtn.TabIndex = 54;
@@ -151,7 +151,7 @@
             // IM1_STBtn
             // 
             this.IM1_STBtn.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IM1_STBtn.Location = new System.Drawing.Point(220, 343);
+            this.IM1_STBtn.Location = new System.Drawing.Point(220, 352);
             this.IM1_STBtn.Name = "IM1_STBtn";
             this.IM1_STBtn.Size = new System.Drawing.Size(120, 80);
             this.IM1_STBtn.TabIndex = 53;
@@ -231,13 +231,13 @@
             // LotGrid
             // 
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(751, 123);
+            this.LotGrid.Location = new System.Drawing.Point(848, 123);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(771, 541);
+            this.LotGrid.Size = new System.Drawing.Size(674, 541);
             this.LotGrid.TabIndex = 43;
             // 
             // WoGrid
@@ -252,51 +252,9 @@
             this.WoGrid.Size = new System.Drawing.Size(1509, 91);
             this.WoGrid.TabIndex = 42;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.ErrorImage = null;
-            this.pictureBox1.Image = global::MESProject.Properties.Resources.사출통로;
-            this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(148, 263);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(460, 329);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 52;
-            this.pictureBox1.TabStop = false;
-            // 
             // timer
             // 
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
-            // 
-            // IM1
-            // 
-            this.IM1.Image = global::MESProject.Properties.Resources.사출1;
-            this.IM1.Location = new System.Drawing.Point(496, 328);
-            this.IM1.Name = "IM1";
-            this.IM1.Size = new System.Drawing.Size(216, 160);
-            this.IM1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IM1.TabIndex = 71;
-            this.IM1.TabStop = false;
-            // 
-            // IM2
-            // 
-            this.IM2.Image = global::MESProject.Properties.Resources.사출2;
-            this.IM2.Location = new System.Drawing.Point(496, 536);
-            this.IM2.Name = "IM2";
-            this.IM2.Size = new System.Drawing.Size(216, 160);
-            this.IM2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IM2.TabIndex = 70;
-            this.IM2.TabStop = false;
-            // 
-            // silo
-            // 
-            this.silo.Image = global::MESProject.Properties.Resources.SILo010;
-            this.silo.Location = new System.Drawing.Point(102, 144);
-            this.silo.Name = "silo";
-            this.silo.Size = new System.Drawing.Size(114, 144);
-            this.silo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo.TabIndex = 51;
-            this.silo.TabStop = false;
             // 
             // IM1_1
             // 
@@ -414,23 +372,71 @@
             this.SL010_CURRQTY.TabIndex = 77;
             this.SL010_CURRQTY.Text = "[저장량]";
             // 
-            // EQPTSTOP_BTN
+            // IM1
             // 
-            this.EQPTSTOP_BTN.Location = new System.Drawing.Point(624, 496);
-            this.EQPTSTOP_BTN.Name = "EQPTSTOP_BTN";
-            this.EQPTSTOP_BTN.Size = new System.Drawing.Size(64, 34);
-            this.EQPTSTOP_BTN.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.EQPTSTOP_BTN.TabIndex = 78;
-            this.EQPTSTOP_BTN.TabStop = false;
-            this.EQPTSTOP_BTN.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.IM1.Image = global::MESProject.Properties.Resources.사출1;
+            this.IM1.Location = new System.Drawing.Point(496, 328);
+            this.IM1.Name = "IM1";
+            this.IM1.Size = new System.Drawing.Size(216, 160);
+            this.IM1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.IM1.TabIndex = 71;
+            this.IM1.TabStop = false;
+            // 
+            // IM2
+            // 
+            this.IM2.Image = global::MESProject.Properties.Resources.사출2;
+            this.IM2.Location = new System.Drawing.Point(496, 536);
+            this.IM2.Name = "IM2";
+            this.IM2.Size = new System.Drawing.Size(216, 160);
+            this.IM2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.IM2.TabIndex = 70;
+            this.IM2.TabStop = false;
+            // 
+            // silo
+            // 
+            this.silo.Image = global::MESProject.Properties.Resources.SILo010;
+            this.silo.Location = new System.Drawing.Point(102, 144);
+            this.silo.Name = "silo";
+            this.silo.Size = new System.Drawing.Size(114, 144);
+            this.silo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo.TabIndex = 51;
+            this.silo.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Image = global::MESProject.Properties.Resources.사출통로;
+            this.pictureBox1.InitialImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(148, 263);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(460, 329);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 52;
+            this.pictureBox1.TabStop = false;
+            // 
+            // STOP_BTN
+            // 
+            this.STOP_BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("STOP_BTN.BackgroundImage")));
+            this.STOP_BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.STOP_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.STOP_BTN.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.STOP_BTN.ForeColor = System.Drawing.Color.White;
+            this.STOP_BTN.Location = new System.Drawing.Point(736, 120);
+            this.STOP_BTN.Name = "STOP_BTN";
+            this.STOP_BTN.Size = new System.Drawing.Size(72, 65);
+            this.STOP_BTN.TabIndex = 81;
+            this.STOP_BTN.Text = "STOP";
+            this.STOP_BTN.UseVisualStyleBackColor = true;
+            this.STOP_BTN.Click += new System.EventHandler(this.STOP_BTN_Click);
             // 
             // StartWorkingFormIM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1534, 811);
-            this.Controls.Add(this.EQPTSTOP_BTN);
+            this.Controls.Add(this.STOP_BTN);
             this.Controls.Add(this.SL010_CURRQTY);
             this.Controls.Add(this.IM2_4);
             this.Controls.Add(this.IM2_3);
@@ -464,13 +470,13 @@
             this.Name = "StartWorkingFormIM";
             this.Text = "StartWorkingFormIM";
             this.Load += new System.EventHandler(this.StartWorkingFormIM_Load);
+            this.Click += new System.EventHandler(this.STOP_BTN_Click);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.EQPTSTOP_BTN)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -508,6 +514,6 @@
         private System.Windows.Forms.Button IM2_2;
         private System.Windows.Forms.Button IM2_1;
         private System.Windows.Forms.Label SL010_CURRQTY;
-        private System.Windows.Forms.PictureBox EQPTSTOP_BTN;
+        private System.Windows.Forms.Button STOP_BTN;
     }
 }

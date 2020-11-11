@@ -43,6 +43,7 @@ namespace MESProject
 
         private void StartWorkingFormIM_Load(object sender, EventArgs e)
         {
+            STOP_BTN.Enabled = false;
             //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
             EQPTID = "";
             //실시간 타이머 설정
@@ -55,8 +56,15 @@ namespace MESProject
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
 
+            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
+            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            LotGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            //데이터 조회
             Inquiry_Woid();
             Inquiry_Lot();
+
             //작업지시서 상태가 종료일 때 버튼 사용 금지
             string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
             if (wostat == "종료")
@@ -66,12 +74,10 @@ namespace MESProject
                 IM1_STBtn.Enabled = false;
                 IM2_STBtn.Enabled = false;
             }
-            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
-            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
-            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            LotGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            BtnEnabled();
 
+            //버튼 관리
+            BtnEnabled();
+            
             //1,2호기의 생산량 조회
             string SELECT_PRODQTY = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
             DataTable dataTable1 = Common.DB_Connection(SELECT_PRODQTY);
@@ -90,12 +96,14 @@ namespace MESProject
                 IM1_ProdQty_Value.Visible = false;
                 IM1_ProdQty.Visible = false;
             }
+
+
             Select_Silo_Qty();
 
             PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
             PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
 
-            if (PLANQTY < PRODQTY)
+            if (PLANQTY <= PRODQTY)
             {
                 ProdQty_check();
             }
@@ -106,7 +114,8 @@ namespace MESProject
 
         }
 
-        //-----------------함수
+        //-------------------------------------------함수------------------------------------------------------------
+
         public void BtnEnabled()
         {
             //LOTGRID에 데이터가 한건이라도 있을경우 첫번째 행의 EQPTID를 가져옴.
@@ -121,6 +130,7 @@ namespace MESProject
                 {
                     //EQPTID = IM001일경우 2호기 버튼과 라벨을 숨김.
                     EQPTID = "IM001";
+                    IM1_STBtn.Enabled = true;
                     IM2_STBtn.Enabled = false;
                     IM2_ProdQty.Visible = false;
                     IM2_ProdQty_Value.Visible = false;
@@ -129,6 +139,7 @@ namespace MESProject
                 {
                     //EQPTID = IM002일경우 1호기 버튼과 라벨을 숨김.
                     EQPTID = "IM002";
+                    IM2_STBtn.Enabled = true;
                     IM1_STBtn.Enabled = false;
                     IM1_ProdQty.Visible = false;
                     IM1_ProdQty_Value.Visible = false;
@@ -218,8 +229,8 @@ namespace MESProject
 
             EQPTDATA_TEMP();
             EQPTDATA_PRESS();
-            
         }
+
         private void EQPTDATA_TEMP()
         {
 
@@ -258,7 +269,7 @@ namespace MESProject
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
             Common.DB_Connection(INSERT_PRESS);
         }
-        //------------------버튼
+        //------------------------------------------------------------------버튼------------------------------------------------
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             //닫기버튼
@@ -347,17 +358,27 @@ namespace MESProject
         private void IM1_STBtn_Click(object sender, EventArgs e)
         {
             EQPTID = "IM001";
+            //EQPTID에 EQPTSTATS를 RUN으로 변경
+            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID ='{EQPTID}'";
+            Common.DB_Connection(Update_EQPTSTATS);
+
             IM2_STBtn.Enabled = false;
             Timer_Start();
             IM1_STBtn.Enabled = false;
+            STOP_BTN.Enabled = true;
         }
 
         private void IM2_STBtn_Click(object sender, EventArgs e)
         {
             EQPTID = "IM002";
+            //EQPTID에 EQPTSTATS를 RUN으로 변경
+            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID ='{EQPTID}'";
+            Common.DB_Connection(Update_EQPTSTATS);
+
             IM1_STBtn.Enabled = false;
             Timer_Start();
             IM2_STBtn.Enabled = false;
+            STOP_BTN.Enabled = true;
         }
 
         private void EndBtn_MouseDown(object sender, MouseEventArgs e)
@@ -376,9 +397,18 @@ namespace MESProject
             if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
+        private void STOP_BTN_Click(object sender, EventArgs e)
+        {
+            Timer_Stop();
+            //EQPTID에 EQPTSTATS를 DOWN으로 변경
+            string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
+            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET EQPTSTATS = 'DOWN' WHERE EQPTID IN (SELECT EQPTID FROM LOT WHERE LOTID = '{lotid}')";
+            Common.DB_Connection(Update_EQPTSTATS);
+            BtnEnabled();
+        }
 
+        //--------------------------------------------------------------------공정 타이머------------------------------------------------
 
-        //--------------------공정 타이머
         public System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
 
         public void Timer_Start()
@@ -432,7 +462,7 @@ namespace MESProject
                                          $", INSDTTM) \n" +
                                     $"VALUES \n" +
                                         $"((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT) \n" +
-                                        $",'C' \n" +
+                                        $",'S' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",'{Selected_woid}' \n" +
@@ -444,7 +474,9 @@ namespace MESProject
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
             Common.DB_Connection(IM_lotCreate);
 
-            
+            //재조회
+            Inquiry_Lot();
+
             //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
             Delay(1000);
 
@@ -453,7 +485,7 @@ namespace MESProject
             DataTable dataTable = Common.DB_Connection(SELECT_LOTID);
             string lotid = dataTable.Rows[0][0].ToString();
 
-            string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM= TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS') WHERE LOTID = '{lotid}'";
+            string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{lotid}'";
             Common.DB_Connection(UPDATE_LOT_EDDTTM);
 
             //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
@@ -473,15 +505,18 @@ namespace MESProject
             string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET (PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT WHERE WOID ='{Selected_woid}' AND LOTSTAT <> 'D') WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WO_PRODQTY);
 
-            //재조회
-            Inquiry_Lot();
-            Inquiry_Woid();
-
             //LOTGRID 재조회 및 버튼과 라벨 표시
             Inquiry_Lot();
+            Inquiry_Woid();
             BtnEnabled();
 
-            ProdQty_check();
+            PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString())-1;
+            PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
+
+            if (PLANQTY < PRODQTY)
+            {
+                ProdQty_check();
+            }
         }
 
         private void B_Backcolor(Button a, Button b, Button c, Button d)
@@ -502,7 +537,7 @@ namespace MESProject
                     }
                 }
             }
-            d.BackColor = Color.FromArgb(51, 153, 255);
+            buttons[3].BackColor = Color.FromArgb(51, 153, 255);
         }
 
         
@@ -525,11 +560,6 @@ namespace MESProject
             }
 
             return DateTime.Now;
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-            Timer_Stop();
         }
     }
 }
