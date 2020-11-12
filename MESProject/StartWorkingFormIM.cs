@@ -222,13 +222,6 @@ namespace MESProject
             IM1_STBtn.Enabled = false;
             IM2_STBtn.Enabled = false;
             Inquiry_Woid();
-
-            string DD = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY ROWNUM DESC) WHERE ROWNUM = 1";
-            DataTable dataTable1 = Common.DB_Connection(DD);
-            LAST_LOTID = dataTable1.Rows[0][0].ToString();
-
-            EQPTDATA_TEMP();
-            EQPTDATA_PRESS();
         }
 
         private void EQPTDATA_TEMP()
@@ -269,6 +262,7 @@ namespace MESProject
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
             Common.DB_Connection(INSERT_PRESS);
         }
+
         //------------------------------------------------------------------버튼------------------------------------------------
         private void ExitBtn_Click(object sender, EventArgs e)
         {
@@ -428,7 +422,7 @@ namespace MESProject
         
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 4000;
+            timer1.Interval = 24000;
 
             //사일로
             string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - 2 WHERE STORID = '{silo010}'";
@@ -473,12 +467,18 @@ namespace MESProject
                                         $",'{userid}' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
             Common.DB_Connection(IM_lotCreate);
+            
+            string DD = $"SELECT LOTID FROM LOT WHERE WOID = '{Selected_woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
+            DataTable dataTable1 = Common.DB_Connection(DD);
 
-            //재조회
+            LAST_LOTID = dataTable1.Rows[0][0].ToString();
+            EQPTDATA_TEMP();
+            EQPTDATA_PRESS();
             Inquiry_Lot();
+            Inquiry_Woid();
 
             //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-            Delay(1000);
+            Delay(20000);
 
             //LOT EDDTTM 업데이트
             string SELECT_LOTID = $"SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000'))) FROM LOT";
@@ -490,15 +490,15 @@ namespace MESProject
 
             //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
             string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
-            DataTable dataTable1 = Common.DB_Connection(IM_PRODQTY_VALUE);
+            DataTable dataTable2 = Common.DB_Connection(IM_PRODQTY_VALUE);
 
             if (EQPTID == "IM001")
             {
-                IM1_ProdQty_Value.Text = $"{dataTable1.Rows[0][0].ToString()} EA";
+                IM1_ProdQty_Value.Text = $"{dataTable2.Rows[0][0].ToString()} EA";
             }
             else
             {
-                IM2_ProdQty_Value.Text = $"{dataTable1.Rows[0][0].ToString()} EA";
+                IM2_ProdQty_Value.Text = $"{dataTable2.Rows[0][0].ToString()} EA";
             }
 
             //DB에 WORKORDER_PRODQTY 업데이트
