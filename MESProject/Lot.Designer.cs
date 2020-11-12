@@ -28,29 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lotQtyLB = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LotAdd_tb = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lotQtyLB
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(56, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "LOT 수량";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lotQtyLB.AutoSize = true;
+            this.lotQtyLB.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lotQtyLB.Location = new System.Drawing.Point(43, 55);
+            this.lotQtyLB.Name = "lotQtyLB";
+            this.lotQtyLB.Size = new System.Drawing.Size(397, 25);
+            this.lotQtyLB.TabIndex = 0;
+            this.lotQtyLB.Text = "추가 할 LOT 수량을 입력해주세요.";
             // 
             // AddBtn
             // 
-            this.AddBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.AddBtn.Location = new System.Drawing.Point(112, 176);
+            this.AddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.AddBtn.Location = new System.Drawing.Point(75, 189);
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(94, 47);
+            this.AddBtn.Size = new System.Drawing.Size(99, 54);
             this.AddBtn.TabIndex = 1;
             this.AddBtn.Text = "추가";
             this.AddBtn.UseVisualStyleBackColor = true;
@@ -58,10 +57,10 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ExitBtn.Location = new System.Drawing.Point(240, 176);
+            this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ExitBtn.Location = new System.Drawing.Point(299, 189);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(94, 47);
+            this.ExitBtn.Size = new System.Drawing.Size(99, 54);
             this.ExitBtn.TabIndex = 1;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -69,22 +68,22 @@
             // 
             // LotAdd_tb
             // 
-            this.LotAdd_tb.Location = new System.Drawing.Point(192, 96);
+            this.LotAdd_tb.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LotAdd_tb.Location = new System.Drawing.Point(144, 110);
             this.LotAdd_tb.Name = "LotAdd_tb";
-            this.LotAdd_tb.Size = new System.Drawing.Size(136, 25);
+            this.LotAdd_tb.Size = new System.Drawing.Size(190, 34);
             this.LotAdd_tb.TabIndex = 2;
-            this.LotAdd_tb.TextChanged += new System.EventHandler(this.LotAdd_tb_TextChanged);
             // 
             // Lot
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(382, 253);
+            this.ClientSize = new System.Drawing.Size(461, 280);
             this.Controls.Add(this.LotAdd_tb);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.AddBtn);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lotQtyLB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Lot";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -100,7 +99,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lotQtyLB;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.TextBox LotAdd_tb;

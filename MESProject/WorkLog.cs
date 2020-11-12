@@ -22,16 +22,19 @@ namespace MESProject
             // Grid 디자인 세팅
             Common.SetGridDesign(WLGrid);
             Common.SetGridDesign(LotGrid);
+         
             WLGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
-            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 14, FontStyle.Regular);
 
             //콤보박스 초기값설정
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
             ProcCombo.SelectedIndex = 0;
 
-            // 컬럼명 설정
+            //WLGrid (작업지시서) 조회
             DataSearch();
+
+            // 컬럼명 설정
             if (WLGrid.Rows.Count > 0)
             {
                 string[] header = new string[] { "작업코드", "제품명", "작업상태", "설비코드", "계획수량", "생산수량", "불량수량", "작업시작일", "작업완료일", "계획일자", "비고" };
@@ -41,11 +44,22 @@ namespace MESProject
 
                 }
             }
+            // 컬럼 폭 설정
+            int[] WLGrid_SetColumnWidth = new int[] { 130, 140, 50, 70, 50, 50, 50, 140, 140, 140, 40 };
+            for (int i = 0; i < WLGrid_SetColumnWidth.Length; i++)
+            {
+                Common.SetColumnWidth(WLGrid, i, WLGrid_SetColumnWidth[i]);
+            }
+
             // LotGrid 컬럼명
             Inquiry_lot();
 
-
-
+            int[] LotGrid_SetColumnWidth = new int[] { 150,150,150,100};
+            for (int i = 0; i < LotGrid_SetColumnWidth.Length; i++)
+            {
+                Common.SetColumnWidth(LotGrid, i, LotGrid_SetColumnWidth[i]);
+            }
+ 
         }
         public void Inquiry_lot()
         {
@@ -145,7 +159,6 @@ namespace MESProject
             //조회버튼
             DataSearch();
             SetRowColor();
-            WLGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         public string woid;
@@ -160,24 +173,16 @@ namespace MESProject
                 {               
                     woid = WLGrid.Rows[i].Cells[0].Value.ToString();
                     string Selected_lot =   $"SELECT " +
-                        $"L.LOTID" +
-                        $", L.LOTSTDTTM" +
-                        $", L.LOTEDDTTM"+
-                                            $",CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END "+
+                                                $"L.LOTID" +
+                                                $", L.LOTSTDTTM" +
+                                                $", L.LOTEDDTTM"+
+                                                $",CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END AS 불량 "+
                                             $"FROM LOT L "+
                                             $"WHERE WOID = '{woid}'";
-
                     Common.DB_Connection(Selected_lot, LotGrid);
-                    LotGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 }
             }
-            if (LotGrid.Rows.Count > 0)
-            {
-                LotGrid.Columns[0].HeaderText = "LOT코드";
-                LotGrid.Columns[1].HeaderText = "시작시간";
-                LotGrid.Columns[2].HeaderText = "종료시간";
-                LotGrid.Columns[3].HeaderText = "불량";
-            }
+            
         }
         public void SetRowColor()
         {
@@ -196,11 +201,6 @@ namespace MESProject
                     }
                 }
             }
-        }
-
-        private void WLGrid_DataSourceChanged(object sender, EventArgs e)
-        {
-            WLGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
         }
     }
 }

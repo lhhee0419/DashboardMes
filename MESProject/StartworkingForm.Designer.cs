@@ -34,7 +34,6 @@
             this.LotDelBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.EndBtn = new System.Windows.Forms.Button();
-            this.StopBtn = new System.Windows.Forms.Button();
             this.LotaddBtn = new System.Windows.Forms.Button();
             this.LotGrid = new System.Windows.Forms.DataGridView();
             this.WoGrid = new System.Windows.Forms.DataGridView();
@@ -87,7 +86,7 @@
             this.PassGif_2_3 = new System.Windows.Forms.PictureBox();
             this.MixingP1 = new System.Windows.Forms.PictureBox();
             this.MixingP2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Stopbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
@@ -106,7 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // FaultyBtn
@@ -153,17 +151,6 @@
             this.EndBtn.UseVisualStyleBackColor = true;
             this.EndBtn.Click += new System.EventHandler(this.EndBtn_Click);
             // 
-            // StopBtn
-            // 
-            this.StopBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StopBtn.Location = new System.Drawing.Point(1071, 722);
-            this.StopBtn.Name = "StopBtn";
-            this.StopBtn.Size = new System.Drawing.Size(148, 86);
-            this.StopBtn.TabIndex = 22;
-            this.StopBtn.Text = "작업중지/재시작";
-            this.StopBtn.UseVisualStyleBackColor = true;
-            this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
-            // 
             // LotaddBtn
             // 
             this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -202,7 +189,7 @@
             // StartBtn1
             // 
             this.StartBtn1.Font = new System.Drawing.Font("문체부 돋음체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.StartBtn1.Location = new System.Drawing.Point(436, 395);
+            this.StartBtn1.Location = new System.Drawing.Point(436, 409);
             this.StartBtn1.Name = "StartBtn1";
             this.StartBtn1.Size = new System.Drawing.Size(84, 86);
             this.StartBtn1.TabIndex = 35;
@@ -213,7 +200,7 @@
             // StartBtn2
             // 
             this.StartBtn2.Font = new System.Drawing.Font("문체부 돋음체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.StartBtn2.Location = new System.Drawing.Point(521, 395);
+            this.StartBtn2.Location = new System.Drawing.Point(521, 409);
             this.StartBtn2.Name = "StartBtn2";
             this.StartBtn2.Size = new System.Drawing.Size(84, 86);
             this.StartBtn2.TabIndex = 36;
@@ -309,7 +296,7 @@
             // 
             this.Mixing2_3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing2_3.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mixing2_3.FlatAppearance.BorderSize = 0;
+            this.Mixing2_3.FlatAppearance.BorderSize = 3;
             this.Mixing2_3.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing2_3.ForeColor = System.Drawing.Color.White;
             this.Mixing2_3.Location = new System.Drawing.Point(706, 224);
@@ -323,7 +310,7 @@
             // 
             this.Mixing2_2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing2_2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mixing2_2.FlatAppearance.BorderSize = 0;
+            this.Mixing2_2.FlatAppearance.BorderSize = 3;
             this.Mixing2_2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing2_2.ForeColor = System.Drawing.Color.White;
             this.Mixing2_2.Location = new System.Drawing.Point(627, 224);
@@ -337,7 +324,7 @@
             // 
             this.Mixing2_1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing2_1.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mixing2_1.FlatAppearance.BorderSize = 0;
+            this.Mixing2_1.FlatAppearance.BorderSize = 3;
             this.Mixing2_1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing2_1.ForeColor = System.Drawing.Color.White;
             this.Mixing2_1.Location = new System.Drawing.Point(548, 224);
@@ -351,7 +338,6 @@
             // 
             this.pass2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.pass2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pass2.FlatAppearance.BorderSize = 0;
             this.pass2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.pass2.ForeColor = System.Drawing.Color.White;
             this.pass2.Location = new System.Drawing.Point(848, 450);
@@ -365,7 +351,6 @@
             // 
             this.Mixing_End2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing_End2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mixing_End2.FlatAppearance.BorderSize = 0;
             this.Mixing_End2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing_End2.ForeColor = System.Drawing.Color.White;
             this.Mixing_End2.Location = new System.Drawing.Point(769, 450);
@@ -379,7 +364,6 @@
             // 
             this.Mixing_Start2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing_Start2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mixing_Start2.FlatAppearance.BorderSize = 0;
             this.Mixing_Start2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Mixing_Start2.ForeColor = System.Drawing.Color.White;
             this.Mixing_Start2.Location = new System.Drawing.Point(690, 450);
@@ -634,7 +618,7 @@
             this.CurDTTM.AutoSize = true;
             this.CurDTTM.BackColor = System.Drawing.Color.White;
             this.CurDTTM.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.CurDTTM.Location = new System.Drawing.Point(686, 120);
+            this.CurDTTM.Location = new System.Drawing.Point(95, 618);
             this.CurDTTM.Name = "CurDTTM";
             this.CurDTTM.Size = new System.Drawing.Size(0, 24);
             this.CurDTTM.TabIndex = 68;
@@ -720,15 +704,24 @@
             this.MixingP2.TabStop = false;
             this.MixingP2.Visible = false;
             // 
-            // pictureBox2
+            // Stopbtn
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(648, 160);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 77;
-            this.pictureBox2.TabStop = false;
+            this.Stopbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Stopbtn.BackgroundImage")));
+            this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Stopbtn.Enabled = false;
+            this.Stopbtn.FlatAppearance.BorderSize = 0;
+            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Stopbtn.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Stopbtn.ForeColor = System.Drawing.Color.White;
+            this.Stopbtn.Location = new System.Drawing.Point(847, 119);
+            this.Stopbtn.Name = "Stopbtn";
+            this.Stopbtn.Size = new System.Drawing.Size(65, 65);
+            this.Stopbtn.TabIndex = 79;
+            this.Stopbtn.TabStop = false;
+            this.Stopbtn.Text = "STOP";
+            this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Stopbtn.UseVisualStyleBackColor = true;
+            this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
             // 
             // Startworking
             // 
@@ -736,7 +729,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.Stopbtn);
             this.Controls.Add(this.MixingP2);
             this.Controls.Add(this.MixingP1);
             this.Controls.Add(this.Mixing1_3);
@@ -782,7 +775,6 @@
             this.Controls.Add(this.LotDelBtn);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.EndBtn);
-            this.Controls.Add(this.StopBtn);
             this.Controls.Add(this.LotaddBtn);
             this.Controls.Add(this.LotGrid);
             this.Controls.Add(this.WoGrid);
@@ -808,7 +800,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.PassGif_2_3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MixingP2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -819,7 +810,6 @@
         private System.Windows.Forms.Button LotDelBtn;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.Button EndBtn;
-        private System.Windows.Forms.Button StopBtn;
         private System.Windows.Forms.Button LotaddBtn;
         private System.Windows.Forms.DataGridView LotGrid;
         private System.Windows.Forms.DataGridView WoGrid;
@@ -872,6 +862,6 @@
         private System.Windows.Forms.PictureBox PassGif_2_3;
         private System.Windows.Forms.PictureBox MixingP1;
         private System.Windows.Forms.PictureBox MixingP2;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button Stopbtn;
     }
 }

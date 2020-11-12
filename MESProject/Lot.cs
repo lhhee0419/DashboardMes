@@ -29,14 +29,21 @@ namespace MESProject
         private void Lot_Load(object sender, EventArgs e)
         {
             Userid = MainForm.User_ID;
-
+            string wo_proc= $"SELECT " +
+                            $"PROCID " +
+                            $"FROM WORKORDER " +
+                            $"WHERE WOID = '{woid}'";
+            DataTable dataTable =Common.DB_Connection(wo_proc);
+            string procid =dataTable.Rows[0][0].ToString();
+            if (procid == "P0001")
+                lotQtyLB.Text = "추가 할 LOT 중량을 입력해주세요. ";
+            else if(procid == "P0002")
+                lotQtyLB.Text = "추가 할 LOT 수량을 입력해주세요. ";
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             //닫기버튼
-
-
             this.Close();
         }
 
@@ -80,7 +87,6 @@ namespace MESProject
             }
             this.Close();
 
-
         }
 
         private void Lot_MouseDown(object sender, MouseEventArgs e)
@@ -99,14 +105,6 @@ namespace MESProject
             if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
-        private void LotAdd_tb_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
