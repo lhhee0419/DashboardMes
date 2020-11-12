@@ -708,7 +708,6 @@
             // 
             this.Stopbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Stopbtn.BackgroundImage")));
             this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stopbtn.Enabled = false;
             this.Stopbtn.FlatAppearance.BorderSize = 0;
             this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Stopbtn.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
@@ -721,6 +720,7 @@
             this.Stopbtn.Text = "STOP";
             this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Stopbtn.UseVisualStyleBackColor = true;
+            this.Stopbtn.Visible = false;
             this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
             // 
             // Startworking
