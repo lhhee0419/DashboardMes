@@ -17,7 +17,8 @@ namespace MESProject
     {
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
-        public static int time = 1000;
+        public static int time = 900;
+        public static int mixing_time = 1000; //1분(60000)
         string Userid, Lotid, CurrQty, woid, LAST_LOTID;
         int PLANQTY, PRODQTY;
         public Startworking()
@@ -26,7 +27,7 @@ namespace MESProject
         }
 
         private void Startworking_Load(object sender, EventArgs e)
-        {   
+        {
             //사용자 ID
             Userid = MainForm.User_ID;
 
@@ -40,18 +41,25 @@ namespace MESProject
 
             //작업지시서 상태가 종료일 때 버튼 사용 금지
             string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
-            if(wostat == "종료")
+            if (wostat == "종료")
             {
                 EndBtn.Enabled = false;
                 StartBtn1.Enabled = false;
                 StartBtn2.Enabled = false;
+            }
+            else if (wostat == "대기")
+            {
+                EndBtn.Enabled = false;
+                StartBtn1.Enabled = false;
+                StartBtn2.Enabled = false;
+                FaultyBtn.Enabled = false;
             }
 
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
             int[] SetCoiumnWidth_LotGrid = new int[] { 130, 30, 30, 140 };
-            for( int i=0;i<SetCoiumnWidth_LotGrid.Length;i++)
+            for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
             }
@@ -64,7 +72,16 @@ namespace MESProject
             BtnEnabled();
 
             //저장소 현재량 조회
-            SetStore_CurQty();
+            Select_store("SL001");
+            silo1_Qty.Text = "저장량: " + CurrQty;
+            Update_store('-', 10, "SL002");
+            Select_store("SL002");
+            silo2_Qty.Text = "저장량: " + CurrQty;
+            Update_store('-', 15, "SL003");
+            Select_store("SL003");
+            silo3_Qty.Text = "저장량: " + CurrQty;
+            Select_store("SL010");
+            silo10_Qty.Text = "저장량: " + CurrQty;
 
             //계획수량 만큼만 돌아가도록
             PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
@@ -100,19 +117,7 @@ namespace MESProject
                 }
             }
         }
-        private void SetStore_CurQty()
-        {
-            Select_store("SL001");
-            silo1_Qty.Text = "저장량: " + CurrQty;
-            Update_store('-', 10, "SL002");
-            Select_store("SL002");
-            silo2_Qty.Text = "저장량: " + CurrQty;
-            Update_store('-', 15, "SL003");
-            Select_store("SL003");
-            silo3_Qty.Text = "저장량: " + CurrQty;
-            Select_store("SL010");
-            silo10_Qty.Text = "저장량: " + CurrQty;
-        }
+
         public void Inquiry_Woid()
         {
             //WoGrid에 표시될 데이터 가져오기
@@ -180,14 +185,6 @@ namespace MESProject
             StopTimer();
             StartBtn1.Enabled = false;
             StartBtn2.Enabled = false;
-
-            string DD = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY ROWNUM DESC) WHERE ROWNUM = 1";
-            DataTable dataTable1 = Common.DB_Connection(DD);
-            LAST_LOTID = dataTable1.Rows[0][0].ToString();
-
-            EQPTDATA_TEMP();
-            EQPTDATA_PRESS();
-
         }
         private void EQPTDATA_TEMP()
         {
@@ -359,7 +356,7 @@ namespace MESProject
             Common.DB_Connection(create_Lot);
 
             //DB에 WORKORDER_PRODQTY 업데이트
-            string UPDATE_WO_PRODQTY =  $"UPDATE " +
+            string UPDATE_WO_PRODQTY = $"UPDATE " +
                                             $"WORKORDER " +
                                         $"SET " +
                                             $"PRODQTY = (" +
@@ -370,18 +367,24 @@ namespace MESProject
                                                         $") " +
                                         $"WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WO_PRODQTY);
+
+            string DD = $"SELECT LOTID FROM LOT WHERE WOID = '{Selected_woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
+            DataTable dataTable1 = Common.DB_Connection(DD);
+            LAST_LOTID = dataTable1.Rows[0][0].ToString();
+            EQPTDATA_TEMP();
+            EQPTDATA_PRESS();
             Inquiry_Lot();
             Inquiry_Woid();
         }
 
-        
+
         public void SetTimer()
         {
-            timer1.Interval = 1000;
+            timer1.Interval = time;
             timer2.Interval = time;
             timer3.Interval = time;
             timer4.Interval = time;
-            timer5.Interval = time;
+            timer5.Interval = mixing_time;
             timer6.Interval = time;
             timer7.Interval = time;
 
@@ -425,29 +428,32 @@ namespace MESProject
             }
 
         }
+        private void Stopbtn_Click(object sender, EventArgs e)
+        {
+            // 긴급 중지 버튼
+            StopTimer();
+            Stopbtn.Enabled = false;
+            Eqptstat_Changed("DOWN");
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
-
             //1호 이송
             if (EQPTID == "MX001")
             {
                 PassGif1.Visible = true;
                 Mixing1_1.BackColor = Color.FromArgb(255, 128, 0);
-
-
             }
             else if (EQPTID == "MX002")
             {
                 PassGif_2_1.Visible = true;
                 Mixing2_1.BackColor = Color.FromArgb(255, 128, 0);
             }
-
             Update_store('-', 15, "SL001");
             Select_store("SL001");
             silo1_Qty.Text = "저장량: " + CurrQty;
-
             timer1.Stop();
             timer2.Start();
+
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -467,11 +473,14 @@ namespace MESProject
                 Mixing2_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_2.BackColor = Color.FromArgb(255, 128, 0);
             }
+            int silo2_currQty = Convert.ToInt32((silo2_Qty.Text).Substring(4));
+
             Update_store('-', 10, "SL002");
             Select_store("SL002");
             silo2_Qty.Text = "저장량: " + CurrQty;
             timer2.Stop();
             timer3.Start();
+
         }
 
         private void timer3_Tick(object sender, EventArgs e)
@@ -492,20 +501,17 @@ namespace MESProject
                 Mixing2_2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_3.BackColor = Color.FromArgb(255, 128, 0);
             }
+
             Update_store('-', 15, "SL003");
             Select_store("SL003");
             silo3_Qty.Text = "저장량: " + CurrQty;
             timer3.Stop();
             timer4.Start();
+
+
         }
 
-        private void Stopbtn_Click(object sender, EventArgs e)
-        {
-            // 긴급 중지 버튼
-            StopTimer();
-            Stopbtn.Enabled = false;
-            Eqptstat_Changed("DOWN");
-        }
+
 
         private void timer4_Tick(object sender, EventArgs e)
         {
@@ -583,25 +589,48 @@ namespace MESProject
             }
             Random random = new Random();
             int num = random.Next(20, 30);
+            int silo1_currQty = Convert.ToInt32((silo1_Qty.Text).Substring(4));
+            int silo2_currQty = Convert.ToInt32((silo2_Qty.Text).Substring(4));
+            int silo3_currQty = Convert.ToInt32((silo3_Qty.Text).Substring(4));
             int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
-            if (silo10_currQty + num > 10000)
+            if (silo1_currQty < 15)
             {
-                num = 10000 - silo10_currQty;
-                Update_store('+', num, "SL010");
-                Select_store("SL010");
-                silo10_Qty.Text = "저장량: " + CurrQty;
                 timer7.Stop();
-                MessageBox.Show("SILO10 저장소가 꽉 찼습니다.");
+                StopTimer();
+                MessageBox.Show(" 저장소 SILO #1의 원재료가 부족합니다. ");
+            }
+            else if (silo2_currQty < 10)
+            {
+                timer7.Stop();
+                StopTimer();
+                MessageBox.Show(" 저장소 SILO #2의 원재료가 부족합니다. ");
+            }
+            else if (silo3_currQty < 15)
+            {
+                timer7.Stop();
+                StopTimer();
+                MessageBox.Show(" 저장소 SILO #3의 원재료가 부족합니다. ");
             }
             else
             {
-                Update_store('+', num, "SL010");
-                Select_store("SL010");
-                silo10_Qty.Text = "저장량: " + CurrQty;
-                timer7.Stop();
-                timer1.Start();
+                if (silo10_currQty + num > 10000)
+                {
+                    num = 10000 - silo10_currQty;
+                    Update_store('+', num, "SL010");
+                    Select_store("SL010");
+                    silo10_Qty.Text = "저장량: " + CurrQty;
+                    timer7.Stop();
+                    MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
+                }
+                else
+                {
+                    Update_store('+', num, "SL010");
+                    Select_store("SL010");
+                    silo10_Qty.Text = "저장량: " + CurrQty;
+                    timer7.Stop();
+                    timer1.Start();
+                }
             }
-           
         }
         private void timer8_Tick(object sender, EventArgs e)
         {
