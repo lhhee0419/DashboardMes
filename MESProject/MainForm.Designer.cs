@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.maintab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.MaterialBtn = new System.Windows.Forms.Button();
             this.logoutbtn = new System.Windows.Forms.Button();
             this.ProcCombo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,7 +41,7 @@
             this.WostBtn = new System.Windows.Forms.Button();
             this.InquiryBtn = new System.Windows.Forms.Button();
             this.WoGrid = new System.Windows.Forms.DataGridView();
-            this.MaterialBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.maintab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
@@ -68,6 +69,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.MaterialBtn);
             this.tabPage1.Controls.Add(this.logoutbtn);
             this.tabPage1.Controls.Add(this.ProcCombo);
@@ -87,12 +89,23 @@
             this.tabPage1.Text = "메인화면";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // MaterialBtn
+            // 
+            this.MaterialBtn.Font = new System.Drawing.Font("문체부 돋음체", 14F);
+            this.MaterialBtn.Location = new System.Drawing.Point(459, 699);
+            this.MaterialBtn.Name = "MaterialBtn";
+            this.MaterialBtn.Size = new System.Drawing.Size(213, 97);
+            this.MaterialBtn.TabIndex = 57;
+            this.MaterialBtn.Text = "원재료 재고 관리";
+            this.MaterialBtn.UseVisualStyleBackColor = true;
+            this.MaterialBtn.Click += new System.EventHandler(this.MaterialBtn_Click);
+            // 
             // logoutbtn
             // 
-            this.logoutbtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.logoutbtn.Location = new System.Drawing.Point(1303, 699);
+            this.logoutbtn.Font = new System.Drawing.Font("문체부 돋음체", 14F);
+            this.logoutbtn.Location = new System.Drawing.Point(1309, 699);
             this.logoutbtn.Name = "logoutbtn";
-            this.logoutbtn.Size = new System.Drawing.Size(222, 97);
+            this.logoutbtn.Size = new System.Drawing.Size(213, 97);
             this.logoutbtn.TabIndex = 56;
             this.logoutbtn.Text = "로그아웃";
             this.logoutbtn.UseVisualStyleBackColor = true;
@@ -100,7 +113,7 @@
             // 
             // ProcCombo
             // 
-            this.ProcCombo.Font = new System.Drawing.Font("굴림", 16F);
+            this.ProcCombo.Font = new System.Drawing.Font("문체부 돋음체", 16F);
             this.ProcCombo.FormattingEnabled = true;
             this.ProcCombo.Location = new System.Drawing.Point(1110, 16);
             this.ProcCombo.Name = "ProcCombo";
@@ -112,35 +125,35 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(403, 124);
+            this.label1.Location = new System.Drawing.Point(403, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 53;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 16F);
-            this.dateTimePicker2.Location = new System.Drawing.Point(464, 116);
+            this.dateTimePicker2.Location = new System.Drawing.Point(464, 100);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(399, 38);
             this.dateTimePicker2.TabIndex = 52;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 16F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(44, 116);
+            this.dateTimePicker1.Location = new System.Drawing.Point(23, 100);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(393, 38);
             this.dateTimePicker1.TabIndex = 51;
             // 
             // WoLogBtn
             // 
-            this.WoLogBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.WoLogBtn.Location = new System.Drawing.Point(261, 699);
+            this.WoLogBtn.Font = new System.Drawing.Font("문체부 돋음체", 14F);
+            this.WoLogBtn.Location = new System.Drawing.Point(241, 699);
             this.WoLogBtn.Name = "WoLogBtn";
-            this.WoLogBtn.Size = new System.Drawing.Size(222, 97);
+            this.WoLogBtn.Size = new System.Drawing.Size(213, 97);
             this.WoLogBtn.TabIndex = 49;
             this.WoLogBtn.Text = "작업일지";
             this.WoLogBtn.UseVisualStyleBackColor = true;
@@ -148,10 +161,10 @@
             // 
             // WostBtn
             // 
-            this.WostBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.WostBtn.Font = new System.Drawing.Font("문체부 돋음체", 14F);
             this.WostBtn.Location = new System.Drawing.Point(23, 699);
             this.WostBtn.Name = "WostBtn";
-            this.WostBtn.Size = new System.Drawing.Size(222, 97);
+            this.WostBtn.Size = new System.Drawing.Size(213, 97);
             this.WostBtn.TabIndex = 48;
             this.WostBtn.Text = "작업시작";
             this.WostBtn.UseVisualStyleBackColor = true;
@@ -159,10 +172,10 @@
             // 
             // InquiryBtn
             // 
-            this.InquiryBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.InquiryBtn.Location = new System.Drawing.Point(1303, 75);
+            this.InquiryBtn.Font = new System.Drawing.Font("문체부 돋음체", 14F);
+            this.InquiryBtn.Location = new System.Drawing.Point(1307, 48);
             this.InquiryBtn.Name = "InquiryBtn";
-            this.InquiryBtn.Size = new System.Drawing.Size(222, 97);
+            this.InquiryBtn.Size = new System.Drawing.Size(213, 97);
             this.InquiryBtn.TabIndex = 47;
             this.InquiryBtn.Text = "조회";
             this.InquiryBtn.UseVisualStyleBackColor = true;
@@ -171,28 +184,27 @@
             // WoGrid
             // 
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WoGrid.Location = new System.Drawing.Point(23, 196);
+            this.WoGrid.Location = new System.Drawing.Point(23, 160);
             this.WoGrid.Name = "WoGrid";
             this.WoGrid.ReadOnly = true;
             this.WoGrid.RowHeadersVisible = false;
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WoGrid.Size = new System.Drawing.Size(1502, 470);
+            this.WoGrid.Size = new System.Drawing.Size(1502, 522);
             this.WoGrid.TabIndex = 46;
             this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
             this.WoGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WoGrid_CellDoubleClick);
             // 
-            // MaterialBtn
+            // label2
             // 
-            this.MaterialBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.MaterialBtn.Location = new System.Drawing.Point(499, 699);
-            this.MaterialBtn.Name = "MaterialBtn";
-            this.MaterialBtn.Size = new System.Drawing.Size(222, 97);
-            this.MaterialBtn.TabIndex = 57;
-            this.MaterialBtn.Text = "원재료 재고 관리";
-            this.MaterialBtn.UseVisualStyleBackColor = true;
-            this.MaterialBtn.Click += new System.EventHandler(this.MaterialBtn_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("문체부 돋음체", 18F);
+            this.label2.Location = new System.Drawing.Point(431, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 30);
+            this.label2.TabIndex = 58;
+            this.label2.Text = "-";
             // 
             // MainForm
             // 
@@ -227,6 +239,7 @@
         private System.Windows.Forms.Button InquiryBtn;
         private System.Windows.Forms.DataGridView WoGrid;
         private System.Windows.Forms.Button MaterialBtn;
+        private System.Windows.Forms.Label label2;
     }
 }
 
