@@ -282,7 +282,11 @@ namespace MESProject
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
             Common.DB_Connection(INSERT_PRESS);
         }
-
+        private void Update_EQPTStats(string stats)
+        {
+            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = '{stats}' WHERE E.EQPTID ='{EQPTID}'";
+            Common.DB_Connection(Update_EQPTSTATS);
+        }
         //----------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------버튼------------------------------------------------
         //----------------------------------------------------------------------------------------------------------------------
@@ -363,7 +367,7 @@ namespace MESProject
                 Inquiry_Woid();
             }
         }
-
+        
         private void EndBtn_Click(object sender, EventArgs e)
         {
             Timer_Stop();
@@ -376,8 +380,7 @@ namespace MESProject
         {
             EQPTID = "IM001";
             //EQPTID에 EQPTSTATS를 RUN으로 변경
-            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID ='{EQPTID}'";
-            Common.DB_Connection(Update_EQPTSTATS);
+            Update_EQPTStats("RUN");
 
             Timer_Start();
         }
@@ -386,8 +389,7 @@ namespace MESProject
         {
             EQPTID = "IM002";
             //EQPTID에 EQPTSTATS를 RUN으로 변경
-            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID ='{EQPTID}'";
-            Common.DB_Connection(Update_EQPTSTATS);
+            Update_EQPTStats("RUN");
 
             Timer_Start();
         }
@@ -412,9 +414,7 @@ namespace MESProject
         {
             Timer_Stop();
             //EQPTID에 EQPTSTATS를 DOWN으로 변경
-            string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
-            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET EQPTSTATS = 'DOWN' WHERE EQPTID IN (SELECT EQPTID FROM LOT WHERE LOTID = '{lotid}')";
-            Common.DB_Connection(Update_EQPTSTATS);
+            Update_EQPTStats("DOWN");
             BtnEnabled();
         }
 
