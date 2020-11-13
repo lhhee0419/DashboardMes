@@ -33,16 +33,32 @@ namespace MESProject
         int PLANQTY;
         int PRODQTY;
         string LAST_LOTID;
+        int need_siloQty = 50;
+
+        Size sz2 = new Size();
+        Size sz3 = new Size();
+        Size sz4 = new Size();
+        Size sz5 = new Size();
+        Size sz6 = new Size();
+        Size sz7 = new Size();
 
         //실행중인 스레드 가져오기
         public Thread th = Thread.CurrentThread;
         public StartWorkingFormIM()
         {
             InitializeComponent();
+            sz2 = pictureBox2.Size;
+            sz3 = pictureBox3.Size;
+            sz4 = pictureBox4.Size;
+            sz5 = pictureBox5.Size;
+            sz6 = pictureBox6.Size;
+            sz7 = pictureBox7.Size;
+
         }
 
         private void StartWorkingFormIM_Load(object sender, EventArgs e)
         {
+            clear_Color();
             STOP_BTN.Enabled = false;
             //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
             EQPTID = "";
@@ -65,6 +81,9 @@ namespace MESProject
             Inquiry_Woid();
             Inquiry_Lot();
 
+            //버튼 관리
+            BtnEnabled();
+
             //작업지시서 상태가 종료일 때 버튼 사용 금지
             string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
             if (wostat == "종료")
@@ -75,11 +94,12 @@ namespace MESProject
                 IM2_STBtn.Enabled = false;
             }
 
-            //버튼 관리
-            BtnEnabled();
-            
             //1,2호기의 생산량 조회
-            string SELECT_PRODQTY = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
+            string SELECT_PRODQTY = $"SELECT COUNT(*) FROM LOT " +
+                                    $"WHERE EQPTID = '{EQPTID}' AND" +
+                                    $" SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
+                                    $" WOID = '{Selected_woid}'";
+
             DataTable dataTable1 = Common.DB_Connection(SELECT_PRODQTY);
             string N_PRODQTY_VALUE = dataTable1.Rows[0][0].ToString();
 
@@ -88,7 +108,7 @@ namespace MESProject
                 IM1_ProdQty_Value.Text = $"{N_PRODQTY_VALUE} EA";
                 IM2_ProdQty_Value.Visible = false;
                 IM2_ProdQty.Visible = false;
-                
+
             }
             else if (EQPTID == "IM002")
             {
@@ -228,8 +248,8 @@ namespace MESProject
         {
 
             Random random = new Random();
-            int TEMP = random.Next(25,40);
-            
+            int TEMP = random.Next(100, 150);
+
             string INSERT_TEMP = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
                                                              $" LOTID," +
                                                              $" EQPTITEMID," +
@@ -247,7 +267,7 @@ namespace MESProject
         private void EQPTDATA_PRESS()
         {
             Random random = new Random();
-            int PRESS = random.Next(100, 150);
+            int PRESS = random.Next(150, 180);
 
             string INSERT_PRESS = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
                                                              $" LOTID," +
@@ -262,8 +282,15 @@ namespace MESProject
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
             Common.DB_Connection(INSERT_PRESS);
         }
-
+        private void Update_EQPTStats(string stats)
+        {
+            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = '{stats}' WHERE E.EQPTID ='{EQPTID}'";
+            Common.DB_Connection(Update_EQPTSTATS);
+        }
+        //----------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------버튼------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             //닫기버튼
@@ -340,7 +367,7 @@ namespace MESProject
                 Inquiry_Woid();
             }
         }
-
+        
         private void EndBtn_Click(object sender, EventArgs e)
         {
             Timer_Stop();
@@ -353,26 +380,18 @@ namespace MESProject
         {
             EQPTID = "IM001";
             //EQPTID에 EQPTSTATS를 RUN으로 변경
-            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID ='{EQPTID}'";
-            Common.DB_Connection(Update_EQPTSTATS);
+            Update_EQPTStats("RUN");
 
-            IM2_STBtn.Enabled = false;
             Timer_Start();
-            IM1_STBtn.Enabled = false;
-            STOP_BTN.Enabled = true;
         }
 
         private void IM2_STBtn_Click(object sender, EventArgs e)
         {
             EQPTID = "IM002";
             //EQPTID에 EQPTSTATS를 RUN으로 변경
-            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = 'RUN' WHERE E.EQPTID ='{EQPTID}'";
-            Common.DB_Connection(Update_EQPTSTATS);
+            Update_EQPTStats("RUN");
 
-            IM1_STBtn.Enabled = false;
             Timer_Start();
-            IM2_STBtn.Enabled = false;
-            STOP_BTN.Enabled = true;
         }
 
         private void EndBtn_MouseDown(object sender, MouseEventArgs e)
@@ -395,20 +414,34 @@ namespace MESProject
         {
             Timer_Stop();
             //EQPTID에 EQPTSTATS를 DOWN으로 변경
-            string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
-            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET EQPTSTATS = 'DOWN' WHERE EQPTID IN (SELECT EQPTID FROM LOT WHERE LOTID = '{lotid}')";
-            Common.DB_Connection(Update_EQPTSTATS);
+            Update_EQPTStats("DOWN");
             BtnEnabled();
         }
 
-        //--------------------------------------------------------------------공정 타이머------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+        //--------------------------------------------------------------------공정 타이머---------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
 
         public System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
 
         public void Timer_Start()
         {
             timer1.Interval = 1000;
-            timer1.Start();
+            string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
+            DataTable dataTable4 = Common.DB_Connection(SELECT_SL010);
+            int SILO_CURRQTY = Convert.ToInt32(dataTable4.Rows[0][0].ToString());
+            if (need_siloQty <= SILO_CURRQTY)
+            {
+                timer1.Start();
+                IM1_STBtn.Enabled = false;
+                IM2_STBtn.Enabled = false;
+                STOP_BTN.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("배합량이 부족합니다.");
+                Timer_Stop();
+            }
             timer1.Tick += new EventHandler(timer1_Tick);
         }
 
@@ -419,14 +452,20 @@ namespace MESProject
             timer1.Stop();
         }
 
-        
+
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 24000;
+            timer1.Interval = 9000;
 
-            //사일로
-            string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - 2 WHERE STORID = '{silo010}'";
+            //사일로 현재량 MINUS
+            string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - {need_siloQty} WHERE STORID = '{silo010}'";
             Common.DB_Connection(SILO1_CURRQTY_MINUS);
+
+            string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
+            DataTable dataTable4 = Common.DB_Connection(SELECT_SL010);
+            string SILO_CURRQTY = dataTable4.Rows[0][0].ToString();
+            SL010_CURRQTY.Text = "저장량 : " + SILO_CURRQTY;
+            int SL010_QTY = Convert.ToInt32(SILO_CURRQTY);
 
             //Silo 재고량 재조회
             Select_Silo_Qty();
@@ -434,10 +473,12 @@ namespace MESProject
             // 1호기 일경우 1호기 라벨 백컬러를 사용.
             if (EQPTID == "IM001")
             {
+                IM1_Ani();
                 B_Backcolor(IM1_1, IM1_2, IM1_3, IM1_4);
             }
             else if (EQPTID == "IM002")
             {
+                IM2_Ani();
                 B_Backcolor(IM2_1, IM2_2, IM2_3, IM2_4);
             }
 
@@ -467,18 +508,16 @@ namespace MESProject
                                         $",'{userid}' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
             Common.DB_Connection(IM_lotCreate);
-            
-            string DD = $"SELECT LOTID FROM LOT WHERE WOID = '{Selected_woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
-            DataTable dataTable1 = Common.DB_Connection(DD);
 
+            string DD = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY LOTID DESC) WHERE ROWNUM = 1";
+            DataTable dataTable1 = Common.DB_Connection(DD);
             LAST_LOTID = dataTable1.Rows[0][0].ToString();
-            EQPTDATA_TEMP();
-            EQPTDATA_PRESS();
+
             Inquiry_Lot();
             Inquiry_Woid();
 
             //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-            Delay(20000);
+            Delay(1000);
 
             //LOT EDDTTM 업데이트
             string SELECT_LOTID = $"SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000'))) FROM LOT";
@@ -488,8 +527,13 @@ namespace MESProject
             string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{lotid}'";
             Common.DB_Connection(UPDATE_LOT_EDDTTM);
 
+            EQPTDATA_TEMP();
+            EQPTDATA_PRESS();
+
             //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
-            string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND WOID = '{Selected_woid}'";
+            string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
+                                      $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
+                                      $" WOID = '{Selected_woid}'";
             DataTable dataTable2 = Common.DB_Connection(IM_PRODQTY_VALUE);
 
             if (EQPTID == "IM001")
@@ -502,7 +546,11 @@ namespace MESProject
             }
 
             //DB에 WORKORDER_PRODQTY 업데이트
-            string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET (PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT WHERE WOID ='{Selected_woid}' AND LOTSTAT <> 'D') WHERE WOID = '{Selected_woid}'";
+            string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
+                                       $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
+                                       $"WHERE " +
+                                       $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D') " +
+                                       $"WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WO_PRODQTY);
 
             //LOTGRID 재조회 및 버튼과 라벨 표시
@@ -510,12 +558,18 @@ namespace MESProject
             Inquiry_Woid();
             BtnEnabled();
 
-            PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString())-1;
+            PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString()) - 1;
             PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
 
             if (PLANQTY < PRODQTY)
             {
                 ProdQty_check();
+            }
+
+            if (SL010_QTY < need_siloQty)
+            {
+                Timer_Stop();
+                MessageBox.Show(" 저장소 SL010 의 원재료가 부족합니다.");
             }
         }
 
@@ -540,7 +594,7 @@ namespace MESProject
             buttons[3].BackColor = Color.FromArgb(51, 153, 255);
         }
 
-        
+
         private void timer_Tick(object sender, EventArgs e)
         {
             //현재시간을 나타내기 위함
@@ -561,6 +615,98 @@ namespace MESProject
 
             return DateTime.Now;
         }
+
+        //----------------------------------------------------------------------------------------------------------------------
+        //------------------------------------------------------애니메이션------------------------------------------------------
+        //----------------------------------------------------------------------------------------------------------------------
+        private void clear_Color()
+        {
+            Size mvSize = new Size();
+
+            mvSize.Width = sz2.Width;
+            mvSize.Height = 0;
+            pictureBox2.Size = mvSize;
+
+            mvSize.Width = 0;
+            mvSize.Height = sz3.Height;
+            pictureBox3.Size = mvSize;
+
+            mvSize.Width = sz4.Width;
+            mvSize.Height = 0;
+            pictureBox4.Size = mvSize;
+
+            mvSize.Width = sz5.Width;
+            mvSize.Height = 0;
+            pictureBox5.Size = mvSize;
+
+            mvSize.Width = 0;
+            mvSize.Height = sz6.Height;
+            pictureBox6.Size = mvSize;
+
+            mvSize.Width = sz7.Width;
+            mvSize.Height = 0;
+            pictureBox7.Size = mvSize;
+        }
+
+        private void IM1_Ani()
+        {
+            int i = 0;
+            Size sz = new Size();
+            for (i = 0; i < sz2.Height; i++)
+            {
+                sz.Width = sz2.Width;
+                sz.Height = i;
+                pictureBox2.Size = sz;
+                Delay(10);
+            }
+
+            for (i = 0; i < sz3.Width; i++)
+            {
+                sz.Width = i;
+                sz.Height = sz3.Height;
+                pictureBox3.Size = sz;
+                Delay(10);
+            }
+
+            for (i = 0; i < sz4.Height; i++)
+            {
+                sz.Width = sz4.Width;
+                sz.Height = i;
+                pictureBox4.Size = sz;
+                Delay(10);
+            }
+            clear_Color();
+        }
+
+        private void IM2_Ani()
+        {
+            int i = 0;
+            Size sz = new Size();
+
+            for (i = 0; i < sz5.Height; i++)
+            {
+                sz.Width = sz5.Width;
+                sz.Height = i;
+                pictureBox5.Size = sz;
+                Delay(5);
+            }
+            for (i = 0; i < sz6.Width; i++)
+            {
+                sz.Height = sz6.Height;
+                sz.Width = i;
+                pictureBox6.Size = sz;
+                Delay(5);
+            }
+            for (i = 0; i < sz7.Height; i++)
+            {
+                sz.Width = sz7.Width;
+                sz.Height = i;
+                pictureBox7.Size = sz;
+                Delay(5);
+            }
+            clear_Color();
+        }
+
     }
 }
 
