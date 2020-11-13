@@ -91,6 +91,7 @@ C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.Login.resour
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.Lot.resources
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.MainForm.resources
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.MaterialStock.resources
+C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.MixForm.resources
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.Properties.Resources.resources
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.Startworking.resources
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.Stopworking.resources
@@ -100,5 +101,5 @@ C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\H_DashBoardMES.csproj.C
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\H_DashBoardMES.csproj.CopyComplete
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.exe
 C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.pdb
+C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.Equipment.resources
 C:\Users\Admin\source\gitmes\MESProject\obj\Debug\MESProject.StartWorkingFormIM.resources
-C:\Users\Admin\source\Final_Project\MESProject\obj\Debug\MESProject.StartWorkingFormIM.resources

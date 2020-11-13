@@ -56,29 +56,17 @@
             this.IM2_2 = new System.Windows.Forms.Button();
             this.IM2_1 = new System.Windows.Forms.Button();
             this.SL010_CURRQTY = new System.Windows.Forms.Label();
-            this.STOP_BTN = new System.Windows.Forms.Button();
             this.IM1 = new System.Windows.Forms.PictureBox();
             this.IM2 = new System.Windows.Forms.PictureBox();
             this.silo = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.STOP_BTN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // CurTime
@@ -384,21 +372,6 @@
             this.SL010_CURRQTY.TabIndex = 77;
             this.SL010_CURRQTY.Text = "[저장량]";
             // 
-            // STOP_BTN
-            // 
-            this.STOP_BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("STOP_BTN.BackgroundImage")));
-            this.STOP_BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.STOP_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.STOP_BTN.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.STOP_BTN.ForeColor = System.Drawing.Color.White;
-            this.STOP_BTN.Location = new System.Drawing.Point(736, 120);
-            this.STOP_BTN.Name = "STOP_BTN";
-            this.STOP_BTN.Size = new System.Drawing.Size(72, 65);
-            this.STOP_BTN.TabIndex = 81;
-            this.STOP_BTN.Text = "STOP";
-            this.STOP_BTN.UseVisualStyleBackColor = true;
-            this.STOP_BTN.Click += new System.EventHandler(this.STOP_BTN_Click);
-            // 
             // IM1
             // 
             this.IM1.Image = global::MESProject.Properties.Resources.사출1;
@@ -434,66 +407,27 @@
             this.pictureBox1.ErrorImage = null;
             this.pictureBox1.Image = global::MESProject.Properties.Resources.사출통로;
             this.pictureBox1.InitialImage = null;
-            this.pictureBox1.Location = new System.Drawing.Point(152, 264);
+            this.pictureBox1.Location = new System.Drawing.Point(148, 263);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(460, 329);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 52;
             this.pictureBox1.TabStop = false;
             // 
-            // pictureBox2
+            // STOP_BTN
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox2.Location = new System.Drawing.Point(152, 288);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 24);
-            this.pictureBox2.TabIndex = 82;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox3.Location = new System.Drawing.Point(152, 298);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(460, 14);
-            this.pictureBox3.TabIndex = 82;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox4.Location = new System.Drawing.Point(596, 298);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(17, 31);
-            this.pictureBox4.TabIndex = 82;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox5.Location = new System.Drawing.Point(152, 288);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(16, 234);
-            this.pictureBox5.TabIndex = 84;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox6.Location = new System.Drawing.Point(152, 509);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(460, 14);
-            this.pictureBox6.TabIndex = 85;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Yellow;
-            this.pictureBox7.Location = new System.Drawing.Point(596, 509);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(17, 28);
-            this.pictureBox7.TabIndex = 86;
-            this.pictureBox7.TabStop = false;
+            this.STOP_BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("STOP_BTN.BackgroundImage")));
+            this.STOP_BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.STOP_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.STOP_BTN.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.STOP_BTN.ForeColor = System.Drawing.Color.White;
+            this.STOP_BTN.Location = new System.Drawing.Point(736, 120);
+            this.STOP_BTN.Name = "STOP_BTN";
+            this.STOP_BTN.Size = new System.Drawing.Size(72, 65);
+            this.STOP_BTN.TabIndex = 81;
+            this.STOP_BTN.Text = "STOP";
+            this.STOP_BTN.UseVisualStyleBackColor = true;
+            this.STOP_BTN.Click += new System.EventHandler(this.STOP_BTN_Click);
             // 
             // StartWorkingFormIM
             // 
@@ -502,12 +436,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1534, 811);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.STOP_BTN);
             this.Controls.Add(this.SL010_CURRQTY);
             this.Controls.Add(this.IM2_4);
@@ -549,12 +477,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.IM2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -593,11 +515,5 @@
         private System.Windows.Forms.Button IM2_1;
         private System.Windows.Forms.Label SL010_CURRQTY;
         private System.Windows.Forms.Button STOP_BTN;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.PictureBox pictureBox7;
     }
 }
