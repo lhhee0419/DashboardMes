@@ -17,8 +17,8 @@ namespace MESProject
     {
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
-        private static int time = 1500;
-        private static int mixing_time = 1500; //1분(60000)
+        private static int time = 2000;
+        private static int mixing_time = 2000; //1분(60000)
         private static int delaytime = 3;
         string Userid, Lotid, CurrQty, woid, LAST_LOTID;
         int PLANQTY, PRODQTY;
