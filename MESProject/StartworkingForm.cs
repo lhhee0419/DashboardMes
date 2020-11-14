@@ -17,34 +17,32 @@ namespace MESProject
     {
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
-        private static int time = 2000;
-        private static int mixing_time = 2000; //1분(60000)
+        private static int time = 1500;
+        private static int mixing_time = 1500; //1분(60000)
         private static int delaytime = 3;
         string Userid, Lotid, CurrQty, woid, LAST_LOTID;
         int PLANQTY, PRODQTY;
-        Size sz1, sz2, sz3, sz4, sz5, sz6, sz7, sz8, sz9, sz10;
-        int i = 0;
-        Size sz = new Size();
-
+        Size orj_s1,orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
 
         public Startworking()
         {
             InitializeComponent();
-            sz1 = s1.Size;
-            sz2 = s2.Size;
-            sz3 = s3.Size;
-            sz4 = p1.Size;
-            sz5 = m1.Size;
-            sz6 = m2.Size;
-            sz7 = ms1.Size;
-            sz8 = ms2.Size;
-            sz9 = p2.Size;
-            sz10 = s10.Size;
+            
         }
 
         private void Startworking_Load(object sender, EventArgs e)
         {
-            clear_Color();
+            orj_s1 = s1.Size;
+            orj_s2 = s2.Size;
+            orj_s3 = s3.Size;
+            orj_p1 = p1.Size;
+            orj_m1 = m1.Size;
+            orj_m2 = m2.Size;
+            orj_ms1 = ms1.Size;
+            orj_ms2 = ms2.Size;
+            orj_p2 = p2.Size;
+            orj_s10 = s10.Size;
+            clear_Color_all();
             //사용자 ID
             Userid = MainForm.User_ID;
 
@@ -57,21 +55,8 @@ namespace MESProject
             Inquiry_Lot();
 
             //작업지시서 상태가 종료일 때 버튼 사용 금지
-            string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
-            if (wostat == "종료")
-            {
-                EndBtn.Enabled = false;
-                StartBtn1.Enabled = false;
-                StartBtn2.Enabled = false;
-            }
-            else if (wostat == "대기")
-            {
-                EndBtn.Enabled = false;
-                StartBtn1.Enabled = false;
-                StartBtn2.Enabled = false;
-                FaultyBtn.Enabled = false;
-            }
-
+            Inquiry_Wostat();
+            
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
@@ -83,7 +68,6 @@ namespace MESProject
             LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
 
             //배합기 작업 버튼 잠금
             BtnEnabled();
@@ -102,59 +86,88 @@ namespace MESProject
             PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
             PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
 
-            if (PLANQTY < PRODQTY)
+            if (PLANQTY <= PRODQTY)
             {
                 ProdQty_check();
             }
             else
             {
-
             }
-
         }
-        private void clear_Color()
+        private void Inquiry_Wostat()
         {
-            Size mvSize = new Size();
-            mvSize.Height = 0;
-            mvSize.Width = sz1.Width;
-            s1.Size = mvSize;
+            string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
+            if (wostat == "종료")
+            {
+                EndBtn.Enabled = false;
+                StartBtn1.Enabled = false;
+                StartBtn2.Enabled = false;
+            }
+            else if (wostat == "대기")
+            {
+                EndBtn.Enabled = false;
+                StartBtn1.Enabled = false;
+                StartBtn2.Enabled = false;
+                FaultyBtn.Enabled = false;
+            }
+        }
+        private void clear_Color(PictureBox pBox)
+        {
+            pBox.Width = 0;
+            pBox.Height = 0;
+        }
+        private void clear_Color_all()
+        {
+            clear_Color(s1);
+            clear_Color(s2);
+            clear_Color(s3);
+            clear_Color(p1);
+            clear_Color(m1);
+            clear_Color(m2);
+            clear_Color(ms1);
+            clear_Color(ms2);
+            clear_Color(p2);
+            clear_Color(s10);
+        }
+        private void DrawLeftToRight(PictureBox PBox, Size sz, int StopWidth = 0, Point point= new Point(), int delay = 0)
+        {
+            PBox.Height = sz.Height;
+                for (int i = 0; i < sz.Width; i++)
+                {
+                    if (!point.IsEmpty)
+                        PBox.Location = point;
+                    if (StopWidth > 0 && StopWidth < i)
+                        continue;
+                    if (delay != 0)
+                        delaytime = delay;
+                    PBox.Width = i;
+                    Delay(delaytime-1);
+                }    
+        }
 
-            mvSize.Height = 0;
-            mvSize.Width = sz2.Width;
-            s2.Size = mvSize;
+        private void UpToDown(PictureBox PBox, Size sz)
+        {
+            PBox.Width = sz.Width;
 
-            mvSize.Height = 0;
-            mvSize.Width = sz3.Width;
-            s3.Size = mvSize;
+            for (int i = 0; i < sz.Height; i++)
+            {
+                PBox.Height = i;
+                Delay(delaytime);
+            }
+        }
 
-            mvSize.Height = sz4.Height;
-            mvSize.Width = 0;
-            p1.Size = mvSize;
-
-            mvSize.Height = 0;
-            mvSize.Width = sz5.Width;
-            m1.Size = mvSize;
-
-            mvSize.Height = 0;
-            mvSize.Width = sz6.Width;
-            m2.Size = mvSize;
-
-            mvSize.Height = 0;
-            mvSize.Width = sz7.Width;
-            ms1.Size = mvSize;
-
-            mvSize.Height = 0;
-            mvSize.Width = sz8.Width;
-            ms2.Size = mvSize;
-
-            mvSize.Height = sz9.Height;
-            mvSize.Width = 0;
-            p2.Size = mvSize;
-
-            mvSize.Height = 0;
-            mvSize.Width = sz10.Width;
-            s10.Size = mvSize;
-
+        private void DrawoRightToLeft(PictureBox PBox, Size sz, int StopWidth = 0, Point point = new Point())
+        {
+            PBox.Height = sz.Height;
+            for (int i = 0; i < StopWidth; i++)
+            {
+                if (!point.IsEmpty)
+                    PBox.Location = new Point(point.X -i, point.Y);
+                if (StopWidth > 0 && StopWidth < i)
+                    continue;
+                PBox.Width = i;
+                Delay(delaytime);
+            }
         }
 
         private static DateTime Delay(int MS)
@@ -359,7 +372,8 @@ namespace MESProject
             Inquiry_Woid();
         }
         private void Eqptstat_Changed(string eqptstat)
-        {
+        {   
+            //설비 상태 변경
             string EqptStat = $"UPDATE EQUIPMENT SET EQPTSTATS = '{eqptstat}' WHERE EQPTID='{EQPTID}'";
             Common.DB_Connection(EqptStat);
         }
@@ -371,6 +385,7 @@ namespace MESProject
             EQPTID = "MX001";
             Eqptstat_Changed("RUN");
             SetTimer();
+            Check_Store_CurrQty();
             timer1.Start();
             StartBtn1.Enabled = false;
 
@@ -382,11 +397,10 @@ namespace MESProject
             EQPTID = "MX002";
             Eqptstat_Changed("RUN");
             SetTimer();
+            Check_Store_CurrQty();
             timer1.Start();
             StartBtn2.Enabled = false;
         }
-
-
 
         private void Update_store(char pm, int Qty, string StoreID)
         {
@@ -469,7 +483,6 @@ namespace MESProject
         }
         public void StopTimer()
         {
-            clear_Color();
             timer1.Stop();
             timer2.Stop();
             timer3.Stop();
@@ -477,6 +490,7 @@ namespace MESProject
             timer5.Stop();
             timer6.Stop();
             timer7.Stop();
+            clear_Color_all();
             Stopbtn.Enabled = false;
             if (EQPTID == "MX001")
             {
@@ -501,14 +515,7 @@ namespace MESProject
 
 
         }
-        private void Stopbtn_Click(object sender, EventArgs e)
-        {
-            // 긴급 중지 버튼
-            StopTimer();
-            Stopbtn.Enabled = false;
-            Eqptstat_Changed("DOWN");
-        }
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Check_Store_CurrQty()
         {
             Select_store("SL001");
             silo1_Qty.Text = "저장량: " + CurrQty;
@@ -536,7 +543,8 @@ namespace MESProject
                 else if (silo3_currQty <= 50)
                 {
                     MessageBox.Show("저장소 SILO#3의 원재료가 부족합니다.");
-                }else if(silo10_currQty >= 10000)
+                }
+                else if (silo10_currQty >= 10000)
                 {
                     MessageBox.Show("저장소 SILO#10가 꽉 찼습니다. ");
                 }
@@ -549,62 +557,42 @@ namespace MESProject
                     StartBtn2.Enabled = true;
                 }
             }
+        }
+        private void Stopbtn_Click(object sender, EventArgs e)
+        {
+            // 긴급 중지 버튼
+            StopTimer();
+            Stopbtn.Enabled = false;
+            Eqptstat_Changed("DOWN");
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
+            PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
+            if (PLANQTY == PRODQTY)
+            {
+                ProdQty_check();
+
+            }
             else
             {
+
                 //1호 이송
                 if (EQPTID == "MX001")
                 {
                     Mixing1_1.BackColor = Color.FromArgb(255, 128, 0);
-                    for (i = 0; i < sz1.Height; i++)
-                    {
-                        sz.Height = i;
-                        sz.Width = sz1.Width;
-                        s1.Size = sz;
-                        Delay(delaytime);
-                    }
-                    for (i = 0; i < 230; i++)
-                    {
-                        p1.Location = new Point(103, 250);
-                        sz.Height = sz4.Height;
-                        sz.Width = i;
-                        p1.Size = sz;
-                        Delay(delaytime);
-                    }
-                    for (i = 0; i < sz5.Height + 3; i++)
-                    {
-                        sz.Height = i;
-                        sz.Width = sz5.Width;
-                        m1.Size = sz;
-                        Delay(delaytime);
-                    }
-                    clear_Color();
+                    UpToDown(s1, orj_s1);
+                    DrawLeftToRight(p1, orj_p1, 230, new Point(103, 250));
+                    UpToDown(m1, orj_m1);
+                    clear_Color_all();
                 }
                 else if (EQPTID == "MX002")
                 {
                     Mixing2_1.BackColor = Color.FromArgb(255, 128, 0);
-                    for (i = 0; i < sz1.Height; i++)
-                    {
-                        sz.Height = i;
-                        sz.Width = sz1.Width;
-                        s1.Size = sz;
-                        Delay(delaytime - 2);
-                    }
-                    for (i = 0; i < sz4.Width; i++)
-                    {
-                        p1.Location = new Point(101, 250);
-                        sz.Height = sz4.Height;
-                        sz.Width = i;
-                        p1.Size = sz;
-                        Delay(delaytime - 2);
-                    }
-                    for (i = 0; i < sz6.Height + 3; i++)
-                    {
-                        sz.Height = i;
-                        sz.Width = sz6.Width;
-                        m2.Size = sz;
-                        Delay(delaytime - 2);
-                    }
-                    clear_Color();
+                    UpToDown(s1, orj_s1);
+                    DrawLeftToRight(p1, orj_p1, 0, new Point(101, 250),2);
+                    UpToDown(m2, orj_m2);
+                    clear_Color_all();
                 }
                 Update_store('-', 10, "SL001");
                 Select_store("SL001");
@@ -612,8 +600,6 @@ namespace MESProject
                 timer1.Stop();
                 timer2.Start();
             }
-
-
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -622,62 +608,21 @@ namespace MESProject
             {
                 Mixing1_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing1_2.BackColor = Color.FromArgb(255, 128, 0);
-                for (i = 0; i < sz2.Height; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz2.Width;
-                    s2.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < 130; i++)
-                {
-                    p1.Location = new Point(200, 250);
-                    sz.Height = sz4.Height;
-                    sz.Width = i;
-                    p1.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < sz5.Height + 3; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz5.Width;
-                    m1.Size = sz;
-                    Delay(delaytime);
-                }
-                clear_Color();
-
+                UpToDown(s2, orj_s2);
+                DrawLeftToRight(p1, orj_p1, 130, new Point(200, 250));
+                UpToDown(m1, orj_m1);
+                clear_Color_all();
             }
             else if (EQPTID == "MX002")
             {
 
                 Mixing2_1.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_2.BackColor = Color.FromArgb(255, 128, 0);
-                for (i = 0; i < sz2.Height; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz2.Width;
-                    s2.Size = sz;
-                    Delay(delaytime - 1);
-                }
-                for (i = 0; i < 320; i++)
-                {
-                    p1.Location = new Point(200, 250);
-                    sz.Height = sz4.Height;
-                    sz.Width = i;
-                    p1.Size = sz;
-                    Delay(delaytime - 1);
-                }
-                for (i = 0; i < sz6.Height + 3; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz6.Width;
-                    m2.Size = sz;
-                    Delay(delaytime - 1);
-                }
-                clear_Color();
+                UpToDown(s2, orj_s1);
+                DrawLeftToRight(p1, orj_p1, 320, new Point(200, 250));
+                UpToDown(m2, orj_m2);
+                clear_Color_all();
             }
-            int silo2_currQty = Convert.ToInt32((silo2_Qty.Text).Substring(4));
-
             Update_store('-', 10, "SL002");
             Select_store("SL002");
             silo2_Qty.Text = "저장량: " + CurrQty;
@@ -694,69 +639,26 @@ namespace MESProject
             {
                 Mixing1_2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing1_3.BackColor = Color.FromArgb(255, 128, 0);
-                for (i = 0; i < sz3.Height; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz3.Width;
-                    s3.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < 25; i++)
-                {
-                    p1.Location = new Point(300, 250);
-                    sz.Height = sz4.Height;
-                    sz.Width = i;
-                    p1.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < sz5.Height + 3; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz5.Width;
-                    m1.Size = sz;
-                    Delay(delaytime);
-                }
-                clear_Color();
+                UpToDown(s3, orj_s3);
+                DrawLeftToRight(p1, orj_p1, 25, new Point(300, 250));
+                UpToDown(m1, orj_m1);
+                clear_Color_all();
             }
             else if (EQPTID == "MX002")
             {
                 Mixing2_2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing2_3.BackColor = Color.FromArgb(255, 128, 0);
-                for (i = 0; i < sz3.Height; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz3.Width;
-                    s3.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < 220; i++)
-                {
-                    p1.Location = new Point(300, 250);
-                    sz.Height = sz4.Height;
-                    sz.Width = i;
-                    p1.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < sz6.Height + 3; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz6.Width;
-                    m2.Size = sz;
-                    Delay(delaytime);
-                }
-                clear_Color();
+                UpToDown(s3, orj_s3);
+                DrawLeftToRight(p1, orj_p1, 220, new Point(300, 250));
+                UpToDown(m2, orj_m2);
+                clear_Color_all();
             }
-
             Update_store('-', 10, "SL003");
             Select_store("SL003");
             silo3_Qty.Text = "저장량: " + CurrQty;
             timer3.Stop();
             timer4.Start();
-
-
         }
-
-
 
         private void timer4_Tick(object sender, EventArgs e)
         {
@@ -771,7 +673,6 @@ namespace MESProject
                 Mixing2_3.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing_Start2.BackColor = Color.FromArgb(255, 128, 0);
             }
-
             Create_Lot();
             Lotid = LotGrid.Rows[LotGrid.Rows.Count - 2].Cells[0].Value.ToString();
             timer4.Stop();
@@ -791,6 +692,9 @@ namespace MESProject
                 Mixing_Start2.BackColor = Color.FromArgb(51, 153, 255);
                 Mixing_End2.BackColor = Color.FromArgb(255, 128, 0);
             }
+            string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
+            Common.DB_Connection(lot_eddttm);
+            Inquiry_Lot();
 
             timer5.Stop();
             timer6.Start();
@@ -799,65 +703,24 @@ namespace MESProject
         private void timer6_Tick(object sender, EventArgs e)
         {
             //배출완료     
-
             if (EQPTID == "MX001")
             {
                 Mixing_End1.BackColor = Color.FromArgb(51, 153, 255);
                 pass1.BackColor = Color.FromArgb(255, 128, 0);
-                for (i = 0; i < sz7.Height; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz7.Width;
-                    ms1.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < 108; i++)
-                {
-                    sz.Height = sz9.Height;
-                    sz.Width = i;
-                    p2.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < sz10.Height + 3; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz10.Width;
-                    s10.Size = sz;
-                    Delay(delaytime);
-                }
-                clear_Color();
+                UpToDown(ms1, orj_ms1);
+                DrawLeftToRight(p2, orj_p2,108);
+                UpToDown(s10, orj_s10);
+                clear_Color_all();
             }
             else if (EQPTID == "MX002")
             {
                 Mixing_End2.BackColor = Color.FromArgb(51, 153, 255);
                 pass2.BackColor = Color.FromArgb(255, 128, 0);
-                for (i = 0; i < sz8.Height; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz8.Width;
-                    ms2.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < 107; i++)
-                {
-                    p2.Location = new Point(520 - i, 438);
-                    sz.Height = sz9.Height;
-                    sz.Width = i;
-                    p2.Size = sz;
-                    Delay(delaytime);
-                }
-                for (i = 0; i < sz10.Height + 3; i++)
-                {
-                    sz.Height = i;
-                    sz.Width = sz10.Width;
-                    s10.Size = sz;
-                    Delay(delaytime);
-                }
-                clear_Color();
+                UpToDown(ms2, orj_ms2);
+                DrawoRightToLeft(p2,orj_p2,107,new Point(520,438));
+                UpToDown(s10, orj_s10);
+                clear_Color_all();
             }
-            string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
-            Common.DB_Connection(lot_eddttm);
-            Inquiry_Lot();
             Random random = new Random();
             int num = random.Next(20, 30);
             int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
@@ -891,6 +754,7 @@ namespace MESProject
             {
                 pass2.BackColor = Color.FromArgb(51, 153, 255);
             }
+            
         }
         private void timer8_Tick(object sender, EventArgs e)
         {

@@ -213,7 +213,7 @@
             this.StartBtn1.Name = "StartBtn1";
             this.StartBtn1.Size = new System.Drawing.Size(84, 86);
             this.StartBtn1.TabIndex = 35;
-            this.StartBtn1.Text = "1호   배합   시작";
+            this.StartBtn1.Text = "1호\r\n배합\r\n시작";
             this.StartBtn1.UseVisualStyleBackColor = true;
             this.StartBtn1.Click += new System.EventHandler(this.StartBtn1_Click);
             // 
@@ -224,7 +224,7 @@
             this.StartBtn2.Name = "StartBtn2";
             this.StartBtn2.Size = new System.Drawing.Size(84, 86);
             this.StartBtn2.TabIndex = 36;
-            this.StartBtn2.Text = "2호   배합   시작";
+            this.StartBtn2.Text = "2호\r\n배합\r\n시작";
             this.StartBtn2.UseVisualStyleBackColor = true;
             this.StartBtn2.Click += new System.EventHandler(this.StartBtn2_Click);
             // 
@@ -281,7 +281,7 @@
             this.pass1.Name = "pass1";
             this.pass1.Size = new System.Drawing.Size(81, 74);
             this.pass1.TabIndex = 42;
-            this.pass1.Text = "배출 완료";
+            this.pass1.Text = "배출\r\n완료";
             this.pass1.UseVisualStyleBackColor = false;
             // 
             // Mixing_End1
@@ -295,7 +295,7 @@
             this.Mixing_End1.Name = "Mixing_End1";
             this.Mixing_End1.Size = new System.Drawing.Size(81, 74);
             this.Mixing_End1.TabIndex = 41;
-            this.Mixing_End1.Text = "배합 완료";
+            this.Mixing_End1.Text = "배합\r\n완료";
             this.Mixing_End1.UseVisualStyleBackColor = false;
             // 
             // Mixing_Start1
@@ -309,7 +309,7 @@
             this.Mixing_Start1.Name = "Mixing_Start1";
             this.Mixing_Start1.Size = new System.Drawing.Size(81, 74);
             this.Mixing_Start1.TabIndex = 40;
-            this.Mixing_Start1.Text = "배합 시작";
+            this.Mixing_Start1.Text = "배합\r\n시작";
             this.Mixing_Start1.UseVisualStyleBackColor = false;
             // 
             // Mixing2_3
@@ -364,7 +364,7 @@
             this.pass2.Name = "pass2";
             this.pass2.Size = new System.Drawing.Size(81, 74);
             this.pass2.TabIndex = 54;
-            this.pass2.Text = "배출 완료";
+            this.pass2.Text = "배출\r\n완료";
             this.pass2.UseVisualStyleBackColor = false;
             // 
             // Mixing_End2
@@ -377,7 +377,7 @@
             this.Mixing_End2.Name = "Mixing_End2";
             this.Mixing_End2.Size = new System.Drawing.Size(81, 74);
             this.Mixing_End2.TabIndex = 53;
-            this.Mixing_End2.Text = "배합 완료";
+            this.Mixing_End2.Text = "배합\r\n완료";
             this.Mixing_End2.UseVisualStyleBackColor = false;
             // 
             // Mixing_Start2
@@ -390,7 +390,7 @@
             this.Mixing_Start2.Name = "Mixing_Start2";
             this.Mixing_Start2.Size = new System.Drawing.Size(81, 74);
             this.Mixing_Start2.TabIndex = 52;
-            this.Mixing_Start2.Text = "배합 시작";
+            this.Mixing_Start2.Text = "배합\r\n시작";
             this.Mixing_Start2.UseVisualStyleBackColor = false;
             // 
             // siloName2
