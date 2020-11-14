@@ -30,35 +30,26 @@ namespace MESProject
         string woid;
         bool isMove;
         Point fpt;
-        int PLANQTY;
-        int PRODQTY;
+        int PLANQTY, PRODQTY;
         string LAST_LOTID;
         int need_siloQty = 50;
+        Size orj_sm1_1, orj_sm1_2, orj_sm1_3, orj_sm2_1, orj_sm2_2, orj_sm2_3;
 
-        Size sz2 = new Size();
-        Size sz3 = new Size();
-        Size sz4 = new Size();
-        Size sz5 = new Size();
-        Size sz6 = new Size();
-        Size sz7 = new Size();
-
-        //실행중인 스레드 가져오기
-        public Thread th = Thread.CurrentThread;
         public StartWorkingFormIM()
         {
             InitializeComponent();
-            sz2 = pictureBox2.Size;
-            sz3 = pictureBox3.Size;
-            sz4 = pictureBox4.Size;
-            sz5 = pictureBox5.Size;
-            sz6 = pictureBox6.Size;
-            sz7 = pictureBox7.Size;
+            orj_sm1_1 = sm1_1.Size;
+            orj_sm1_2 = sm1_2.Size;
+            orj_sm1_3 = sm1_3.Size;
+            orj_sm2_1 = sm2_1.Size;
+            orj_sm2_2 = sm2_2.Size;
+            orj_sm2_3 = sm2_3.Size;
 
         }
 
         private void StartWorkingFormIM_Load(object sender, EventArgs e)
         {
-            clear_Color();
+            clear_Color_all();
             STOP_BTN.Enabled = false;
             //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
             EQPTID = "";
@@ -190,7 +181,7 @@ namespace MESProject
                                     $",W.ETC  \n" +
                                 $"FROM WORKORDER W  \n" +
                                     $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
-                                    $"LEFT JOIN LOT L ON W.WOID = L.WOID AND L.LOTSTAT <> 'D' \n" +
+                                    $"LEFT JOIN LOT L ON W.WOID = L.WOID\n" +
                                     $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                 $"WHERE W.WOID = '{Selected_woid}'  \n" +
                                 $"GROUP BY P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC  \n";
@@ -374,6 +365,7 @@ namespace MESProject
             //해당하는 작업지시번호의 상태를 완료(E)로 변경
             string UPDATE_WOSTAT_P = $"UPDATE WORKORDER SET WOSTAT = 'E' WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WOSTAT_P);
+            Update_EQPTStats("DOWN");
             Inquiry_Woid();
         }
         private void IM1_STBtn_Click(object sender, EventArgs e)
@@ -447,7 +439,6 @@ namespace MESProject
 
         public void Timer_Stop()
         {
-            timer1.Enabled = false;
             timer1.Dispose();
             timer1.Stop();
         }
@@ -455,8 +446,7 @@ namespace MESProject
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 9000;
-
+            timer1.Interval = 70000;
             //사일로 현재량 MINUS
             string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - {need_siloQty} WHERE STORID = '{silo010}'";
             Common.DB_Connection(SILO1_CURRQTY_MINUS);
@@ -473,12 +463,12 @@ namespace MESProject
             // 1호기 일경우 1호기 라벨 백컬러를 사용.
             if (EQPTID == "IM001")
             {
-                IM1_Ani();
+                IM1_Ani_();
                 B_Backcolor(IM1_1, IM1_2, IM1_3, IM1_4);
             }
             else if (EQPTID == "IM002")
             {
-                IM2_Ani();
+                IM2_Ani_();
                 B_Backcolor(IM2_1, IM2_2, IM2_3, IM2_4);
             }
 
@@ -495,8 +485,11 @@ namespace MESProject
                                          $", PROCID \n" +
                                          $", INSUSER \n" +
                                          $", INSDTTM) \n" +
-                                    $"VALUES \n" +
-                                        $"((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT) \n" +
+                                        $"VALUES \n" +
+                                        $"((SELECT 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || TO_CHAR(LAST_SEQ + 1, 'FM0000') " +
+                                        $"FROM(SELECT NVL(MAX(SUBSTR(LOTID, -4)), 0) LAST_SEQ " +
+                                        $"FROM LOT " +
+                                        $"WHERE LOTID LIKE 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '%'))\n" +
                                         $",'S' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
@@ -509,26 +502,22 @@ namespace MESProject
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
             Common.DB_Connection(IM_lotCreate);
 
-            string DD = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY LOTID DESC) WHERE ROWNUM = 1";
-            DataTable dataTable1 = Common.DB_Connection(DD);
+            string last_LOTID = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY LOTID DESC) WHERE ROWNUM = 1";
+            DataTable dataTable1 = Common.DB_Connection(last_LOTID);
             LAST_LOTID = dataTable1.Rows[0][0].ToString();
 
             Inquiry_Lot();
             Inquiry_Woid();
-
-            //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-            Delay(1000);
-
-            //LOT EDDTTM 업데이트
-            string SELECT_LOTID = $"SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000'))) FROM LOT";
-            DataTable dataTable = Common.DB_Connection(SELECT_LOTID);
-            string lotid = dataTable.Rows[0][0].ToString();
-
-            string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{lotid}'";
-            Common.DB_Connection(UPDATE_LOT_EDDTTM);
-
             EQPTDATA_TEMP();
             EQPTDATA_PRESS();
+
+            //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
+            Delay(60000);
+
+            //LOT EDDTTM 업데이트
+
+            string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{LAST_LOTID}'";
+            Common.DB_Connection(UPDATE_LOT_EDDTTM);
 
             //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
             string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
@@ -582,7 +571,7 @@ namespace MESProject
                 {
                     if (i == j)
                     {
-                        buttons[j].BackColor = Color.Yellow;
+                        buttons[j].BackColor = Color.FromArgb(255, 128, 0);
                         Delay(500);
                     }
                     else
@@ -593,7 +582,6 @@ namespace MESProject
             }
             buttons[3].BackColor = Color.FromArgb(51, 153, 255);
         }
-
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -619,94 +607,66 @@ namespace MESProject
         //----------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------애니메이션------------------------------------------------------
         //----------------------------------------------------------------------------------------------------------------------
-        private void clear_Color()
+        private void clear_Color(PictureBox pBox)
         {
-            Size mvSize = new Size();
+            pBox.Width = 0;
+            pBox.Height = 0;
+        }
+        private void clear_Color_all()
+        {
+            clear_Color(sm1_1);
+            clear_Color(sm1_2);
+            clear_Color(sm1_3);
+            clear_Color(sm2_1);
+            clear_Color(sm2_2);
+            clear_Color(sm2_3);
+        }
+        private void DrawLeftToRight(PictureBox PBox, Size sz)
+        {
+            PBox.Height = sz.Height;
+            for (int i = 0; i < sz.Width; i++)
+            {
+                PBox.Width = i;
+                Delay(3);
+            }
+        }
+        private void UpToDown(PictureBox PBox, Size sz)
+        {
+            PBox.Width = sz.Width;
 
-            mvSize.Width = sz2.Width;
-            mvSize.Height = 0;
-            pictureBox2.Size = mvSize;
-
-            mvSize.Width = 0;
-            mvSize.Height = sz3.Height;
-            pictureBox3.Size = mvSize;
-
-            mvSize.Width = sz4.Width;
-            mvSize.Height = 0;
-            pictureBox4.Size = mvSize;
-
-            mvSize.Width = sz5.Width;
-            mvSize.Height = 0;
-            pictureBox5.Size = mvSize;
-
-            mvSize.Width = 0;
-            mvSize.Height = sz6.Height;
-            pictureBox6.Size = mvSize;
-
-            mvSize.Width = sz7.Width;
-            mvSize.Height = 0;
-            pictureBox7.Size = mvSize;
+            for (int i = 0; i < sz.Height; i++)
+            {
+                PBox.Height = i;
+                Delay(3);
+            }
         }
 
-        private void IM1_Ani()
+        private void IM1_Ani_()
         {
-            int i = 0;
-            Size sz = new Size();
-            for (i = 0; i < sz2.Height; i++)
-            {
-                sz.Width = sz2.Width;
-                sz.Height = i;
-                pictureBox2.Size = sz;
-                Delay(10);
-            }
+            clear_Color_all();
 
-            for (i = 0; i < sz3.Width; i++)
-            {
-                sz.Width = i;
-                sz.Height = sz3.Height;
-                pictureBox3.Size = sz;
-                Delay(10);
-            }
+            UpToDown(sm1_1, orj_sm1_1);
 
-            for (i = 0; i < sz4.Height; i++)
-            {
-                sz.Width = sz4.Width;
-                sz.Height = i;
-                pictureBox4.Size = sz;
-                Delay(10);
-            }
-            clear_Color();
+            DrawLeftToRight(sm1_2, orj_sm1_2);
+
+            UpToDown(sm1_3, orj_sm1_3);
+
+            clear_Color_all();
+
         }
-
-        private void IM2_Ani()
+        private void IM2_Ani_()
         {
-            int i = 0;
-            Size sz = new Size();
+            clear_Color_all();
 
-            for (i = 0; i < sz5.Height; i++)
-            {
-                sz.Width = sz5.Width;
-                sz.Height = i;
-                pictureBox5.Size = sz;
-                Delay(5);
-            }
-            for (i = 0; i < sz6.Width; i++)
-            {
-                sz.Height = sz6.Height;
-                sz.Width = i;
-                pictureBox6.Size = sz;
-                Delay(5);
-            }
-            for (i = 0; i < sz7.Height; i++)
-            {
-                sz.Width = sz7.Width;
-                sz.Height = i;
-                pictureBox7.Size = sz;
-                Delay(5);
-            }
-            clear_Color();
+            UpToDown(sm2_1, orj_sm2_1);
+
+            DrawLeftToRight(sm2_2, orj_sm2_2);
+
+            UpToDown(sm2_3, orj_sm2_3);
+
+            clear_Color_all();
+
         }
-
     }
 }
 

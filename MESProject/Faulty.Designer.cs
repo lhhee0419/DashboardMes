@@ -33,10 +33,10 @@
             this.LotID_Grid = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.D_color = new System.Windows.Forms.RadioButton();
-            this.D_Scratch = new System.Windows.Forms.RadioButton();
             this.D_Crack = new System.Windows.Forms.RadioButton();
+            this.D_Scratch = new System.Windows.Forms.RadioButton();
             this.D_STED = new System.Windows.Forms.RadioButton();
+            this.D_color = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotID_Grid)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -93,40 +93,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(1062, 32);
+            this.label2.Location = new System.Drawing.Point(1040, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 28);
             this.label2.TabIndex = 4;
             this.label2.Text = "불량요인";
             // 
-            // D_color
-            // 
-            this.D_color.AutoSize = true;
-            this.D_color.Location = new System.Drawing.Point(24, 208);
-            this.D_color.Name = "D_color";
-            this.D_color.Size = new System.Drawing.Size(79, 28);
-            this.D_color.TabIndex = 6;
-            this.D_color.TabStop = true;
-            this.D_color.Text = "색상";
-            this.D_color.UseVisualStyleBackColor = true;
-            this.D_color.Click += new System.EventHandler(this.D_color_Click);
-            // 
-            // D_Scratch
-            // 
-            this.D_Scratch.AutoSize = true;
-            this.D_Scratch.Location = new System.Drawing.Point(24, 152);
-            this.D_Scratch.Name = "D_Scratch";
-            this.D_Scratch.Size = new System.Drawing.Size(79, 28);
-            this.D_Scratch.TabIndex = 7;
-            this.D_Scratch.TabStop = true;
-            this.D_Scratch.Text = "기스";
-            this.D_Scratch.UseVisualStyleBackColor = true;
-            this.D_Scratch.Click += new System.EventHandler(this.D_Scratch_Click);
-            // 
             // D_Crack
             // 
             this.D_Crack.AutoSize = true;
-            this.D_Crack.Location = new System.Drawing.Point(24, 40);
+            this.D_Crack.Location = new System.Drawing.Point(32, 72);
             this.D_Crack.Name = "D_Crack";
             this.D_Crack.Size = new System.Drawing.Size(103, 28);
             this.D_Crack.TabIndex = 8;
@@ -135,10 +111,22 @@
             this.D_Crack.UseVisualStyleBackColor = true;
             this.D_Crack.Click += new System.EventHandler(this.D_Crack_Click);
             // 
+            // D_Scratch
+            // 
+            this.D_Scratch.AutoSize = true;
+            this.D_Scratch.Location = new System.Drawing.Point(32, 184);
+            this.D_Scratch.Name = "D_Scratch";
+            this.D_Scratch.Size = new System.Drawing.Size(79, 28);
+            this.D_Scratch.TabIndex = 7;
+            this.D_Scratch.TabStop = true;
+            this.D_Scratch.Text = "기스";
+            this.D_Scratch.UseVisualStyleBackColor = true;
+            this.D_Scratch.Click += new System.EventHandler(this.D_Scratch_Click);
+            // 
             // D_STED
             // 
             this.D_STED.AutoSize = true;
-            this.D_STED.Location = new System.Drawing.Point(24, 96);
+            this.D_STED.Location = new System.Drawing.Point(32, 128);
             this.D_STED.Name = "D_STED";
             this.D_STED.Size = new System.Drawing.Size(132, 28);
             this.D_STED.TabIndex = 9;
@@ -147,16 +135,30 @@
             this.D_STED.UseVisualStyleBackColor = true;
             this.D_STED.Click += new System.EventHandler(this.D_STED_Click);
             // 
+            // D_color
+            // 
+            this.D_color.AutoSize = true;
+            this.D_color.Location = new System.Drawing.Point(32, 240);
+            this.D_color.Name = "D_color";
+            this.D_color.Size = new System.Drawing.Size(79, 28);
+            this.D_color.TabIndex = 6;
+            this.D_color.TabStop = true;
+            this.D_color.Text = "색상";
+            this.D_color.UseVisualStyleBackColor = true;
+            this.D_color.Click += new System.EventHandler(this.D_color_Click);
+            // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.D_color);
             this.groupBox1.Controls.Add(this.D_STED);
             this.groupBox1.Controls.Add(this.D_Scratch);
             this.groupBox1.Controls.Add(this.D_Crack);
+            this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(1015, 143);
+            this.groupBox1.Location = new System.Drawing.Point(984, 72);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 272);
+            this.groupBox1.Size = new System.Drawing.Size(240, 400);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "불량요인 선택";
@@ -197,10 +199,10 @@
         private System.Windows.Forms.DataGridView LotID_Grid;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton D_color;
-        private System.Windows.Forms.RadioButton D_Scratch;
         private System.Windows.Forms.RadioButton D_Crack;
+        private System.Windows.Forms.RadioButton D_Scratch;
         private System.Windows.Forms.RadioButton D_STED;
+        private System.Windows.Forms.RadioButton D_color;
         private System.Windows.Forms.GroupBox groupBox1;
     }
 }

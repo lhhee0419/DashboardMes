@@ -213,7 +213,7 @@
             this.StartBtn1.Name = "StartBtn1";
             this.StartBtn1.Size = new System.Drawing.Size(84, 86);
             this.StartBtn1.TabIndex = 35;
-            this.StartBtn1.Text = "1호   배합   시작";
+            this.StartBtn1.Text = "1호\r\n배합\r\n시작";
             this.StartBtn1.UseVisualStyleBackColor = true;
             this.StartBtn1.Click += new System.EventHandler(this.StartBtn1_Click);
             // 
