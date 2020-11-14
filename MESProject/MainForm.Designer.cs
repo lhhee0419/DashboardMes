@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
             this.maintab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.MaterialBtn = new System.Windows.Forms.Button();
             this.logoutbtn = new System.Windows.Forms.Button();
             this.ProcCombo = new System.Windows.Forms.ComboBox();
@@ -41,27 +41,21 @@
             this.WostBtn = new System.Windows.Forms.Button();
             this.InquiryBtn = new System.Windows.Forms.Button();
             this.WoGrid = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.maintab.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 35;
-            // 
             // maintab
             // 
             this.maintab.Controls.Add(this.tabPage1);
             this.maintab.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.maintab.Location = new System.Drawing.Point(0, 0);
+            this.maintab.Location = new System.Drawing.Point(0, 3);
             this.maintab.Name = "maintab";
             this.maintab.SelectedIndex = 0;
-            this.maintab.Size = new System.Drawing.Size(1552, 858);
+            this.maintab.Size = new System.Drawing.Size(1552, 855);
+            this.maintab.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.maintab.TabIndex = 34;
             this.maintab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseDown);
             this.maintab.MouseMove += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseMove);
@@ -84,10 +78,20 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1544, 817);
+            this.tabPage1.Size = new System.Drawing.Size(1544, 814);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "메인화면";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("문체부 돋음체", 18F);
+            this.label2.Location = new System.Drawing.Point(431, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 30);
+            this.label2.TabIndex = 58;
+            this.label2.Text = "-";
             // 
             // MaterialBtn
             // 
@@ -196,15 +200,12 @@
             this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
             this.WoGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WoGrid_CellDoubleClick);
             // 
-            // label2
+            // panel1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("문체부 돋음체", 18F);
-            this.label2.Location = new System.Drawing.Point(431, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 30);
-            this.label2.TabIndex = 58;
-            this.label2.Text = "-";
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1552, 43);
+            this.panel1.TabIndex = 35;
             // 
             // MainForm
             // 
@@ -226,7 +227,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl maintab;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button logoutbtn;
@@ -240,6 +240,7 @@
         private System.Windows.Forms.DataGridView WoGrid;
         private System.Windows.Forms.Button MaterialBtn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

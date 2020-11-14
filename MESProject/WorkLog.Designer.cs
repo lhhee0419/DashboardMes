@@ -111,6 +111,7 @@
             this.ProcCombo.Name = "ProcCombo";
             this.ProcCombo.Size = new System.Drawing.Size(121, 35);
             this.ProcCombo.TabIndex = 55;
+            this.ProcCombo.Visible = false;
             // 
             // LotGrid
             // 

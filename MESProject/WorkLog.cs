@@ -12,17 +12,19 @@ namespace MESProject
 {
     public partial class WorkLog : Form
     {
+        private string User;
         public WorkLog()
         {
             InitializeComponent();
+            User = MainForm.User_ID;
         }
 
         private void WorkLog_Load(object sender, EventArgs e)
-        {
+        {   
+
             // Grid 디자인 세팅
             Common.SetGridDesign(WLGrid);
-            Common.SetGridDesign(LotGrid);
-         
+            Common.SetGridDesign(LotGrid);     
             WLGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
             LotGrid.Font = new Font("Fixsys", 14, FontStyle.Regular);
 
@@ -30,6 +32,7 @@ namespace MESProject
             string[] proc = { "배합", "사출" };
             ProcCombo.Items.AddRange(proc);
             ProcCombo.SelectedIndex = 0;
+            Check_Admin();
 
             //WLGrid (작업지시서) 조회
             DataSearch();
@@ -41,7 +44,6 @@ namespace MESProject
                 for (int i = 0; i < header.Length; i++)
                 {
                     WLGrid.Columns[i].HeaderText = $"{header[i]}";
-
                 }
             }
             // 컬럼 폭 설정
@@ -50,7 +52,6 @@ namespace MESProject
             {
                 Common.SetColumnWidth(WLGrid, i, WLGrid_SetColumnWidth[i]);
             }
-
             // LotGrid 컬럼명
             Inquiry_lot();
 
@@ -60,6 +61,29 @@ namespace MESProject
                 Common.SetColumnWidth(LotGrid, i, LotGrid_SetColumnWidth[i]);
             }
  
+        }
+        private void Check_Admin()
+        {
+            string admin_yn = $"SELECT PROCID, ADMIN_YN FROM EMP_AUTHORITY WHERE EMPLOYEEID = '{User}'";
+            DataTable dataTable = Common.DB_Connection(admin_yn);
+            string y_n = dataTable.Rows[0][1].ToString();
+            string user_procid = dataTable.Rows[0][0].ToString();
+
+            if (y_n == "Y")
+            {
+                ProcCombo.Visible = true;
+            }
+            else if (y_n == "N")
+            {
+                if (user_procid == "P0001")
+                {
+                    ProcCombo.SelectedIndex = 0;
+                }
+                else if (user_procid == "P0002")
+                {
+                    ProcCombo.SelectedIndex = 1;
+                }
+            }
         }
         public void Inquiry_lot()
         {

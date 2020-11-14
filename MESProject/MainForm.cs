@@ -20,9 +20,6 @@ namespace MESProject
         bool isMove;
         Point fpt;
         public static string User_ID { get; set; }
-        // EQPT 조회하기 위한 변수
-        //Equipment에서 가져온 EQPTID
-
         public string woid = "";
         string wostat;
         int count = 0;
@@ -115,7 +112,7 @@ namespace MESProject
                                             $",W.ETC \n " +
                                         $"FROM WORKORDER W \n " +
                                             $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
-                                            $"LEFT JOIN LOT L ON W.WOID = L.WOID \n" +
+                                            $"LEFT JOIN LOT L ON W.WOID = L.WOID AND L.LOTSTAT <> 'D'  \n" +
                                             $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                         $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
                                             $"AND W.PROCID = 'P0001' \n" +
@@ -149,7 +146,7 @@ namespace MESProject
                                                 $",W.ETC \n " +
                                             $"FROM WORKORDER W \n " +
                                                 $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
-                                                $"LEFT JOIN LOT L ON W.WOID = L.WOID \n" +
+                                                $"LEFT JOIN LOT L ON W.WOID = L.WOID AND L.LOTSTAT <> 'D' \n" +
                                                 $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                             $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
                                                 $"AND W.PROCID = 'P0002' \n" +
