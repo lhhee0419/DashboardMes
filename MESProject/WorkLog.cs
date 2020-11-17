@@ -40,14 +40,14 @@ namespace MESProject
             // 컬럼명 설정
             if (WLGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "작업코드", "제품명", "작업상태", "설비코드", "계획수량", "생산수량", "불량수량", "작업시작일", "작업완료일", "계획일자", "비고" };
+                string[] header = new string[] { "작업코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "작업시작일", "작업완료일", "계획일자", "비고" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WLGrid.Columns[i].HeaderText = $"{header[i]}";
                 }
             }
             // 컬럼 폭 설정
-            int[] WLGrid_SetColumnWidth = new int[] { 130, 140, 50, 70, 50, 50, 50, 140, 140, 140, 40 };
+            int[] WLGrid_SetColumnWidth = new int[] { 130, 140, 50, 50, 50, 50, 140, 140, 140, 40 };
             for (int i = 0; i < WLGrid_SetColumnWidth.Length; i++)
             {
                 Common.SetColumnWidth(WLGrid, i, WLGrid_SetColumnWidth[i]);
@@ -55,7 +55,7 @@ namespace MESProject
             // LotGrid 컬럼명
             Inquiry_lot();
 
-            int[] LotGrid_SetColumnWidth = new int[] { 150,150,150,100};
+            int[] LotGrid_SetColumnWidth = new int[] { 150,100,150,150 ,100};
             for (int i = 0; i < LotGrid_SetColumnWidth.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, LotGrid_SetColumnWidth[i]);
@@ -87,20 +87,29 @@ namespace MESProject
         }
         public void Inquiry_lot()
         {
-            string Selected_lot = $"SELECT L.LOTID, L.LOTSTDTTM, L.LOTEDDTTM, " +
-                $"CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT " +
-                $"WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END FROM LOT L, DEFECTLOT D " +
-                $"WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
+            string Selected_lot =   $"SELECT " +
+                                        $"L.LOTID" +
+                                        $",L.EQPTID"+
+                                        $",L.LOTSTDTTM" +
+                                        $",L.LOTEDDTTM, " +
+                                        $"CASE WHEN L.LOTID IN(" +
+                                                            $"SELECT " +
+                                                            $"DEFECT_LOTID " +
+                                                            $"FROM DEFECTLOT " +
+                                                            $"WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END " +
+                                    $"FROM LOT L, DEFECTLOT D " +
+                                    $"WHERE WOID = '{woid}' AND L.LOTID = D.DEFECT_LOTID";
             Common.DB_Connection(Selected_lot, LotGrid);
             if (LotGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "LOT코드", "시작시간", "종료시간", "불량" };
+                string[] header = new string[] { "LOT코드","설비코드" ,"시작시간", "종료시간", "불량" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     LotGrid.Columns[i].HeaderText = $"{header[i]}";
 
                 }
             }
+            Common.Disable_sorting_Datagrid(LotGrid);
         }
         private void ExitBtn_Click(object sender, EventArgs e)
         {
@@ -119,7 +128,6 @@ namespace MESProject
                                            $"W.WOID \n" +
                                            $",P.PRODNAME \n" +
                                            $",CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
-                                           $",E.EQPTID \n" +
                                            $",W.PLANQTY \n" +
                                            $",NVL(SUM(L.LOTQTY), 0) AS 생산수량 \n" +
                                            $",COUNT(D.DEFECT_LOTID) \n" +
@@ -127,19 +135,18 @@ namespace MESProject
                                            $",W.WOEDDTTM \n" +
                                            $",W.PLANDTTM \n" +
                                            $",W.ETC  \n" +
-                                       $"FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D  \n" +
-                                       $"WHERE W.PROCID = E.PROCID  \n" +
-                                           $"AND W.PROCID = 'P0001'  \n" +
+                                       $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D  \n" +
+                                       $"WHERE \n" +
+                                           $" W.PROCID = 'P0001'  \n" +
                                            $"AND PLANDTTM >= '{date1.Year}/{date1.Month}/{date1.Day}'   \n" +
                                            $"AND PLANDTTM <= TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1  \n" +
                                            $"AND W.WOID = L.WOID(+)  \n" +
                                            $"AND W.PRODID = P.PRODID  \n" +
                                            $"AND L.LOTID = D.DEFECT_LOTID(+)  \n" +
                                            $"AND WOSTAT <>'D'  \n" +
-                                           $"AND L.EQPTID = E.EQPTID  \n" +
                                            $"AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')  \n" +
                                            $"AND L.LOTSTAT <> 'D' \n" +
-                                       $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC  \n" +
+                                       $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC  \n" +
                                        $"ORDER BY (DECODE(WOSTAT,'진행중',0,1))";
                 Common.DB_Connection(select_wo_mix, WLGrid);
 
@@ -151,7 +158,6 @@ namespace MESProject
                                                $"W.WOID \n" +
                                                $",P.PRODNAME \n" +
                                                $",CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
-                                               $",E.EQPTID \n" +
                                                $",W.PLANQTY \n" +
                                                $",NVL(SUM(L.LOTQTY), 0) AS 생산수량 \n" +
                                                $",COUNT(D.DEFECT_LOTID) \n" +
@@ -159,23 +165,23 @@ namespace MESProject
                                                $",W.WOEDDTTM \n" +
                                                $",W.PLANDTTM \n" +
                                                $",W.ETC  \n" +
-                                           $"FROM WORKORDER W, PRODUCT P, EQUIPMENT E, LOT L, DEFECTLOT D  \n" +
-                                           $"WHERE W.PROCID = E.PROCID  \n" +
-                                               $"AND W.PROCID = 'P0002'  \n" +
+                                           $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D  \n" +
+                                           $"WHERE  \n" +
+                                               $"W.PROCID = 'P0002'  \n" +
                                                $"AND PLANDTTM >= '{date1.Year}/{date1.Month}/{date1.Day}'   \n" +
                                                $"AND PLANDTTM <= TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1  \n" +
                                                $"AND W.WOID = L.WOID(+)  \n" +
                                                $"AND W.PRODID = P.PRODID  \n" +
                                                $"AND L.LOTID = D.DEFECT_LOTID(+)  \n" +
                                                $"AND WOSTAT <>'D'  \n" +
-                                               $"AND L.EQPTID = E.EQPTID  \n" +
                                                $"AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')  \n" +
                                                $"AND L.LOTSTAT <> 'D' \n" +
-                                           $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, E.EQPTID, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC  \n" +
+                                           $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY,W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC  \n" +
                                            $"ORDER BY (DECODE(WOSTAT,'진행중',0,1))";
                 Common.DB_Connection(select_wo_injection, WLGrid);
 
             }
+            Common.Disable_sorting_Datagrid(WLGrid);
         }
 
         private void InquiryBtn_Click(object sender, EventArgs e)
@@ -198,12 +204,14 @@ namespace MESProject
                     woid = WLGrid.Rows[i].Cells[0].Value.ToString();
                     string Selected_lot =   $"SELECT " +
                                                 $"L.LOTID" +
-                                                $", L.LOTSTDTTM" +
-                                                $", L.LOTEDDTTM"+
+                                                $",L.EQPTID "+
+                                                $",L.LOTSTDTTM" +
+                                                $",L.LOTEDDTTM"+
                                                 $",CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END AS 불량 "+
                                             $"FROM LOT L "+
                                             $"WHERE WOID = '{woid}'";
                     Common.DB_Connection(Selected_lot, LotGrid);
+                    Common.Disable_sorting_Datagrid(LotGrid);
                 }
             }
             

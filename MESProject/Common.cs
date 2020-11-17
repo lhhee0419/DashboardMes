@@ -51,6 +51,16 @@ namespace MESProject
             return data_table;
         }
 
+        static public void Disable_sorting_Datagrid(DataGridView dataGridView)
+        {
+            //데이터그리드뷰 헤더로 정렬하는 것 막기
+
+            foreach (DataGridViewColumn i in dataGridView.Columns)
+            {
+                i.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+        }
+
         static public void Create_Tab(string name, string text, Form form, TabControl tab)
         {
 

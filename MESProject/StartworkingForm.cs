@@ -17,21 +17,21 @@ namespace MESProject
     {
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
-        private static int time = 1500;
-        private static int mixing_time = 1500; //1분(60000)
+        private static int time = 2000;
         private static int delaytime = 3;
         string Userid, Lotid, CurrQty, woid, LAST_LOTID;
-        int PLANQTY, PRODQTY;
-        Size orj_s1,orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
-
+        Size orj_s1, orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
+        Color Offcolor = Color.FromArgb(51, 153, 255);
+        Color Oncolor = Color.FromArgb(255, 128, 0);
+        int stop_timer_flag = 0;
         public Startworking()
         {
             InitializeComponent();
-            
         }
 
         private void Startworking_Load(object sender, EventArgs e)
-        {
+        {   
+            //애니메이션 설정
             orj_s1 = s1.Size;
             orj_s2 = s2.Size;
             orj_s3 = s3.Size;
@@ -43,6 +43,8 @@ namespace MESProject
             orj_p2 = p2.Size;
             orj_s10 = s10.Size;
             clear_Color_all();
+
+           
             //사용자 ID
             Userid = MainForm.User_ID;
 
@@ -56,21 +58,20 @@ namespace MESProject
 
             //작업지시서 상태가 종료일 때 버튼 사용 금지
             Inquiry_Wostat();
-            
+
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-            int[] SetCoiumnWidth_LotGrid = new int[] { 130, 30, 30, 140 };
+            int[] SetCoiumnWidth_LotGrid = new int[] { 115, 23,58, 20, 130 };
             for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
             }
-            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 11, FontStyle.Regular);
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-            //배합기 작업 버튼 잠금
-            BtnEnabled();
+
 
             //저장소 현재량 조회
             Select_store("SL001");
@@ -82,17 +83,6 @@ namespace MESProject
             Select_store("SL010");
             silo10_Qty.Text = "저장량: " + CurrQty;
 
-            //계획수량 만큼만 돌아가도록
-            PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
-            PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
-
-            if (PLANQTY <= PRODQTY)
-            {
-                ProdQty_check();
-            }
-            else
-            {
-            }
         }
         private void Inquiry_Wostat()
         {
@@ -129,20 +119,20 @@ namespace MESProject
             clear_Color(p2);
             clear_Color(s10);
         }
-        private void DrawLeftToRight(PictureBox PBox, Size sz, int StopWidth = 0, Point point= new Point(), int delay = 0)
+        private void DrawLeftToRight(PictureBox PBox, Size sz, int StopWidth = 0, Point point = new Point(), int delay = 0)
         {
             PBox.Height = sz.Height;
-                for (int i = 0; i < sz.Width; i++)
-                {
-                    if (!point.IsEmpty)
-                        PBox.Location = point;
-                    if (StopWidth > 0 && StopWidth < i)
-                        continue;
-                    if (delay != 0)
-                        delaytime = delay;
-                    PBox.Width = i;
-                    Delay(delaytime-1);
-                }    
+            for (int i = 0; i < sz.Width; i++)
+            {
+                if (!point.IsEmpty)
+                    PBox.Location = point;
+                if (StopWidth > 0 && StopWidth < i)
+                    continue;
+                if (delay != 0)
+                    delaytime = delay;
+                PBox.Width = i;
+                Delay(delaytime - 1);
+            }
         }
 
         private void UpToDown(PictureBox PBox, Size sz)
@@ -162,7 +152,7 @@ namespace MESProject
             for (int i = 0; i < StopWidth; i++)
             {
                 if (!point.IsEmpty)
-                    PBox.Location = new Point(point.X -i, point.Y);
+                    PBox.Location = new Point(point.X - i, point.Y);
                 if (StopWidth > 0 && StopWidth < i)
                     continue;
                 PBox.Width = i;
@@ -185,26 +175,7 @@ namespace MESProject
             return DateTime.Now;
         }
 
-        private void BtnEnabled()
-        {
-            if (LotGrid.Rows.Count > 1)
-            {
-                string lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
-                string select_eqpt = $"SELECT EQPTID FROM LOT WHERE LOTID ='{lotid}'";
-                DataTable dataTable = Common.DB_Connection(select_eqpt);
-                string eqptid = dataTable.Rows[0][0].ToString();
-                if (eqptid == "MX001")
-                {
-                    EQPTID = "MX001";
-                    StartBtn2.Enabled = false;
-                }
-                else if (eqptid == "MX002")
-                {
-                    EQPTID = "MX002";
-                    StartBtn1.Enabled = false;
-                }
-            }
-        }
+        
 
         public void Inquiry_Woid()
         {
@@ -237,43 +208,40 @@ namespace MESProject
                 }
             }
             WoGrid.RowTemplate.Height = 55;
+            Common.Disable_sorting_Datagrid(WoGrid);
         }
         public void Inquiry_Lot()
         {
             //LotGrid에 표시될 데이터 가져오기
-            string Selected_lot = $"SELECT " +
-                                    $"LOTID" +
-                                    $",LOTSTAT" +
-                                    $",CASE WHEN L.LOTID IN(" +
-                                        $"SELECT DEFECT_LOTID " +
-                                        $"FROM DEFECTLOT " +
-                                        $"WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END" +
-                                    $",TO_CHAR(LOTSTDTTM, 'YY-MM-DD HH24:MI:SS')" +
-                                    $",TO_CHAR(LOTEDDTTM, 'YY-MM-DD HH24:MI:SS') " +
-                                  $"FROM LOT L " +
-                                  $"WHERE WOID = '{Selected_woid}' AND LOTSTAT <>'D' " +
-                                  $"ORDER BY LOTID";
+            string Selected_lot = $"SELECT \n" +
+                                    $"LOTID \n" +
+                                    $",LOTSTAT \n" +
+                                    $",EQPTID \n" +
+                                    $",CASE WHEN L.LOTID IN( \n" +
+                                        $"SELECT DEFECT_LOTID \n" +
+                                        $"FROM DEFECTLOT \n" +
+                                        $"WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END \n" +
+                                    $",TO_CHAR(LOTSTDTTM, 'YY-MM-DD HH24:MI:SS') \n" +
+                                    $",TO_CHAR(LOTEDDTTM, 'YY-MM-DD HH24:MI:SS') \n" +
+                                  $"FROM LOT L \n" +
+                                  $"WHERE WOID = '{Selected_woid}' AND LOTSTAT <>'D' \n" +
+                                  $"ORDER BY LOTID DESC\n";
 
             Common.DB_Connection(Selected_lot, LotGrid);
 
             if (LotGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "LOT코드", "상태", "불량", "시작시간", "종료시간" };
+                string[] header = new string[] { "LOT코드", "상태", "설비코드","불량", "시작시간", "종료시간" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     LotGrid.Columns[i].HeaderText = $"{header[i]}";
                     LotGrid.Columns[i].ReadOnly = true;
                 }
             }
+            Common.Disable_sorting_Datagrid(LotGrid);
 
         }
 
-        private void ProdQty_check()
-        {
-            StopTimer();
-            StartBtn1.Enabled = false;
-            StartBtn2.Enabled = false;
-        }
         private void EQPTDATA_TEMP()
         {
 
@@ -344,7 +312,6 @@ namespace MESProject
             Inquiry_Woid();
         }
 
-
         private void FaultyBtn_Click(object sender, EventArgs e)
         {
             //불량등록 버튼
@@ -356,6 +323,10 @@ namespace MESProject
             Inquiry_Woid();
         }
 
+        private void Startworking_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            stop_timer_flag = 1;
+        }
 
         private void EndBtn_Click(object sender, EventArgs e)
         {
@@ -372,7 +343,7 @@ namespace MESProject
             Inquiry_Woid();
         }
         private void Eqptstat_Changed(string eqptstat)
-        {   
+        {
             //설비 상태 변경
             string EqptStat = $"UPDATE EQUIPMENT SET EQPTSTATS = '{eqptstat}' WHERE EQPTID='{EQPTID}'";
             Common.DB_Connection(EqptStat);
@@ -388,6 +359,7 @@ namespace MESProject
             Check_Store_CurrQty();
             timer1.Start();
             StartBtn1.Enabled = false;
+            StartBtn2.Enabled = false;
 
         }
         private void StartBtn2_Click(object sender, EventArgs e)
@@ -399,6 +371,7 @@ namespace MESProject
             SetTimer();
             Check_Store_CurrQty();
             timer1.Start();
+            StartBtn1.Enabled = false;
             StartBtn2.Enabled = false;
         }
 
@@ -412,7 +385,8 @@ namespace MESProject
         {
             string Select_Store = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID='{StoreID}' ";
             DataTable data_Table = Common.DB_Connection(Select_Store);
-            CurrQty = data_Table.Rows[0][0].ToString();
+            if (data_Table.Rows.Count > 0)
+                CurrQty = data_Table.Rows[0][0].ToString();
         }
 
 
@@ -469,51 +443,16 @@ namespace MESProject
             Inquiry_Woid();
         }
 
-
         public void SetTimer()
         {
             timer1.Interval = time;
-            timer2.Interval = time;
-            timer3.Interval = time;
-            timer4.Interval = time;
-            timer5.Interval = mixing_time;
-            timer6.Interval = time;
-            timer7.Interval = time;
-
         }
         public void StopTimer()
         {
-            timer1.Stop();
-            timer2.Stop();
-            timer3.Stop();
-            timer4.Stop();
-            timer5.Stop();
-            timer6.Stop();
-            timer7.Stop();
-            clear_Color_all();
+            stop_timer_flag = 1;
             Stopbtn.Enabled = false;
-            if (EQPTID == "MX001")
-            {
-                StartBtn1.Enabled = true;
-                Mixing1_1.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing1_2.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing1_3.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_Start1.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_End1.BackColor = Color.FromArgb(51, 153, 255);
-                pass1.BackColor = Color.FromArgb(51, 153, 255);
-            }
-            else if (EQPTID == "MX002")
-            {
-                StartBtn2.Enabled = true;
-                Mixing2_1.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing2_2.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing2_3.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_Start2.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_End2.BackColor = Color.FromArgb(51, 153, 255);
-                pass2.BackColor = Color.FromArgb(51, 153, 255);
-            }
-
-
+            StartBtn1.Enabled = true;
+            StartBtn2.Enabled = true;
         }
         private void Check_Store_CurrQty()
         {
@@ -562,204 +501,216 @@ namespace MESProject
         {
             // 긴급 중지 버튼
             StopTimer();
-            Stopbtn.Enabled = false;
+            // Stopbtn.Enabled = false;
             Eqptstat_Changed("DOWN");
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            PLANQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[3].Value.ToString());
-            PRODQTY = Convert.ToInt32(WoGrid.Rows[0].Cells[4].Value.ToString());
-            if (PLANQTY == PRODQTY)
+            timer1.Interval = 10000;
+            try
             {
-                ProdQty_check();
-
-            }
-            else
-            {
-
-                //1호 이송
                 if (EQPTID == "MX001")
                 {
-                    Mixing1_1.BackColor = Color.FromArgb(255, 128, 0);
-                    UpToDown(s1, orj_s1);
-                    DrawLeftToRight(p1, orj_p1, 230, new Point(103, 250));
+                    //1호 이송
+                        Mixing1_1.BackColor = Oncolor;
+                        UpToDown(s1, orj_s1);
+                        DrawLeftToRight(p1, orj_p1, 230, new Point(103, 250));
+                        UpToDown(m1, orj_m1);
+                        clear_Color_all();
+                        Update_store('-', 10, "SL001");
+                        Select_store("SL001");
+                        silo1_Qty.Text = "저장량: " + CurrQty;
+                        Delay(500);
+
+                    //2호 이송
+                    Mixing1_1.BackColor = Offcolor;
+                    Mixing1_2.BackColor = Oncolor;
+                    UpToDown(s2, orj_s2);
+                    DrawLeftToRight(p1, orj_p1, 130, new Point(200, 250));
                     UpToDown(m1, orj_m1);
                     clear_Color_all();
+                    Update_store('-', 10, "SL002");
+                    Select_store("SL002");
+                    silo2_Qty.Text = "저장량: " + CurrQty;
+                    Delay(500);
+
+
+                    //3호 이송
+                    Mixing1_2.BackColor = Offcolor;
+                    Mixing1_3.BackColor = Oncolor;
+                    UpToDown(s3, orj_s3);
+                    DrawLeftToRight(p1, orj_p1, 25, new Point(300, 250));
+                    UpToDown(m1, orj_m1);
+                    clear_Color_all();
+                    Update_store('-', 10, "SL003");
+                    Select_store("SL003");
+                    silo3_Qty.Text = "저장량: " + CurrQty;
+                    Delay(500);
+
+                    //배합 시작
+                    Mixing1_3.BackColor = Offcolor;
+                    Mixing_Start1.BackColor = Oncolor;
+                    Create_Lot();
+                    if (LotGrid.Rows.Count > 0)
+                    {
+                        Lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
+                    }
+                    Delay(500);
+
+                    //배합 완료
+                    Mixing_Start1.BackColor = Offcolor;
+                    Mixing_End1.BackColor = Oncolor;
+                    if(Lotid != null)
+                    {
+                        string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
+                        Common.DB_Connection(lot_eddttm);
+                    }
+                    Inquiry_Lot();
+                    Delay(500);
+
+                    //배출 완료
+                    Mixing_End1.BackColor = Offcolor;
+                    pass1.BackColor = Oncolor;
+                    UpToDown(ms1, orj_ms1);
+                    DrawLeftToRight(p2, orj_p2, 108);
+                    UpToDown(s10, orj_s10);
+                    clear_Color_all();
+                    Random random = new Random();
+                    int num = random.Next(20, 30);
+                    if (silo10_Qty.Text.Length > 4)
+                    {
+                        int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
+                        if (silo10_currQty + num > 10000)
+                        {
+                            num = 10000 - silo10_currQty;
+                            Update_store('+', num, "SL010");
+                            Select_store("SL010");
+                            silo10_Qty.Text = "저장량: " + CurrQty;
+                            MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
+                        }
+                        else
+                        {
+                            Update_store('+', num, "SL010");
+                            Select_store("SL010");
+                            silo10_Qty.Text = "저장량: " + CurrQty;
+                        }
+                    }
+
+                    Delay(500);
+                    Inquiry_Lot();
+                    Inquiry_Woid();
+                    pass1.BackColor = Offcolor;
+
                 }
                 else if (EQPTID == "MX002")
                 {
-                    Mixing2_1.BackColor = Color.FromArgb(255, 128, 0);
+                    //1호 이송
+                    Mixing2_1.BackColor = Oncolor;
                     UpToDown(s1, orj_s1);
-                    DrawLeftToRight(p1, orj_p1, 0, new Point(101, 250),2);
+                    DrawLeftToRight(p1, orj_p1, 0, new Point(101, 250), 2);
                     UpToDown(m2, orj_m2);
                     clear_Color_all();
+                    Update_store('-', 10, "SL001");
+                    Select_store("SL001");
+                    silo1_Qty.Text = "저장량: " + CurrQty;
+
+                    Delay(500);
+
+                    //2호이송
+                    Mixing2_1.BackColor = Color.FromArgb(51, 153, 255);
+                    Mixing2_2.BackColor = Color.FromArgb(255, 128, 0);
+                    UpToDown(s2, orj_s1);
+                    DrawLeftToRight(p1, orj_p1, 320, new Point(200, 250));
+                    UpToDown(m2, orj_m2);
+                    clear_Color_all();
+                    Update_store('-', 10, "SL002");
+                    Select_store("SL002");
+                    silo2_Qty.Text = "저장량: " + CurrQty;
+                    Delay(500);
+
+                    //3호 이송
+                    Mixing2_2.BackColor = Color.FromArgb(51, 153, 255);
+                    Mixing2_3.BackColor = Color.FromArgb(255, 128, 0);
+                    UpToDown(s3, orj_s3);
+                    DrawLeftToRight(p1, orj_p1, 220, new Point(300, 250));
+                    UpToDown(m2, orj_m2);
+                    clear_Color_all();
+                    Update_store('-', 10, "SL003");
+                    Select_store("SL003");
+                    silo3_Qty.Text = "저장량: " + CurrQty;
+
+                    Delay(500);
+
+                    //배합시작
+                    Mixing2_3.BackColor = Color.FromArgb(51, 153, 255);
+                    Mixing_Start2.BackColor = Color.FromArgb(255, 128, 0);
+                    Create_Lot();
+                    if (LotGrid.Rows.Count > 0)
+                    {
+                        Lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
+                    }
+                    Delay(500);
+
+                    //배합 완료
+                    Mixing_Start2.BackColor = Color.FromArgb(51, 153, 255);
+                    Mixing_End2.BackColor = Color.FromArgb(255, 128, 0);
+                    string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
+                    Common.DB_Connection(lot_eddttm);
+                    Inquiry_Lot();
+                    Delay(500);
+
+                    //배츌완료
+                    Mixing_End2.BackColor = Color.FromArgb(51, 153, 255);
+                    pass2.BackColor = Color.FromArgb(255, 128, 0);
+                    UpToDown(ms2, orj_ms2);
+                    DrawoRightToLeft(p2, orj_p2, 107, new Point(520, 438));
+                    UpToDown(s10, orj_s10);
+                    clear_Color_all();
+                    Random random = new Random();
+                    int num = random.Next(20, 30);
+                    if(silo10_Qty.Text.Length > 4)
+                    {
+                        int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
+                        if (silo10_currQty + num > 10000)
+                        {
+                            num = 10000 - silo10_currQty;
+                            Update_store('+', num, "SL010");
+                            Select_store("SL010");
+                            silo10_Qty.Text = "저장량: " + CurrQty;
+                            MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
+                        }
+                        else
+                        {
+                            Update_store('+', num, "SL010");
+                            Select_store("SL010");
+                            silo10_Qty.Text = "저장량: " + CurrQty;
+                            timer1.Start();
+                        }
+                    }
+                    Delay(500);
+                    pass2.BackColor = Color.FromArgb(51, 153, 255);
                 }
-                Update_store('-', 10, "SL001");
-                Select_store("SL001");
-                silo1_Qty.Text = "저장량: " + CurrQty;
-                timer1.Stop();
-                timer2.Start();
+                if (stop_timer_flag == 1)
+                    timer1.Stop();
             }
-        }
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            //2호 이송
-            if (EQPTID == "MX001")
+            catch (Exception ex)
             {
-                Mixing1_1.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing1_2.BackColor = Color.FromArgb(255, 128, 0);
-                UpToDown(s2, orj_s2);
-                DrawLeftToRight(p1, orj_p1, 130, new Point(200, 250));
-                UpToDown(m1, orj_m1);
-                clear_Color_all();
+                MessageBox.Show(ex.Message);
             }
-            else if (EQPTID == "MX002")
-            {
 
-                Mixing2_1.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing2_2.BackColor = Color.FromArgb(255, 128, 0);
-                UpToDown(s2, orj_s1);
-                DrawLeftToRight(p1, orj_p1, 320, new Point(200, 250));
-                UpToDown(m2, orj_m2);
-                clear_Color_all();
-            }
-            Update_store('-', 10, "SL002");
-            Select_store("SL002");
-            silo2_Qty.Text = "저장량: " + CurrQty;
-            timer2.Stop();
-            timer3.Start();
-
-        }
-
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-
-            //3호 이송
-            if (EQPTID == "MX001")
-            {
-                Mixing1_2.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing1_3.BackColor = Color.FromArgb(255, 128, 0);
-                UpToDown(s3, orj_s3);
-                DrawLeftToRight(p1, orj_p1, 25, new Point(300, 250));
-                UpToDown(m1, orj_m1);
-                clear_Color_all();
-            }
-            else if (EQPTID == "MX002")
-            {
-                Mixing2_2.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing2_3.BackColor = Color.FromArgb(255, 128, 0);
-                UpToDown(s3, orj_s3);
-                DrawLeftToRight(p1, orj_p1, 220, new Point(300, 250));
-                UpToDown(m2, orj_m2);
-                clear_Color_all();
-            }
-            Update_store('-', 10, "SL003");
-            Select_store("SL003");
-            silo3_Qty.Text = "저장량: " + CurrQty;
-            timer3.Stop();
-            timer4.Start();
-        }
-
-        private void timer4_Tick(object sender, EventArgs e)
-        {
-            //배합 시작
-            if (EQPTID == "MX001")
-            {
-                Mixing1_3.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_Start1.BackColor = Color.FromArgb(255, 128, 0);
-            }
-            else if (EQPTID == "MX002")
-            {
-                Mixing2_3.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_Start2.BackColor = Color.FromArgb(255, 128, 0);
-            }
-            Create_Lot();
-            Lotid = LotGrid.Rows[LotGrid.Rows.Count - 2].Cells[0].Value.ToString();
-            timer4.Stop();
-            timer5.Start();
-        }
-        private void timer5_Tick(object sender, EventArgs e)
-        {
-
-            //배합 완료
-            if (EQPTID == "MX001")
-            {
-                Mixing_Start1.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_End1.BackColor = Color.FromArgb(255, 128, 0);
-            }
-            else if (EQPTID == "MX002")
-            {
-                Mixing_Start2.BackColor = Color.FromArgb(51, 153, 255);
-                Mixing_End2.BackColor = Color.FromArgb(255, 128, 0);
-            }
-            string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
-            Common.DB_Connection(lot_eddttm);
-            Inquiry_Lot();
-
-            timer5.Stop();
-            timer6.Start();
-        }
-
-        private void timer6_Tick(object sender, EventArgs e)
-        {
-            //배출완료     
-            if (EQPTID == "MX001")
-            {
-                Mixing_End1.BackColor = Color.FromArgb(51, 153, 255);
-                pass1.BackColor = Color.FromArgb(255, 128, 0);
-                UpToDown(ms1, orj_ms1);
-                DrawLeftToRight(p2, orj_p2,108);
-                UpToDown(s10, orj_s10);
-                clear_Color_all();
-            }
-            else if (EQPTID == "MX002")
-            {
-                Mixing_End2.BackColor = Color.FromArgb(51, 153, 255);
-                pass2.BackColor = Color.FromArgb(255, 128, 0);
-                UpToDown(ms2, orj_ms2);
-                DrawoRightToLeft(p2,orj_p2,107,new Point(520,438));
-                UpToDown(s10, orj_s10);
-                clear_Color_all();
-            }
-            Random random = new Random();
-            int num = random.Next(20, 30);
-            int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
-            if (silo10_currQty + num > 10000)
-            {
-                num = 10000 - silo10_currQty;
-                Update_store('+', num, "SL010");
-                Select_store("SL010");
-                silo10_Qty.Text = "저장량: " + CurrQty;
-                timer7.Stop();
-                MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
-            }
-            else
-            {
-                Update_store('+', num, "SL010");
-                Select_store("SL010");
-                silo10_Qty.Text = "저장량: " + CurrQty;
-                timer7.Stop();
-                timer1.Start();
-            }
-            timer6.Stop();
-            timer7.Start();
-        }
-        private void timer7_Tick(object sender, EventArgs e)
-        {
-            if (EQPTID == "MX001")
-            {
-                pass1.BackColor = Color.FromArgb(51, 153, 255);
-            }
-            else if (EQPTID == "MX002")
-            {
-                pass2.BackColor = Color.FromArgb(51, 153, 255);
-            }
-            
         }
         private void timer8_Tick(object sender, EventArgs e)
         {
-            // 현재시간
-            CurDTTM.Text = DateTime.Now.ToString();
+           try
+            {
+                // 현재시간
+                CurDTTM.Text = DateTime.Now.ToString();
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + " : timer8Tick");
+            }
         }
 
     }

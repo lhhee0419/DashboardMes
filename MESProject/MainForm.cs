@@ -30,16 +30,18 @@ namespace MESProject
 
         private void login_check()
         {
+            this.Hide();
             Login login = new Login();
             //login DialogResult Value
             DialogResult result = login.ShowDialog();
             //로그인 실패시
             if (result != DialogResult.OK)
-            {
+            {   
                 this.Close();
             }
             else
             {
+                this.Show();
             }
         }
 

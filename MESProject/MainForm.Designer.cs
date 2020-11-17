@@ -50,11 +50,12 @@
             // maintab
             // 
             this.maintab.Controls.Add(this.tabPage1);
+            this.maintab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.maintab.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.maintab.Location = new System.Drawing.Point(0, 3);
+            this.maintab.Location = new System.Drawing.Point(0, 0);
             this.maintab.Name = "maintab";
             this.maintab.SelectedIndex = 0;
-            this.maintab.Size = new System.Drawing.Size(1552, 855);
+            this.maintab.Size = new System.Drawing.Size(1559, 857);
             this.maintab.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.maintab.TabIndex = 34;
             this.maintab.MouseDown += new System.Windows.Forms.MouseEventHandler(this.maintab_MouseDown);
@@ -78,7 +79,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1544, 814);
+            this.tabPage1.Size = new System.Drawing.Size(1551, 816);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "메인화면";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -106,8 +107,9 @@
             // 
             // logoutbtn
             // 
+            this.logoutbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.logoutbtn.Font = new System.Drawing.Font("문체부 돋음체", 14F);
-            this.logoutbtn.Location = new System.Drawing.Point(1309, 699);
+            this.logoutbtn.Location = new System.Drawing.Point(1316, 701);
             this.logoutbtn.Name = "logoutbtn";
             this.logoutbtn.Size = new System.Drawing.Size(213, 97);
             this.logoutbtn.TabIndex = 56;
