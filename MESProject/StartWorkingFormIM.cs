@@ -512,7 +512,7 @@ namespace MESProject
             EQPTDATA_PRESS();
 
             //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-            Delay(60000);
+            Delay(1500);
 
             //LOT EDDTTM 업데이트
 
