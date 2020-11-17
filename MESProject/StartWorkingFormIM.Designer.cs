@@ -42,7 +42,6 @@
             this.LotDelBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.EndBtn = new System.Windows.Forms.Button();
-            this.StopBtn = new System.Windows.Forms.Button();
             this.LotaddBtn = new System.Windows.Forms.Button();
             this.LotGrid = new System.Windows.Forms.DataGridView();
             this.WoGrid = new System.Windows.Forms.DataGridView();
@@ -217,17 +216,6 @@
             this.EndBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseDown);
             this.EndBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseMove);
             this.EndBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseUp);
-            // 
-            // StopBtn
-            // 
-            this.StopBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.StopBtn.Location = new System.Drawing.Point(1137, 710);
-            this.StopBtn.Name = "StopBtn";
-            this.StopBtn.Size = new System.Drawing.Size(118, 86);
-            this.StopBtn.TabIndex = 45;
-            this.StopBtn.Text = "작업중지/재시작";
-            this.StopBtn.UseVisualStyleBackColor = true;
-            this.StopBtn.Click += new System.EventHandler(this.StopBtn_Click);
             // 
             // LotaddBtn
             // 
@@ -533,7 +521,6 @@
             this.Controls.Add(this.LotDelBtn);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.EndBtn);
-            this.Controls.Add(this.StopBtn);
             this.Controls.Add(this.LotaddBtn);
             this.Controls.Add(this.LotGrid);
             this.Controls.Add(this.WoGrid);
@@ -577,7 +564,6 @@
         private System.Windows.Forms.Button LotDelBtn;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.Button EndBtn;
-        private System.Windows.Forms.Button StopBtn;
         private System.Windows.Forms.Button LotaddBtn;
         private System.Windows.Forms.DataGridView LotGrid;
         private System.Windows.Forms.DataGridView WoGrid;
