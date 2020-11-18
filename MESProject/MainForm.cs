@@ -73,26 +73,37 @@ namespace MESProject
 
         private void Check_Admin()
         {
-            string admin_yn = $"SELECT PROCID, ADMIN_YN FROM EMP_AUTHORITY WHERE EMPLOYEEID = '{User_ID}'";
-            DataTable dataTable = Common.DB_Connection(admin_yn);
-            string y_n = dataTable.Rows[0][1].ToString();
-            string user_procid = dataTable.Rows[0][0].ToString();
+            try
+            {
+                if (User_ID != null)
+                {
+                    string admin_yn = $"SELECT PROCID, ADMIN_YN FROM EMP_AUTHORITY WHERE EMPLOYEEID = '{User_ID}'";
+                    DataTable dataTable = Common.DB_Connection(admin_yn);
+                    string y_n = dataTable.Rows[0][1].ToString();
+                    string user_procid = dataTable.Rows[0][0].ToString();
 
-            if (y_n == "Y")
-            {
-                ProcCombo.Visible = true;
-            }
-            else if (y_n == "N")
-            {
-                if (user_procid == "P0001")
-                {
-                    ProcCombo.SelectedIndex = 0;
+                    if (y_n == "Y")
+                    {
+                        ProcCombo.Visible = true;
+                    }
+                    else if (y_n == "N")
+                    {
+                        if (user_procid == "P0001")
+                        {
+                            ProcCombo.SelectedIndex = 0;
+                        }
+                        else if (user_procid == "P0002")
+                        {
+                            ProcCombo.SelectedIndex = 1;
+                        }
+                    }
                 }
-                else if (user_procid == "P0002")
-                {
-                    ProcCombo.SelectedIndex = 1;
-                }
             }
+           catch(Exception e)
+            {
+
+            }
+
         }
 
         private void DataSearch()

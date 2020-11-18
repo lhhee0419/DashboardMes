@@ -30,7 +30,7 @@ namespace MESProject
         }
 
         private void Startworking_Load(object sender, EventArgs e)
-        {   
+        {
             //애니메이션 설정
             orj_s1 = s1.Size;
             orj_s2 = s2.Size;
@@ -44,7 +44,7 @@ namespace MESProject
             orj_s10 = s10.Size;
             clear_Color_all();
 
-           
+
             //사용자 ID
             Userid = MainForm.User_ID;
 
@@ -62,7 +62,7 @@ namespace MESProject
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-            int[] SetCoiumnWidth_LotGrid = new int[] { 115, 23,58, 20, 130 };
+            int[] SetCoiumnWidth_LotGrid = new int[] { 115, 23, 58, 20, 130 };
             for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
@@ -175,7 +175,7 @@ namespace MESProject
             return DateTime.Now;
         }
 
-        
+
 
         public void Inquiry_Woid()
         {
@@ -231,7 +231,7 @@ namespace MESProject
 
             if (LotGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "LOT코드", "상태", "설비코드","불량", "시작시간", "종료시간" };
+                string[] header = new string[] { "LOT코드", "상태", "설비코드", "불량", "시작시간", "종료시간" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     LotGrid.Columns[i].HeaderText = $"{header[i]}";
@@ -357,6 +357,7 @@ namespace MESProject
             Eqptstat_Changed("RUN");
             SetTimer();
             Check_Store_CurrQty();
+            stop_timer_flag = 0;
             timer1.Start();
             StartBtn1.Enabled = false;
             StartBtn2.Enabled = false;
@@ -371,6 +372,7 @@ namespace MESProject
             SetTimer();
             Check_Store_CurrQty();
             timer1.Start();
+            stop_timer_flag = 0;
             StartBtn1.Enabled = false;
             StartBtn2.Enabled = false;
         }
@@ -505,28 +507,28 @@ namespace MESProject
             Eqptstat_Changed("DOWN");
         }
         private void timer1_Tick(object sender, EventArgs e)
-        {
+        {   
             timer1.Interval = 10000;
             try
             {
                 if (EQPTID == "MX001")
                 {
                     //1호 이송
-                        Mixing1_1.BackColor = Oncolor;
-                        UpToDown(s1, orj_s1);
-                        DrawLeftToRight(p1, orj_p1, 230, new Point(103, 250));
-                        UpToDown(m1, orj_m1);
-                        clear_Color_all();
-                        Update_store('-', 10, "SL001");
-                        Select_store("SL001");
-                        silo1_Qty.Text = "저장량: " + CurrQty;
-                        Delay(500);
+                    Mixing1_1.BackColor = Oncolor;
+                    UpToDown(s1, orj_s1);
+                    DrawLeftToRight(p1, orj_p1, 220, new Point(103, 250));
+                    UpToDown(m1, orj_m1);
+                    clear_Color_all();
+                    Update_store('-', 10, "SL001");
+                    Select_store("SL001");
+                    silo1_Qty.Text = "저장량: " + CurrQty;
+                    Delay(500);
 
                     //2호 이송
                     Mixing1_1.BackColor = Offcolor;
                     Mixing1_2.BackColor = Oncolor;
                     UpToDown(s2, orj_s2);
-                    DrawLeftToRight(p1, orj_p1, 130, new Point(200, 250));
+                    DrawLeftToRight(p1, orj_p1, 120, new Point(200, 250));
                     UpToDown(m1, orj_m1);
                     clear_Color_all();
                     Update_store('-', 10, "SL002");
@@ -560,7 +562,7 @@ namespace MESProject
                     //배합 완료
                     Mixing_Start1.BackColor = Offcolor;
                     Mixing_End1.BackColor = Oncolor;
-                    if(Lotid != null)
+                    if (Lotid != null)
                     {
                         string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
                         Common.DB_Connection(lot_eddttm);
@@ -613,7 +615,6 @@ namespace MESProject
                     Update_store('-', 10, "SL001");
                     Select_store("SL001");
                     silo1_Qty.Text = "저장량: " + CurrQty;
-
                     Delay(500);
 
                     //2호이송
@@ -668,7 +669,7 @@ namespace MESProject
                     clear_Color_all();
                     Random random = new Random();
                     int num = random.Next(20, 30);
-                    if(silo10_Qty.Text.Length > 4)
+                    if (silo10_Qty.Text.Length > 4)
                     {
                         int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
                         if (silo10_currQty + num > 10000)
@@ -701,7 +702,7 @@ namespace MESProject
         }
         private void timer8_Tick(object sender, EventArgs e)
         {
-           try
+            try
             {
                 // 현재시간
                 CurDTTM.Text = DateTime.Now.ToString();

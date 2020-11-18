@@ -44,7 +44,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("함초롬바탕 확장", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(294, 233);
+            this.label1.Location = new System.Drawing.Point(217, 250);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 44);
             this.label1.TabIndex = 0;
@@ -55,7 +55,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("함초롬바탕 확장", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(294, 310);
+            this.label2.Location = new System.Drawing.Point(217, 327);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(132, 44);
             this.label2.TabIndex = 1;
@@ -64,7 +64,7 @@
             // IDtextBox
             // 
             this.IDtextBox.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IDtextBox.Location = new System.Drawing.Point(470, 232);
+            this.IDtextBox.Location = new System.Drawing.Point(393, 249);
             this.IDtextBox.Name = "IDtextBox";
             this.IDtextBox.Size = new System.Drawing.Size(200, 45);
             this.IDtextBox.TabIndex = 2;
@@ -74,7 +74,7 @@
             // PWDtextBox
             // 
             this.PWDtextBox.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.PWDtextBox.Location = new System.Drawing.Point(470, 309);
+            this.PWDtextBox.Location = new System.Drawing.Point(393, 326);
             this.PWDtextBox.Name = "PWDtextBox";
             this.PWDtextBox.Size = new System.Drawing.Size(200, 45);
             this.PWDtextBox.TabIndex = 3;
@@ -90,9 +90,9 @@
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoginButton.Font = new System.Drawing.Font("함초롬바탕 확장", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.LoginButton.ForeColor = System.Drawing.Color.Black;
-            this.LoginButton.Location = new System.Drawing.Point(226, 411);
+            this.LoginButton.Location = new System.Drawing.Point(198, 417);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(203, 85);
+            this.LoginButton.Size = new System.Drawing.Size(172, 71);
             this.LoginButton.TabIndex = 4;
             this.LoginButton.Text = "로그인";
             this.LoginButton.UseVisualStyleBackColor = false;
@@ -103,12 +103,13 @@
             this.ExitBtn.BackColor = System.Drawing.Color.LightGray;
             this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.ExitBtn.FlatAppearance.BorderSize = 3;
             this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitBtn.Font = new System.Drawing.Font("함초롬바탕 확장", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ExitBtn.ForeColor = System.Drawing.Color.Black;
-            this.ExitBtn.Location = new System.Drawing.Point(531, 411);
+            this.ExitBtn.ForeColor = System.Drawing.Color.DimGray;
+            this.ExitBtn.Location = new System.Drawing.Point(496, 417);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(203, 85);
+            this.ExitBtn.Size = new System.Drawing.Size(172, 71);
             this.ExitBtn.TabIndex = 5;
             this.ExitBtn.Text = "종료";
             this.ExitBtn.UseVisualStyleBackColor = false;
@@ -117,9 +118,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(226, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(214, 22);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(513, 194);
+            this.pictureBox1.Size = new System.Drawing.Size(513, 203);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -130,7 +131,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(953, 544);
+            this.ClientSize = new System.Drawing.Size(874, 544);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.LoginButton);
