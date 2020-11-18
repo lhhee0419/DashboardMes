@@ -33,6 +33,8 @@ namespace MESProject
         string LAST_LOTID;
         int need_siloQty = 50;
         Size orj_sm1_1, orj_sm1_2, orj_sm1_3, orj_sm2_1, orj_sm2_2, orj_sm2_3;
+        int stop_timer_flag = 0;
+
 
         public StartWorkingFormIM()
         {
@@ -45,34 +47,40 @@ namespace MESProject
             orj_sm2_3 = sm2_3.Size;
 
         }
-
+        
         private void StartWorkingFormIM_Load(object sender, EventArgs e)
         {
+            timer1.Tick += new EventHandler(timer1_Tick);
+
             clear_Color_all();
             STOP_BTN.Enabled = false;
             //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
             EQPTID = "";
             //실시간 타이머 설정
-            System.Windows.Forms.Timer MyTimer = new System.Windows.Forms.Timer();
-            MyTimer.Interval = 1000;
-            MyTimer.Tick += new EventHandler(timer_Tick);
-            MyTimer.Enabled = true;
+            System.Windows.Forms.Timer DatetimeTimer = new System.Windows.Forms.Timer();
+            DatetimeTimer.Interval = 1000;
+            DatetimeTimer.Tick += new EventHandler(timer_Tick);
+            DatetimeTimer.Enabled = true;
 
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
 
-            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
-            LotGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
-            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            LotGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-            //데이터 조회
+            //데이터 조회 및 
             Inquiry_Woid();
             Inquiry_Lot();
 
+            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 11, FontStyle.Regular);
+            int[] SetCoiumnWidth_LotGrid = new int[] { 115, 38, 66, 40, 150 };
+            for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
+            {
+                Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
+            }
+            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
             //버튼 관리
-            BtnEnabled();
+            STBTN_Visible();
 
             //작업지시서 상태가 종료일 때 버튼 사용 금지
             string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
@@ -84,42 +92,21 @@ namespace MESProject
             }
 
             //1,2호기의 생산량 조회
-            string SELECT_PRODQTY = $"SELECT COUNT(*) FROM LOT " +
-                                    $"WHERE EQPTID = '{EQPTID}' AND" +
-                                    $" SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
-                                    $" WOID = '{Selected_woid}'";
+            ProdQty_FormLoad("IM001",IM1_ProdQty_Value);
+            ProdQty_FormLoad("IM002",IM2_ProdQty_Value);
 
-            DataTable dataTable1 = Common.DB_Connection(SELECT_PRODQTY);
-            string N_PRODQTY_VALUE = dataTable1.Rows[0][0].ToString();
-
-            if (EQPTID == "IM001")
-            {
-                IM1_ProdQty_Value.Text = $"{N_PRODQTY_VALUE} EA";
-                IM2_ProdQty_Value.Visible = false;
-                IM2_ProdQty.Visible = false;
-
-            }
-            else if (EQPTID == "IM002")
-            {
-                IM2_ProdQty_Value.Text = $"{N_PRODQTY_VALUE} EA";
-                IM1_ProdQty_Value.Visible = false;
-                IM1_ProdQty.Visible = false;
-            }
-
-
+            //사일로 재고량 조회
             Select_Silo_Qty();
-
         }
 
         //-------------------------------------------함수------------------------------------------------------------
 
-        public void BtnEnabled()
+        public void STBTN_Visible()
         {
             if(timer1.Enabled == false)
             {
                 IM1_STBtn.Enabled = true;
                 IM2_STBtn.Enabled = true;
-
             }
         }
 
@@ -162,34 +149,37 @@ namespace MESProject
                 }
             }
             WoGrid.RowTemplate.Height = 55;
+            Common.Disable_sorting_Datagrid(WoGrid);
         }
         public void Inquiry_Lot()
         {
             //LotGrid에 표시될 데이터 가져오기
-            string Selected_lot = $"SELECT " +
-                                    $"LOTID" +
-                                    $",LOTSTAT" +
-                                    $",CASE WHEN L.LOTID IN(" +
-                                        $"SELECT DEFECT_LOTID " +
-                                        $"FROM DEFECTLOT " +
-                                        $"WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END" +
-                                    $",TO_CHAR(LOTSTDTTM, 'YY-MM-DD HH24:MI:SS')" +
-                                    $",TO_CHAR(LOTEDDTTM, 'YY-MM-DD HH24:MI:SS') " +
-                                  $"FROM LOT L " +
-                                  $"WHERE WOID = '{Selected_woid}' AND LOTSTAT <>'D' " +
-                                  $"ORDER BY LOTID DESC";
+            string Selected_lot = $"SELECT \n" +
+                                    $"LOTID \n" +
+                                    $",LOTSTAT \n" +
+                                    $",EQPTID \n" +
+                                    $",CASE WHEN L.LOTID IN( \n" +
+                                        $"SELECT DEFECT_LOTID \n" +
+                                        $"FROM DEFECTLOT \n" +
+                                        $"WHERE WOID='{Selected_woid}') THEN 'Y' ELSE 'N' END \n" +
+                                    $",TO_CHAR(LOTSTDTTM, 'YY-MM-DD HH24:MI:SS') \n" +
+                                    $",TO_CHAR(LOTEDDTTM, 'YY-MM-DD HH24:MI:SS') \n" +
+                                  $"FROM LOT L \n" +
+                                  $"WHERE WOID = '{Selected_woid}' AND LOTSTAT <>'D' \n" +
+                                  $"ORDER BY LOTID DESC\n";
 
             Common.DB_Connection(Selected_lot, LotGrid);
 
             if (LotGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "LOT코드", "상태", "불량", "시작시간", "종료시간" };
+                string[] header = new string[] { "LOT코드", "상태","설비코드", "불량", "시작시간", "종료시간" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     LotGrid.Columns[i].HeaderText = $"{header[i]}";
                     LotGrid.Columns[i].ReadOnly = true;
                 }
             }
+            Common.Disable_sorting_Datagrid(LotGrid);
 
         }
 
@@ -212,7 +202,6 @@ namespace MESProject
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
             Common.DB_Connection(INSERT_TEMP);
         }
-
         private void EQPTDATA_PRESS()
         {
             Random random = new Random();
@@ -235,6 +224,18 @@ namespace MESProject
         {
             string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = '{stats}' WHERE E.EQPTID ='{EQPTID}'";
             Common.DB_Connection(Update_EQPTSTATS);
+        }
+        private void ProdQty_FormLoad(string Equipment_ID, Label ProdQty_Name)
+        {
+            string SELECT_PRODQTY = $"SELECT COUNT(*) FROM LOT " +
+                                    $"WHERE EQPTID = '{Equipment_ID}' AND" +
+                                    $" SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
+                                    $" WOID = '{Selected_woid}'";
+            DataTable dataTable = Common.DB_Connection(SELECT_PRODQTY);
+            string N_PRODQTY_VALUE = dataTable.Rows[0][0].ToString();
+
+            ProdQty_Name.Text = $"{N_PRODQTY_VALUE} EA";
+
         }
         //----------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------버튼------------------------------------------------
@@ -296,7 +297,6 @@ namespace MESProject
             EQPTID = "IM001";
             //EQPTID에 EQPTSTATS를 RUN으로 변경
             Update_EQPTStats("RUN");
-
             Timer_Start();
         }
 
@@ -305,7 +305,6 @@ namespace MESProject
             EQPTID = "IM002";
             //EQPTID에 EQPTSTATS를 RUN으로 변경
             Update_EQPTStats("RUN");
-
             Timer_Start();
         }
 
@@ -328,11 +327,12 @@ namespace MESProject
         private void STOP_BTN_Click(object sender, EventArgs e)
         {
             Timer_Stop();
-            //EQPTID에 EQPTSTATS를 DOWN으로 변경
-            Update_EQPTStats("DOWN");
-            BtnEnabled();
-            IM1_STBtn.Enabled = true;
-            IM2_STBtn.Enabled = true;
+
+            if (stop_timer_flag == 1)
+            {
+                //EQPTID에 EQPTSTATS를 DOWN으로 변경
+                Update_EQPTStats("DOWN");
+            }
         }
 
         //----------------------------------------------------------------------------------------------------------------------
@@ -343,13 +343,15 @@ namespace MESProject
 
         public void Timer_Start()
         {
+            stop_timer_flag = 0;
+
             timer1.Interval = 1000;
+            timer1.Start();
             string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
             DataTable dataTable4 = Common.DB_Connection(SELECT_SL010);
             int SILO_CURRQTY = Convert.ToInt32(dataTable4.Rows[0][0].ToString());
             if (need_siloQty <= SILO_CURRQTY)
             {
-                timer1.Start();
                 IM1_STBtn.Enabled = false;
                 IM2_STBtn.Enabled = false;
                 STOP_BTN.Enabled = true;
@@ -359,15 +361,13 @@ namespace MESProject
                 MessageBox.Show("배합량이 부족합니다.");
                 Timer_Stop();
             }
-            timer1.Tick += new EventHandler(timer1_Tick);
         }
 
         public void Timer_Stop()
         {
-            timer1.Dispose();
+            stop_timer_flag = 1;
             timer1.Stop();
         }
-
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -399,17 +399,17 @@ namespace MESProject
 
             //LOT생성
             string IM_lotCreate = $"INSERT INTO LOT( \n" +
-                                         $"LOTID  \n" +
-                                         $", LOTSTAT \n" +
-                                         $", LOTCRDTTM \n" +
-                                         $", LOTSTDTTM \n" +
-                                         $", WOID \n" +
-                                         $", LOTCRQTY \n" +
-                                         $", LOTQTY \n" +
-                                         $", EQPTID \n" +
-                                         $", PROCID \n" +
-                                         $", INSUSER \n" +
-                                         $", INSDTTM) \n" +
+                                            $"LOTID  \n" +
+                                            $", LOTSTAT \n" +
+                                            $", LOTCRDTTM \n" +
+                                            $", LOTSTDTTM \n" +
+                                            $", WOID \n" +
+                                            $", LOTCRQTY \n" +
+                                            $", LOTQTY \n" +
+                                            $", EQPTID \n" +
+                                            $", PROCID \n" +
+                                            $", INSUSER \n" +
+                                            $", INSDTTM) \n" +
                                         $"VALUES \n" +
                                         $"((SELECT 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || TO_CHAR(LAST_SEQ + 1, 'FM0000') " +
                                         $"FROM(SELECT NVL(MAX(SUBSTR(LOTID, -4)), 0) LAST_SEQ " +
@@ -446,36 +446,42 @@ namespace MESProject
 
             //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
             string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
-                                      $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
-                                      $" WOID = '{Selected_woid}'";
+                                        $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
+                                        $" WOID = '{Selected_woid}'";
             DataTable dataTable2 = Common.DB_Connection(IM_PRODQTY_VALUE);
 
             if (EQPTID == "IM001")
             {
                 IM1_ProdQty_Value.Text = $"{dataTable2.Rows[0][0].ToString()} EA";
             }
-            else
+            else if (EQPTID == "IM002")
             {
                 IM2_ProdQty_Value.Text = $"{dataTable2.Rows[0][0].ToString()} EA";
             }
 
             //DB에 WORKORDER_PRODQTY 업데이트
             string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
-                                       $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
-                                       $"WHERE " +
-                                       $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D') " +
-                                       $"WHERE WOID = '{Selected_woid}'";
+                                        $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
+                                        $"WHERE " +
+                                        $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D') " +
+                                        $"WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WO_PRODQTY);
 
             //LOTGRID 재조회 및 버튼과 라벨 표시
             Inquiry_Lot();
             Inquiry_Woid();
-            BtnEnabled();
+            STBTN_Visible();
 
             if (SL010_QTY < need_siloQty)
             {
                 MessageBox.Show("배합량이 부족합니다.");
                 Timer_Stop();
+            }
+            
+            if (stop_timer_flag == 1)
+            {
+                Timer_Stop();
+                STBTN_Visible();
             }
         }
 
