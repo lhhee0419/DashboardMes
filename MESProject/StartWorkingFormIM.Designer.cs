@@ -96,7 +96,7 @@
             this.IM1_ProdQty_Value.BackColor = System.Drawing.Color.White;
             this.IM1_ProdQty_Value.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.IM1_ProdQty_Value.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IM1_ProdQty_Value.Location = new System.Drawing.Point(604, 168);
+            this.IM1_ProdQty_Value.Location = new System.Drawing.Point(520, 168);
             this.IM1_ProdQty_Value.Name = "IM1_ProdQty_Value";
             this.IM1_ProdQty_Value.Size = new System.Drawing.Size(49, 31);
             this.IM1_ProdQty_Value.TabIndex = 66;
@@ -120,7 +120,7 @@
             this.IM1_ProdQty.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.IM1_ProdQty.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.IM1_ProdQty.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.IM1_ProdQty.Location = new System.Drawing.Point(476, 168);
+            this.IM1_ProdQty.Location = new System.Drawing.Point(392, 168);
             this.IM1_ProdQty.Name = "IM1_ProdQty";
             this.IM1_ProdQty.Size = new System.Drawing.Size(112, 31);
             this.IM1_ProdQty.TabIndex = 63;
@@ -173,9 +173,9 @@
             // FaultyBtn
             // 
             this.FaultyBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.FaultyBtn.Location = new System.Drawing.Point(261, 710);
+            this.FaultyBtn.Location = new System.Drawing.Point(304, 710);
             this.FaultyBtn.Name = "FaultyBtn";
-            this.FaultyBtn.Size = new System.Drawing.Size(118, 86);
+            this.FaultyBtn.Size = new System.Drawing.Size(137, 86);
             this.FaultyBtn.TabIndex = 49;
             this.FaultyBtn.Text = "불량\r\n등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
@@ -184,9 +184,9 @@
             // LotDelBtn
             // 
             this.LotDelBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.LotDelBtn.Location = new System.Drawing.Point(137, 710);
+            this.LotDelBtn.Location = new System.Drawing.Point(160, 710);
             this.LotDelBtn.Name = "LotDelBtn";
-            this.LotDelBtn.Size = new System.Drawing.Size(118, 86);
+            this.LotDelBtn.Size = new System.Drawing.Size(137, 86);
             this.LotDelBtn.TabIndex = 48;
             this.LotDelBtn.Text = "LOT\r\n삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
@@ -195,9 +195,9 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.ExitBtn.Location = new System.Drawing.Point(1404, 710);
+            this.ExitBtn.Location = new System.Drawing.Point(1384, 710);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(118, 86);
+            this.ExitBtn.Size = new System.Drawing.Size(137, 86);
             this.ExitBtn.TabIndex = 47;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -206,9 +206,9 @@
             // EndBtn
             // 
             this.EndBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
-            this.EndBtn.Location = new System.Drawing.Point(1270, 710);
+            this.EndBtn.Location = new System.Drawing.Point(1240, 710);
             this.EndBtn.Name = "EndBtn";
-            this.EndBtn.Size = new System.Drawing.Size(118, 86);
+            this.EndBtn.Size = new System.Drawing.Size(137, 86);
             this.EndBtn.TabIndex = 46;
             this.EndBtn.Text = "작업종료";
             this.EndBtn.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.LotaddBtn.Location = new System.Drawing.Point(13, 710);
             this.LotaddBtn.Name = "LotaddBtn";
-            this.LotaddBtn.Size = new System.Drawing.Size(118, 86);
+            this.LotaddBtn.Size = new System.Drawing.Size(137, 86);
             this.LotaddBtn.TabIndex = 44;
             this.LotaddBtn.Text = "LOT\r\n추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
@@ -230,14 +230,14 @@
             // 
             // LotGrid
             // 
-            this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotGrid.Location = new System.Drawing.Point(848, 123);
+            this.LotGrid.ColumnHeadersHeight = 29;
+            this.LotGrid.Location = new System.Drawing.Point(816, 123);
             this.LotGrid.Name = "LotGrid";
             this.LotGrid.RowHeadersVisible = false;
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(674, 541);
+            this.LotGrid.Size = new System.Drawing.Size(706, 541);
             this.LotGrid.TabIndex = 43;
             // 
             // WoGrid
@@ -421,10 +421,11 @@
             this.STOP_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.STOP_BTN.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.STOP_BTN.ForeColor = System.Drawing.Color.White;
-            this.STOP_BTN.Location = new System.Drawing.Point(736, 120);
+            this.STOP_BTN.Location = new System.Drawing.Point(720, 120);
             this.STOP_BTN.Name = "STOP_BTN";
             this.STOP_BTN.Size = new System.Drawing.Size(72, 65);
             this.STOP_BTN.TabIndex = 81;
+            this.STOP_BTN.TabStop = false;
             this.STOP_BTN.Text = "STOP";
             this.STOP_BTN.UseVisualStyleBackColor = true;
             this.STOP_BTN.Click += new System.EventHandler(this.STOP_BTN_Click);
