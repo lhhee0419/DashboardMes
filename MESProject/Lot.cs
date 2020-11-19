@@ -36,9 +36,9 @@ namespace MESProject
             DataTable dataTable =Common.DB_Connection(wo_proc);
             string procid =dataTable.Rows[0][0].ToString();
             if (procid == "P0001")
-                lotQtyLB.Text = "추가 할 LOT 중량을 입력해주세요. ";
+                lotQtyLB.Text = "LOT 중량 : ";
             else if(procid == "P0002")
-                lotQtyLB.Text = "추가 할 LOT 수량을 입력해주세요. ";
+                lotQtyLB.Text = "LOT 수량 : ";
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)

@@ -44,8 +44,6 @@ namespace MESProject
             progressBar3.Value = Convert.ToInt32(Lb_Currqty3.Text);
             progressBar4.Value = Convert.ToInt32(Lb_Currqty4.Text);
         }
-
-        
         public void Dashboard()
         {
             string[] storid = new string[] { "SL001","SL002","SL003","SL010"};
@@ -99,35 +97,29 @@ namespace MESProject
 
 
         }
-
- 
-
-   
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             //닫기 버튼
             this.Close();
         }
-   
-
-
-
         private void MaterialStock_MouseDown(object sender, MouseEventArgs e)
         {
             isMove = true;
             fpt = new Point(e.X, e.Y);
         }
-
         private void MaterialStock_MouseMove(object sender, MouseEventArgs e)
         {
             if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
-
         private void MaterialStock_MouseUp(object sender, MouseEventArgs e)
         {
             isMove = false;
         }
-
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Dashboard();
+            SetProcessBar();
+        }
     }
 }

@@ -123,7 +123,7 @@
             // 
             // FaultyBtn
             // 
-            this.FaultyBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.FaultyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.FaultyBtn.Location = new System.Drawing.Point(311, 722);
             this.FaultyBtn.Name = "FaultyBtn";
             this.FaultyBtn.Size = new System.Drawing.Size(137, 86);
@@ -134,7 +134,7 @@
             // 
             // LotDelBtn
             // 
-            this.LotDelBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.LotDelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.LotDelBtn.Location = new System.Drawing.Point(167, 722);
             this.LotDelBtn.Name = "LotDelBtn";
             this.LotDelBtn.Size = new System.Drawing.Size(137, 86);
@@ -145,7 +145,7 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.ExitBtn.Location = new System.Drawing.Point(1389, 722);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(148, 86);
@@ -156,7 +156,7 @@
             // 
             // EndBtn
             // 
-            this.EndBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.EndBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.EndBtn.Location = new System.Drawing.Point(1230, 722);
             this.EndBtn.Name = "EndBtn";
             this.EndBtn.Size = new System.Drawing.Size(148, 86);
@@ -167,7 +167,7 @@
             // 
             // LotaddBtn
             // 
-            this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LotaddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.LotaddBtn.Location = new System.Drawing.Point(25, 722);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(137, 86);
@@ -202,7 +202,7 @@
             // 
             // StartBtn1
             // 
-            this.StartBtn1.Font = new System.Drawing.Font("문체부 돋음체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.StartBtn1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.StartBtn1.Location = new System.Drawing.Point(437, 409);
             this.StartBtn1.Name = "StartBtn1";
             this.StartBtn1.Size = new System.Drawing.Size(84, 86);
@@ -213,7 +213,7 @@
             // 
             // StartBtn2
             // 
-            this.StartBtn2.Font = new System.Drawing.Font("문체부 돋음체", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.StartBtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.StartBtn2.Location = new System.Drawing.Point(521, 409);
             this.StartBtn2.Name = "StartBtn2";
             this.StartBtn2.Size = new System.Drawing.Size(84, 86);
@@ -227,7 +227,7 @@
             this.Mixing1_1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing1_1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing1_1.FlatAppearance.BorderSize = 0;
-            this.Mixing1_1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing1_1.ForeColor = System.Drawing.Color.White;
             this.Mixing1_1.Location = new System.Drawing.Point(9, 332);
             this.Mixing1_1.Name = "Mixing1_1";
@@ -241,7 +241,7 @@
             this.Mixing1_2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing1_2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing1_2.FlatAppearance.BorderSize = 0;
-            this.Mixing1_2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing1_2.ForeColor = System.Drawing.Color.White;
             this.Mixing1_2.Location = new System.Drawing.Point(87, 332);
             this.Mixing1_2.Name = "Mixing1_2";
@@ -255,7 +255,7 @@
             this.Mixing1_3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing1_3.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing1_3.FlatAppearance.BorderSize = 0;
-            this.Mixing1_3.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing1_3.ForeColor = System.Drawing.Color.White;
             this.Mixing1_3.Location = new System.Drawing.Point(166, 332);
             this.Mixing1_3.Name = "Mixing1_3";
@@ -269,7 +269,7 @@
             this.pass1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.pass1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.pass1.FlatAppearance.BorderSize = 0;
-            this.pass1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.pass1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.pass1.ForeColor = System.Drawing.Color.White;
             this.pass1.Location = new System.Drawing.Point(265, 450);
             this.pass1.Name = "pass1";
@@ -283,7 +283,7 @@
             this.Mixing_End1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing_End1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing_End1.FlatAppearance.BorderSize = 0;
-            this.Mixing_End1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_End1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing_End1.ForeColor = System.Drawing.Color.White;
             this.Mixing_End1.Location = new System.Drawing.Point(185, 450);
             this.Mixing_End1.Name = "Mixing_End1";
@@ -297,7 +297,7 @@
             this.Mixing_Start1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing_Start1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing_Start1.FlatAppearance.BorderSize = 0;
-            this.Mixing_Start1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_Start1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing_Start1.ForeColor = System.Drawing.Color.White;
             this.Mixing_Start1.Location = new System.Drawing.Point(106, 450);
             this.Mixing_Start1.Name = "Mixing_Start1";
@@ -311,7 +311,7 @@
             this.Mixing2_3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing2_3.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing2_3.FlatAppearance.BorderSize = 3;
-            this.Mixing2_3.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing2_3.ForeColor = System.Drawing.Color.White;
             this.Mixing2_3.Location = new System.Drawing.Point(701, 224);
             this.Mixing2_3.Name = "Mixing2_3";
@@ -325,7 +325,7 @@
             this.Mixing2_2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing2_2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing2_2.FlatAppearance.BorderSize = 3;
-            this.Mixing2_2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing2_2.ForeColor = System.Drawing.Color.White;
             this.Mixing2_2.Location = new System.Drawing.Point(622, 224);
             this.Mixing2_2.Name = "Mixing2_2";
@@ -339,7 +339,7 @@
             this.Mixing2_1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing2_1.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing2_1.FlatAppearance.BorderSize = 3;
-            this.Mixing2_1.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing2_1.ForeColor = System.Drawing.Color.White;
             this.Mixing2_1.Location = new System.Drawing.Point(543, 224);
             this.Mixing2_1.Name = "Mixing2_1";
@@ -352,7 +352,7 @@
             // 
             this.pass2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.pass2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.pass2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.pass2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.pass2.ForeColor = System.Drawing.Color.White;
             this.pass2.Location = new System.Drawing.Point(836, 450);
             this.pass2.Name = "pass2";
@@ -365,7 +365,7 @@
             // 
             this.Mixing_End2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing_End2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mixing_End2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_End2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing_End2.ForeColor = System.Drawing.Color.White;
             this.Mixing_End2.Location = new System.Drawing.Point(757, 450);
             this.Mixing_End2.Name = "Mixing_End2";
@@ -378,7 +378,7 @@
             // 
             this.Mixing_Start2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.Mixing_Start2.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.Mixing_Start2.Font = new System.Drawing.Font("문체부 돋음체", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing_Start2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Mixing_Start2.ForeColor = System.Drawing.Color.White;
             this.Mixing_Start2.Location = new System.Drawing.Point(678, 450);
             this.Mixing_Start2.Name = "Mixing_Start2";
@@ -391,11 +391,11 @@
             // 
             this.siloName2.AutoSize = true;
             this.siloName2.BackColor = System.Drawing.Color.DimGray;
-            this.siloName2.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.siloName2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.siloName2.ForeColor = System.Drawing.Color.White;
             this.siloName2.Location = new System.Drawing.Point(231, 196);
             this.siloName2.Name = "siloName2";
-            this.siloName2.Size = new System.Drawing.Size(47, 24);
+            this.siloName2.Size = new System.Drawing.Size(48, 24);
             this.siloName2.TabIndex = 56;
             this.siloName2.Text = "silo2";
             // 
@@ -403,11 +403,11 @@
             // 
             this.siloName3.AutoSize = true;
             this.siloName3.BackColor = System.Drawing.Color.DimGray;
-            this.siloName3.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.siloName3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.siloName3.ForeColor = System.Drawing.Color.White;
             this.siloName3.Location = new System.Drawing.Point(354, 196);
             this.siloName3.Name = "siloName3";
-            this.siloName3.Size = new System.Drawing.Size(47, 24);
+            this.siloName3.Size = new System.Drawing.Size(48, 24);
             this.siloName3.TabIndex = 57;
             this.siloName3.Text = "silo3";
             // 
@@ -415,11 +415,11 @@
             // 
             this.siloName1.AutoSize = true;
             this.siloName1.BackColor = System.Drawing.Color.DimGray;
-            this.siloName1.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.siloName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.siloName1.ForeColor = System.Drawing.Color.White;
             this.siloName1.Location = new System.Drawing.Point(103, 196);
             this.siloName1.Name = "siloName1";
-            this.siloName1.Size = new System.Drawing.Size(47, 24);
+            this.siloName1.Size = new System.Drawing.Size(48, 24);
             this.siloName1.TabIndex = 55;
             this.siloName1.Text = "silo1";
             // 
@@ -428,10 +428,10 @@
             this.silo2_Qty.AutoSize = true;
             this.silo2_Qty.BackColor = System.Drawing.Color.White;
             this.silo2_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.silo2_Qty.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.silo2_Qty.Location = new System.Drawing.Point(197, 118);
+            this.silo2_Qty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            this.silo2_Qty.Location = new System.Drawing.Point(201, 118);
             this.silo2_Qty.Name = "silo2_Qty";
-            this.silo2_Qty.Size = new System.Drawing.Size(94, 26);
+            this.silo2_Qty.Size = new System.Drawing.Size(86, 31);
             this.silo2_Qty.TabIndex = 59;
             this.silo2_Qty.Text = "[저장량]";
             // 
@@ -440,10 +440,10 @@
             this.silo1_Qty.AutoSize = true;
             this.silo1_Qty.BackColor = System.Drawing.Color.White;
             this.silo1_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.silo1_Qty.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.silo1_Qty.Location = new System.Drawing.Point(56, 118);
+            this.silo1_Qty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
+            this.silo1_Qty.Location = new System.Drawing.Point(66, 118);
             this.silo1_Qty.Name = "silo1_Qty";
-            this.silo1_Qty.Size = new System.Drawing.Size(94, 26);
+            this.silo1_Qty.Size = new System.Drawing.Size(86, 31);
             this.silo1_Qty.TabIndex = 60;
             this.silo1_Qty.Text = "[저장량]";
             // 
@@ -452,10 +452,10 @@
             this.silo3_Qty.AutoSize = true;
             this.silo3_Qty.BackColor = System.Drawing.Color.White;
             this.silo3_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.silo3_Qty.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.silo3_Qty.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.silo3_Qty.Location = new System.Drawing.Point(348, 118);
             this.silo3_Qty.Name = "silo3_Qty";
-            this.silo3_Qty.Size = new System.Drawing.Size(94, 26);
+            this.silo3_Qty.Size = new System.Drawing.Size(86, 31);
             this.silo3_Qty.TabIndex = 61;
             this.silo3_Qty.Text = "[저장량]";
             // 
@@ -463,11 +463,11 @@
             // 
             this.siloName10.AutoSize = true;
             this.siloName10.BackColor = System.Drawing.Color.DimGray;
-            this.siloName10.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.siloName10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.siloName10.ForeColor = System.Drawing.Color.White;
             this.siloName10.Location = new System.Drawing.Point(493, 660);
             this.siloName10.Name = "siloName10";
-            this.siloName10.Size = new System.Drawing.Size(57, 24);
+            this.siloName10.Size = new System.Drawing.Size(58, 24);
             this.siloName10.TabIndex = 63;
             this.siloName10.Text = "silo10";
             // 
@@ -492,11 +492,11 @@
             // 
             this.Mixing1.AutoSize = true;
             this.Mixing1.BackColor = System.Drawing.Color.Black;
-            this.Mixing1.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Mixing1.ForeColor = System.Drawing.Color.White;
             this.Mixing1.Location = new System.Drawing.Point(377, 466);
             this.Mixing1.Name = "Mixing1";
-            this.Mixing1.Size = new System.Drawing.Size(53, 19);
+            this.Mixing1.Size = new System.Drawing.Size(52, 17);
             this.Mixing1.TabIndex = 65;
             this.Mixing1.Text = "MX001";
             // 
@@ -504,11 +504,11 @@
             // 
             this.Mixing2.AutoSize = true;
             this.Mixing2.BackColor = System.Drawing.Color.Black;
-            this.Mixing2.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Mixing2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.Mixing2.ForeColor = System.Drawing.Color.White;
             this.Mixing2.Location = new System.Drawing.Point(617, 466);
             this.Mixing2.Name = "Mixing2";
-            this.Mixing2.Size = new System.Drawing.Size(53, 19);
+            this.Mixing2.Size = new System.Drawing.Size(52, 17);
             this.Mixing2.TabIndex = 66;
             this.Mixing2.Text = "MX002";
             // 
@@ -593,7 +593,7 @@
             this.Stopbtn.Enabled = false;
             this.Stopbtn.FlatAppearance.BorderSize = 0;
             this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Stopbtn.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.Stopbtn.ForeColor = System.Drawing.Color.White;
             this.Stopbtn.Location = new System.Drawing.Point(842, 119);
             this.Stopbtn.Name = "Stopbtn";
