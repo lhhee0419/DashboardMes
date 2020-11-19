@@ -47,7 +47,6 @@ namespace MESProject
             orj_s10 = s10.Size;
             clear_Color_all();
 
-
             //사용자 ID
             Userid = MainForm.User_ID;
 
@@ -73,8 +72,6 @@ namespace MESProject
             LotGrid.Font = new Font("Fixsys", 11, FontStyle.Regular);
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
-
 
             //저장소 현재량 조회
             Select_store("SL001");
@@ -247,7 +244,6 @@ namespace MESProject
 
         private void EQPTDATA_TEMP()
         {
-
             Random random = new Random();
             int TEMP = random.Next(120, 150);
 
@@ -578,7 +574,12 @@ namespace MESProject
                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
                             Common.DB_Connection(add_defectlot);
                         }
-                        string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
+                        string lot_eddttm = $"UPDATE " +
+                                                $"LOT " +
+                                            $"SET " +
+                                                $"LOTEDDTTM = TO_CHAR(SYSDATE ,'YY/MM/DD HH24:MI:SS')" +
+                                                $",LOTSTAT = 'E' " +
+                                            $"WHERE LOTID = '{Lotid}' ";
                         Common.DB_Connection(lot_eddttm);
                     }
                     Inquiry_Lot();

@@ -96,7 +96,7 @@
             // 
             // MaterialBtn
             // 
-            this.MaterialBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.MaterialBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.MaterialBtn.Location = new System.Drawing.Point(459, 699);
             this.MaterialBtn.Name = "MaterialBtn";
             this.MaterialBtn.Size = new System.Drawing.Size(213, 97);
@@ -108,7 +108,7 @@
             // logoutbtn
             // 
             this.logoutbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.logoutbtn.Location = new System.Drawing.Point(1316, 698);
             this.logoutbtn.Name = "logoutbtn";
             this.logoutbtn.Size = new System.Drawing.Size(213, 97);
@@ -156,7 +156,7 @@
             // 
             // WoLogBtn
             // 
-            this.WoLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WoLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.WoLogBtn.Location = new System.Drawing.Point(241, 699);
             this.WoLogBtn.Name = "WoLogBtn";
             this.WoLogBtn.Size = new System.Drawing.Size(213, 97);
@@ -167,7 +167,7 @@
             // 
             // WostBtn
             // 
-            this.WostBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WostBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.WostBtn.Location = new System.Drawing.Point(23, 699);
             this.WostBtn.Name = "WostBtn";
             this.WostBtn.Size = new System.Drawing.Size(213, 97);
@@ -178,7 +178,7 @@
             // 
             // InquiryBtn
             // 
-            this.InquiryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.InquiryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.InquiryBtn.Location = new System.Drawing.Point(1307, 48);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(213, 97);
