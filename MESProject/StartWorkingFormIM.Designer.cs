@@ -172,7 +172,7 @@
             // 
             // FaultyBtn
             // 
-            this.FaultyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.FaultyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FaultyBtn.Location = new System.Drawing.Point(304, 710);
             this.FaultyBtn.Name = "FaultyBtn";
             this.FaultyBtn.Size = new System.Drawing.Size(137, 86);
@@ -183,7 +183,7 @@
             // 
             // LotDelBtn
             // 
-            this.LotDelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.LotDelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LotDelBtn.Location = new System.Drawing.Point(160, 710);
             this.LotDelBtn.Name = "LotDelBtn";
             this.LotDelBtn.Size = new System.Drawing.Size(137, 86);
@@ -194,7 +194,7 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExitBtn.Location = new System.Drawing.Point(1384, 710);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(137, 86);
@@ -205,12 +205,12 @@
             // 
             // EndBtn
             // 
-            this.EndBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.EndBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EndBtn.Location = new System.Drawing.Point(1240, 710);
             this.EndBtn.Name = "EndBtn";
             this.EndBtn.Size = new System.Drawing.Size(137, 86);
             this.EndBtn.TabIndex = 46;
-            this.EndBtn.Text = "작업종료";
+            this.EndBtn.Text = "작업\r\n종료";
             this.EndBtn.UseVisualStyleBackColor = true;
             this.EndBtn.Click += new System.EventHandler(this.EndBtn_Click);
             this.EndBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseDown);
@@ -219,7 +219,7 @@
             // 
             // LotaddBtn
             // 
-            this.LotaddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.LotaddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LotaddBtn.Location = new System.Drawing.Point(13, 710);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(137, 86);
