@@ -94,16 +94,16 @@
             // Lb_MaterialForm
             // 
             this.Lb_MaterialForm.AutoSize = true;
-            this.Lb_MaterialForm.Font = new System.Drawing.Font("맑은 고딕", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Lb_MaterialForm.Location = new System.Drawing.Point(19, 19);
+            this.Lb_MaterialForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold);
+            this.Lb_MaterialForm.Location = new System.Drawing.Point(20, 32);
             this.Lb_MaterialForm.Name = "Lb_MaterialForm";
-            this.Lb_MaterialForm.Size = new System.Drawing.Size(208, 35);
+            this.Lb_MaterialForm.Size = new System.Drawing.Size(155, 29);
             this.Lb_MaterialForm.TabIndex = 2;
             this.Lb_MaterialForm.Text = "원재료 재고 관리";
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.ExitBtn.Location = new System.Drawing.Point(1149, 615);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(143, 67);
@@ -111,6 +111,10 @@
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // pictureBox1
             // 
@@ -155,300 +159,300 @@
             // Lb_Maxqty1
             // 
             this.Lb_Maxqty1.AutoSize = true;
-            this.Lb_Maxqty1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Maxqty1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Maxqty1.Location = new System.Drawing.Point(168, 464);
             this.Lb_Maxqty1.Name = "Lb_Maxqty1";
-            this.Lb_Maxqty1.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Maxqty1.Size = new System.Drawing.Size(67, 29);
             this.Lb_Maxqty1.TabIndex = 49;
             this.Lb_Maxqty1.Text = "최대량";
             // 
             // Lb_Minqty1
             // 
             this.Lb_Minqty1.AutoSize = true;
-            this.Lb_Minqty1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Minqty1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Minqty1.Location = new System.Drawing.Point(168, 432);
             this.Lb_Minqty1.Name = "Lb_Minqty1";
-            this.Lb_Minqty1.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Minqty1.Size = new System.Drawing.Size(67, 29);
             this.Lb_Minqty1.TabIndex = 48;
             this.Lb_Minqty1.Text = "최소량";
             // 
             // Lb_Currqty1
             // 
             this.Lb_Currqty1.AutoSize = true;
-            this.Lb_Currqty1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Currqty1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Currqty1.Location = new System.Drawing.Point(168, 400);
             this.Lb_Currqty1.Name = "Lb_Currqty1";
-            this.Lb_Currqty1.Size = new System.Drawing.Size(109, 22);
+            this.Lb_Currqty1.Size = new System.Drawing.Size(92, 29);
             this.Lb_Currqty1.TabIndex = 47;
             this.Lb_Currqty1.Text = "현재 재고";
             // 
             // max1
             // 
             this.max1.AutoSize = true;
-            this.max1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.max1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.max1.Location = new System.Drawing.Point(45, 464);
             this.max1.Name = "max1";
-            this.max1.Size = new System.Drawing.Size(92, 22);
+            this.max1.Size = new System.Drawing.Size(81, 29);
             this.max1.TabIndex = 45;
             this.max1.Text = "최대량 :";
             // 
             // min1
             // 
             this.min1.AutoSize = true;
-            this.min1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.min1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.min1.Location = new System.Drawing.Point(45, 432);
             this.min1.Name = "min1";
-            this.min1.Size = new System.Drawing.Size(92, 22);
+            this.min1.Size = new System.Drawing.Size(81, 29);
             this.min1.TabIndex = 44;
             this.min1.Text = "최소량 :";
             // 
             // currqty1
             // 
             this.currqty1.AutoSize = true;
-            this.currqty1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.currqty1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.currqty1.Location = new System.Drawing.Point(45, 400);
             this.currqty1.Name = "currqty1";
-            this.currqty1.Size = new System.Drawing.Size(125, 22);
+            this.currqty1.Size = new System.Drawing.Size(106, 29);
             this.currqty1.TabIndex = 43;
             this.currqty1.Text = "현재 재고 :";
             // 
             // currqty2
             // 
             this.currqty2.AutoSize = true;
-            this.currqty2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.currqty2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.currqty2.Location = new System.Drawing.Point(45, 400);
             this.currqty2.Name = "currqty2";
-            this.currqty2.Size = new System.Drawing.Size(125, 22);
+            this.currqty2.Size = new System.Drawing.Size(106, 29);
             this.currqty2.TabIndex = 43;
             this.currqty2.Text = "현재 재고 :";
             // 
             // Lb_Minqty2
             // 
             this.Lb_Minqty2.AutoSize = true;
-            this.Lb_Minqty2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Minqty2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Minqty2.Location = new System.Drawing.Point(171, 432);
             this.Lb_Minqty2.Name = "Lb_Minqty2";
-            this.Lb_Minqty2.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Minqty2.Size = new System.Drawing.Size(67, 29);
             this.Lb_Minqty2.TabIndex = 48;
             this.Lb_Minqty2.Text = "최소량";
             // 
             // min2
             // 
             this.min2.AutoSize = true;
-            this.min2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.min2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.min2.Location = new System.Drawing.Point(45, 432);
             this.min2.Name = "min2";
-            this.min2.Size = new System.Drawing.Size(92, 22);
+            this.min2.Size = new System.Drawing.Size(81, 29);
             this.min2.TabIndex = 44;
             this.min2.Text = "최소량 :";
             // 
             // Lb_Currqty2
             // 
             this.Lb_Currqty2.AutoSize = true;
-            this.Lb_Currqty2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Currqty2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Currqty2.Location = new System.Drawing.Point(171, 400);
             this.Lb_Currqty2.Name = "Lb_Currqty2";
-            this.Lb_Currqty2.Size = new System.Drawing.Size(109, 22);
+            this.Lb_Currqty2.Size = new System.Drawing.Size(92, 29);
             this.Lb_Currqty2.TabIndex = 47;
             this.Lb_Currqty2.Text = "현재 재고";
             // 
             // Lb_Maxqty3
             // 
             this.Lb_Maxqty3.AutoSize = true;
-            this.Lb_Maxqty3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Maxqty3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Maxqty3.Location = new System.Drawing.Point(152, 464);
             this.Lb_Maxqty3.Name = "Lb_Maxqty3";
-            this.Lb_Maxqty3.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Maxqty3.Size = new System.Drawing.Size(67, 29);
             this.Lb_Maxqty3.TabIndex = 49;
             this.Lb_Maxqty3.Text = "최대량";
             // 
             // currqty3
             // 
             this.currqty3.AutoSize = true;
-            this.currqty3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.currqty3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.currqty3.Location = new System.Drawing.Point(27, 400);
             this.currqty3.Name = "currqty3";
-            this.currqty3.Size = new System.Drawing.Size(125, 22);
+            this.currqty3.Size = new System.Drawing.Size(106, 29);
             this.currqty3.TabIndex = 43;
             this.currqty3.Text = "현재 재고 :";
             // 
             // Lb_Minqty3
             // 
             this.Lb_Minqty3.AutoSize = true;
-            this.Lb_Minqty3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Minqty3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Minqty3.Location = new System.Drawing.Point(152, 432);
             this.Lb_Minqty3.Name = "Lb_Minqty3";
-            this.Lb_Minqty3.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Minqty3.Size = new System.Drawing.Size(67, 29);
             this.Lb_Minqty3.TabIndex = 48;
             this.Lb_Minqty3.Text = "최소량";
             // 
             // min3
             // 
             this.min3.AutoSize = true;
-            this.min3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.min3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.min3.Location = new System.Drawing.Point(27, 432);
             this.min3.Name = "min3";
-            this.min3.Size = new System.Drawing.Size(92, 22);
+            this.min3.Size = new System.Drawing.Size(81, 29);
             this.min3.TabIndex = 44;
             this.min3.Text = "최소량 :";
             // 
             // Lb_Currqty3
             // 
             this.Lb_Currqty3.AutoSize = true;
-            this.Lb_Currqty3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Currqty3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Currqty3.Location = new System.Drawing.Point(152, 400);
             this.Lb_Currqty3.Name = "Lb_Currqty3";
-            this.Lb_Currqty3.Size = new System.Drawing.Size(109, 22);
+            this.Lb_Currqty3.Size = new System.Drawing.Size(92, 29);
             this.Lb_Currqty3.TabIndex = 47;
             this.Lb_Currqty3.Text = "현재 재고";
             // 
             // max3
             // 
             this.max3.AutoSize = true;
-            this.max3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.max3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.max3.Location = new System.Drawing.Point(27, 464);
             this.max3.Name = "max3";
-            this.max3.Size = new System.Drawing.Size(92, 22);
+            this.max3.Size = new System.Drawing.Size(81, 29);
             this.max3.TabIndex = 45;
             this.max3.Text = "최대량 :";
             // 
             // Lb_Maxqty4
             // 
             this.Lb_Maxqty4.AutoSize = true;
-            this.Lb_Maxqty4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Maxqty4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Maxqty4.Location = new System.Drawing.Point(152, 464);
             this.Lb_Maxqty4.Name = "Lb_Maxqty4";
-            this.Lb_Maxqty4.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Maxqty4.Size = new System.Drawing.Size(67, 29);
             this.Lb_Maxqty4.TabIndex = 49;
             this.Lb_Maxqty4.Text = "최대량";
             // 
             // currqty4
             // 
             this.currqty4.AutoSize = true;
-            this.currqty4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.currqty4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.currqty4.Location = new System.Drawing.Point(24, 400);
             this.currqty4.Name = "currqty4";
-            this.currqty4.Size = new System.Drawing.Size(125, 22);
+            this.currqty4.Size = new System.Drawing.Size(106, 29);
             this.currqty4.TabIndex = 43;
             this.currqty4.Text = "현재 재고 :";
             // 
             // Lb_Minqty4
             // 
             this.Lb_Minqty4.AutoSize = true;
-            this.Lb_Minqty4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Minqty4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Minqty4.Location = new System.Drawing.Point(152, 432);
             this.Lb_Minqty4.Name = "Lb_Minqty4";
-            this.Lb_Minqty4.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Minqty4.Size = new System.Drawing.Size(67, 29);
             this.Lb_Minqty4.TabIndex = 48;
             this.Lb_Minqty4.Text = "최소량";
             // 
             // min4
             // 
             this.min4.AutoSize = true;
-            this.min4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.min4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.min4.Location = new System.Drawing.Point(24, 432);
             this.min4.Name = "min4";
-            this.min4.Size = new System.Drawing.Size(92, 22);
+            this.min4.Size = new System.Drawing.Size(81, 29);
             this.min4.TabIndex = 44;
             this.min4.Text = "최소량 :";
             // 
             // Lb_Currqty4
             // 
             this.Lb_Currqty4.AutoSize = true;
-            this.Lb_Currqty4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Currqty4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Currqty4.Location = new System.Drawing.Point(152, 400);
             this.Lb_Currqty4.Name = "Lb_Currqty4";
-            this.Lb_Currqty4.Size = new System.Drawing.Size(109, 22);
+            this.Lb_Currqty4.Size = new System.Drawing.Size(92, 29);
             this.Lb_Currqty4.TabIndex = 47;
             this.Lb_Currqty4.Text = "현재 재고";
             // 
             // max4
             // 
             this.max4.AutoSize = true;
-            this.max4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.max4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.max4.Location = new System.Drawing.Point(24, 464);
             this.max4.Name = "max4";
-            this.max4.Size = new System.Drawing.Size(92, 22);
+            this.max4.Size = new System.Drawing.Size(81, 29);
             this.max4.TabIndex = 45;
             this.max4.Text = "최대량 :";
             // 
             // MtrlName1
             // 
             this.MtrlName1.AutoSize = true;
-            this.MtrlName1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.MtrlName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.MtrlName1.Location = new System.Drawing.Point(45, 368);
             this.MtrlName1.Name = "MtrlName1";
-            this.MtrlName1.Size = new System.Drawing.Size(114, 22);
+            this.MtrlName1.Size = new System.Drawing.Size(99, 29);
             this.MtrlName1.TabIndex = 50;
             this.MtrlName1.Text = "원재료명 :";
             // 
             // Lb_MtrlName1
             // 
             this.Lb_MtrlName1.AutoSize = true;
-            this.Lb_MtrlName1.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_MtrlName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_MtrlName1.Location = new System.Drawing.Point(168, 368);
             this.Lb_MtrlName1.Name = "Lb_MtrlName1";
-            this.Lb_MtrlName1.Size = new System.Drawing.Size(98, 22);
+            this.Lb_MtrlName1.Size = new System.Drawing.Size(85, 29);
             this.Lb_MtrlName1.TabIndex = 51;
             this.Lb_MtrlName1.Text = "원재료명";
             // 
             // MtrlName2
             // 
             this.MtrlName2.AutoSize = true;
-            this.MtrlName2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.MtrlName2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.MtrlName2.Location = new System.Drawing.Point(45, 368);
             this.MtrlName2.Name = "MtrlName2";
-            this.MtrlName2.Size = new System.Drawing.Size(114, 22);
+            this.MtrlName2.Size = new System.Drawing.Size(99, 29);
             this.MtrlName2.TabIndex = 52;
             this.MtrlName2.Text = "원재료명 :";
             // 
             // Lb_MtrlName2
             // 
             this.Lb_MtrlName2.AutoSize = true;
-            this.Lb_MtrlName2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_MtrlName2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_MtrlName2.Location = new System.Drawing.Point(171, 368);
             this.Lb_MtrlName2.Name = "Lb_MtrlName2";
-            this.Lb_MtrlName2.Size = new System.Drawing.Size(98, 22);
+            this.Lb_MtrlName2.Size = new System.Drawing.Size(85, 29);
             this.Lb_MtrlName2.TabIndex = 53;
             this.Lb_MtrlName2.Text = "원재료명";
             // 
             // MtrlName3
             // 
             this.MtrlName3.AutoSize = true;
-            this.MtrlName3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.MtrlName3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.MtrlName3.Location = new System.Drawing.Point(27, 368);
             this.MtrlName3.Name = "MtrlName3";
-            this.MtrlName3.Size = new System.Drawing.Size(114, 22);
+            this.MtrlName3.Size = new System.Drawing.Size(99, 29);
             this.MtrlName3.TabIndex = 54;
             this.MtrlName3.Text = "원재료명 :";
             // 
             // Lb_MtrlName3
             // 
             this.Lb_MtrlName3.AutoSize = true;
-            this.Lb_MtrlName3.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_MtrlName3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_MtrlName3.Location = new System.Drawing.Point(152, 368);
             this.Lb_MtrlName3.Name = "Lb_MtrlName3";
-            this.Lb_MtrlName3.Size = new System.Drawing.Size(98, 22);
+            this.Lb_MtrlName3.Size = new System.Drawing.Size(85, 29);
             this.Lb_MtrlName3.TabIndex = 55;
             this.Lb_MtrlName3.Text = "원재료명";
             // 
             // MtrlName4
             // 
             this.MtrlName4.AutoSize = true;
-            this.MtrlName4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.MtrlName4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.MtrlName4.Location = new System.Drawing.Point(24, 368);
             this.MtrlName4.Name = "MtrlName4";
-            this.MtrlName4.Size = new System.Drawing.Size(114, 22);
+            this.MtrlName4.Size = new System.Drawing.Size(99, 29);
             this.MtrlName4.TabIndex = 56;
             this.MtrlName4.Text = "원재료명 :";
             // 
             // Lb_MtrlName4
             // 
             this.Lb_MtrlName4.AutoSize = true;
-            this.Lb_MtrlName4.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_MtrlName4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_MtrlName4.Location = new System.Drawing.Point(152, 368);
             this.Lb_MtrlName4.Name = "Lb_MtrlName4";
-            this.Lb_MtrlName4.Size = new System.Drawing.Size(98, 22);
+            this.Lb_MtrlName4.Size = new System.Drawing.Size(85, 29);
             this.Lb_MtrlName4.TabIndex = 57;
             this.Lb_MtrlName4.Text = "원재료명";
             // 
@@ -487,60 +491,60 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label1.Location = new System.Drawing.Point(115, 264);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 28);
+            this.label1.Size = new System.Drawing.Size(81, 29);
             this.label1.TabIndex = 63;
             this.label1.Text = "SL001";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label2.Location = new System.Drawing.Point(100, 264);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 28);
+            this.label2.Size = new System.Drawing.Size(81, 29);
             this.label2.TabIndex = 64;
             this.label2.Text = "SL002";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label3.Location = new System.Drawing.Point(82, 264);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 28);
+            this.label3.Size = new System.Drawing.Size(81, 29);
             this.label3.TabIndex = 65;
             this.label3.Text = "SL003";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label4.Location = new System.Drawing.Point(97, 264);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 28);
+            this.label4.Size = new System.Drawing.Size(81, 29);
             this.label4.TabIndex = 66;
             this.label4.Text = "SL010";
             // 
             // max2
             // 
             this.max2.AutoSize = true;
-            this.max2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.max2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.max2.Location = new System.Drawing.Point(45, 464);
             this.max2.Name = "max2";
-            this.max2.Size = new System.Drawing.Size(92, 22);
+            this.max2.Size = new System.Drawing.Size(81, 29);
             this.max2.TabIndex = 45;
             this.max2.Text = "최대량 :";
             // 
             // Lb_Maxqty2
             // 
             this.Lb_Maxqty2.AutoSize = true;
-            this.Lb_Maxqty2.Font = new System.Drawing.Font("문체부 돋음체", 13F);
+            this.Lb_Maxqty2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.Lb_Maxqty2.Location = new System.Drawing.Point(171, 464);
             this.Lb_Maxqty2.Name = "Lb_Maxqty2";
-            this.Lb_Maxqty2.Size = new System.Drawing.Size(76, 22);
+            this.Lb_Maxqty2.Size = new System.Drawing.Size(67, 29);
             this.Lb_Maxqty2.TabIndex = 49;
             this.Lb_Maxqty2.Text = "최대량";
             // 
@@ -557,6 +561,7 @@
             this.groupBox1.Controls.Add(this.Lb_Currqty1);
             this.groupBox1.Controls.Add(this.max1);
             this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.groupBox1.Location = new System.Drawing.Point(25, 84);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(284, 510);
@@ -576,6 +581,7 @@
             this.groupBox2.Controls.Add(this.Lb_Currqty2);
             this.groupBox2.Controls.Add(this.max2);
             this.groupBox2.Controls.Add(this.pictureBox2);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.groupBox2.Location = new System.Drawing.Point(349, 84);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(284, 510);
@@ -595,6 +601,7 @@
             this.groupBox3.Controls.Add(this.Lb_Currqty3);
             this.groupBox3.Controls.Add(this.max3);
             this.groupBox3.Controls.Add(this.pictureBox3);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.groupBox3.Location = new System.Drawing.Point(673, 84);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(284, 510);

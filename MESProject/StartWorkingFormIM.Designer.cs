@@ -83,10 +83,10 @@
             // CurTime
             // 
             this.CurTime.AutoSize = true;
-            this.CurTime.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CurTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.CurTime.Location = new System.Drawing.Point(88, 672);
             this.CurTime.Name = "CurTime";
-            this.CurTime.Size = new System.Drawing.Size(89, 19);
+            this.CurTime.Size = new System.Drawing.Size(70, 24);
             this.CurTime.TabIndex = 68;
             this.CurTime.Text = "현재시간";
             // 
@@ -150,7 +150,7 @@
             // 
             // IM2_STBtn
             // 
-            this.IM2_STBtn.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM2_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.IM2_STBtn.Location = new System.Drawing.Point(340, 352);
             this.IM2_STBtn.Name = "IM2_STBtn";
             this.IM2_STBtn.Size = new System.Drawing.Size(120, 80);
@@ -161,7 +161,7 @@
             // 
             // IM1_STBtn
             // 
-            this.IM1_STBtn.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM1_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.IM1_STBtn.Location = new System.Drawing.Point(220, 352);
             this.IM1_STBtn.Name = "IM1_STBtn";
             this.IM1_STBtn.Size = new System.Drawing.Size(120, 80);
@@ -172,7 +172,7 @@
             // 
             // FaultyBtn
             // 
-            this.FaultyBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.FaultyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.FaultyBtn.Location = new System.Drawing.Point(304, 710);
             this.FaultyBtn.Name = "FaultyBtn";
             this.FaultyBtn.Size = new System.Drawing.Size(137, 86);
@@ -183,7 +183,7 @@
             // 
             // LotDelBtn
             // 
-            this.LotDelBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.LotDelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.LotDelBtn.Location = new System.Drawing.Point(160, 710);
             this.LotDelBtn.Name = "LotDelBtn";
             this.LotDelBtn.Size = new System.Drawing.Size(137, 86);
@@ -194,7 +194,7 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.ExitBtn.Location = new System.Drawing.Point(1384, 710);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(137, 86);
@@ -205,7 +205,7 @@
             // 
             // EndBtn
             // 
-            this.EndBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F);
+            this.EndBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.EndBtn.Location = new System.Drawing.Point(1240, 710);
             this.EndBtn.Name = "EndBtn";
             this.EndBtn.Size = new System.Drawing.Size(137, 86);
@@ -219,7 +219,7 @@
             // 
             // LotaddBtn
             // 
-            this.LotaddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.LotaddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.LotaddBtn.Location = new System.Drawing.Point(13, 710);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(137, 86);
@@ -260,7 +260,7 @@
             // 
             this.IM1_1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM1_1.FlatAppearance.BorderSize = 0;
-            this.IM1_1.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM1_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM1_1.ForeColor = System.Drawing.Color.White;
             this.IM1_1.Location = new System.Drawing.Point(384, 208);
             this.IM1_1.Name = "IM1_1";
@@ -273,7 +273,7 @@
             // 
             this.IM1_2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM1_2.FlatAppearance.BorderSize = 0;
-            this.IM1_2.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM1_2.ForeColor = System.Drawing.Color.White;
             this.IM1_2.Location = new System.Drawing.Point(464, 208);
             this.IM1_2.Name = "IM1_2";
@@ -286,7 +286,7 @@
             // 
             this.IM1_3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM1_3.FlatAppearance.BorderSize = 0;
-            this.IM1_3.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM1_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM1_3.ForeColor = System.Drawing.Color.White;
             this.IM1_3.Location = new System.Drawing.Point(544, 208);
             this.IM1_3.Name = "IM1_3";
@@ -299,7 +299,7 @@
             // 
             this.IM1_4.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM1_4.FlatAppearance.BorderSize = 0;
-            this.IM1_4.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM1_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM1_4.ForeColor = System.Drawing.Color.White;
             this.IM1_4.Location = new System.Drawing.Point(624, 208);
             this.IM1_4.Name = "IM1_4";
@@ -312,7 +312,7 @@
             // 
             this.IM2_4.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM2_4.FlatAppearance.BorderSize = 0;
-            this.IM2_4.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM2_4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM2_4.ForeColor = System.Drawing.Color.White;
             this.IM2_4.Location = new System.Drawing.Point(408, 536);
             this.IM2_4.Name = "IM2_4";
@@ -325,7 +325,7 @@
             // 
             this.IM2_3.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM2_3.FlatAppearance.BorderSize = 0;
-            this.IM2_3.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM2_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM2_3.ForeColor = System.Drawing.Color.White;
             this.IM2_3.Location = new System.Drawing.Point(328, 536);
             this.IM2_3.Name = "IM2_3";
@@ -338,7 +338,7 @@
             // 
             this.IM2_2.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM2_2.FlatAppearance.BorderSize = 0;
-            this.IM2_2.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM2_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM2_2.ForeColor = System.Drawing.Color.White;
             this.IM2_2.Location = new System.Drawing.Point(248, 536);
             this.IM2_2.Name = "IM2_2";
@@ -351,7 +351,7 @@
             // 
             this.IM2_1.BackColor = System.Drawing.SystemColors.MenuHighlight;
             this.IM2_1.FlatAppearance.BorderSize = 0;
-            this.IM2_1.Font = new System.Drawing.Font("문체부 돋음체", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.IM2_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.IM2_1.ForeColor = System.Drawing.Color.White;
             this.IM2_1.Location = new System.Drawing.Point(168, 536);
             this.IM2_1.Name = "IM2_1";
@@ -365,10 +365,10 @@
             this.SL010_CURRQTY.AutoSize = true;
             this.SL010_CURRQTY.BackColor = System.Drawing.Color.White;
             this.SL010_CURRQTY.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.SL010_CURRQTY.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SL010_CURRQTY.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F);
             this.SL010_CURRQTY.Location = new System.Drawing.Point(80, 112);
             this.SL010_CURRQTY.Name = "SL010_CURRQTY";
-            this.SL010_CURRQTY.Size = new System.Drawing.Size(94, 26);
+            this.SL010_CURRQTY.Size = new System.Drawing.Size(86, 31);
             this.SL010_CURRQTY.TabIndex = 77;
             this.SL010_CURRQTY.Text = "[저장량]";
             // 
@@ -419,7 +419,7 @@
             this.STOP_BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("STOP_BTN.BackgroundImage")));
             this.STOP_BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.STOP_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.STOP_BTN.Font = new System.Drawing.Font("문체부 돋음체", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.STOP_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.STOP_BTN.ForeColor = System.Drawing.Color.White;
             this.STOP_BTN.Location = new System.Drawing.Point(720, 120);
             this.STOP_BTN.Name = "STOP_BTN";

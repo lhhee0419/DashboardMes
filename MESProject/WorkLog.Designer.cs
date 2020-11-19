@@ -51,7 +51,7 @@
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("굴림", 17F);
+            this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 15F);
             this.dateTimePicker2.Location = new System.Drawing.Point(408, 78);
             this.dateTimePicker2.Name = "dateTimePicker2";
@@ -60,7 +60,7 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("굴림", 17F);
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 15F);
             this.dateTimePicker1.Location = new System.Drawing.Point(22, 75);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -69,7 +69,7 @@
             // 
             // InquiryBtn
             // 
-            this.InquiryBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.InquiryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.InquiryBtn.Location = new System.Drawing.Point(1355, 50);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(166, 80);
@@ -94,7 +94,7 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.ExitBtn.Location = new System.Drawing.Point(1355, 728);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(166, 80);
@@ -105,11 +105,11 @@
             // 
             // ProcCombo
             // 
-            this.ProcCombo.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ProcCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
             this.ProcCombo.FormattingEnabled = true;
             this.ProcCombo.Location = new System.Drawing.Point(1195, 12);
             this.ProcCombo.Name = "ProcCombo";
-            this.ProcCombo.Size = new System.Drawing.Size(121, 35);
+            this.ProcCombo.Size = new System.Drawing.Size(121, 39);
             this.ProcCombo.TabIndex = 55;
             this.ProcCombo.Visible = false;
             // 

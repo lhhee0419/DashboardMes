@@ -37,17 +37,17 @@
             // lotQtyLB
             // 
             this.lotQtyLB.AutoSize = true;
-            this.lotQtyLB.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lotQtyLB.Location = new System.Drawing.Point(43, 55);
+            this.lotQtyLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lotQtyLB.Location = new System.Drawing.Point(58, 102);
             this.lotQtyLB.Name = "lotQtyLB";
-            this.lotQtyLB.Size = new System.Drawing.Size(397, 25);
+            this.lotQtyLB.Size = new System.Drawing.Size(118, 29);
             this.lotQtyLB.TabIndex = 0;
-            this.lotQtyLB.Text = "추가 할 LOT 수량을 입력해주세요.";
+            this.lotQtyLB.Text = "LOT 수량 :";
             // 
             // AddBtn
             // 
-            this.AddBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.AddBtn.Location = new System.Drawing.Point(75, 189);
+            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.AddBtn.Location = new System.Drawing.Point(91, 189);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(99, 54);
             this.AddBtn.TabIndex = 1;
@@ -57,8 +57,8 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.ExitBtn.Location = new System.Drawing.Point(299, 189);
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.ExitBtn.Location = new System.Drawing.Point(261, 189);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(99, 54);
             this.ExitBtn.TabIndex = 1;
@@ -68,10 +68,10 @@
             // 
             // LotAdd_tb
             // 
-            this.LotAdd_tb.Font = new System.Drawing.Font("문체부 돋음체", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.LotAdd_tb.Location = new System.Drawing.Point(144, 110);
+            this.LotAdd_tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
+            this.LotAdd_tb.Location = new System.Drawing.Point(196, 97);
             this.LotAdd_tb.Name = "LotAdd_tb";
-            this.LotAdd_tb.Size = new System.Drawing.Size(190, 34);
+            this.LotAdd_tb.Size = new System.Drawing.Size(190, 38);
             this.LotAdd_tb.TabIndex = 2;
             // 
             // Lot

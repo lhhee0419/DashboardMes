@@ -20,10 +20,13 @@ namespace MESProject
         private static int time = 2000;
         private static int delaytime = 3;
         string Userid, Lotid, CurrQty, woid, LAST_LOTID;
+        int Temp, Press;
         Size orj_s1, orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
         Color Offcolor = Color.FromArgb(51, 153, 255);
         Color Oncolor = Color.FromArgb(255, 128, 0);
         int stop_timer_flag = 0;
+        string[] Defect = new string[] { "DF001", "DF002", "DF005", "DF006", "DF007" };
+        Random random1 = new Random();
         public Startworking()
         {
             InitializeComponent();
@@ -246,7 +249,7 @@ namespace MESProject
         {
 
             Random random = new Random();
-            int TEMP = random.Next(25, 40);
+            int TEMP = random.Next(120, 150);
 
             string INSERT_TEMP = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
                                                              $" LOTID," +
@@ -265,7 +268,7 @@ namespace MESProject
         private void EQPTDATA_PRESS()
         {
             Random random = new Random();
-            int PRESS = random.Next(100, 150);
+            int PRESS = random.Next(100, 160);
 
             string INSERT_PRESS = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
                                                              $" LOTID," +
@@ -556,6 +559,10 @@ namespace MESProject
                     if (LotGrid.Rows.Count > 0)
                     {
                         Lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
+                        string eqpt_value = $"SELECT EQPTITEMID,EQPTITEMVALUE FROM EQPTDATACOLLECT WHERE LOTID= '{Lotid}'";
+                        DataTable dataTable = Common.DB_Connection(eqpt_value);
+                        Temp = Convert.ToInt32(dataTable.Rows[0][1].ToString());
+                        Press = Convert.ToInt32(dataTable.Rows[1][1].ToString());
                     }
                     Delay(500);
 
@@ -564,6 +571,13 @@ namespace MESProject
                     Mixing_End1.BackColor = Oncolor;
                     if (Lotid != null)
                     {
+                        int k = random1.Next(0,4);
+                        if(Temp>=145 || Press >= 155)
+                        {
+                            string Defectid = Defect[k];
+                            string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
+                            Common.DB_Connection(add_defectlot);
+                        }
                         string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
                         Common.DB_Connection(lot_eddttm);
                     }
@@ -649,14 +663,28 @@ namespace MESProject
                     if (LotGrid.Rows.Count > 0)
                     {
                         Lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
+                        string eqpt_value = $"SELECT EQPTITEMID,EQPTITEMVALUE FROM EQPTDATACOLLECT WHERE LOTID= '{Lotid}'";
+                        DataTable dataTable = Common.DB_Connection(eqpt_value);
+                        Temp = Convert.ToInt32(dataTable.Rows[0][1].ToString());
+                        Press = Convert.ToInt32(dataTable.Rows[1][1].ToString());
                     }
                     Delay(500);
 
                     //배합 완료
                     Mixing_Start2.BackColor = Color.FromArgb(51, 153, 255);
                     Mixing_End2.BackColor = Color.FromArgb(255, 128, 0);
-                    string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
-                    Common.DB_Connection(lot_eddttm);
+                    int k = random1.Next(0, 4);
+                    if(Lotid != null)
+                    {
+                        if (Temp >= 145 || Press >= 155)
+                        {
+                            string Defectid = Defect[k];
+                            string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
+                            Common.DB_Connection(add_defectlot);
+                            string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
+                            Common.DB_Connection(lot_eddttm);
+                        }
+                    }
                     Inquiry_Lot();
                     Delay(500);
 
