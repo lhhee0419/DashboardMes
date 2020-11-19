@@ -49,6 +49,7 @@ namespace MESProject
             //LotID_Grid 쿼리
             string LotId_Grid_Data = $"SELECT " +
                                         $"LOTID" +
+                                        $",EQPTID" +
                                         $",LOTSTDTTM" +
                                         $",LOTEDDTTM " +
                                      $"FROM LOT L, WORKORDER W " +
@@ -63,8 +64,9 @@ namespace MESProject
             if (LotID_Grid.Rows.Count > 0)
             {
                 LotID_Grid.Columns[0].HeaderText = "LOT코드";
-                LotID_Grid.Columns[1].HeaderText = "시작시간";
-                LotID_Grid.Columns[2].HeaderText = "종료시간";
+                LotID_Grid.Columns[1].HeaderText = "설비코드";
+                LotID_Grid.Columns[2].HeaderText = "시작시간";
+                LotID_Grid.Columns[3].HeaderText = "종료시간";
             }
             // datagridview 첫 번째 위치에 checkbox 추가
             DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();

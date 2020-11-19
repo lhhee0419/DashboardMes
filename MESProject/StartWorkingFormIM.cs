@@ -384,22 +384,22 @@ namespace MESProject
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Interval = 9000;
-
-            //사일로 현재량 MINUS
-            string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - {need_siloQty} WHERE STORID = '{silo010}'";
-            Common.DB_Connection(SILO1_CURRQTY_MINUS);
-
-            string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
-            DataTable dataTable1 = Common.DB_Connection(SELECT_SL010);
-            string SILO_CURRQTY = dataTable1.Rows[0][0].ToString();
-            SL010_CURRQTY.Text = "저장량 : " + SILO_CURRQTY;
-            int SL010_QTY = Convert.ToInt32(SILO_CURRQTY);
-
-            //Silo 재고량 재조회
-            Select_Silo_Qty();
-
-            if(EQPTID != null)
+            
+            if (EQPTID != null)
             {
+                //사일로 현재량 MINUS
+                string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - {need_siloQty} WHERE STORID = '{silo010}'";
+                Common.DB_Connection(SILO1_CURRQTY_MINUS);
+
+                string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
+                DataTable dataTable1 = Common.DB_Connection(SELECT_SL010);
+                string SILO_CURRQTY = dataTable1.Rows[0][0].ToString();
+                SL010_CURRQTY.Text = "저장량 : " + SILO_CURRQTY;
+                int SL010_QTY = Convert.ToInt32(SILO_CURRQTY);
+
+                //Silo 재고량 재조회
+                Select_Silo_Qty();
+
                 // 1호기 일경우 1호기 라벨 백컬러를 사용.
                 if (EQPTID == "IM001")
                 {
@@ -461,8 +461,18 @@ namespace MESProject
 
                 if (select_temp > 240 || select_press > 1000)
                 {
-                    string add_defectlot = $"INSERT INTO DEFECTLOT(DEFECT_LOTID,DEFECT_QTY,DEFECT_DTTM,DEFECTID) VALUES ('{LAST_LOTID}',1,TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'),'DF006')";
+                    string[] error = new string[] { "DF001", "DF002" , "DF003" , "DF004" , "DF005" , "DF006", "DF007" };
+                    Random rand = new Random();
+                    int index_num = rand.Next(1, 7);
+                    string DEFECTID = error[index_num];
+                    
+                    string add_defectlot = $"INSERT INTO DEFECTLOT(DEFECT_LOTID,DEFECT_QTY,DEFECT_DTTM,DEFECTID)" +
+                                           $" VALUES ('{LAST_LOTID}'" +
+                                           $",1,TO_CHAR(SYSDATE" +
+                                           $",'YY/MM/DD HH24:MI:SS')" +
+                                           $",'{DEFECTID}')";
                     Common.DB_Connection(add_defectlot);
+
                 }
 
                 //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
@@ -477,8 +487,8 @@ namespace MESProject
 
                 //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
                 string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
-                                            $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
-                                            $" WOID = '{Selected_woid}'";
+                                          $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
+                                          $" WOID = '{Selected_woid}'";
                 DataTable dataTable5 = Common.DB_Connection(IM_PRODQTY_VALUE);
 
                 if (EQPTID == "IM001")
@@ -489,29 +499,29 @@ namespace MESProject
                 {
                     IM2_ProdQty_Value.Text = $"{dataTable5.Rows[0][0].ToString()} EA";
                 }
-            }
-            //DB에 WORKORDER_PRODQTY 업데이트
-            string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
-                                        $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
-                                        $"WHERE " +
-                                        $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D') " +
-                                        $"WHERE WOID = '{Selected_woid}'";
-            Common.DB_Connection(UPDATE_WO_PRODQTY);
+                //DB에 WORKORDER_PRODQTY 업데이트
+                string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
+                                            $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
+                                            $"WHERE " +
+                                            $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D') " +
+                                            $"WHERE WOID = '{Selected_woid}'";
+                Common.DB_Connection(UPDATE_WO_PRODQTY);
 
-            //LOTGRID 재조회 및 버튼과 라벨 표시
-            Inquiry_Lot();
-            Inquiry_Woid();
+                //LOTGRID 재조회 및 버튼과 라벨 표시
+                Inquiry_Lot();
+                Inquiry_Woid();
 
-            if (SL010_QTY < need_siloQty)
-            {
-                MessageBox.Show("배합량이 부족합니다.");
-                Timer_Stop();
-            }
-            
-            if (stop_timer_flag == 1)
-            {
-                Timer_Stop();
-                STBTN_Visible();
+                if (SL010_QTY < need_siloQty)
+                {
+                    MessageBox.Show("배합량이 부족합니다.");
+                    Timer_Stop();
+                }
+
+                if (stop_timer_flag == 1)
+                {
+                    Timer_Stop();
+                    STBTN_Visible();
+                }
             }
         }
 

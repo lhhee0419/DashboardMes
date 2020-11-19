@@ -419,7 +419,7 @@
             this.STOP_BTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("STOP_BTN.BackgroundImage")));
             this.STOP_BTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.STOP_BTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.STOP_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.STOP_BTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.STOP_BTN.ForeColor = System.Drawing.Color.White;
             this.STOP_BTN.Location = new System.Drawing.Point(720, 120);
             this.STOP_BTN.Name = "STOP_BTN";
