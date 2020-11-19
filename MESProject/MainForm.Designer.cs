@@ -97,9 +97,9 @@
             // MaterialBtn
             // 
             this.MaterialBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.MaterialBtn.Location = new System.Drawing.Point(459, 699);
+            this.MaterialBtn.Location = new System.Drawing.Point(517, 699);
             this.MaterialBtn.Name = "MaterialBtn";
-            this.MaterialBtn.Size = new System.Drawing.Size(213, 97);
+            this.MaterialBtn.Size = new System.Drawing.Size(229, 97);
             this.MaterialBtn.TabIndex = 57;
             this.MaterialBtn.Text = "원재료 재고 관리";
             this.MaterialBtn.UseVisualStyleBackColor = true;
@@ -109,9 +109,9 @@
             // 
             this.logoutbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.logoutbtn.Location = new System.Drawing.Point(1316, 698);
+            this.logoutbtn.Location = new System.Drawing.Point(1296, 699);
             this.logoutbtn.Name = "logoutbtn";
-            this.logoutbtn.Size = new System.Drawing.Size(213, 97);
+            this.logoutbtn.Size = new System.Drawing.Size(229, 97);
             this.logoutbtn.TabIndex = 56;
             this.logoutbtn.Text = "로그아웃";
             this.logoutbtn.UseVisualStyleBackColor = true;
@@ -157,9 +157,9 @@
             // WoLogBtn
             // 
             this.WoLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.WoLogBtn.Location = new System.Drawing.Point(241, 699);
+            this.WoLogBtn.Location = new System.Drawing.Point(270, 699);
             this.WoLogBtn.Name = "WoLogBtn";
-            this.WoLogBtn.Size = new System.Drawing.Size(213, 97);
+            this.WoLogBtn.Size = new System.Drawing.Size(229, 97);
             this.WoLogBtn.TabIndex = 49;
             this.WoLogBtn.Text = "작업일지";
             this.WoLogBtn.UseVisualStyleBackColor = true;
@@ -170,7 +170,7 @@
             this.WostBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
             this.WostBtn.Location = new System.Drawing.Point(23, 699);
             this.WostBtn.Name = "WostBtn";
-            this.WostBtn.Size = new System.Drawing.Size(213, 97);
+            this.WostBtn.Size = new System.Drawing.Size(229, 97);
             this.WostBtn.TabIndex = 48;
             this.WostBtn.Text = "작업시작";
             this.WostBtn.UseVisualStyleBackColor = true;

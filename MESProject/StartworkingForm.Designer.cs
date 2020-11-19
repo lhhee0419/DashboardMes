@@ -123,30 +123,30 @@
             // 
             // FaultyBtn
             // 
-            this.FaultyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.FaultyBtn.Location = new System.Drawing.Point(311, 722);
+            this.FaultyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F);
+            this.FaultyBtn.Location = new System.Drawing.Point(311, 716);
             this.FaultyBtn.Name = "FaultyBtn";
             this.FaultyBtn.Size = new System.Drawing.Size(137, 86);
             this.FaultyBtn.TabIndex = 26;
-            this.FaultyBtn.Text = "불량 등록";
+            this.FaultyBtn.Text = "불량\r\n등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
             this.FaultyBtn.Click += new System.EventHandler(this.FaultyBtn_Click);
             // 
             // LotDelBtn
             // 
-            this.LotDelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.LotDelBtn.Location = new System.Drawing.Point(167, 722);
+            this.LotDelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F);
+            this.LotDelBtn.Location = new System.Drawing.Point(167, 716);
             this.LotDelBtn.Name = "LotDelBtn";
             this.LotDelBtn.Size = new System.Drawing.Size(137, 86);
             this.LotDelBtn.TabIndex = 25;
-            this.LotDelBtn.Text = "LOT 삭제";
+            this.LotDelBtn.Text = "LOT\r\n삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
             this.LotDelBtn.Click += new System.EventHandler(this.LotDelBtn_Click);
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.ExitBtn.Location = new System.Drawing.Point(1389, 722);
+            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F);
+            this.ExitBtn.Location = new System.Drawing.Point(1389, 716);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(148, 86);
             this.ExitBtn.TabIndex = 24;
@@ -156,23 +156,23 @@
             // 
             // EndBtn
             // 
-            this.EndBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.EndBtn.Location = new System.Drawing.Point(1230, 722);
+            this.EndBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F);
+            this.EndBtn.Location = new System.Drawing.Point(1230, 716);
             this.EndBtn.Name = "EndBtn";
             this.EndBtn.Size = new System.Drawing.Size(148, 86);
             this.EndBtn.TabIndex = 23;
-            this.EndBtn.Text = "작업종료";
+            this.EndBtn.Text = "작업\r\n종료";
             this.EndBtn.UseVisualStyleBackColor = true;
             this.EndBtn.Click += new System.EventHandler(this.EndBtn_Click);
             // 
             // LotaddBtn
             // 
-            this.LotaddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.LotaddBtn.Location = new System.Drawing.Point(25, 722);
+            this.LotaddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19F);
+            this.LotaddBtn.Location = new System.Drawing.Point(25, 716);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(137, 86);
             this.LotaddBtn.TabIndex = 21;
-            this.LotaddBtn.Text = "LOT 추가";
+            this.LotaddBtn.Text = "LOT\r\n추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
             this.LotaddBtn.Click += new System.EventHandler(this.LotaddBtn_Click);
             // 
@@ -185,7 +185,7 @@
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(617, 603);
+            this.LotGrid.Size = new System.Drawing.Size(617, 590);
             this.LotGrid.TabIndex = 20;
             // 
             // WoGrid
@@ -850,6 +850,7 @@
             this.Controls.Add(this.LotaddBtn);
             this.Controls.Add(this.LotGrid);
             this.Controls.Add(this.WoGrid);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Startworking";
             this.Text = "sForm1";
