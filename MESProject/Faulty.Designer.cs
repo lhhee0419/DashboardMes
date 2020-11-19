@@ -38,6 +38,7 @@
             this.D_STED = new System.Windows.Forms.RadioButton();
             this.D_color = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.D_EQPTERROR = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.LotID_Grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -150,6 +151,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.D_EQPTERROR);
             this.groupBox1.Controls.Add(this.D_color);
             this.groupBox1.Controls.Add(this.D_STED);
             this.groupBox1.Controls.Add(this.D_Scratch);
@@ -162,6 +164,18 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "불량요인 선택";
+            // 
+            // D_EQPTERROR
+            // 
+            this.D_EQPTERROR.AutoSize = true;
+            this.D_EQPTERROR.Location = new System.Drawing.Point(32, 296);
+            this.D_EQPTERROR.Name = "D_EQPTERROR";
+            this.D_EQPTERROR.Size = new System.Drawing.Size(151, 28);
+            this.D_EQPTERROR.TabIndex = 6;
+            this.D_EQPTERROR.TabStop = true;
+            this.D_EQPTERROR.Text = "설비오작동";
+            this.D_EQPTERROR.UseVisualStyleBackColor = true;
+            this.D_EQPTERROR.Click += new System.EventHandler(this.D_EQPTERROR_Click);
             // 
             // Faulty
             // 
@@ -204,5 +218,6 @@
         private System.Windows.Forms.RadioButton D_STED;
         private System.Windows.Forms.RadioButton D_color;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton D_EQPTERROR;
     }
 }

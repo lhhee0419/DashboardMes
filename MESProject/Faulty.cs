@@ -58,6 +58,7 @@ namespace MESProject
             //LotID_Grid 쿼리
             string LotId_Grid_Data = $"SELECT " +
                                         $"LOTID" +
+                                        $",EQPTID" +
                                         $",LOTSTDTTM" +
                                         $",LOTEDDTTM " +
                                      $"FROM LOT L, WORKORDER W " +
@@ -69,12 +70,23 @@ namespace MESProject
 
             // Common.SetColumnWidth(LotID_Grid, 3, 130);
             //컬럼명
+            //if (LotID_Grid.Rows.Count > 0)
+            //{
+            //    LotID_Grid.Columns[0].HeaderText = "LOT코드";
+            //    LotID_Grid.Columns[1].HeaderText = "시작시간";
+            //    LotID_Grid.Columns[2].HeaderText = "종료시간";
+            //}
             if (LotID_Grid.Rows.Count > 0)
             {
-                LotID_Grid.Columns[0].HeaderText = "LOT코드";
-                LotID_Grid.Columns[1].HeaderText = "시작시간";
-                LotID_Grid.Columns[2].HeaderText = "종료시간";
+                string[] header = new string[] { "LOT코드", "설비코드", "시작시간", "종료시간"};
+                for (int i = 0; i < header.Length; i++)
+                {
+                    LotID_Grid.Columns[i].HeaderText = $"{header[i]}";
+                    LotID_Grid.Columns[i].ReadOnly = true;
+
+                }
             }
+            LotID_Grid.RowTemplate.Height = 55;
             // datagridview 첫 번째 위치에 checkbox 추가
             DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
             checkBoxColumn.HeaderText = "";
@@ -114,10 +126,6 @@ namespace MESProject
         
         
         //각 라디오버튼 클릭함수
-        private void D_color_Click(object sender, EventArgs e)
-        {
-            RadClick(sender, e, "색상불량", "DF004");
-        }
        
         private void D_Crack_Click(object sender, EventArgs e)
         {
@@ -133,6 +141,15 @@ namespace MESProject
         {
             RadClick(sender, e, "기스", "DF003");
         }
+        private void D_color_Click(object sender, EventArgs e)
+        {
+            RadClick(sender, e, "색상불량", "DF004");
+        }
+        private void D_EQPTERROR_Click(object sender, EventArgs e)
+        {
+            RadClick(sender, e, "설비오작동", "DF006");
+        }
+
 
         private void CheckBtn_Click(object sender, EventArgs e)
         {

@@ -76,6 +76,7 @@
             this.PWDtextBox.Font = new System.Drawing.Font("굴림", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.PWDtextBox.Location = new System.Drawing.Point(470, 309);
             this.PWDtextBox.Name = "PWDtextBox";
+            this.PWDtextBox.PasswordChar = '*';
             this.PWDtextBox.Size = new System.Drawing.Size(200, 45);
             this.PWDtextBox.TabIndex = 3;
             this.PWDtextBox.Text = "1";

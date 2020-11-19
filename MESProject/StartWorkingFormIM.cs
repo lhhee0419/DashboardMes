@@ -31,7 +31,7 @@ namespace MESProject
         bool isMove;
         Point fpt;
         string LAST_LOTID;
-        int need_siloQty = 50;
+        int need_siloQty = 10;
         Size orj_sm1_1, orj_sm1_2, orj_sm1_3, orj_sm2_1, orj_sm2_2, orj_sm2_3;
         int stop_timer_flag = 0;
 
@@ -55,7 +55,7 @@ namespace MESProject
             clear_Color_all();
             STOP_BTN.Enabled = false;
             //1,2호기의 버튼과 라벨을 보기위해 EQPTID 초기화
-            EQPTID = "";
+            //EQPTID = "";
             //실시간 타이머 설정
             System.Windows.Forms.Timer DatetimeTimer = new System.Windows.Forms.Timer();
             DatetimeTimer.Interval = 1000;
@@ -187,9 +187,10 @@ namespace MESProject
         {
 
             Random random = new Random();
-            int TEMP = random.Next(100, 150);
-
-            string INSERT_TEMP = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
+            int TEMP = random.Next(180, 250);
+            if(EQPTID != null && LAST_LOTID != null)
+            {
+                string INSERT_TEMP = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
                                                              $" LOTID," +
                                                              $" EQPTITEMID," +
                                                              $" EQPTITEMVALUE," +
@@ -200,30 +201,37 @@ namespace MESProject
                                                              $" 'ED001'," +
                                                              $" '{TEMP}'," +
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
-            Common.DB_Connection(INSERT_TEMP);
+                Common.DB_Connection(INSERT_TEMP);
+            }
+            
         }
         private void EQPTDATA_PRESS()
         {
             Random random = new Random();
-            int PRESS = random.Next(150, 180);
-
-            string INSERT_PRESS = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
-                                                             $" LOTID," +
-                                                             $" EQPTITEMID," +
-                                                             $" EQPTITEMVALUE," +
-                                                             $" EQPTITEMDTTM)" +
-                                                             $" VALUES(" +
-                                                             $" '{EQPTID}'," +
-                                                             $" '{LAST_LOTID}'," +  //LOTID
-                                                             $" 'ED002'," +
-                                                             $" '{PRESS}'," +
-                                                             $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
-            Common.DB_Connection(INSERT_PRESS);
+            int PRESS = random.Next(700,1050);
+            if (EQPTID != null && LAST_LOTID != null)
+            {
+                string INSERT_PRESS = $"INSERT INTO EQPTDATACOLLECT (EQPTID," +
+                                                            $" LOTID," +
+                                                            $" EQPTITEMID," +
+                                                            $" EQPTITEMVALUE," +
+                                                            $" EQPTITEMDTTM)" +
+                                                            $" VALUES(" +
+                                                            $" '{EQPTID}'," +
+                                                            $" '{LAST_LOTID}'," +  //LOTID
+                                                            $" 'ED002'," +
+                                                            $" '{PRESS}'," +
+                                                            $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
+                Common.DB_Connection(INSERT_PRESS);
+            }
         }
         private void Update_EQPTStats(string stats)
         {
-            string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = '{stats}' WHERE E.EQPTID ='{EQPTID}'";
-            Common.DB_Connection(Update_EQPTSTATS);
+            if(EQPTID != null)
+            {
+                string Update_EQPTSTATS = $"UPDATE EQUIPMENT E SET E.EQPTSTATS = '{stats}' WHERE E.EQPTID ='{EQPTID}'";
+                Common.DB_Connection(Update_EQPTSTATS);
+            }
         }
         private void ProdQty_FormLoad(string Equipment_ID, Label ProdQty_Name)
         {
@@ -281,6 +289,8 @@ namespace MESProject
             Faulty faulty = new Faulty(Selected_woid);
             faulty.Owner = this;
             faulty.ShowDialog();
+            Inquiry_Lot();
+            Inquiry_Woid();
         }
         
         private void EndBtn_Click(object sender, EventArgs e)
@@ -346,7 +356,6 @@ namespace MESProject
             stop_timer_flag = 0;
 
             timer1.Interval = 1000;
-            timer1.Start();
             string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
             DataTable dataTable4 = Common.DB_Connection(SELECT_SL010);
             int SILO_CURRQTY = Convert.ToInt32(dataTable4.Rows[0][0].ToString());
@@ -355,10 +364,13 @@ namespace MESProject
                 IM1_STBtn.Enabled = false;
                 IM2_STBtn.Enabled = false;
                 STOP_BTN.Enabled = true;
+                timer1.Start();
             }
             else
             {
                 MessageBox.Show("배합량이 부족합니다.");
+                IM1_STBtn.Enabled = false;
+                IM2_STBtn.Enabled = false;
                 Timer_Stop();
             }
         }
@@ -372,93 +384,112 @@ namespace MESProject
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Interval = 9000;
+
             //사일로 현재량 MINUS
             string SILO1_CURRQTY_MINUS = $"UPDATE STORE_STORAGE SET CURRQTY = CURRQTY - {need_siloQty} WHERE STORID = '{silo010}'";
             Common.DB_Connection(SILO1_CURRQTY_MINUS);
 
             string SELECT_SL010 = $"SELECT CURRQTY FROM STORE_STORAGE WHERE STORID = '{silo010}'";
-            DataTable dataTable4 = Common.DB_Connection(SELECT_SL010);
-            string SILO_CURRQTY = dataTable4.Rows[0][0].ToString();
+            DataTable dataTable1 = Common.DB_Connection(SELECT_SL010);
+            string SILO_CURRQTY = dataTable1.Rows[0][0].ToString();
             SL010_CURRQTY.Text = "저장량 : " + SILO_CURRQTY;
             int SL010_QTY = Convert.ToInt32(SILO_CURRQTY);
 
             //Silo 재고량 재조회
             Select_Silo_Qty();
 
-            // 1호기 일경우 1호기 라벨 백컬러를 사용.
-            if (EQPTID == "IM001")
+            if(EQPTID != null)
             {
-                IM1_Ani_();
-                B_Backcolor(IM1_1, IM1_2, IM1_3, IM1_4);
+                // 1호기 일경우 1호기 라벨 백컬러를 사용.
+                if (EQPTID == "IM001")
+                {
+                    IM1_Ani_();
+                    B_Backcolor(IM1_1, IM1_2, IM1_3, IM1_4);
+                }
+                else if (EQPTID == "IM002")
+                {
+                    IM2_Ani_();
+                    B_Backcolor(IM2_1, IM2_2, IM2_3, IM2_4);
+                }
+
+                //LOT생성
+                string IM_lotCreate = $"INSERT INTO LOT( \n" +
+                                                $"LOTID  \n" +
+                                                $", LOTSTAT \n" +
+                                                $", LOTCRDTTM \n" +
+                                                $", LOTSTDTTM \n" +
+                                                $", WOID \n" +
+                                                $", LOTCRQTY \n" +
+                                                $", LOTQTY \n" +
+                                                $", EQPTID \n" +
+                                                $", PROCID \n" +
+                                                $", INSUSER \n" +
+                                                $", INSDTTM) \n" +
+                                            $"VALUES \n" +
+                                            $"((SELECT 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || TO_CHAR(LAST_SEQ + 1, 'FM0000') " +
+                                            $"FROM(SELECT NVL(MAX(SUBSTR(LOTID, -4)), 0) LAST_SEQ " +
+                                            $"FROM LOT " +
+                                            $"WHERE LOTID LIKE 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '%'))\n" +
+                                            $",'S' \n" +
+                                            $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
+                                            $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
+                                            $",'{Selected_woid}' \n" +
+                                            $",1 \n" +
+                                            $",1 \n" +
+                                            $",'{EQPTID}' \n" +
+                                            $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{Selected_woid}') \n" +
+                                            $",'{userid}' \n" +
+                                            $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
+                Common.DB_Connection(IM_lotCreate);
+
+                string last_LOTID = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY LOTID DESC) WHERE ROWNUM = 1";
+                DataTable dataTable2 = Common.DB_Connection(last_LOTID);
+                LAST_LOTID = dataTable2.Rows[0][0].ToString();
+
+                Inquiry_Lot();
+                Inquiry_Woid();
+                EQPTDATA_TEMP();
+                EQPTDATA_PRESS();
+
+                string Select_Temp = $"SELECT EQPTITEMVALUE FROM EQPTDATACOLLECT WHERE LOTID = '{LAST_LOTID}' AND EQPTITEMID = 'ED001'";
+                DataTable dataTable3 = Common.DB_Connection(Select_Temp);
+                int select_temp =Convert.ToInt32(dataTable3.Rows[0][0].ToString());
+
+                string Select_Press = $"SELECT EQPTITEMVALUE FROM EQPTDATACOLLECT WHERE LOTID = '{LAST_LOTID}' AND EQPTITEMID = 'ED002'";
+                DataTable dataTable4 = Common.DB_Connection(Select_Press);
+                int select_press = Convert.ToInt32(dataTable4.Rows[0][0].ToString());
+
+                if (select_temp > 240 || select_press > 1000)
+                {
+                    string add_defectlot = $"INSERT INTO DEFECTLOT(DEFECT_LOTID,DEFECT_QTY,DEFECT_DTTM,DEFECTID) VALUES ('{LAST_LOTID}',1,TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'),'DF006')";
+                    Common.DB_Connection(add_defectlot);
+                }
+
+                //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
+                Delay(1000);
+
+                //LOT EDDTTM 업데이트
+
+                string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{LAST_LOTID}'";
+                Common.DB_Connection(UPDATE_LOT_EDDTTM);
+
+            
+
+                //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
+                string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
+                                            $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
+                                            $" WOID = '{Selected_woid}'";
+                DataTable dataTable5 = Common.DB_Connection(IM_PRODQTY_VALUE);
+
+                if (EQPTID == "IM001")
+                {
+                    IM1_ProdQty_Value.Text = $"{dataTable5.Rows[0][0].ToString()} EA";
+                }
+                else if (EQPTID == "IM002")
+                {
+                    IM2_ProdQty_Value.Text = $"{dataTable5.Rows[0][0].ToString()} EA";
+                }
             }
-            else if (EQPTID == "IM002")
-            {
-                IM2_Ani_();
-                B_Backcolor(IM2_1, IM2_2, IM2_3, IM2_4);
-            }
-
-            //LOT생성
-            string IM_lotCreate = $"INSERT INTO LOT( \n" +
-                                            $"LOTID  \n" +
-                                            $", LOTSTAT \n" +
-                                            $", LOTCRDTTM \n" +
-                                            $", LOTSTDTTM \n" +
-                                            $", WOID \n" +
-                                            $", LOTCRQTY \n" +
-                                            $", LOTQTY \n" +
-                                            $", EQPTID \n" +
-                                            $", PROCID \n" +
-                                            $", INSUSER \n" +
-                                            $", INSDTTM) \n" +
-                                        $"VALUES \n" +
-                                        $"((SELECT 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || TO_CHAR(LAST_SEQ + 1, 'FM0000') " +
-                                        $"FROM(SELECT NVL(MAX(SUBSTR(LOTID, -4)), 0) LAST_SEQ " +
-                                        $"FROM LOT " +
-                                        $"WHERE LOTID LIKE 'L' || TO_CHAR(SYSDATE, 'YYYYMMDD') || '%'))\n" +
-                                        $",'S' \n" +
-                                        $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
-                                        $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
-                                        $",'{Selected_woid}' \n" +
-                                        $",1 \n" +
-                                        $",1 \n" +
-                                        $",'{EQPTID}' \n" +
-                                        $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{Selected_woid}') \n" +
-                                        $",'{userid}' \n" +
-                                        $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS')) \n";
-            Common.DB_Connection(IM_lotCreate);
-
-            string last_LOTID = $"SELECT LOTID FROM (SELECT * FROM LOT WHERE WOID = '{Selected_woid}' ORDER BY LOTID DESC) WHERE ROWNUM = 1";
-            DataTable dataTable1 = Common.DB_Connection(last_LOTID);
-            LAST_LOTID = dataTable1.Rows[0][0].ToString();
-
-            Inquiry_Lot();
-            Inquiry_Woid();
-            EQPTDATA_TEMP();
-            EQPTDATA_PRESS();
-
-            //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-            Delay(1000);
-
-            //LOT EDDTTM 업데이트
-
-            string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{LAST_LOTID}'";
-            Common.DB_Connection(UPDATE_LOT_EDDTTM);
-
-            //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
-            string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
-                                        $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
-                                        $" WOID = '{Selected_woid}'";
-            DataTable dataTable2 = Common.DB_Connection(IM_PRODQTY_VALUE);
-
-            if (EQPTID == "IM001")
-            {
-                IM1_ProdQty_Value.Text = $"{dataTable2.Rows[0][0].ToString()} EA";
-            }
-            else if (EQPTID == "IM002")
-            {
-                IM2_ProdQty_Value.Text = $"{dataTable2.Rows[0][0].ToString()} EA";
-            }
-
             //DB에 WORKORDER_PRODQTY 업데이트
             string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
                                         $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
@@ -470,7 +501,6 @@ namespace MESProject
             //LOTGRID 재조회 및 버튼과 라벨 표시
             Inquiry_Lot();
             Inquiry_Woid();
-            STBTN_Visible();
 
             if (SL010_QTY < need_siloQty)
             {
