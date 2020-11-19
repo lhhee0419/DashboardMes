@@ -49,7 +49,7 @@ namespace MESProject
             //LotID_Grid 쿼리
             string LotId_Grid_Data = $"SELECT " +
                                         $"LOTID" +
-                                        $",EQPTID" +
+                                        $",EQPTID"+
                                         $",LOTSTDTTM" +
                                         $",LOTEDDTTM " +
                                      $"FROM LOT L, WORKORDER W " +
@@ -58,23 +58,26 @@ namespace MESProject
                                          $"AND L.LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT) " +
                                          $"AND LOTSTAT <>'D'";
             Common.DB_Connection(LotId_Grid_Data, LotID_Grid);
-
-            // Common.SetColumnWidth(LotID_Grid, 3, 130);
-            //컬럼명
-            if (LotID_Grid.Rows.Count > 0)
-            {
-                LotID_Grid.Columns[0].HeaderText = "LOT코드";
-                LotID_Grid.Columns[1].HeaderText = "설비코드";
-                LotID_Grid.Columns[2].HeaderText = "시작시간";
-                LotID_Grid.Columns[3].HeaderText = "종료시간";
-            }
+         
             // datagridview 첫 번째 위치에 checkbox 추가
             DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
             checkBoxColumn.HeaderText = "";
             checkBoxColumn.Width = 3;
             checkBoxColumn.Name = "checkBoxColumn";
             LotID_Grid.Columns.Insert(0, checkBoxColumn);
-            Common.SetColumnWidth(LotID_Grid, 0, 30);
+
+            //컬럼폭, 컬럼명 지정
+            int[] Columns_Width = new int[] { 30, 170, 100, 230,230 };
+            string[] Columns_header = new string[] {"", "LOT코드" , "설비코드" , "시작시간", "종료시간" };
+            if(LotID_Grid.RowCount >0)
+            {   
+                for(int i=0;i<Columns_Width.Length;i++)
+                {
+                    Common.SetColumnWidth(LotID_Grid, i, Columns_Width[i]);
+                    LotID_Grid.Columns[i].HeaderText = Columns_header[i];
+                }
+                   
+            }
         }
         private void RadClick(object sender, EventArgs e, string name, string code)
         {

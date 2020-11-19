@@ -25,7 +25,6 @@ namespace MESProject
             Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-           // Grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             Grid.Font = new Font("Fixsys", 15, FontStyle.Regular);
 
         }
