@@ -31,7 +31,6 @@
             this.CheckBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LotID_Grid = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.D_Name1 = new System.Windows.Forms.RadioButton();
             this.D_Name3 = new System.Windows.Forms.RadioButton();
@@ -79,16 +78,6 @@
             this.LotID_Grid.Size = new System.Drawing.Size(902, 400);
             this.LotID_Grid.TabIndex = 2;
             this.LotID_Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LotID_Grid_CellClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
-            this.label1.Location = new System.Drawing.Point(160, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 32);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "LOT ID";
             // 
             // label2
             // 
@@ -185,7 +174,6 @@
             this.ClientSize = new System.Drawing.Size(1280, 623);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.LotID_Grid);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.CheckBtn);
@@ -211,7 +199,6 @@
         private System.Windows.Forms.Button CheckBtn;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.DataGridView LotID_Grid;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton D_Name1;
         private System.Windows.Forms.RadioButton D_Name3;
