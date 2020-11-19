@@ -105,12 +105,6 @@
     <Compile Include="StartWorkingFormIM.Designer.cs">
       <DependentUpon>StartWorkingFormIM.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stopworking.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Stopworking.Designer.cs">
-      <DependentUpon>Stopworking.cs</DependentUpon>
-    </Compile>
     <Compile Include="WorkLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,9 +141,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartWorkingFormIM.resx">
       <DependentUpon>StartWorkingFormIM.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Stopworking.resx">
-      <DependentUpon>Stopworking.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WorkLog.resx">
       <DependentUpon>WorkLog.cs</DependentUpon>
