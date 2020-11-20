@@ -126,6 +126,7 @@
             this.ProcCombo.Size = new System.Drawing.Size(150, 39);
             this.ProcCombo.TabIndex = 54;
             this.ProcCombo.Visible = false;
+            this.ProcCombo.SelectedIndexChanged += new System.EventHandler(this.ProcCombo_SelectedIndexChanged);
             // 
             // label1
             // 

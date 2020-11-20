@@ -101,7 +101,7 @@ namespace MESProject
             }
            catch(Exception e)
             {
-
+                MessageBox.Show(e.Message);
             }
 
         }
@@ -119,7 +119,7 @@ namespace MESProject
                                             $",P.PRODNAME \n " +
                                             $",CASE WOSTAT WHEN 'P' THEN '대기'  WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
                                             $",W.PLANQTY \n" +
-                                            $",NVL(SUM(L.LOTQTY), 0) \n" +
+                                            $",W.PRODQTY \n" +
                                             $",COUNT(D.DEFECT_LOTID) AS 불량수량 \n" +
                                             $",W.PLANDTTM \n" +
                                             $",W.ETC \n " +
@@ -130,7 +130,7 @@ namespace MESProject
                                         $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
                                             $"AND W.PROCID = 'P0001' \n" +
                                             $"OR (W.PROCID = 'P0001' AND W.WOSTAT ='S') \n" +
-                                        $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PLANDTTM, W.ETC \n" +
+                                        $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY,W.PLANDTTM, W.ETC \n" +
                                         $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) ,W.WOID\n";
                 Common.DB_Connection(select_wo_mix, WoGrid);
 
@@ -153,7 +153,7 @@ namespace MESProject
                                                 $",P.PRODNAME \n " +
                                                 $",CASE WOSTAT WHEN 'P' THEN '대기'  WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
                                                 $",W.PLANQTY \n" +
-                                                $",NVL(SUM(L.LOTQTY), 0) \n" +
+                                                $",W.PRODQTY  \n" +
                                                 $",COUNT(D.DEFECT_LOTID) AS 불량수량 \n" +
                                                 $",W.PLANDTTM \n" +
                                                 $",W.ETC \n " +
@@ -164,7 +164,7 @@ namespace MESProject
                                             $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
                                                 $"AND W.PROCID = 'P0002' \n" +
                                                 $"OR (W.PROCID = 'P0002' AND W.WOSTAT ='S') \n" +
-                                            $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PLANDTTM, W.ETC \n" +
+                                            $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY,W.PLANDTTM, W.ETC \n" +
                                             $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) ,W.WOID\n";
                 Common.DB_Connection(select_wo_injection, WoGrid);
 
@@ -333,6 +333,11 @@ namespace MESProject
             //원재료재고관리
             MaterialStock materialStockForm = new MaterialStock();
             materialStockForm.ShowDialog();
+        }
+
+        private void ProcCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataSearch();
         }
     }
 }

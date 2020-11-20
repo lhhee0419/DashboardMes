@@ -129,7 +129,7 @@ namespace MESProject
                                            $",P.PRODNAME \n" +
                                            $",CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
                                            $",W.PLANQTY \n" +
-                                           $",NVL(SUM(L.LOTQTY), 0) AS 생산수량 \n" +
+                                           $",W.PRODQTY  \n" +
                                            $",COUNT(D.DEFECT_LOTID) \n" +
                                            $",W.WOSTDTTM \n" +
                                            $",W.WOEDDTTM \n" +
@@ -159,7 +159,7 @@ namespace MESProject
                                                $",P.PRODNAME \n" +
                                                $",CASE W.WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END AS WOSTAT \n" +
                                                $",W.PLANQTY \n" +
-                                               $",NVL(SUM(L.LOTQTY), 0) AS 생산수량 \n" +
+                                               $",W.PRODQTY  \n" +
                                                $",COUNT(D.DEFECT_LOTID) \n" +
                                                $",W.WOSTDTTM \n" +
                                                $",W.WOEDDTTM \n" +
