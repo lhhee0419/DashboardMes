@@ -71,7 +71,7 @@ namespace MESProject
                                          $", INSDTTM) \n" +
                                         $"VALUES \n" +
                                         $"((SELECT 'L' || TO_CHAR(TO_NUMBER(TO_CHAR(SYSDATE, 'YYYYMMDD') || NVL(TO_CHAR(MAX(SUBSTR(LOTID, 10))), 'FM0000')) + 1) FROM LOT) \n" +
-                                        $",'C' \n" +
+                                        $",'E' \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +

@@ -34,7 +34,7 @@ namespace MESProject
         int need_siloQty = 10;
         Size orj_sm1_1, orj_sm1_2, orj_sm1_3, orj_sm2_1, orj_sm2_2, orj_sm2_3;
         int stop_timer_flag = 0;
-
+        Random random = new Random();
 
         public StartWorkingFormIM()
         {
@@ -126,7 +126,7 @@ namespace MESProject
                                     $",P.PRODNAME  \n" +
                                     $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END \n" +
                                     $",W.PLANQTY \n" +
-                                    $",NVL(SUM(L.LOTQTY), 0) \n" +
+                                    $",W.PRODQTY \n" +
                                     $",COUNT(D.DEFECT_LOTID) \n" +
                                     $",W.PLANDTTM \n" +
                                     $",W.WOSTDTTM \n" +
@@ -135,7 +135,7 @@ namespace MESProject
                                     $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID \n" +
                                     $"LEFT JOIN LOT L ON W.WOID = L.WOID AND L.LOTSTAT <> 'D'\n" +
                                     $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
-                                $"WHERE W.WOID = '{Selected_woid}'  \n" +
+                                $"WHERE W.WOID = '{Selected_woid}' \n" +
                                 $"GROUP BY P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC  \n";
             Common.DB_Connection(select_wo, WoGrid);
             if (WoGrid.Rows.Count > 0)
@@ -145,7 +145,6 @@ namespace MESProject
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
                     WoGrid.Columns[i].ReadOnly = true;
-
                 }
             }
             WoGrid.RowTemplate.Height = 55;
@@ -185,8 +184,6 @@ namespace MESProject
 
         private void EQPTDATA_TEMP()
         {
-
-            Random random = new Random();
             int TEMP = random.Next(180, 250);
             if(EQPTID != null && LAST_LOTID != null)
             {
@@ -207,7 +204,6 @@ namespace MESProject
         }
         private void EQPTDATA_PRESS()
         {
-            Random random = new Random();
             int PRESS = random.Next(700,1050);
             if (EQPTID != null && LAST_LOTID != null)
             {
@@ -245,6 +241,11 @@ namespace MESProject
             ProdQty_Name.Text = $"{N_PRODQTY_VALUE} EA";
 
         }
+        private void StartWorkingFormIM_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            stop_timer_flag = 1;
+        }
+
         //----------------------------------------------------------------------------------------------------------------------
         //------------------------------------------------------------------버튼------------------------------------------------
         //----------------------------------------------------------------------------------------------------------------------
@@ -369,8 +370,8 @@ namespace MESProject
             else
             {
                 MessageBox.Show("배합량이 부족합니다.");
-                IM1_STBtn.Enabled = false;
-                IM2_STBtn.Enabled = false;
+                IM1_STBtn.Enabled = true;
+                IM2_STBtn.Enabled = true;
                 Timer_Stop();
             }
         }
@@ -475,6 +476,8 @@ namespace MESProject
 
                 }
 
+                Create_Lot_Label.BackColor = Color.Yellow;
+                Create_Lot_Label.Visible = true;
                 //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
                 Delay(1000);
 
@@ -501,12 +504,15 @@ namespace MESProject
                 }
                 //DB에 WORKORDER_PRODQTY 업데이트
                 string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
-                                            $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
-                                            $"WHERE " +
-                                            $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D') " +
-                                            $"WHERE WOID = '{Selected_woid}'";
+                                           $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
+                                           $"WHERE " +
+                                           $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D' AND " +
+                                           $"LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT))" +
+                                           $"WHERE WOID = '{Selected_woid}'";
+                                           
                 Common.DB_Connection(UPDATE_WO_PRODQTY);
 
+                Create_Lot_Label.BackColor = Color.White;
                 //LOTGRID 재조회 및 버튼과 라벨 표시
                 Inquiry_Lot();
                 Inquiry_Woid();
@@ -575,6 +581,7 @@ namespace MESProject
             pBox.Width = 0;
             pBox.Height = 0;
         }
+
         private void clear_Color_all()
         {
             clear_Color(sm1_1);

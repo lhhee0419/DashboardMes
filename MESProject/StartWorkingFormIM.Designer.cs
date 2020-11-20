@@ -66,6 +66,7 @@
             this.sm2_1 = new System.Windows.Forms.PictureBox();
             this.sm2_2 = new System.Windows.Forms.PictureBox();
             this.sm2_3 = new System.Windows.Forms.PictureBox();
+            this.Create_Lot_Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1)).BeginInit();
@@ -484,6 +485,19 @@
             this.sm2_3.TabIndex = 91;
             this.sm2_3.TabStop = false;
             // 
+            // Create_Lot_Label
+            // 
+            this.Create_Lot_Label.AutoSize = true;
+            this.Create_Lot_Label.BackColor = System.Drawing.Color.White;
+            this.Create_Lot_Label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Create_Lot_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Lot_Label.Location = new System.Drawing.Point(696, 728);
+            this.Create_Lot_Label.Name = "Create_Lot_Label";
+            this.Create_Lot_Label.Size = new System.Drawing.Size(142, 38);
+            this.Create_Lot_Label.TabIndex = 66;
+            this.Create_Lot_Label.Text = "제품생산중";
+            this.Create_Lot_Label.Visible = false;
+            // 
             // StartWorkingFormIM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -510,6 +524,7 @@
             this.Controls.Add(this.IM1);
             this.Controls.Add(this.IM2);
             this.Controls.Add(this.CurTime);
+            this.Controls.Add(this.Create_Lot_Label);
             this.Controls.Add(this.IM1_ProdQty_Value);
             this.Controls.Add(this.IM2_ProdQty_Value);
             this.Controls.Add(this.IM1_ProdQty);
@@ -529,6 +544,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StartWorkingFormIM";
             this.Text = "StartWorkingFormIM";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartWorkingFormIM_FormClosing);
             this.Load += new System.EventHandler(this.StartWorkingFormIM_Load);
             this.Click += new System.EventHandler(this.STOP_BTN_Click);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
@@ -586,5 +602,6 @@
         private System.Windows.Forms.PictureBox sm2_1;
         private System.Windows.Forms.PictureBox sm2_2;
         private System.Windows.Forms.PictureBox sm2_3;
+        private System.Windows.Forms.Label Create_Lot_Label;
     }
 }

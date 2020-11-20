@@ -19,7 +19,7 @@ namespace MESProject
         string Checked_defect_Lotid;
         string Unchecked_defect_Lotid;
         //라디오버튼
-        string rad = "미선택";
+        string rad = "";
         //List 선언
         List<string> lotid = new List<string>();
         Startworking startworking = new Startworking();
@@ -34,22 +34,35 @@ namespace MESProject
         }
 
         private void Faulty_Load(object sender, EventArgs e)
-        {   
+        {
             //DataGridView 디자인
             Common.SetGridDesign(LotID_Grid);
 
             string select_procid = $"SELECT PROCID FROM WORKORDER WHERE WOID='{woid}'";
-            DataTable dataTable=Common.DB_Connection(select_procid);
+            DataTable dataTable = Common.DB_Connection(select_procid);
             procid = dataTable.Rows[0][0].ToString();
             if (procid == "P0001")
             {
                 D_Name3.Text = "원재료불량";
                 D_Name4.Text = "설비 오작동";
             }
+            // datagridview 첫 번째 위치에 checkbox 추가
+            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
+            checkBoxColumn.HeaderText = "";
+            checkBoxColumn.Width = 3;
+            checkBoxColumn.Name = "checkBoxColumn";
+            LotID_Grid.Columns.Insert(0, checkBoxColumn);
+
+            Inquiry_LotGrid();
+
+        }
+
+        private void Inquiry_LotGrid()
+        {
             //LotID_Grid 쿼리
             string LotId_Grid_Data = $"SELECT " +
                                         $"LOTID" +
-                                        $",EQPTID"+
+                                        $",EQPTID" +
                                         $",LOTSTDTTM" +
                                         $",LOTEDDTTM " +
                                      $"FROM LOT L, WORKORDER W " +
@@ -58,26 +71,20 @@ namespace MESProject
                                          $"AND L.LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT) " +
                                          $"AND LOTSTAT <>'D'";
             Common.DB_Connection(LotId_Grid_Data, LotID_Grid);
-         
-            // datagridview 첫 번째 위치에 checkbox 추가
-            DataGridViewCheckBoxColumn checkBoxColumn = new DataGridViewCheckBoxColumn();
-            checkBoxColumn.HeaderText = "";
-            checkBoxColumn.Width = 3;
-            checkBoxColumn.Name = "checkBoxColumn";
-            LotID_Grid.Columns.Insert(0, checkBoxColumn);
 
             //컬럼폭, 컬럼명 지정
-            int[] Columns_Width = new int[] { 30, 170, 100, 230,230 };
-            string[] Columns_header = new string[] {"", "LOT코드" , "설비코드" , "시작시간", "종료시간" };
-            if(LotID_Grid.RowCount >0)
-            {   
-                for(int i=0;i<Columns_Width.Length;i++)
+            int[] Columns_Width = new int[] { 30, 170, 100, 230, 230 };
+            string[] Columns_header = new string[] { "", "LOT코드", "설비코드", "시작시간", "종료시간" };
+            if (LotID_Grid.RowCount > 0)
+            {
+                for (int i = 0; i < Columns_Width.Length; i++)
                 {
                     Common.SetColumnWidth(LotID_Grid, i, Columns_Width[i]);
                     LotID_Grid.Columns[i].HeaderText = Columns_header[i];
                 }
-                   
+
             }
+
         }
         private void RadClick(object sender, EventArgs e, string name, string code)
         {
@@ -159,21 +166,32 @@ namespace MESProject
             try
             {
                 //lotid에 저장된 defect_lotid 를 출력
-                foreach (string D_Lotid in lotid)
+                if (rad != "" && lotid.Count != 0)
                 {
-                    string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{rad}')";
-                    Common.DB_Connection(add_defectlot);
+                    foreach (string D_Lotid in lotid)
+                    {
+                        string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{rad}')";
+                        Common.DB_Connection(add_defectlot);
+                    }
+                    MessageBox.Show("불량 등록이 완료되었습니다.");
+                    //lotid에 저장된 리스트값 초기화
+                    lotid.RemoveAll(d => d.StartsWith("L"));
+                    Inquiry_LotGrid();
                 }
-                MessageBox.Show("불량 등록이 완료되었습니다.");
-                this.Close();
+                else if (lotid.Count == 0)
+                {
+                    MessageBox.Show("선택된 LOTID가 없습니다.");
+                }
+                else if (rad == "")
+                {
+                    MessageBox.Show("선택된 불량요인이 없습니다.");
+                }
             }
             //예외 발생
             catch(Exception E)
             {
                 MessageBox.Show(E.Message);
             }
-
-
         }
         bool isMove;
         Point fpt;
@@ -192,7 +210,6 @@ namespace MESProject
         {
             isMove = true;
             fpt = new Point(e.X, e.Y);
-
         }
 
         private void Faulty_FormClosing(object sender, FormClosingEventArgs e)
