@@ -17,9 +17,9 @@ namespace MESProject
     {
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
-        private static int time = 2000;
-        private static int delaytime = 3;
-        string Userid, Lotid, CurrQty, woid, LAST_LOTID;
+        //1200000
+        int mixing_time = 2000, delaytime = 5;
+        string Userid, Lotid, CurrQty, woid;
         int Temp, Press;
         Size orj_s1, orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
         Color Offcolor = Color.FromArgb(51, 153, 255);
@@ -54,6 +54,7 @@ namespace MESProject
             timer8.Interval = 1000;
             timer8.Start();
 
+            timer1.Interval = 3000;
             //작업지시서, LOT 조회
             Inquiry_Woid();
             Inquiry_Lot();
@@ -185,7 +186,7 @@ namespace MESProject
                                     $",P.PRODNAME  \n" +
                                     $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END \n" +
                                     $",W.PLANQTY \n" +
-                                    $",NVL(SUM(L.LOTQTY), 0) \n" +
+                                    $",W.PRODQTY \n" +
                                     $",COUNT(D.DEFECT_LOTID) \n" +
                                     $",W.PLANDTTM \n" +
                                     $",W.WOSTDTTM \n" +
@@ -254,7 +255,7 @@ namespace MESProject
                                                              $" EQPTITEMDTTM)" +
                                                              $" VALUES(" +
                                                              $" '{EQPTID}'," +
-                                                             $" '{LAST_LOTID}'," +  //LOTID
+                                                             $" '{Lotid}'," +  //LOTID
                                                              $" 'ED001'," +
                                                              $" '{TEMP}'," +
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
@@ -273,7 +274,7 @@ namespace MESProject
                                                              $" EQPTITEMDTTM)" +
                                                              $" VALUES(" +
                                                              $" '{EQPTID}'," +
-                                                             $" '{LAST_LOTID}'," +  //LOTID
+                                                             $" '{Lotid}'," +  //LOTID
                                                              $" 'ED002'," +
                                                              $" '{PRESS}'," +
                                                              $" TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'))";
@@ -354,7 +355,6 @@ namespace MESProject
             Stopbtn.Enabled = true;
             EQPTID = "MX001";
             Eqptstat_Changed("RUN");
-            SetTimer();
             Check_Store_CurrQty();
             stop_timer_flag = 0;
             timer1.Start();
@@ -368,7 +368,6 @@ namespace MESProject
             Stopbtn.Enabled = true;
             EQPTID = "MX002";
             Eqptstat_Changed("RUN");
-            SetTimer();
             Check_Store_CurrQty();
             timer1.Start();
             stop_timer_flag = 0;
@@ -430,24 +429,21 @@ namespace MESProject
                                                         $"SELECT NVL(SUM(LOTQTY),0) " +
                                                         $"FROM LOT " +
                                                         $"WHERE WOID ='{Selected_woid}' " +
-                                                        $"AND LOTSTAT <> 'D'" +
+                                                        $"AND LOTSTAT <> 'D' " +
+                                                        $"AND LOTID NOT IN(SELECT DEFECT_LOTID FROM DEFECTLOT)" +
                                                         $") " +
                                         $"WHERE WOID = '{Selected_woid}'";
             Common.DB_Connection(UPDATE_WO_PRODQTY);
 
             string DD = $"SELECT LOTID FROM LOT WHERE WOID = '{Selected_woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
             DataTable dataTable1 = Common.DB_Connection(DD);
-            LAST_LOTID = dataTable1.Rows[0][0].ToString();
+            Lotid = dataTable1.Rows[0][0].ToString();
             EQPTDATA_TEMP();
             EQPTDATA_PRESS();
             Inquiry_Lot();
             Inquiry_Woid();
         }
 
-        public void SetTimer()
-        {
-            timer1.Interval = time;
-        }
         public void StopTimer()
         {
             stop_timer_flag = 1;
@@ -506,8 +502,9 @@ namespace MESProject
             Eqptstat_Changed("DOWN");
         }
         private void timer1_Tick(object sender, EventArgs e)
-        {   
-            timer1.Interval = 10000;
+        {
+            timer1.Interval = 12000;
+            /*timer1.Interval = 1300000;*/
             try
             {
                 if (EQPTID == "MX001")
@@ -552,23 +549,22 @@ namespace MESProject
                     Mixing1_3.BackColor = Offcolor;
                     Mixing_Start1.BackColor = Oncolor;
                     Create_Lot();
-                    if (LotGrid.Rows.Count > 0)
+                    if (Lotid != null)
                     {
-                        Lotid = LotGrid.Rows[0].Cells[0].Value.ToString();
                         string eqpt_value = $"SELECT EQPTITEMID,EQPTITEMVALUE FROM EQPTDATACOLLECT WHERE LOTID= '{Lotid}'";
                         DataTable dataTable = Common.DB_Connection(eqpt_value);
                         Temp = Convert.ToInt32(dataTable.Rows[0][1].ToString());
                         Press = Convert.ToInt32(dataTable.Rows[1][1].ToString());
                     }
-                    Delay(500);
+                    Delay(mixing_time);
 
                     //배합 완료
                     Mixing_Start1.BackColor = Offcolor;
                     Mixing_End1.BackColor = Oncolor;
+                    int k = random1.Next(0, 4);
                     if (Lotid != null)
                     {
-                        int k = random1.Next(0,4);
-                        if(Temp>=145 || Press >= 155)
+                        if (Temp >= 145 || Press >= 155)
                         {
                             string Defectid = Defect[k];
                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
@@ -617,7 +613,6 @@ namespace MESProject
                     Inquiry_Lot();
                     Inquiry_Woid();
                     pass1.BackColor = Offcolor;
-
                 }
                 else if (EQPTID == "MX002")
                 {
@@ -669,7 +664,7 @@ namespace MESProject
                         Temp = Convert.ToInt32(dataTable.Rows[0][1].ToString());
                         Press = Convert.ToInt32(dataTable.Rows[1][1].ToString());
                     }
-                    Delay(500);
+                    Delay(mixing_time);
 
                     //배합 완료
                     Mixing_Start2.BackColor = Color.FromArgb(51, 153, 255);
