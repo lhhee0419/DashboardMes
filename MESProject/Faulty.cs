@@ -56,7 +56,6 @@ namespace MESProject
             Inquiry_LotGrid();
 
         }
-
         private void Inquiry_LotGrid()
         {
             //LotID_Grid 쿼리
