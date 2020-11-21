@@ -62,76 +62,76 @@
             this.silo10_Qty = new System.Windows.Forms.Label();
             this.Mixing1 = new System.Windows.Forms.Label();
             this.Mixing2 = new System.Windows.Forms.Label();
-            this.silo10 = new System.Windows.Forms.PictureBox();
-            this.MixingMachine2 = new System.Windows.Forms.PictureBox();
-            this.MixingMachine1 = new System.Windows.Forms.PictureBox();
-            this.silo3 = new System.Windows.Forms.PictureBox();
-            this.silo2 = new System.Windows.Forms.PictureBox();
-            this.silo1 = new System.Windows.Forms.PictureBox();
             this.CurDTTM = new System.Windows.Forms.Label();
             this.timer8 = new System.Windows.Forms.Timer(this.components);
-            this.Stopbtn = new System.Windows.Forms.Button();
-            this.s1 = new System.Windows.Forms.PictureBox();
-            this.s2 = new System.Windows.Forms.PictureBox();
-            this.s3 = new System.Windows.Forms.PictureBox();
-            this.p1 = new System.Windows.Forms.PictureBox();
-            this.m1 = new System.Windows.Forms.PictureBox();
-            this.m2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.silo10_gif = new System.Windows.Forms.PictureBox();
+            this.Silo3_gif = new System.Windows.Forms.PictureBox();
+            this.Silo2_gif = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.s10 = new System.Windows.Forms.PictureBox();
             this.p2 = new System.Windows.Forms.PictureBox();
             this.ms2 = new System.Windows.Forms.PictureBox();
             this.ms1 = new System.Windows.Forms.PictureBox();
+            this.m2 = new System.Windows.Forms.PictureBox();
+            this.m1 = new System.Windows.Forms.PictureBox();
+            this.p1 = new System.Windows.Forms.PictureBox();
+            this.s3 = new System.Windows.Forms.PictureBox();
+            this.s2 = new System.Windows.Forms.PictureBox();
+            this.s1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.Stopbtn = new System.Windows.Forms.Button();
+            this.silo10 = new System.Windows.Forms.PictureBox();
+            this.silo3 = new System.Windows.Forms.PictureBox();
+            this.silo2 = new System.Windows.Forms.PictureBox();
             this.MX002_gif = new System.Windows.Forms.PictureBox();
             this.MX001_gif = new System.Windows.Forms.PictureBox();
+            this.MixingMachine2 = new System.Windows.Forms.PictureBox();
+            this.MixingMachine1 = new System.Windows.Forms.PictureBox();
             this.Silo1_gif = new System.Windows.Forms.PictureBox();
-            this.Silo2_gif = new System.Windows.Forms.PictureBox();
-            this.Silo3_gif = new System.Windows.Forms.PictureBox();
-            this.silo10_gif = new System.Windows.Forms.PictureBox();
+            this.silo1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.m1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.m2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10_gif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Silo3_gif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Silo2_gif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.s10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ms2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ms1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MX002_gif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MX001_gif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Silo1_gif)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Silo2_gif)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Silo3_gif)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10_gif)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).BeginInit();
             this.SuspendLayout();
             // 
             // FaultyBtn
@@ -535,66 +535,6 @@
             this.Mixing2.TabIndex = 66;
             this.Mixing2.Text = "MX002";
             // 
-            // silo10
-            // 
-            this.silo10.Image = ((System.Drawing.Image)(resources.GetObject("silo10.Image")));
-            this.silo10.Location = new System.Drawing.Point(462, 592);
-            this.silo10.Name = "silo10";
-            this.silo10.Size = new System.Drawing.Size(134, 154);
-            this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo10.TabIndex = 62;
-            this.silo10.TabStop = false;
-            // 
-            // MixingMachine2
-            // 
-            this.MixingMachine2.Image = ((System.Drawing.Image)(resources.GetObject("MixingMachine2.Image")));
-            this.MixingMachine2.Location = new System.Drawing.Point(604, 344);
-            this.MixingMachine2.Name = "MixingMachine2";
-            this.MixingMachine2.Size = new System.Drawing.Size(99, 172);
-            this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MixingMachine2.TabIndex = 32;
-            this.MixingMachine2.TabStop = false;
-            // 
-            // MixingMachine1
-            // 
-            this.MixingMachine1.Image = ((System.Drawing.Image)(resources.GetObject("MixingMachine1.Image")));
-            this.MixingMachine1.Location = new System.Drawing.Point(363, 344);
-            this.MixingMachine1.Name = "MixingMachine1";
-            this.MixingMachine1.Size = new System.Drawing.Size(99, 172);
-            this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.MixingMachine1.TabIndex = 31;
-            this.MixingMachine1.TabStop = false;
-            // 
-            // silo3
-            // 
-            this.silo3.Image = ((System.Drawing.Image)(resources.GetObject("silo3.Image")));
-            this.silo3.Location = new System.Drawing.Point(318, 133);
-            this.silo3.Name = "silo3";
-            this.silo3.Size = new System.Drawing.Size(134, 154);
-            this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo3.TabIndex = 30;
-            this.silo3.TabStop = false;
-            // 
-            // silo2
-            // 
-            this.silo2.Image = ((System.Drawing.Image)(resources.GetObject("silo2.Image")));
-            this.silo2.Location = new System.Drawing.Point(194, 133);
-            this.silo2.Name = "silo2";
-            this.silo2.Size = new System.Drawing.Size(134, 154);
-            this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo2.TabIndex = 29;
-            this.silo2.TabStop = false;
-            // 
-            // silo1
-            // 
-            this.silo1.Image = ((System.Drawing.Image)(resources.GetObject("silo1.Image")));
-            this.silo1.Location = new System.Drawing.Point(72, 133);
-            this.silo1.Name = "silo1";
-            this.silo1.Size = new System.Drawing.Size(134, 154);
-            this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo1.TabIndex = 28;
-            this.silo1.TabStop = false;
-            // 
             // CurDTTM
             // 
             this.CurDTTM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -610,114 +550,56 @@
             // 
             this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
             // 
-            // Stopbtn
+            // silo10_gif
             // 
-            this.Stopbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Stopbtn.BackgroundImage")));
-            this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stopbtn.Enabled = false;
-            this.Stopbtn.FlatAppearance.BorderSize = 0;
-            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Stopbtn.ForeColor = System.Drawing.Color.White;
-            this.Stopbtn.Location = new System.Drawing.Point(752, 426);
-            this.Stopbtn.Name = "Stopbtn";
-            this.Stopbtn.Size = new System.Drawing.Size(50, 50);
-            this.Stopbtn.TabIndex = 79;
-            this.Stopbtn.TabStop = false;
-            this.Stopbtn.Text = "OFF";
-            this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Stopbtn.UseVisualStyleBackColor = true;
-            this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
+            this.silo10_gif.Image = ((System.Drawing.Image)(resources.GetObject("silo10_gif.Image")));
+            this.silo10_gif.Location = new System.Drawing.Point(462, 592);
+            this.silo10_gif.Name = "silo10_gif";
+            this.silo10_gif.Size = new System.Drawing.Size(134, 154);
+            this.silo10_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo10_gif.TabIndex = 118;
+            this.silo10_gif.TabStop = false;
+            this.silo10_gif.Visible = false;
             // 
-            // s1
+            // Silo3_gif
             // 
-            this.s1.BackColor = System.Drawing.Color.Lime;
-            this.s1.Location = new System.Drawing.Point(140, 285);
-            this.s1.Name = "s1";
-            this.s1.Size = new System.Drawing.Size(15, 41);
-            this.s1.TabIndex = 80;
-            this.s1.TabStop = false;
+            this.Silo3_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo3_gif.Image")));
+            this.Silo3_gif.Location = new System.Drawing.Point(318, 133);
+            this.Silo3_gif.Name = "Silo3_gif";
+            this.Silo3_gif.Size = new System.Drawing.Size(134, 154);
+            this.Silo3_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Silo3_gif.TabIndex = 117;
+            this.Silo3_gif.TabStop = false;
+            this.Silo3_gif.Visible = false;
             // 
-            // s2
+            // Silo2_gif
             // 
-            this.s2.BackColor = System.Drawing.Color.Lime;
-            this.s2.Location = new System.Drawing.Point(262, 285);
-            this.s2.Name = "s2";
-            this.s2.Size = new System.Drawing.Size(15, 41);
-            this.s2.TabIndex = 81;
-            this.s2.TabStop = false;
+            this.Silo2_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo2_gif.Image")));
+            this.Silo2_gif.Location = new System.Drawing.Point(194, 133);
+            this.Silo2_gif.Name = "Silo2_gif";
+            this.Silo2_gif.Size = new System.Drawing.Size(134, 154);
+            this.Silo2_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Silo2_gif.TabIndex = 116;
+            this.Silo2_gif.TabStop = false;
+            this.Silo2_gif.Visible = false;
             // 
-            // s3
+            // button1
             // 
-            this.s3.BackColor = System.Drawing.Color.Lime;
-            this.s3.Location = new System.Drawing.Point(385, 285);
-            this.s3.Name = "s3";
-            this.s3.Size = new System.Drawing.Size(15, 41);
-            this.s3.TabIndex = 82;
-            this.s3.TabStop = false;
-            // 
-            // p1
-            // 
-            this.p1.BackColor = System.Drawing.Color.Lime;
-            this.p1.Location = new System.Drawing.Point(140, 312);
-            this.p1.Name = "p1";
-            this.p1.Size = new System.Drawing.Size(530, 14);
-            this.p1.TabIndex = 83;
-            this.p1.TabStop = false;
-            // 
-            // m1
-            // 
-            this.m1.BackColor = System.Drawing.Color.Lime;
-            this.m1.Location = new System.Drawing.Point(414, 313);
-            this.m1.Name = "m1";
-            this.m1.Size = new System.Drawing.Size(15, 39);
-            this.m1.TabIndex = 84;
-            this.m1.TabStop = false;
-            // 
-            // m2
-            // 
-            this.m2.BackColor = System.Drawing.Color.Lime;
-            this.m2.Location = new System.Drawing.Point(655, 313);
-            this.m2.Name = "m2";
-            this.m2.Size = new System.Drawing.Size(15, 39);
-            this.m2.TabIndex = 85;
-            this.m2.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox2.Location = new System.Drawing.Point(531, 554);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(15, 50);
-            this.pictureBox2.TabIndex = 94;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox3.Location = new System.Drawing.Point(413, 547);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(256, 15);
-            this.pictureBox3.TabIndex = 93;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox4.Location = new System.Drawing.Point(654, 507);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(15, 50);
-            this.pictureBox4.TabIndex = 92;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox5.Location = new System.Drawing.Point(413, 507);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(15, 50);
-            this.pictureBox5.TabIndex = 91;
-            this.pictureBox5.TabStop = false;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Enabled = false;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(709, 401);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(70, 70);
+            this.button1.TabIndex = 112;
+            this.button1.TabStop = false;
+            this.button1.Text = "ON  ";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // s10
             // 
@@ -754,6 +636,60 @@
             this.ms1.Size = new System.Drawing.Size(15, 50);
             this.ms1.TabIndex = 95;
             this.ms1.TabStop = false;
+            // 
+            // m2
+            // 
+            this.m2.BackColor = System.Drawing.Color.Lime;
+            this.m2.Location = new System.Drawing.Point(655, 313);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(15, 39);
+            this.m2.TabIndex = 85;
+            this.m2.TabStop = false;
+            // 
+            // m1
+            // 
+            this.m1.BackColor = System.Drawing.Color.Lime;
+            this.m1.Location = new System.Drawing.Point(414, 313);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(15, 39);
+            this.m1.TabIndex = 84;
+            this.m1.TabStop = false;
+            // 
+            // p1
+            // 
+            this.p1.BackColor = System.Drawing.Color.Lime;
+            this.p1.Location = new System.Drawing.Point(140, 312);
+            this.p1.Name = "p1";
+            this.p1.Size = new System.Drawing.Size(530, 14);
+            this.p1.TabIndex = 83;
+            this.p1.TabStop = false;
+            // 
+            // s3
+            // 
+            this.s3.BackColor = System.Drawing.Color.Lime;
+            this.s3.Location = new System.Drawing.Point(385, 285);
+            this.s3.Name = "s3";
+            this.s3.Size = new System.Drawing.Size(15, 41);
+            this.s3.TabIndex = 82;
+            this.s3.TabStop = false;
+            // 
+            // s2
+            // 
+            this.s2.BackColor = System.Drawing.Color.Lime;
+            this.s2.Location = new System.Drawing.Point(262, 285);
+            this.s2.Name = "s2";
+            this.s2.Size = new System.Drawing.Size(15, 41);
+            this.s2.TabIndex = 81;
+            this.s2.TabStop = false;
+            // 
+            // s1
+            // 
+            this.s1.BackColor = System.Drawing.Color.Lime;
+            this.s1.Location = new System.Drawing.Point(140, 285);
+            this.s1.Name = "s1";
+            this.s1.Size = new System.Drawing.Size(15, 41);
+            this.s1.TabIndex = 80;
+            this.s1.TabStop = false;
             // 
             // pictureBox1
             // 
@@ -809,23 +745,90 @@
             this.pictureBox10.TabIndex = 99;
             this.pictureBox10.TabStop = false;
             // 
-            // button1
+            // pictureBox2
             // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(703, 426);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(50, 50);
-            this.button1.TabIndex = 112;
-            this.button1.TabStop = false;
-            this.button1.Text = "ON ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.pictureBox2.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox2.Location = new System.Drawing.Point(531, 554);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(15, 50);
+            this.pictureBox2.TabIndex = 94;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox3.Location = new System.Drawing.Point(413, 547);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(256, 15);
+            this.pictureBox3.TabIndex = 93;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox4.Location = new System.Drawing.Point(654, 507);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(15, 50);
+            this.pictureBox4.TabIndex = 92;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox5.Location = new System.Drawing.Point(413, 507);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(15, 50);
+            this.pictureBox5.TabIndex = 91;
+            this.pictureBox5.TabStop = false;
+            // 
+            // Stopbtn
+            // 
+            this.Stopbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Stopbtn.BackgroundImage")));
+            this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Stopbtn.Enabled = false;
+            this.Stopbtn.FlatAppearance.BorderSize = 0;
+            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Stopbtn.ForeColor = System.Drawing.Color.White;
+            this.Stopbtn.Location = new System.Drawing.Point(774, 402);
+            this.Stopbtn.Name = "Stopbtn";
+            this.Stopbtn.Size = new System.Drawing.Size(70, 70);
+            this.Stopbtn.TabIndex = 79;
+            this.Stopbtn.TabStop = false;
+            this.Stopbtn.Text = "OFF\r\n";
+            this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Stopbtn.UseVisualStyleBackColor = true;
+            this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
+            // 
+            // silo10
+            // 
+            this.silo10.Image = ((System.Drawing.Image)(resources.GetObject("silo10.Image")));
+            this.silo10.Location = new System.Drawing.Point(462, 592);
+            this.silo10.Name = "silo10";
+            this.silo10.Size = new System.Drawing.Size(134, 154);
+            this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo10.TabIndex = 62;
+            this.silo10.TabStop = false;
+            // 
+            // silo3
+            // 
+            this.silo3.Image = ((System.Drawing.Image)(resources.GetObject("silo3.Image")));
+            this.silo3.Location = new System.Drawing.Point(318, 133);
+            this.silo3.Name = "silo3";
+            this.silo3.Size = new System.Drawing.Size(134, 154);
+            this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo3.TabIndex = 30;
+            this.silo3.TabStop = false;
+            // 
+            // silo2
+            // 
+            this.silo2.Image = ((System.Drawing.Image)(resources.GetObject("silo2.Image")));
+            this.silo2.Location = new System.Drawing.Point(194, 133);
+            this.silo2.Name = "silo2";
+            this.silo2.Size = new System.Drawing.Size(134, 154);
+            this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo2.TabIndex = 29;
+            this.silo2.TabStop = false;
             // 
             // MX002_gif
             // 
@@ -849,6 +852,26 @@
             this.MX001_gif.TabStop = false;
             this.MX001_gif.Visible = false;
             // 
+            // MixingMachine2
+            // 
+            this.MixingMachine2.Image = ((System.Drawing.Image)(resources.GetObject("MixingMachine2.Image")));
+            this.MixingMachine2.Location = new System.Drawing.Point(604, 344);
+            this.MixingMachine2.Name = "MixingMachine2";
+            this.MixingMachine2.Size = new System.Drawing.Size(99, 172);
+            this.MixingMachine2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingMachine2.TabIndex = 32;
+            this.MixingMachine2.TabStop = false;
+            // 
+            // MixingMachine1
+            // 
+            this.MixingMachine1.Image = ((System.Drawing.Image)(resources.GetObject("MixingMachine1.Image")));
+            this.MixingMachine1.Location = new System.Drawing.Point(363, 344);
+            this.MixingMachine1.Name = "MixingMachine1";
+            this.MixingMachine1.Size = new System.Drawing.Size(99, 172);
+            this.MixingMachine1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MixingMachine1.TabIndex = 31;
+            this.MixingMachine1.TabStop = false;
+            // 
             // Silo1_gif
             // 
             this.Silo1_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo1_gif.Image")));
@@ -860,38 +883,15 @@
             this.Silo1_gif.TabStop = false;
             this.Silo1_gif.Visible = false;
             // 
-            // Silo2_gif
+            // silo1
             // 
-            this.Silo2_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo2_gif.Image")));
-            this.Silo2_gif.Location = new System.Drawing.Point(194, 133);
-            this.Silo2_gif.Name = "Silo2_gif";
-            this.Silo2_gif.Size = new System.Drawing.Size(134, 154);
-            this.Silo2_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Silo2_gif.TabIndex = 116;
-            this.Silo2_gif.TabStop = false;
-            this.Silo2_gif.Visible = false;
-            // 
-            // Silo3_gif
-            // 
-            this.Silo3_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo3_gif.Image")));
-            this.Silo3_gif.Location = new System.Drawing.Point(318, 133);
-            this.Silo3_gif.Name = "Silo3_gif";
-            this.Silo3_gif.Size = new System.Drawing.Size(134, 154);
-            this.Silo3_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Silo3_gif.TabIndex = 117;
-            this.Silo3_gif.TabStop = false;
-            this.Silo3_gif.Visible = false;
-            // 
-            // silo10_gif
-            // 
-            this.silo10_gif.Image = ((System.Drawing.Image)(resources.GetObject("silo10_gif.Image")));
-            this.silo10_gif.Location = new System.Drawing.Point(462, 592);
-            this.silo10_gif.Name = "silo10_gif";
-            this.silo10_gif.Size = new System.Drawing.Size(134, 154);
-            this.silo10_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo10_gif.TabIndex = 118;
-            this.silo10_gif.TabStop = false;
-            this.silo10_gif.Visible = false;
+            this.silo1.Image = ((System.Drawing.Image)(resources.GetObject("silo1.Image")));
+            this.silo1.Location = new System.Drawing.Point(72, 133);
+            this.silo1.Name = "silo1";
+            this.silo1.Size = new System.Drawing.Size(134, 154);
+            this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo1.TabIndex = 28;
+            this.silo1.TabStop = false;
             // 
             // Startworking
             // 
@@ -973,38 +973,38 @@
             this.Load += new System.EventHandler(this.Startworking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.m1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.m2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10_gif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Silo3_gif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Silo2_gif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.s10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.p2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ms2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ms1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MX002_gif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MX001_gif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MixingMachine1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Silo1_gif)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Silo2_gif)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Silo3_gif)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo10_gif)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

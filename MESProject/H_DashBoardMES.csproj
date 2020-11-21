@@ -161,26 +161,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
-    <None Include="Resources\MixingPath.PNG" />
-    <None Include="Resources\path2-3.gif" />
-    <None Include="Resources\path2-2.gif" />
-    <None Include="Resources\path2-1.gif" />
-    <None Include="Resources\path1-3.gif" />
-    <None Include="Resources\path1-2.gif" />
-    <None Include="Resources\path1-1.gif" />
-    <None Include="Resources\M2.gif" />
-    <None Include="Resources\M1.gif" />
     <None Include="Resources\통로1.png" />
-    <None Include="Resources\사출2.png" />
-    <None Include="Resources\사출111.png" />
-    <None Include="Resources\SILo010.png" />
-    <None Include="Resources\통로2.PNG" />
-    <None Include="Resources\통로.PNG" />
-    <None Include="Resources\mixing.PNG" />
     <None Include="Resources\silo1.PNG" />
-    <None Include="Resources\silo_red.png" />
-    <None Include="Resources\silo.png" />
-    <None Include="Resources\siloImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
