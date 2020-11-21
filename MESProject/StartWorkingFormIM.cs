@@ -394,7 +394,7 @@ namespace MESProject
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer_check();
-            timer1.Interval = 9000;
+            timer1.Interval = 8000;
                         
             if (EQPTID != null)
             {
