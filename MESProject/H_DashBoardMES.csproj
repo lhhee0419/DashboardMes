@@ -161,6 +161,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\IM_G.gif" />
+    <None Include="Resources\사출.png" />
+    <None Include="Resources\stop.jpg" />
+    <None Include="Resources\start.jpg" />
+    <None Include="Resources\silo10.gif" />
+    <None Include="Resources\silo.png" />
+    <None Include="Resources\mixing1.png" />
+    <None Include="Resources\mixing.gif" />
+    <None Include="Resources\E_silo.png" />
+    <None Include="Resources\B1S4Logo.png" />
+    <None Include="Resources\Image1.bmp" />
+    <None Include="Resources\Silo.gif" />
     <None Include="Resources\통로1.png" />
     <None Include="Resources\silo1.PNG" />
   </ItemGroup>
