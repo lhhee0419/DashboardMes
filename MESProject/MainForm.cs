@@ -58,14 +58,15 @@ namespace MESProject
             if (WoGrid.Rows.Count > 0)
             {
                 string[] header = new string[] { "작업코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "비고" };
+                int[] SetCoiumnWidth_WoGrid = new int[] { 70, 45, 80, 45, 25, 25, 25, 70, 50 };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
                     WoGrid.Columns[i].ReadOnly = true;
+                    Common.SetColumnWidth(WoGrid, i, SetCoiumnWidth_WoGrid[i]);
 
                 }
             }
-            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             WoGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
         }

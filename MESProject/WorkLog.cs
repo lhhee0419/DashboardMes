@@ -24,9 +24,9 @@ namespace MESProject
 
             // Grid 디자인 세팅
             Common.SetGridDesign(WLGrid);
-            Common.SetGridDesign(LotGrid);     
-            WLGrid.Font = new Font("Fixsys", 12, FontStyle.Regular);
-            LotGrid.Font = new Font("Fixsys", 14, FontStyle.Regular);
+            Common.SetGridDesign(LotGrid);
+            WLGrid.Font = new Font("Fixsys", 18, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 18, FontStyle.Regular);
 
             //콤보박스 초기값설정
             string[] proc = { "배합", "사출" };
@@ -47,7 +47,7 @@ namespace MESProject
                 }
             }
             // 컬럼 폭 설정
-            int[] WLGrid_SetColumnWidth = new int[] { 130, 140, 50, 50, 50, 50, 140, 140, 140, 40 };
+            int[] WLGrid_SetColumnWidth = new int[] { 130, 140, 45, 40, 40, 40, 140, 140, 140, 40 };
             for (int i = 0; i < WLGrid_SetColumnWidth.Length; i++)
             {
                 Common.SetColumnWidth(WLGrid, i, WLGrid_SetColumnWidth[i]);
@@ -111,6 +111,7 @@ namespace MESProject
             }
             Common.Disable_sorting_Datagrid(LotGrid);
         }
+
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -135,17 +136,14 @@ namespace MESProject
                                            $",W.WOEDDTTM \n" +
                                            $",W.PLANDTTM \n" +
                                            $",W.ETC  \n" +
-                                       $"FROM WORKORDER W, PRODUCT P, LOT L, DEFECTLOT D  \n" +
-                                       $"WHERE \n" +
-                                           $" W.PROCID = 'P0001'  \n" +
-                                           $"AND PLANDTTM >= '{date1.Year}/{date1.Month}/{date1.Day}'   \n" +
-                                           $"AND PLANDTTM <= TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1  \n" +
-                                           $"AND W.WOID = L.WOID(+)  \n" +
-                                           $"AND W.PRODID = P.PRODID  \n" +
-                                           $"AND L.LOTID = D.DEFECT_LOTID(+)  \n" +
+                                       $"FROM WORKORDER W " +
+                                       $"INNER JOIN PRODUCT P ON W.PRODID = P.PRODID " +
+                                       $"LEFT JOIN LOT L ON W.WOID = L.WOID AND L.LOTSTAT <> 'D' " +
+                                       $"LEFT JOIN DEFECTLOT D ON  L.LOTID = D.DEFECT_LOTID \n" +
+                                       $"WHERE PLANDTTM BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
+                                           $"AND W.PROCID = 'P0001'  \n" +
                                            $"AND WOSTAT <>'D'  \n" +
                                            $"AND W.WOSTAT NOT IN (SELECT W.WOSTAT FROM WORKORDER W WHERE W.WOSTAT = 'P')  \n" +
-                                           $"AND L.LOTSTAT <> 'D' \n" +
                                        $"GROUP BY W.WOID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.WOSTDTTM, W.WOEDDTTM, W.PLANDTTM, W.ETC  \n" +
                                        $"ORDER BY (DECODE(WOSTAT,'진행중',0,1))";
                 Common.DB_Connection(select_wo_mix, WLGrid);
@@ -184,6 +182,8 @@ namespace MESProject
             Common.Disable_sorting_Datagrid(WLGrid);
         }
 
+
+
         private void InquiryBtn_Click(object sender, EventArgs e)
         {
             //조회버튼
@@ -209,7 +209,8 @@ namespace MESProject
                                                 $",L.LOTEDDTTM"+
                                                 $",CASE WHEN L.LOTID IN(SELECT DEFECT_LOTID FROM DEFECTLOT WHERE WOID='{woid}') THEN 'Y' ELSE 'N' END AS 불량 "+
                                             $"FROM LOT L "+
-                                            $"WHERE WOID = '{woid}'";
+                                            $"WHERE WOID = '{woid}' " +
+                                            $"AND LOTSTAT <> 'D'";
                     Common.DB_Connection(Selected_lot, LotGrid);
                     Common.Disable_sorting_Datagrid(LotGrid);
                 }

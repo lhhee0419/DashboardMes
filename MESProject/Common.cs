@@ -25,7 +25,7 @@ namespace MESProject
             Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            Grid.Font = new Font("Fixsys", 20, FontStyle.Regular);
+            Grid.Font = new Font("Fixsys", 19, FontStyle.Regular);
 
         }
         static public void SetColumnWidth(DataGridView dataGridView,int IndexCol,int widthCol)

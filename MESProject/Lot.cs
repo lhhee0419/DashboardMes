@@ -14,7 +14,7 @@ namespace MESProject
     {
         bool isMove;
         Point fpt;
-        string woid = "";
+        string woid ;
         string Userid;
         string EQPTid;
         string PRODID;
@@ -28,8 +28,6 @@ namespace MESProject
 
         private void Lot_Load(object sender, EventArgs e)
         {
-
-
             Userid = MainForm.User_ID;
             if (EQPTid == null)
             {
@@ -44,6 +42,7 @@ namespace MESProject
                             $"WHERE WOID = '{woid}'";
             DataTable dataTable = Common.DB_Connection(wo_proc);
             string procid = dataTable.Rows[0][0].ToString();
+
             if (procid == "P0001")
             {
                 PRODID = Startworking.PRODID;
@@ -67,7 +66,7 @@ namespace MESProject
             //추가버튼
             int Qty = (LotAdd_tb.Text == "") ? 0 : Convert.ToInt32(LotAdd_tb.Text);
 
-            if (woid != "")
+            if (woid != null)
             {
                 for (int i = 0; i < Qty; i++)
                 {

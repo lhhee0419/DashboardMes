@@ -90,7 +90,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("문체부 돋음체", 18F);
-            this.label2.Location = new System.Drawing.Point(431, 103);
+            this.label2.Location = new System.Drawing.Point(431, 88);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 30);
             this.label2.TabIndex = 58;
@@ -122,10 +122,9 @@
             // 
             // ProcCombo
             // 
-            this.ProcCombo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ProcCombo.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16F);
             this.ProcCombo.FormattingEnabled = true;
-            this.ProcCombo.Location = new System.Drawing.Point(1110, 16);
+            this.ProcCombo.Location = new System.Drawing.Point(904, 80);
             this.ProcCombo.Name = "ProcCombo";
             this.ProcCombo.Size = new System.Drawing.Size(150, 38);
             this.ProcCombo.TabIndex = 54;
@@ -136,7 +135,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(403, 108);
+            this.label1.Location = new System.Drawing.Point(403, 93);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 53;
@@ -145,7 +144,7 @@
             // 
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16F);
-            this.dateTimePicker2.Location = new System.Drawing.Point(464, 100);
+            this.dateTimePicker2.Location = new System.Drawing.Point(464, 80);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(399, 38);
             this.dateTimePicker2.TabIndex = 52;
@@ -154,7 +153,7 @@
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.dateTimePicker1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16F);
-            this.dateTimePicker1.Location = new System.Drawing.Point(23, 100);
+            this.dateTimePicker1.Location = new System.Drawing.Point(23, 80);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(393, 38);
             this.dateTimePicker1.TabIndex = 51;
@@ -187,7 +186,7 @@
             // 
             this.InquiryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.InquiryBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
-            this.InquiryBtn.Location = new System.Drawing.Point(1307, 48);
+            this.InquiryBtn.Location = new System.Drawing.Point(1307, 21);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(213, 97);
             this.InquiryBtn.TabIndex = 47;
@@ -201,14 +200,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.WoGrid.Location = new System.Drawing.Point(23, 160);
+            this.WoGrid.Location = new System.Drawing.Point(23, 134);
             this.WoGrid.Name = "WoGrid";
             this.WoGrid.ReadOnly = true;
             this.WoGrid.RowHeadersVisible = false;
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WoGrid.Size = new System.Drawing.Size(1502, 523);
+            this.WoGrid.Size = new System.Drawing.Size(1502, 537);
             this.WoGrid.TabIndex = 46;
             this.WoGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WoGrid_CellDoubleClick);
             // 
