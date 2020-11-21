@@ -66,6 +66,7 @@ namespace MESProject
                 }
             }
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            WoGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
         }
 

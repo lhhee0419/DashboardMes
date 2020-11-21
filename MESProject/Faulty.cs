@@ -72,7 +72,7 @@ namespace MESProject
             Common.DB_Connection(LotId_Grid_Data, LotID_Grid);
 
             //컬럼폭, 컬럼명 지정
-            int[] Columns_Width = new int[] { 30, 170, 100, 230, 230 };
+            int[] Columns_Width = new int[] { 30, 170, 100, 230, 250 };
             string[] Columns_header = new string[] { "", "LOT코드", "설비코드", "시작시간", "종료시간" };
             if (LotID_Grid.RowCount > 0)
             {
@@ -83,6 +83,7 @@ namespace MESProject
                 }
 
             }
+            LotID_Grid.Font = new Font("나눔스퀘어 Bord", 16, FontStyle.Regular);
 
         }
         private void RadClick(object sender, EventArgs e, string name, string code)
@@ -171,6 +172,9 @@ namespace MESProject
                     {
                         string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{rad}')";
                         Common.DB_Connection(add_defectlot);
+
+                        string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{D_Lotid}'";
+                        Common.DB_Connection(update_lotqty);
                     }
                     MessageBox.Show("불량 등록이 완료되었습니다.");
                     //lotid에 저장된 리스트값 초기화
