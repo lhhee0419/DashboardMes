@@ -26,14 +26,17 @@ namespace MESProject
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
         string userid = MainForm.User_ID;
-        string silo010 = "SL010";
-        string woid;
+
         bool isMove;
         Point fpt;
         string LAST_LOTID;
+        string woid;
+
+        string silo010 = "SL010";
         int need_siloQty = 10;
-        Size orj_sm1_1, orj_sm1_2, orj_sm1_3, orj_sm2_1, orj_sm2_2, orj_sm2_3;
         int stop_timer_flag = 0;
+
+        Size orj_sm1_1, orj_sm1_2, orj_sm1_3, orj_sm2_1, orj_sm2_2, orj_sm2_3;
         Random random = new Random();
 
         public StartWorkingFormIM()
@@ -384,7 +387,7 @@ namespace MESProject
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 9000;
+            timer1.Interval = 1300000;
             
             if (EQPTID != null)
             {
@@ -473,20 +476,17 @@ namespace MESProject
                                            $",'YY/MM/DD HH24:MI:SS')" +
                                            $",'{DEFECTID}')";
                     Common.DB_Connection(add_defectlot);
-
                 }
 
                 Create_Lot_Label.BackColor = Color.Yellow;
                 Create_Lot_Label.Visible = true;
                 //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-                Delay(1000);
+                Delay(1200000);
 
                 //LOT EDDTTM 업데이트
 
                 string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{LAST_LOTID}'";
                 Common.DB_Connection(UPDATE_LOT_EDDTTM);
-
-            
 
                 //금일 생산량 IM@_PRODQTY_VALUE를 업데이트함.
                 string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
@@ -497,10 +497,12 @@ namespace MESProject
                 if (EQPTID == "IM001")
                 {
                     IM1_ProdQty_Value.Text = $"{dataTable5.Rows[0][0].ToString()} EA";
+                    IM1_4.BackColor = Color.FromArgb(51, 153, 255);
                 }
                 else if (EQPTID == "IM002")
                 {
                     IM2_ProdQty_Value.Text = $"{dataTable5.Rows[0][0].ToString()} EA";
+                    IM2_4.BackColor = Color.FromArgb(51, 153, 255);
                 }
                 //DB에 WORKORDER_PRODQTY 업데이트
                 string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
@@ -512,7 +514,8 @@ namespace MESProject
                                            
                 Common.DB_Connection(UPDATE_WO_PRODQTY);
 
-                Create_Lot_Label.BackColor = Color.White;
+                //제품생산중 label 숨김
+                Create_Lot_Label.Visible = false;
                 //LOTGRID 재조회 및 버튼과 라벨 표시
                 Inquiry_Lot();
                 Inquiry_Woid();
@@ -533,10 +536,10 @@ namespace MESProject
 
         private void B_Backcolor(Button a, Button b, Button c, Button d)
         {
-            Button[] buttons = new Button[4] { a, b, c, d };
-            for (int i = 0; i < 4; i++)
+            Button[] buttons = new Button[4] {a, b, c, d};
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 4; j++)
+                for (int j = 0; j < 3; j++)
                 {
                     if (i == j)
                     {
@@ -548,8 +551,9 @@ namespace MESProject
                         buttons[i].BackColor = Color.FromArgb(51, 153, 255);
                     }
                 }
+                buttons[2].BackColor = Color.FromArgb(51, 153, 255);
             }
-            buttons[3].BackColor = Color.FromArgb(51, 153, 255);
+            buttons[3].BackColor = Color.FromArgb(255, 128, 0);
         }
 
         private void timer_Tick(object sender, EventArgs e)
