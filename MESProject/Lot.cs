@@ -28,27 +28,32 @@ namespace MESProject
 
         private void Lot_Load(object sender, EventArgs e)
         {
-            PRODID = StartWorkingFormIM.prodID;
-            
+
+
             Userid = MainForm.User_ID;
-            if(EQPTid == null)
+            if (EQPTid == null)
             {
                 string lastlot_eqptid = $"SELECT EQPTID FROM LOT WHERE WOID = '{woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
                 DataTable dataTable1 = Common.DB_Connection(lastlot_eqptid);
                 EQPTid = dataTable1.Rows[0][0].ToString();
             }
 
-            string wo_proc= $"SELECT " +
+            string wo_proc = $"SELECT " +
                             $"PROCID " +
                             $"FROM WORKORDER " +
                             $"WHERE WOID = '{woid}'";
-            DataTable dataTable =Common.DB_Connection(wo_proc);
-            string procid =dataTable.Rows[0][0].ToString();
+            DataTable dataTable = Common.DB_Connection(wo_proc);
+            string procid = dataTable.Rows[0][0].ToString();
             if (procid == "P0001")
+            {
+                PRODID = Startworking.PRODID;
                 lotQtyLB.Text = "LOT 중량 : ";
-            else if(procid == "P0002")
+            }
+            else if (procid == "P0002")
+            {
+                PRODID = StartWorkingFormIM.prodID;
                 lotQtyLB.Text = "LOT 수량 : ";
-
+            }  
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
