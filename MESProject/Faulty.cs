@@ -217,10 +217,10 @@ namespace MESProject
 
         private void Faulty_FormClosing(object sender, FormClosingEventArgs e)
         {
-            startworking.Inquiry_Lot();
+           /* startworking.Inquiry_Lot();
             startworking.Inquiry_Woid();
             startWorkingFormIM.Inquiry_Lot();
-            startWorkingFormIM.Inquiry_Woid();
+            startWorkingFormIM.Inquiry_Woid();*/
         }
 
     
