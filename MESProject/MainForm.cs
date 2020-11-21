@@ -67,8 +67,6 @@ namespace MESProject
             }
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
-          
-
         }
 
         private void Check_Admin()
@@ -263,8 +261,6 @@ namespace MESProject
 
         }
 
-
-
         private void maintab_MouseDown(object sender, MouseEventArgs e)
         {
             isMove = true;
@@ -291,10 +287,6 @@ namespace MESProject
 
         }
 
-        private void WoGrid_DataSourceChanged(object sender, EventArgs e)
-        {
-            WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }
 
         private void WoGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {

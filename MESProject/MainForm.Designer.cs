@@ -49,9 +49,11 @@
             // 
             // maintab
             // 
+            this.maintab.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.maintab.Controls.Add(this.tabPage1);
-            this.maintab.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.maintab.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
+            this.maintab.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.maintab.Location = new System.Drawing.Point(0, 0);
             this.maintab.Name = "maintab";
             this.maintab.SelectedIndex = 0;
@@ -75,11 +77,11 @@
             this.tabPage1.Controls.Add(this.WostBtn);
             this.tabPage1.Controls.Add(this.InquiryBtn);
             this.tabPage1.Controls.Add(this.WoGrid);
-            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.tabPage1.Location = new System.Drawing.Point(4, 40);
+            this.tabPage1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
+            this.tabPage1.Location = new System.Drawing.Point(4, 39);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1551, 813);
+            this.tabPage1.Size = new System.Drawing.Size(1551, 814);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "메인화면";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -96,8 +98,9 @@
             // 
             // MaterialBtn
             // 
-            this.MaterialBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.MaterialBtn.Location = new System.Drawing.Point(517, 699);
+            this.MaterialBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.MaterialBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.MaterialBtn.Location = new System.Drawing.Point(517, 700);
             this.MaterialBtn.Name = "MaterialBtn";
             this.MaterialBtn.Size = new System.Drawing.Size(229, 97);
             this.MaterialBtn.TabIndex = 57;
@@ -108,8 +111,8 @@
             // logoutbtn
             // 
             this.logoutbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.logoutbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.logoutbtn.Location = new System.Drawing.Point(1296, 699);
+            this.logoutbtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.logoutbtn.Location = new System.Drawing.Point(1296, 700);
             this.logoutbtn.Name = "logoutbtn";
             this.logoutbtn.Size = new System.Drawing.Size(229, 97);
             this.logoutbtn.TabIndex = 56;
@@ -119,11 +122,12 @@
             // 
             // ProcCombo
             // 
-            this.ProcCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.ProcCombo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProcCombo.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16F);
             this.ProcCombo.FormattingEnabled = true;
             this.ProcCombo.Location = new System.Drawing.Point(1110, 16);
             this.ProcCombo.Name = "ProcCombo";
-            this.ProcCombo.Size = new System.Drawing.Size(150, 39);
+            this.ProcCombo.Size = new System.Drawing.Size(150, 38);
             this.ProcCombo.TabIndex = 54;
             this.ProcCombo.Visible = false;
             this.ProcCombo.SelectedIndexChanged += new System.EventHandler(this.ProcCombo_SelectedIndexChanged);
@@ -140,7 +144,7 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.dateTimePicker2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16F);
             this.dateTimePicker2.Location = new System.Drawing.Point(464, 100);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(399, 38);
@@ -149,7 +153,7 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("문체부 돋음체", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.dateTimePicker1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16F);
             this.dateTimePicker1.Location = new System.Drawing.Point(23, 100);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(393, 38);
@@ -157,8 +161,9 @@
             // 
             // WoLogBtn
             // 
-            this.WoLogBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.WoLogBtn.Location = new System.Drawing.Point(270, 699);
+            this.WoLogBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.WoLogBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.WoLogBtn.Location = new System.Drawing.Point(270, 700);
             this.WoLogBtn.Name = "WoLogBtn";
             this.WoLogBtn.Size = new System.Drawing.Size(229, 97);
             this.WoLogBtn.TabIndex = 49;
@@ -168,8 +173,9 @@
             // 
             // WostBtn
             // 
-            this.WostBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.WostBtn.Location = new System.Drawing.Point(23, 699);
+            this.WostBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.WostBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.WostBtn.Location = new System.Drawing.Point(23, 700);
             this.WostBtn.Name = "WostBtn";
             this.WostBtn.Size = new System.Drawing.Size(229, 97);
             this.WostBtn.TabIndex = 48;
@@ -179,7 +185,8 @@
             // 
             // InquiryBtn
             // 
-            this.InquiryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F);
+            this.InquiryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InquiryBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
             this.InquiryBtn.Location = new System.Drawing.Point(1307, 48);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(213, 97);
@@ -190,6 +197,9 @@
             // 
             // WoGrid
             // 
+            this.WoGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WoGrid.Location = new System.Drawing.Point(23, 160);
             this.WoGrid.Name = "WoGrid";
@@ -198,9 +208,8 @@
             this.WoGrid.RowHeadersWidth = 51;
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.WoGrid.Size = new System.Drawing.Size(1502, 522);
+            this.WoGrid.Size = new System.Drawing.Size(1502, 523);
             this.WoGrid.TabIndex = 46;
-            this.WoGrid.DataSourceChanged += new System.EventHandler(this.WoGrid_DataSourceChanged);
             this.WoGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WoGrid_CellDoubleClick);
             // 
             // panel1
@@ -220,6 +229,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.maintab.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

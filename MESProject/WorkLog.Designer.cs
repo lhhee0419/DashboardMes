@@ -43,33 +43,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(368, 86);
+            this.label1.Location = new System.Drawing.Point(428, 83);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(18, 15);
+            this.label1.Size = new System.Drawing.Size(32, 32);
             this.label1.TabIndex = 19;
             this.label1.Text = "~";
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.dateTimePicker2.Font = new System.Drawing.Font("굴림", 15F);
-            this.dateTimePicker2.Location = new System.Drawing.Point(408, 78);
+            this.dateTimePicker2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.dateTimePicker2.Location = new System.Drawing.Point(487, 75);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(327, 36);
+            this.dateTimePicker2.Size = new System.Drawing.Size(383, 40);
             this.dateTimePicker2.TabIndex = 18;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 17F);
-            this.dateTimePicker1.Font = new System.Drawing.Font("굴림", 15F);
+            this.dateTimePicker1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
             this.dateTimePicker1.Location = new System.Drawing.Point(22, 75);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(327, 36);
+            this.dateTimePicker1.Size = new System.Drawing.Size(383, 40);
             this.dateTimePicker1.TabIndex = 17;
             // 
             // InquiryBtn
             // 
-            this.InquiryBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.InquiryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InquiryBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 15F);
             this.InquiryBtn.Location = new System.Drawing.Point(1355, 50);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(166, 80);
@@ -80,6 +81,9 @@
             // 
             // WLGrid
             // 
+            this.WLGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WLGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WLGrid.Location = new System.Drawing.Point(24, 144);
             this.WLGrid.Name = "WLGrid";
@@ -94,7 +98,8 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 15F);
             this.ExitBtn.Location = new System.Drawing.Point(1355, 728);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(166, 80);
@@ -105,16 +110,19 @@
             // 
             // ProcCombo
             // 
-            this.ProcCombo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
+            this.ProcCombo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProcCombo.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F);
             this.ProcCombo.FormattingEnabled = true;
             this.ProcCombo.Location = new System.Drawing.Point(1195, 12);
             this.ProcCombo.Name = "ProcCombo";
-            this.ProcCombo.Size = new System.Drawing.Size(121, 39);
+            this.ProcCombo.Size = new System.Drawing.Size(121, 38);
             this.ProcCombo.TabIndex = 55;
             this.ProcCombo.Visible = false;
             // 
             // LotGrid
             // 
+            this.LotGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LotGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LotGrid.Location = new System.Drawing.Point(24, 469);
             this.LotGrid.Name = "LotGrid";
@@ -142,6 +150,7 @@
             this.Controls.Add(this.InquiryBtn);
             this.Controls.Add(this.LotGrid);
             this.Controls.Add(this.WLGrid);
+            this.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WorkLog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

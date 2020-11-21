@@ -41,29 +41,38 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.label1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(218, 230);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 38);
+            this.label1.Size = new System.Drawing.Size(105, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "아이디";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.label2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(218, 307);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 38);
+            this.label2.Size = new System.Drawing.Size(135, 36);
             this.label2.TabIndex = 1;
             this.label2.Text = "비밀번호";
             // 
             // IDtextBox
             // 
-            this.IDtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.IDtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.IDtextBox.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
             this.IDtextBox.Location = new System.Drawing.Point(394, 229);
             this.IDtextBox.Name = "IDtextBox";
             this.IDtextBox.Size = new System.Drawing.Size(200, 45);
@@ -73,7 +82,10 @@
             // 
             // PWDtextBox
             // 
-            this.PWDtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.PWDtextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PWDtextBox.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
             this.PWDtextBox.Location = new System.Drawing.Point(394, 306);
             this.PWDtextBox.Name = "PWDtextBox";
             this.PWDtextBox.PasswordChar = '*';
@@ -84,10 +96,13 @@
             // 
             // LoginButton
             // 
+            this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LoginButton.BackColor = System.Drawing.Color.LightGray;
             this.LoginButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.LoginButton.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
             this.LoginButton.ForeColor = System.Drawing.Color.Black;
             this.LoginButton.Location = new System.Drawing.Point(177, 395);
             this.LoginButton.Name = "LoginButton";
@@ -99,12 +114,15 @@
             // 
             // ExitBtn
             // 
+            this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitBtn.BackColor = System.Drawing.Color.LightGray;
             this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.ExitBtn.FlatAppearance.BorderSize = 3;
             this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F);
+            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
             this.ExitBtn.ForeColor = System.Drawing.Color.DimGray;
             this.ExitBtn.Location = new System.Drawing.Point(475, 395);
             this.ExitBtn.Name = "ExitBtn";
@@ -116,6 +134,9 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(215, 27);
             this.pictureBox1.Name = "pictureBox1";

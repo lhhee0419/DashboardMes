@@ -83,6 +83,7 @@
             // 
             // CurTime
             // 
+            this.CurTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CurTime.AutoSize = true;
             this.CurTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold);
             this.CurTime.Location = new System.Drawing.Point(88, 672);
@@ -173,6 +174,7 @@
             // 
             // FaultyBtn
             // 
+            this.FaultyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.FaultyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FaultyBtn.Location = new System.Drawing.Point(304, 710);
             this.FaultyBtn.Name = "FaultyBtn";
@@ -184,6 +186,7 @@
             // 
             // LotDelBtn
             // 
+            this.LotDelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LotDelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LotDelBtn.Location = new System.Drawing.Point(160, 710);
             this.LotDelBtn.Name = "LotDelBtn";
@@ -195,6 +198,7 @@
             // 
             // ExitBtn
             // 
+            this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExitBtn.Location = new System.Drawing.Point(1384, 710);
             this.ExitBtn.Name = "ExitBtn";
@@ -206,6 +210,7 @@
             // 
             // EndBtn
             // 
+            this.EndBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EndBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EndBtn.Location = new System.Drawing.Point(1240, 710);
             this.EndBtn.Name = "EndBtn";
@@ -220,6 +225,7 @@
             // 
             // LotaddBtn
             // 
+            this.LotaddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LotaddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LotaddBtn.Location = new System.Drawing.Point(13, 710);
             this.LotaddBtn.Name = "LotaddBtn";
@@ -231,6 +237,9 @@
             // 
             // LotGrid
             // 
+            this.LotGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LotGrid.ColumnHeadersHeight = 29;
             this.LotGrid.Location = new System.Drawing.Point(816, 123);
             this.LotGrid.Name = "LotGrid";
@@ -244,6 +253,8 @@
             // WoGrid
             // 
             this.WoGrid.AllowUserToAddRows = false;
+            this.WoGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.WoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WoGrid.Location = new System.Drawing.Point(13, 15);
             this.WoGrid.Name = "WoGrid";
@@ -487,6 +498,7 @@
             // 
             // Create_Lot_Label
             // 
+            this.Create_Lot_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Create_Lot_Label.AutoSize = true;
             this.Create_Lot_Label.BackColor = System.Drawing.Color.White;
             this.Create_Lot_Label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;

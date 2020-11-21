@@ -37,16 +37,16 @@
             // lotQtyLB
             // 
             this.lotQtyLB.AutoSize = true;
-            this.lotQtyLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.lotQtyLB.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 15F);
             this.lotQtyLB.Location = new System.Drawing.Point(58, 102);
             this.lotQtyLB.Name = "lotQtyLB";
-            this.lotQtyLB.Size = new System.Drawing.Size(118, 29);
+            this.lotQtyLB.Size = new System.Drawing.Size(124, 27);
             this.lotQtyLB.TabIndex = 0;
             this.lotQtyLB.Text = "LOT 수량 :";
             // 
             // AddBtn
             // 
-            this.AddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.AddBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 15F);
             this.AddBtn.Location = new System.Drawing.Point(91, 189);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(99, 54);
@@ -57,7 +57,7 @@
             // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 15F);
             this.ExitBtn.Location = new System.Drawing.Point(261, 189);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(99, 54);
@@ -68,7 +68,7 @@
             // 
             // LotAdd_tb
             // 
-            this.LotAdd_tb.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F);
+            this.LotAdd_tb.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F);
             this.LotAdd_tb.Location = new System.Drawing.Point(196, 97);
             this.LotAdd_tb.Name = "LotAdd_tb";
             this.LotAdd_tb.Size = new System.Drawing.Size(190, 38);
@@ -84,10 +84,10 @@
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.lotQtyLB);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.ForeColor = System.Drawing.Color.Black;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Lot";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Lot";
             this.Load += new System.EventHandler(this.Lot_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Lot_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Lot_MouseMove);
