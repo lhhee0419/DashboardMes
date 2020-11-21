@@ -26,7 +26,7 @@ namespace MESProject
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
         string userid = MainForm.User_ID;
-
+        public static string prodID { get; set; }
         bool isMove;
         Point fpt;
         string LAST_LOTID;
@@ -75,7 +75,7 @@ namespace MESProject
 
             WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
             LotGrid.Font = new Font("Fixsys", 11, FontStyle.Regular);
-            int[] SetCoiumnWidth_LotGrid = new int[] { 115, 38, 66, 40, 150 };
+            int[] SetCoiumnWidth_LotGrid = new int[] { 115, 40, 66, 40, 150 };
             for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
@@ -150,6 +150,7 @@ namespace MESProject
                     WoGrid.Columns[i].ReadOnly = true;
                 }
             }
+            prodID = WoGrid.Rows[0].Cells[0].Value.ToString();
             WoGrid.RowTemplate.Height = 55;
             Common.Disable_sorting_Datagrid(WoGrid);
         }
@@ -385,9 +386,10 @@ namespace MESProject
             timer1.Stop();
         }
 
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
-            timer1.Interval = 1300000;
+            timer1.Interval = 11000;
             
             if (EQPTID != null)
             {
@@ -438,8 +440,8 @@ namespace MESProject
                                             $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                             $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                             $",'{Selected_woid}' \n" +
-                                            $",1 \n" +
-                                            $",1 \n" +
+                                            $",(SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{prodID}') \n" +
+                                            $",(SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{prodID}') \n" +
                                             $",'{EQPTID}' \n" +
                                             $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{Selected_woid}') \n" +
                                             $",'{userid}' \n" +
@@ -481,7 +483,7 @@ namespace MESProject
                 Create_Lot_Label.BackColor = Color.Yellow;
                 Create_Lot_Label.Visible = true;
                 //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-                Delay(1200000);
+                Delay(2000);
 
                 //LOT EDDTTM 업데이트
 
@@ -506,12 +508,11 @@ namespace MESProject
                 }
                 //DB에 WORKORDER_PRODQTY 업데이트
                 string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
-                                           $"(PRODQTY) = (SELECT NVL(SUM(LOTQTY),0) FROM LOT " +
-                                           $"WHERE " +
-                                           $"WOID ='{Selected_woid}' AND LOTSTAT <> 'D' AND " +
-                                           $"LOTID NOT IN (SELECT DEFECT_LOTID FROM DEFECTLOT))" +
+                                           $"(PRODQTY) = (SELECT NVL(COUNT(LOTID),0) " +
+                                           $"FROM LOT WHERE WOID ='{Selected_woid}' AND LOTSTAT <> 'D' " +
+                                           $"AND LOTID NOT IN(SELECT DEFECT_LOTID FROM DEFECTLOT) " +
                                            $"WHERE WOID = '{Selected_woid}'";
-                                           
+                
                 Common.DB_Connection(UPDATE_WO_PRODQTY);
 
                 //제품생산중 label 숨김

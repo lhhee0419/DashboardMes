@@ -17,6 +17,8 @@ namespace MESProject
         string woid = "";
         string Userid;
         string EQPTid;
+        string PRODID;
+        
         public Lot(string Selected_woid, string eqptid)
         {
             InitializeComponent();
@@ -28,6 +30,8 @@ namespace MESProject
 
         private void Lot_Load(object sender, EventArgs e)
         {
+            PRODID = StartWorkingFormIM.prodID;
+            
             Userid = MainForm.User_ID;
             string wo_proc= $"SELECT " +
                             $"PROCID " +
@@ -76,8 +80,8 @@ namespace MESProject
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",'{woid}' \n" +
-                                        $",1 \n" +
-                                        $",1 \n" +
+                                        $",(SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{PRODID}') \n" +
+                                        $",(SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{PRODID}') \n" +
                                         $",'{EQPTid}' \n" +
                                         $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{woid}') \n" +
                                         $",'{Userid}' \n" +

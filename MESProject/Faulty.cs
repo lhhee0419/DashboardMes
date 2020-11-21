@@ -83,6 +83,7 @@ namespace MESProject
                 }
 
             }
+            LotID_Grid.Font = new Font("Fixsys", 13, FontStyle.Regular);
 
         }
         private void RadClick(object sender, EventArgs e, string name, string code)
@@ -218,7 +219,5 @@ namespace MESProject
             startWorkingFormIM.Inquiry_Lot();
             startWorkingFormIM.Inquiry_Woid();
         }
-
-    
     }
 }
