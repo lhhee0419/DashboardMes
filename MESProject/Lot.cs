@@ -26,13 +26,18 @@ namespace MESProject
             woid = Selected_woid;
         }
 
-
-
         private void Lot_Load(object sender, EventArgs e)
         {
             PRODID = StartWorkingFormIM.prodID;
             
             Userid = MainForm.User_ID;
+            if(EQPTid == null)
+            {
+                string lastlot_eqptid = $"SELECT EQPTID FROM LOT WHERE WOID = '{woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
+                DataTable dataTable1 = Common.DB_Connection(lastlot_eqptid);
+                EQPTid = dataTable1.Rows[0][0].ToString();
+            }
+
             string wo_proc= $"SELECT " +
                             $"PROCID " +
                             $"FROM WORKORDER " +
@@ -43,6 +48,7 @@ namespace MESProject
                 lotQtyLB.Text = "LOT 중량 : ";
             else if(procid == "P0002")
                 lotQtyLB.Text = "LOT 수량 : ";
+
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)

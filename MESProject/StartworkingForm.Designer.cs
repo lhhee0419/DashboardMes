@@ -125,9 +125,9 @@
             // 
             this.FaultyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.FaultyBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
-            this.FaultyBtn.Location = new System.Drawing.Point(311, 716);
+            this.FaultyBtn.Location = new System.Drawing.Point(496, 756);
             this.FaultyBtn.Name = "FaultyBtn";
-            this.FaultyBtn.Size = new System.Drawing.Size(137, 86);
+            this.FaultyBtn.Size = new System.Drawing.Size(229, 93);
             this.FaultyBtn.TabIndex = 26;
             this.FaultyBtn.Text = "불량\r\n등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
@@ -137,9 +137,9 @@
             // 
             this.LotDelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LotDelBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
-            this.LotDelBtn.Location = new System.Drawing.Point(167, 716);
+            this.LotDelBtn.Location = new System.Drawing.Point(261, 756);
             this.LotDelBtn.Name = "LotDelBtn";
-            this.LotDelBtn.Size = new System.Drawing.Size(137, 86);
+            this.LotDelBtn.Size = new System.Drawing.Size(229, 93);
             this.LotDelBtn.TabIndex = 25;
             this.LotDelBtn.Text = "LOT\r\n삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
@@ -149,9 +149,9 @@
             // 
             this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
-            this.ExitBtn.Location = new System.Drawing.Point(1389, 716);
+            this.ExitBtn.Location = new System.Drawing.Point(1311, 756);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(148, 86);
+            this.ExitBtn.Size = new System.Drawing.Size(229, 93);
             this.ExitBtn.TabIndex = 24;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -161,9 +161,9 @@
             // 
             this.EndBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EndBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
-            this.EndBtn.Location = new System.Drawing.Point(1230, 716);
+            this.EndBtn.Location = new System.Drawing.Point(1076, 756);
             this.EndBtn.Name = "EndBtn";
-            this.EndBtn.Size = new System.Drawing.Size(148, 86);
+            this.EndBtn.Size = new System.Drawing.Size(229, 93);
             this.EndBtn.TabIndex = 23;
             this.EndBtn.Text = "작업\r\n종료";
             this.EndBtn.UseVisualStyleBackColor = true;
@@ -173,9 +173,9 @@
             // 
             this.LotaddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.LotaddBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
-            this.LotaddBtn.Location = new System.Drawing.Point(25, 716);
+            this.LotaddBtn.Location = new System.Drawing.Point(25, 756);
             this.LotaddBtn.Name = "LotaddBtn";
-            this.LotaddBtn.Size = new System.Drawing.Size(137, 86);
+            this.LotaddBtn.Size = new System.Drawing.Size(229, 93);
             this.LotaddBtn.TabIndex = 21;
             this.LotaddBtn.Text = "LOT\r\n추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
@@ -193,7 +193,7 @@
             this.LotGrid.RowHeadersWidth = 51;
             this.LotGrid.RowTemplate.Height = 27;
             this.LotGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotGrid.Size = new System.Drawing.Size(617, 590);
+            this.LotGrid.Size = new System.Drawing.Size(617, 625);
             this.LotGrid.TabIndex = 20;
             // 
             // WoGrid
@@ -451,7 +451,7 @@
             this.silo1_Qty.BackColor = System.Drawing.Color.White;
             this.silo1_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.silo1_Qty.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 14F);
-            this.silo1_Qty.Location = new System.Drawing.Point(84, 118);
+            this.silo1_Qty.Location = new System.Drawing.Point(63, 118);
             this.silo1_Qty.Name = "silo1_Qty";
             this.silo1_Qty.Size = new System.Drawing.Size(98, 28);
             this.silo1_Qty.TabIndex = 60;
@@ -463,7 +463,7 @@
             this.silo3_Qty.BackColor = System.Drawing.Color.White;
             this.silo3_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.silo3_Qty.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 14F);
-            this.silo3_Qty.Location = new System.Drawing.Point(369, 118);
+            this.silo3_Qty.Location = new System.Drawing.Point(374, 118);
             this.silo3_Qty.Name = "silo3_Qty";
             this.silo3_Qty.Size = new System.Drawing.Size(98, 28);
             this.silo3_Qty.TabIndex = 61;
@@ -475,7 +475,7 @@
             this.siloName10.BackColor = System.Drawing.Color.DimGray;
             this.siloName10.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
             this.siloName10.ForeColor = System.Drawing.Color.White;
-            this.siloName10.Location = new System.Drawing.Point(512, 660);
+            this.siloName10.Location = new System.Drawing.Point(507, 664);
             this.siloName10.Name = "siloName10";
             this.siloName10.Size = new System.Drawing.Size(65, 21);
             this.siloName10.TabIndex = 63;
@@ -584,6 +584,7 @@
             // 
             // CurDTTM
             // 
+            this.CurDTTM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CurDTTM.AutoSize = true;
             this.CurDTTM.BackColor = System.Drawing.Color.White;
             this.CurDTTM.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));

@@ -17,8 +17,9 @@ namespace MESProject
     {
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
+        public static string PRODID  {get; set; }
         //1200000
-        int mixing_time = 1200000, delaytime = 5;
+        int mixing_time = 2000, delaytime = 5;
         string Userid, Lotid, CurrQty, woid;
         int Temp, Press;
         Size orj_s1, orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
@@ -49,7 +50,6 @@ namespace MESProject
 
             //사용자 ID
             Userid = MainForm.User_ID;
-
             //시간표시 타이머
             timer8.Interval = 1000;
             timer8.Start();
@@ -65,14 +65,20 @@ namespace MESProject
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-            int[] SetCoiumnWidth_LotGrid = new int[] { 115, 23, 58, 20, 130 };
+            int[] SetCoiumnWidth_LotGrid = new int[] { 180, 50, 90, 50, 190};
             for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
             }
-            LotGrid.Font = new Font("Fixsys", 11, FontStyle.Regular);
-            WoGrid.Font = new Font("Fixsys", 13, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 16, FontStyle.Regular);
+            WoGrid.Font = new Font("Fixsys", 16, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
+            //제품명
+            if(WoGrid.Rows.Count>0)
+            {
+                PRODID = WoGrid.Rows[0].Cells[0].Value.ToString();
+            }
 
             //저장소 현재량 조회
             Select_store("SL001");
@@ -210,6 +216,7 @@ namespace MESProject
             }
             WoGrid.RowTemplate.Height = 55;
             Common.Disable_sorting_Datagrid(WoGrid);
+            Update_prodQty();
         }
         public void Inquiry_Lot()
         {
@@ -240,6 +247,7 @@ namespace MESProject
                 }
             }
             Common.Disable_sorting_Datagrid(LotGrid);
+            Update_prodQty();
 
         }
 
@@ -389,7 +397,21 @@ namespace MESProject
                 CurrQty = data_Table.Rows[0][0].ToString();
         }
 
-
+        private void Update_prodQty()
+        {
+            string UPDATE_WO_PRODQTY = $"UPDATE " +
+                                            $"WORKORDER " +
+                                        $"SET " +
+                                            $"PRODQTY = (" +
+                                                        $"SELECT COUNT(LOTID) " +
+                                                        $"FROM LOT " +
+                                                        $"WHERE WOID ='{Selected_woid}' " +
+                                                        $"AND LOTSTAT <> 'D' " +
+                                                        $"AND LOTID NOT IN(SELECT DEFECT_LOTID FROM DEFECTLOT)" +
+                                                        $") " +
+                                        $"WHERE WOID = '{Selected_woid}'";
+            Common.DB_Connection(UPDATE_WO_PRODQTY);
+        }
         public void Create_Lot()
         {
             string create_Lot = $"INSERT INTO LOT( \n" +
@@ -413,8 +435,8 @@ namespace MESProject
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS') \n" +
                                         $",'{Selected_woid}' \n" +
-                                        $",1 \n" +
-                                        $",1 \n" +
+                                        $",(SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{PRODID}') \n" +
+                                        $",(SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{PRODID}') \n" +
                                         $",'{EQPTID}' \n" +
                                         $",(SELECT PROCID FROM WORKORDER WHERE WOID = '{Selected_woid}') \n" +
                                         $",'{Userid}' \n" +
@@ -422,18 +444,7 @@ namespace MESProject
             Common.DB_Connection(create_Lot);
 
             //DB에 WORKORDER_PRODQTY 업데이트
-            string UPDATE_WO_PRODQTY = $"UPDATE " +
-                                            $"WORKORDER " +
-                                        $"SET " +
-                                            $"PRODQTY = (" +
-                                                        $"SELECT NVL(SUM(LOTQTY),0) " +
-                                                        $"FROM LOT " +
-                                                        $"WHERE WOID ='{Selected_woid}' " +
-                                                        $"AND LOTSTAT <> 'D' " +
-                                                        $"AND LOTID NOT IN(SELECT DEFECT_LOTID FROM DEFECTLOT)" +
-                                                        $") " +
-                                        $"WHERE WOID = '{Selected_woid}'";
-            Common.DB_Connection(UPDATE_WO_PRODQTY);
+            Update_prodQty();
 
             string DD = $"SELECT LOTID FROM LOT WHERE WOID = '{Selected_woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
             DataTable dataTable1 = Common.DB_Connection(DD);
@@ -503,8 +514,8 @@ namespace MESProject
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
-            /* timer1.Interval = 12000;*/
-            timer1.Interval = 1300000;
+            timer1.Interval = 12000;
+            /*  timer1.Interval = 1300000;*/
             try
             {
                 if (EQPTID == "MX001")

@@ -31,7 +31,6 @@
             this.CheckBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LotID_Grid = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
             this.D_Name1 = new System.Windows.Forms.RadioButton();
             this.D_Name3 = new System.Windows.Forms.RadioButton();
             this.D_Name2 = new System.Windows.Forms.RadioButton();
@@ -45,9 +44,9 @@
             // CheckBtn
             // 
             this.CheckBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F);
-            this.CheckBtn.Location = new System.Drawing.Point(464, 505);
+            this.CheckBtn.Location = new System.Drawing.Point(297, 565);
             this.CheckBtn.Name = "CheckBtn";
-            this.CheckBtn.Size = new System.Drawing.Size(169, 82);
+            this.CheckBtn.Size = new System.Drawing.Size(237, 101);
             this.CheckBtn.TabIndex = 0;
             this.CheckBtn.Text = "확인";
             this.CheckBtn.UseVisualStyleBackColor = true;
@@ -56,9 +55,9 @@
             // ExitBtn
             // 
             this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F);
-            this.ExitBtn.Location = new System.Drawing.Point(754, 505);
+            this.ExitBtn.Location = new System.Drawing.Point(831, 565);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(169, 82);
+            this.ExitBtn.Size = new System.Drawing.Size(237, 101);
             this.ExitBtn.TabIndex = 1;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
@@ -68,26 +67,16 @@
             // 
             this.LotID_Grid.AllowUserToAddRows = false;
             this.LotID_Grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LotID_Grid.Location = new System.Drawing.Point(32, 72);
+            this.LotID_Grid.Location = new System.Drawing.Point(19, 33);
             this.LotID_Grid.Name = "LotID_Grid";
             this.LotID_Grid.ReadOnly = true;
             this.LotID_Grid.RowHeadersVisible = false;
             this.LotID_Grid.RowHeadersWidth = 51;
             this.LotID_Grid.RowTemplate.Height = 27;
             this.LotID_Grid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LotID_Grid.Size = new System.Drawing.Size(902, 400);
+            this.LotID_Grid.Size = new System.Drawing.Size(1049, 513);
             this.LotID_Grid.TabIndex = 2;
             this.LotID_Grid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LotID_Grid_CellClick);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F);
-            this.label2.Location = new System.Drawing.Point(1040, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 31);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "불량요인";
             // 
             // D_Name1
             // 
@@ -147,7 +136,7 @@
             this.groupBox1.Controls.Add(this.D_Name1);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 13.8F);
-            this.groupBox1.Location = new System.Drawing.Point(984, 72);
+            this.groupBox1.Location = new System.Drawing.Point(1103, 72);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(240, 400);
             this.groupBox1.TabIndex = 10;
@@ -171,9 +160,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1280, 623);
+            this.ClientSize = new System.Drawing.Size(1367, 678);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.LotID_Grid);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.CheckBtn);
@@ -189,7 +177,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -198,7 +185,6 @@
         private System.Windows.Forms.Button CheckBtn;
         private System.Windows.Forms.Button ExitBtn;
         private System.Windows.Forms.DataGridView LotID_Grid;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton D_Name1;
         private System.Windows.Forms.RadioButton D_Name3;
         private System.Windows.Forms.RadioButton D_Name2;
