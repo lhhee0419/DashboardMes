@@ -25,6 +25,7 @@ namespace MESProject
         Startworking startworking = new Startworking();
         StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
         string procid;
+        string lotcrqty;
 
         public Faulty(string workid)
         {
@@ -55,6 +56,9 @@ namespace MESProject
 
             Inquiry_LotGrid();
 
+            string select_lotcrqty = $"SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{procid}'";
+            DataTable dataTable1 = Common.DB_Connection(select_lotcrqty);
+            lotcrqty = dataTable1.Rows[0][0].ToString();
         }
         private void Inquiry_LotGrid()
         {
@@ -170,7 +174,7 @@ namespace MESProject
                 {
                     foreach (string D_Lotid in lotid)
                     {
-                        string add_defectlot = $"insert into defectlot values('{D_Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{rad}')";
+                        string add_defectlot = $"insert into defectlot values('{D_Lotid}',{lotcrqty},TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{rad}')";
                         Common.DB_Connection(add_defectlot);
 
                         string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{D_Lotid}'";
