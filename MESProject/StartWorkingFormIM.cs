@@ -33,7 +33,7 @@ namespace MESProject
         string woid;
 
         string silo010 = "SL010";
-        int need_siloQty = 10;
+        int need_siloQty = 3;
         int stop_timer_flag = 0;
 
         Size orj_sm1_1, orj_sm1_2, orj_sm1_3, orj_sm2_1, orj_sm2_2, orj_sm2_3;
@@ -84,6 +84,8 @@ namespace MESProject
                 EndBtn.Enabled = false;
                 IM1_STBtn.Enabled = false;
                 IM1_STOPBTN.Enabled = false;
+                IM2_STBtn.Enabled = false;
+                IM2_STOPBTN.Enabled = false;
             }
 
             //1,2호기의 생산량 조회
@@ -95,13 +97,18 @@ namespace MESProject
         }
 
         //-------------------------------------------함수------------------------------------------------------------
-
+        private void AllBtn_True()
+        {
+            IM1_STBtn.Enabled = true;
+            IM1_STOPBTN.Enabled = true;
+            IM2_STBtn.Enabled = true;
+            IM2_STOPBTN.Enabled = true;
+        }
         public void STBTN_Visible()
         {
             if(timer1.Enabled == false)
             {
-                IM1_STBtn.Enabled = true;
-                IM1_STOPBTN.Enabled = true;
+                AllBtn_True();
             }
         }
 
@@ -119,11 +126,11 @@ namespace MESProject
             string select_wo = $"SELECT \n" +
                                     $"P.PRODID  \n" +
                                     $",P.PRODNAME  \n" +
+                                    $",P.PRODWEIGHT \n" +
                                     $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END \n" +
                                     $",W.PLANQTY \n" +
-                                    $",NVL(COUNT(LOTID),0) \n" +
+                                    $",W.PRODQTY \n" +
                                     $",COUNT(D.DEFECT_LOTID)" +
-                                    $",(SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = (SELECT PRODID FROM WORKORDER WHERE WOID = '{Selected_woid}'))" +
                                     $",W.PLANDTTM \n" +
                                     $",W.WOSTDTTM \n" +
                                     $",W.ETC  \n" +
@@ -132,11 +139,11 @@ namespace MESProject
                                     $"LEFT JOIN LOT L ON W.WOID = L.WOID AND L.LOTSTAT <> 'D'\n" +
                                     $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                 $"WHERE W.WOID = '{Selected_woid}' \n" +
-                                $"GROUP BY P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC  \n";
+                                $"GROUP BY P.PRODID, P.PRODNAME, P.PRODWEIGHT, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC  \n";
             Common.DB_Connection(select_wo, WoGrid);
             if (WoGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량","제품중량", "계획날짜", "작업지시 시작일", "비고" };
+                string[] header = new string[] { "제품코드", "제품명", "제품중량", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "작업지시 시작일", "비고" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
@@ -156,6 +163,7 @@ namespace MESProject
                                     $"LOTID \n" +
                                     $",LOTSTAT \n" +
                                     $",EQPTID \n" +
+                                    $", LOTCRQTY \n" +
                                     $",CASE WHEN L.LOTID IN( \n" +
                                         $"SELECT DEFECT_LOTID \n" +
                                         $"FROM DEFECTLOT \n" +
@@ -170,14 +178,14 @@ namespace MESProject
 
             if (LotGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "LOT코드", "상태","설비코드", "불량", "시작시간", "종료시간" };
+                string[] header = new string[] { "LOT코드", "상태","설비코드","중량", "불량", "시작시간", "종료시간" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     LotGrid.Columns[i].HeaderText = $"{header[i]}";
                     LotGrid.Columns[i].ReadOnly = true;
                 }
             }
-            int[] SetCoiumnWidth_LotGrid = new int[] { 180, 50, 90, 50, 190 };
+            int[] SetCoiumnWidth_LotGrid = new int[] { 170, 50, 90, 50, 50, 190 };
             for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
@@ -316,6 +324,11 @@ namespace MESProject
             //EQPTID에 EQPTSTATS를 RUN으로 변경
             Update_EQPTStats("RUN");
             Timer_Start();
+
+            IM1_STBtn.Enabled = false;
+            IM1_STOPBTN.Enabled = true;
+            IM2_STBtn.Enabled = false;
+            IM2_STOPBTN.Enabled = false;
         }
 
         private void IM2_STBtn_Click(object sender, EventArgs e)
@@ -325,6 +338,11 @@ namespace MESProject
             //EQPTID에 EQPTSTATS를 RUN으로 변경
             Update_EQPTStats("RUN");
             Timer_Start();
+
+            IM1_STBtn.Enabled = false;
+            IM1_STOPBTN.Enabled = false;
+            IM2_STBtn.Enabled = false;
+            IM2_STOPBTN.Enabled = true;
         }
 
         private void EndBtn_MouseDown(object sender, MouseEventArgs e)
@@ -370,16 +388,12 @@ namespace MESProject
             int SILO_CURRQTY = Convert.ToInt32(dataTable4.Rows[0][0].ToString());
             if (need_siloQty <= SILO_CURRQTY)
             {
-                IM1_STBtn.Enabled = false;
-                IM1_STOPBTN.Enabled = false;
-                IM1_STOPBTN.Enabled = true;
                 timer1.Start();
             }
             else
             {
                 MessageBox.Show("배합량이 부족합니다.");
-                IM1_STBtn.Enabled = true;
-                IM1_STOPBTN.Enabled = true;
+                AllBtn_True();
                 Timer_Stop();
             }
         }
@@ -388,6 +402,7 @@ namespace MESProject
         {
             stop_timer_flag = 1;
             timer1.Stop();
+            AllBtn_True();
         }
 
         
@@ -411,18 +426,17 @@ namespace MESProject
 
                 //Silo 재고량 재조회
                 Select_Silo_Qty();
-                Delay(1000);
                 // 1호기 일경우 1호기 라벨 백컬러를 사용.
                 if (EQPTID == "IM001")
                 {
-                    IM1_Ani_();
                     IM1_Run.Visible = true;
+                    IM1_Ani_();
                     B_Backcolor(IM1_1, IM1_2, IM1_3, IM1_4);
                 }
                 else if (EQPTID == "IM002")
                 {
-                    IM2_Ani_();
                     IM2_Run.Visible = true;
+                    IM2_Ani_();
                     B_Backcolor(IM2_1, IM2_2, IM2_3, IM2_4);
                 }
                 silo_run.Visible = false;
@@ -487,6 +501,10 @@ namespace MESProject
                                            $",'YY/MM/DD HH24:MI:SS')" +
                                            $",'{DEFECTID}')";
                     Common.DB_Connection(add_defectlot);
+                    
+                    //불량처리한 LOT의 생산량을 0으로 업데이트함.
+                    string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{LAST_LOTID}'";
+                    Common.DB_Connection(update_lotqty);
                 }
 
                 Create_Lot_Label.BackColor = Color.Yellow;
@@ -518,8 +536,7 @@ namespace MESProject
                 //DB에 WORKORDER_PRODQTY 업데이트
                 string UPDATE_WO_PRODQTY = $"UPDATE WORKORDER SET " +
                                            $"(PRODQTY) = (SELECT NVL(COUNT(LOTID),0) " +
-                                           $"FROM LOT WHERE WOID ='{Selected_woid}' AND LOTSTAT <> 'D' " +
-                                           $"AND LOTID NOT IN(SELECT DEFECT_LOTID FROM DEFECTLOT)) " +
+                                           $"FROM LOT WHERE WOID ='{Selected_woid}' AND LOTSTAT <> 'D')" +
                                            $"WHERE WOID = '{Selected_woid}'";
                 
                 Common.DB_Connection(UPDATE_WO_PRODQTY);
@@ -535,10 +552,7 @@ namespace MESProject
                     MessageBox.Show("배합량이 부족합니다.");
                     Timer_Stop();
                 }
-
                 timer_check();
-                IM1_Run.Visible = false;
-                IM2_Run.Visible = false;
             }
         }
         private void timer_check()
@@ -547,6 +561,8 @@ namespace MESProject
             {
                 Timer_Stop();
                 STBTN_Visible();
+                IM1_Run.Visible = false;
+                IM2_Run.Visible = false;
             }
         }
         private void B_Backcolor(Button a, Button b, Button c, Button d)

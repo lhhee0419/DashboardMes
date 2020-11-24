@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartWorkingFormIM));
             this.CurTime = new System.Windows.Forms.Label();
             this.IM1_ProdQty_Value = new System.Windows.Forms.Label();
             this.IM2_ProdQty_Value = new System.Windows.Forms.Label();
@@ -161,7 +160,7 @@
             // 
             // IM1_STOPBTN
             // 
-            this.IM1_STOPBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("IM1_STOPBTN.BackgroundImage")));
+            this.IM1_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop;
             this.IM1_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM1_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.IM1_STOPBTN.Location = new System.Drawing.Point(496, 368);
@@ -173,7 +172,7 @@
             // 
             // IM1_STBtn
             // 
-            this.IM1_STBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("IM1_STBtn.BackgroundImage")));
+            this.IM1_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start;
             this.IM1_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM1_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.IM1_STBtn.Location = new System.Drawing.Point(396, 368);
@@ -397,7 +396,7 @@
             // 
             // IM1_STOP
             // 
-            this.IM1_STOP.Image = ((System.Drawing.Image)(resources.GetObject("IM1_STOP.Image")));
+            this.IM1_STOP.Image = global::MESProject.Properties.Resources.IJ_process;
             this.IM1_STOP.Location = new System.Drawing.Point(624, 336);
             this.IM1_STOP.Name = "IM1_STOP";
             this.IM1_STOP.Size = new System.Drawing.Size(296, 176);
@@ -407,7 +406,7 @@
             // 
             // IM2_STOP
             // 
-            this.IM2_STOP.Image = ((System.Drawing.Image)(resources.GetObject("IM2_STOP.Image")));
+            this.IM2_STOP.Image = global::MESProject.Properties.Resources.IJ_process;
             this.IM2_STOP.Location = new System.Drawing.Point(624, 592);
             this.IM2_STOP.Name = "IM2_STOP";
             this.IM2_STOP.Size = new System.Drawing.Size(296, 176);
@@ -417,7 +416,7 @@
             // 
             // silo_stop
             // 
-            this.silo_stop.Image = ((System.Drawing.Image)(resources.GetObject("silo_stop.Image")));
+            this.silo_stop.Image = global::MESProject.Properties.Resources.silo;
             this.silo_stop.Location = new System.Drawing.Point(96, 144);
             this.silo_stop.Name = "silo_stop";
             this.silo_stop.Size = new System.Drawing.Size(114, 144);
@@ -507,7 +506,7 @@
             // 
             // IM1_Run
             // 
-            this.IM1_Run.Image = ((System.Drawing.Image)(resources.GetObject("IM1_Run.Image")));
+            this.IM1_Run.Image = global::MESProject.Properties.Resources.IM_G;
             this.IM1_Run.Location = new System.Drawing.Point(624, 336);
             this.IM1_Run.Name = "IM1_Run";
             this.IM1_Run.Size = new System.Drawing.Size(296, 176);
@@ -518,7 +517,7 @@
             // 
             // IM2_Run
             // 
-            this.IM2_Run.Image = ((System.Drawing.Image)(resources.GetObject("IM2_Run.Image")));
+            this.IM2_Run.Image = global::MESProject.Properties.Resources.IM_G;
             this.IM2_Run.Location = new System.Drawing.Point(624, 592);
             this.IM2_Run.Name = "IM2_Run";
             this.IM2_Run.Size = new System.Drawing.Size(296, 176);
@@ -541,7 +540,7 @@
             // 
             // silo_run
             // 
-            this.silo_run.Image = ((System.Drawing.Image)(resources.GetObject("silo_run.Image")));
+            this.silo_run.Image = global::MESProject.Properties.Resources.silo_G;
             this.silo_run.Location = new System.Drawing.Point(96, 144);
             this.silo_run.Name = "silo_run";
             this.silo_run.Size = new System.Drawing.Size(114, 144);
@@ -552,7 +551,7 @@
             // 
             // IM2_STBtn
             // 
-            this.IM2_STBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("IM2_STBtn.BackgroundImage")));
+            this.IM2_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start;
             this.IM2_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM2_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.IM2_STBtn.Location = new System.Drawing.Point(408, 632);
@@ -564,7 +563,7 @@
             // 
             // IM2_STOPBTN
             // 
-            this.IM2_STOPBTN.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("IM2_STOPBTN.BackgroundImage")));
+            this.IM2_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop;
             this.IM2_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM2_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.IM2_STOPBTN.Location = new System.Drawing.Point(508, 632);
