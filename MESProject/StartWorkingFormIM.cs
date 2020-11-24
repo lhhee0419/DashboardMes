@@ -150,7 +150,7 @@ namespace MESProject
                     WoGrid.Columns[i].ReadOnly = true;
                 }
             }
-            WoGrid.Font = new Font("Fixsys", 16, FontStyle.Regular);
+            WoGrid.Font = new Font("나눔스퀘어라운드", 16, FontStyle.Regular);
             prodID = WoGrid.Rows[0].Cells[0].Value.ToString();
             WoGrid.RowTemplate.Height = 55;
             Common.Disable_sorting_Datagrid(WoGrid);
@@ -185,12 +185,12 @@ namespace MESProject
                     LotGrid.Columns[i].ReadOnly = true;
                 }
             }
-            int[] SetCoiumnWidth_LotGrid = new int[] { 170, 50, 90, 50, 50, 190 };
+            int[] SetCoiumnWidth_LotGrid = new int[] { 160, 50, 80, 50, 50, 180 };
             for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
             }
-            LotGrid.Font = new Font("Fixsys", 16, FontStyle.Regular);
+            LotGrid.Font = new Font("나눔스퀘어라운드", 15, FontStyle.Regular);
             Common.Disable_sorting_Datagrid(LotGrid);
 
         }
