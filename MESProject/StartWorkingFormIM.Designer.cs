@@ -160,26 +160,28 @@
             // 
             // IM1_STOPBTN
             // 
-            this.IM1_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop;
+            this.IM1_STOPBTN.BackColor = System.Drawing.Color.White;
+            this.IM1_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop2;
             this.IM1_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM1_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.IM1_STOPBTN.Location = new System.Drawing.Point(496, 368);
             this.IM1_STOPBTN.Name = "IM1_STOPBTN";
-            this.IM1_STOPBTN.Size = new System.Drawing.Size(100, 100);
+            this.IM1_STOPBTN.Size = new System.Drawing.Size(80, 80);
             this.IM1_STOPBTN.TabIndex = 54;
-            this.IM1_STOPBTN.UseVisualStyleBackColor = true;
+            this.IM1_STOPBTN.UseVisualStyleBackColor = false;
             this.IM1_STOPBTN.Click += new System.EventHandler(this.STOP_BTN_Click);
             // 
             // IM1_STBtn
             // 
-            this.IM1_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start;
+            this.IM1_STBtn.BackColor = System.Drawing.Color.White;
+            this.IM1_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start2;
             this.IM1_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM1_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IM1_STBtn.Location = new System.Drawing.Point(396, 368);
+            this.IM1_STBtn.Location = new System.Drawing.Point(416, 368);
             this.IM1_STBtn.Name = "IM1_STBtn";
-            this.IM1_STBtn.Size = new System.Drawing.Size(100, 100);
+            this.IM1_STBtn.Size = new System.Drawing.Size(80, 80);
             this.IM1_STBtn.TabIndex = 53;
-            this.IM1_STBtn.UseVisualStyleBackColor = true;
+            this.IM1_STBtn.UseVisualStyleBackColor = false;
             this.IM1_STBtn.Click += new System.EventHandler(this.IM1_STBtn_Click);
             // 
             // FaultyBtn
@@ -531,9 +533,9 @@
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(400, 336);
+            this.label1.Location = new System.Drawing.Point(416, 336);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 31);
+            this.label1.Size = new System.Drawing.Size(160, 31);
             this.label1.TabIndex = 94;
             this.label1.Text = "1호기 작동";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -551,26 +553,28 @@
             // 
             // IM2_STBtn
             // 
-            this.IM2_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start;
+            this.IM2_STBtn.BackColor = System.Drawing.Color.White;
+            this.IM2_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start2;
             this.IM2_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM2_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IM2_STBtn.Location = new System.Drawing.Point(408, 632);
+            this.IM2_STBtn.Location = new System.Drawing.Point(416, 632);
             this.IM2_STBtn.Name = "IM2_STBtn";
-            this.IM2_STBtn.Size = new System.Drawing.Size(100, 100);
+            this.IM2_STBtn.Size = new System.Drawing.Size(80, 80);
             this.IM2_STBtn.TabIndex = 53;
-            this.IM2_STBtn.UseVisualStyleBackColor = true;
+            this.IM2_STBtn.UseVisualStyleBackColor = false;
             this.IM2_STBtn.Click += new System.EventHandler(this.IM2_STBtn_Click);
             // 
             // IM2_STOPBTN
             // 
-            this.IM2_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop;
+            this.IM2_STOPBTN.BackColor = System.Drawing.Color.White;
+            this.IM2_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop2;
             this.IM2_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.IM2_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IM2_STOPBTN.Location = new System.Drawing.Point(508, 632);
+            this.IM2_STOPBTN.Location = new System.Drawing.Point(496, 632);
             this.IM2_STOPBTN.Name = "IM2_STOPBTN";
-            this.IM2_STOPBTN.Size = new System.Drawing.Size(100, 100);
+            this.IM2_STOPBTN.Size = new System.Drawing.Size(80, 80);
             this.IM2_STOPBTN.TabIndex = 54;
-            this.IM2_STOPBTN.UseVisualStyleBackColor = true;
+            this.IM2_STOPBTN.UseVisualStyleBackColor = false;
             this.IM2_STOPBTN.Click += new System.EventHandler(this.STOP_BTN_Click);
             // 
             // label2
@@ -578,9 +582,9 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(412, 600);
+            this.label2.Location = new System.Drawing.Point(416, 600);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 31);
+            this.label2.Size = new System.Drawing.Size(160, 31);
             this.label2.TabIndex = 94;
             this.label2.Text = "2호기 작동";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
