@@ -21,7 +21,7 @@ namespace MESProject
         //1200000
         int mixing_time = 5000, delaytime = 5, delay =2200;
         string Userid, Lotid, CurrQty, woid;
-        int Temp, Press;
+        int Temp, Press, ProdWeight;
         Size orj_s1, orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
         Color Offcolor = Color.FromArgb(51, 153, 255);
         Color Oncolor = Color.FromArgb(255, 128, 0);
@@ -65,12 +65,12 @@ namespace MESProject
             //DataGridView 디자인
             Common.SetGridDesign(WoGrid);
             Common.SetGridDesign(LotGrid);
-            int[] SetCoiumnWidth_LotGrid = new int[] { 168, 50, 90, 50, 190};
+            int[] SetCoiumnWidth_LotGrid = new int[] { 160, 45, 80, 45, 45,190};
             for (int i = 0; i < SetCoiumnWidth_LotGrid.Length; i++)
             {
                 Common.SetColumnWidth(LotGrid, i, SetCoiumnWidth_LotGrid[i]);
             }
-            LotGrid.Font = new Font("Fixsys", 16, FontStyle.Regular);
+            LotGrid.Font = new Font("Fixsys", 15, FontStyle.Regular);
             WoGrid.Font = new Font("Fixsys", 16, FontStyle.Regular);
             WoGrid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
@@ -90,15 +90,19 @@ namespace MESProject
             Select_store("SL010");
             silo10_Qty.Text = "저장량: " + CurrQty;
 
+            ProdWeight = Convert.ToInt32(WoGrid.Rows[0].Cells[2].Value.ToString());
+
         }
         private void Inquiry_Wostat()
         {
-            string wostat = WoGrid.Rows[0].Cells[2].Value.ToString();
+            string wostat = WoGrid.Rows[0].Cells[3].Value.ToString();
             if (wostat == "종료")
             {
                 EndBtn.Enabled = false;
                 StartBtn1.Enabled = false;
                 StartBtn2.Enabled = false;
+                Stopbtn.Enabled = false;
+                stopbtn2.Enabled = false;
             }
             else if (wostat == "대기")
             {
@@ -106,6 +110,8 @@ namespace MESProject
                 StartBtn1.Enabled = false;
                 StartBtn2.Enabled = false;
                 FaultyBtn.Enabled = false;
+                Stopbtn.Enabled = false;
+                stopbtn2.Enabled = false;
             }
         }
         private void clear_Color(PictureBox pBox)
@@ -190,6 +196,7 @@ namespace MESProject
             string select_wo = $"SELECT \n" +
                                     $"P.PRODID  \n" +
                                     $",P.PRODNAME  \n" +
+                                    $",P.PRODWEIGHT \n" +
                                     $",CASE WOSTAT WHEN 'P' THEN '대기' WHEN 'S' THEN '진행중' WHEN 'E' THEN '종료' END \n" +
                                     $",W.PLANQTY \n" +
                                     $",W.PRODQTY \n" +
@@ -202,11 +209,11 @@ namespace MESProject
                                     $"LEFT JOIN LOT L ON W.WOID = L.WOID AND L.LOTSTAT <> 'D' \n" +
                                     $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                 $"WHERE W.WOID = '{Selected_woid}'  \n" +
-                                $"GROUP BY P.PRODID, P.PRODNAME, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC  \n";
+                                $"GROUP BY P.PRODID, P.PRODNAME,P.PRODWEIGHT, W.WOSTAT, W.PLANQTY, W.PRODQTY, W.PLANDTTM, W.WOSTDTTM, W.ETC  \n";
             Common.DB_Connection(select_wo, WoGrid);
             if (WoGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "작업지시 시작일", "비고" };
+                string[] header = new string[] { "제품코드", "제품명", "제품중량","작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "작업지시 시작일", "비고" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";
@@ -225,6 +232,7 @@ namespace MESProject
                                     $"LOTID \n" +
                                     $",LOTSTAT \n" +
                                     $",EQPTID \n" +
+                                    $",LOTCRQTY \n"+
                                     $",CASE WHEN L.LOTID IN( \n" +
                                         $"SELECT DEFECT_LOTID \n" +
                                         $"FROM DEFECTLOT \n" +
@@ -239,7 +247,7 @@ namespace MESProject
 
             if (LotGrid.Rows.Count > 0)
             {
-                string[] header = new string[] { "LOT코드", "상태", "설비코드", "불량", "시작시간", "종료시간" };
+                string[] header = new string[] { "LOT코드", "상태", "설비코드","중량" ,"불량", "시작시간", "종료시간" };
                 for (int i = 0; i < header.Length; i++)
                 {
                     LotGrid.Columns[i].HeaderText = $"{header[i]}";
@@ -318,6 +326,11 @@ namespace MESProject
             Common.DB_Connection(delete_lot);
             Inquiry_Lot();
             Inquiry_Woid();
+        }
+
+        private void stopbtn2_Click(object sender, EventArgs e)
+        {
+            Stopbtn_Click(sender,e);
         }
 
         private void FaultyBtn_Click(object sender, EventArgs e)
@@ -526,7 +539,7 @@ namespace MESProject
                     DrawLeftToRight(p1, orj_p1, 220, new Point(113, 250));
                     UpToDown(m1, orj_m1);
                     clear_Color_all();
-                    Update_store('-', 10, "SL001");
+                    Update_store('-', ProdWeight/3, "SL001");
                     Select_store("SL001");
                     silo1_Qty.Text = "저장량: " + CurrQty;
                     Delay(delay);
@@ -540,7 +553,7 @@ namespace MESProject
                     DrawLeftToRight(p1, orj_p1, 120, new Point(212, 250));
                     UpToDown(m1, orj_m1);
                     clear_Color_all();
-                    Update_store('-', 10, "SL002");
+                    Update_store('-', ProdWeight / 3, "SL002");
                     Select_store("SL002");
                     silo2_Qty.Text = "저장량: " + CurrQty;
                     Delay(delay);
@@ -555,7 +568,7 @@ namespace MESProject
                     DrawLeftToRight(p1, orj_p1, 25, new Point(310, 250));
                     UpToDown(m1, orj_m1);
                     clear_Color_all();
-                    Update_store('-', 10, "SL003");
+                    Update_store('-', ProdWeight / 3, "SL003");
                     Select_store("SL003");
                     silo3_Qty.Text = "저장량: " + CurrQty;
                     Delay(delay);
@@ -587,6 +600,9 @@ namespace MESProject
                             string Defectid = Defect[k];
                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
                             Common.DB_Connection(add_defectlot);
+
+                            string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{Lotid}'";
+                            Common.DB_Connection(update_lotqty);
                         }
                         string lot_eddttm = $"UPDATE " +
                                                 $"LOT " +
@@ -595,8 +611,9 @@ namespace MESProject
                                                 $",LOTSTAT = 'E' " +
                                             $"WHERE LOTID = '{Lotid}' ";
                         Common.DB_Connection(lot_eddttm);
+                        Inquiry_Lot();
+                        ProdWeight = Convert.ToInt32(LotGrid.Rows[0].Cells[3].Value.ToString());
                     }
-                    Inquiry_Lot();
                     Delay(delay);
 
                     //배출 완료
@@ -607,22 +624,20 @@ namespace MESProject
                     DrawLeftToRight(p2, orj_p2, 108, new Point(330, 438));
                     UpToDown(s10, orj_s10);
                     clear_Color_all();
-                    Random random = new Random();
-                    int num = random.Next(20, 30);
                     if (silo10_Qty.Text.Length > 4)
                     {
                         int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
-                        if (silo10_currQty + num > 10000)
+                        if (silo10_currQty + ProdWeight > 10000)
                         {
-                            num = 10000 - silo10_currQty;
-                            Update_store('+', num, "SL010");
+                            ProdWeight = 10000 - silo10_currQty;
+                            Update_store('+', ProdWeight, "SL010");
                             Select_store("SL010");
                             silo10_Qty.Text = "저장량: " + CurrQty;
                             MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
                         }
                         else
                         {
-                            Update_store('+', num, "SL010");
+                            Update_store('+', ProdWeight, "SL010");
                             Select_store("SL010");
                             silo10_Qty.Text = "저장량: " + CurrQty;
                         }
@@ -640,7 +655,7 @@ namespace MESProject
                     DrawLeftToRight(p1, orj_p1, 0, new Point(113, 250), 2);
                     UpToDown(m2, orj_m2);
                     clear_Color_all();
-                    Update_store('-', 10, "SL001");
+                    Update_store('-', ProdWeight / 3, "SL001");
                     Select_store("SL001");
                     silo1_Qty.Text = "저장량: " + CurrQty;
                     Delay(delay);
@@ -654,7 +669,7 @@ namespace MESProject
                     DrawLeftToRight(p1, orj_p1, 320, new Point(212, 250));
                     UpToDown(m2, orj_m2);
                     clear_Color_all();
-                    Update_store('-', 10, "SL002");
+                    Update_store('-', ProdWeight / 3, "SL002");
                     Select_store("SL002");
                     silo2_Qty.Text = "저장량: " + CurrQty;
                     Delay(delay);
@@ -668,7 +683,7 @@ namespace MESProject
                     DrawLeftToRight(p1, orj_p1, 220, new Point(310, 250));
                     UpToDown(m2, orj_m2);
                     clear_Color_all();
-                    Update_store('-', 10, "SL003");
+                    Update_store('-', ProdWeight / 3, "SL003");
                     Select_store("SL003");
                     silo3_Qty.Text = "저장량: " + CurrQty;
                     Delay(delay);
@@ -701,14 +716,24 @@ namespace MESProject
                             string Defectid = Defect[k];
                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
                             Common.DB_Connection(add_defectlot);
-                            string lot_eddttm = $"UPDATE LOT SET LOTEDDTTM=TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{Lotid}' ";
-                            Common.DB_Connection(lot_eddttm);
+
+                            string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{Lotid}'";
+                            Common.DB_Connection(update_lotqty);
                         }
+                        string lot_eddttm = $"UPDATE " +
+                                                $"LOT " +
+                                            $"SET " +
+                                                $"LOTEDDTTM = TO_CHAR(SYSDATE ,'YY/MM/DD HH24:MI:SS')" +
+                                                $",LOTSTAT = 'E' " +
+                                            $"WHERE LOTID = '{Lotid}' ";
+                        Common.DB_Connection(lot_eddttm);
+
+                        Inquiry_Lot();
+                        ProdWeight = Convert.ToInt32(LotGrid.Rows[0].Cells[3].Value.ToString());
                     }
-                    Inquiry_Lot();
                     Delay(delay);
 
-                    //배츌완료
+                    //배출완료
                     silo10_gif.Visible = true;
                     Mixing_End2.BackColor = Color.FromArgb(51, 153, 255);
                     pass2.BackColor = Color.FromArgb(255, 128, 0);
@@ -716,22 +741,20 @@ namespace MESProject
                     DrawoRightToLeft(p2, orj_p2, 107, new Point(530, 438));
                     UpToDown(s10, orj_s10);
                     clear_Color_all();
-                    Random random = new Random();
-                    int num = random.Next(20, 30);
                     if (silo10_Qty.Text.Length > 4)
                     {
                         int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
-                        if (silo10_currQty + num > 10000)
+                        if (silo10_currQty + ProdWeight > 10000)
                         {
-                            num = 10000 - silo10_currQty;
-                            Update_store('+', num, "SL010");
+                            ProdWeight = 10000 - silo10_currQty;
+                            Update_store('+', ProdWeight, "SL010");
                             Select_store("SL010");
                             silo10_Qty.Text = "저장량: " + CurrQty;
                             MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
                         }
                         else
                         {
-                            Update_store('+', num, "SL010");
+                            Update_store('+', ProdWeight, "SL010");
                             Select_store("SL010");
                             silo10_Qty.Text = "저장량: " + CurrQty;
                             timer1.Start();

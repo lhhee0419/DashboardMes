@@ -161,10 +161,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\stop2.png" />
+    <None Include="Resources\start2.png" />
     <None Include="Resources\IM_G.gif" />
     <None Include="Resources\사출.png" />
-    <None Include="Resources\stop.jpg" />
-    <None Include="Resources\start.jpg" />
     <None Include="Resources\silo10.gif" />
     <None Include="Resources\silo.png" />
     <None Include="Resources\mixing1.png" />

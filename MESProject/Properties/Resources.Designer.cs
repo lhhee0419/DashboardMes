@@ -93,9 +93,9 @@ namespace MESProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap mixing {
+        internal static System.Drawing.Bitmap mixing_G {
             get {
-                object obj = ResourceManager.GetObject("mixing", resourceCulture);
+                object obj = ResourceManager.GetObject("mixing_G", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace MESProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap mixing_G {
+        internal static System.Drawing.Bitmap mixing1 {
             get {
-                object obj = ResourceManager.GetObject("mixing_G", resourceCulture);
+                object obj = ResourceManager.GetObject("mixing1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +163,9 @@ namespace MESProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap start {
+        internal static System.Drawing.Bitmap start2 {
             get {
-                object obj = ResourceManager.GetObject("start", resourceCulture);
+                object obj = ResourceManager.GetObject("start2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +173,9 @@ namespace MESProject.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap stop {
+        internal static System.Drawing.Bitmap stop2 {
             get {
-                object obj = ResourceManager.GetObject("stop", resourceCulture);
+                object obj = ResourceManager.GetObject("stop2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

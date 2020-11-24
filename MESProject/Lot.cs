@@ -46,12 +46,10 @@ namespace MESProject
             if (procid == "P0001")
             {
                 PRODID = Startworking.PRODID;
-                lotQtyLB.Text = "LOT 중량 : ";
             }
             else if (procid == "P0002")
             {
                 PRODID = StartWorkingFormIM.prodID;
-                lotQtyLB.Text = "LOT 수량 : ";
             }  
         }
 

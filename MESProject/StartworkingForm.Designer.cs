@@ -37,7 +37,6 @@
             this.LotaddBtn = new System.Windows.Forms.Button();
             this.LotGrid = new System.Windows.Forms.DataGridView();
             this.WoGrid = new System.Windows.Forms.DataGridView();
-            this.StartBtn1 = new System.Windows.Forms.Button();
             this.StartBtn2 = new System.Windows.Forms.Button();
             this.Mixing1_1 = new System.Windows.Forms.Button();
             this.Mixing1_2 = new System.Windows.Forms.Button();
@@ -64,10 +63,11 @@
             this.Mixing2 = new System.Windows.Forms.Label();
             this.CurDTTM = new System.Windows.Forms.Label();
             this.timer8 = new System.Windows.Forms.Timer(this.components);
+            this.Stopbtn = new System.Windows.Forms.Button();
+            this.stopbtn2 = new System.Windows.Forms.Button();
             this.silo10_gif = new System.Windows.Forms.PictureBox();
             this.Silo3_gif = new System.Windows.Forms.PictureBox();
             this.Silo2_gif = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.s10 = new System.Windows.Forms.PictureBox();
             this.p2 = new System.Windows.Forms.PictureBox();
             this.ms2 = new System.Windows.Forms.PictureBox();
@@ -88,8 +88,8 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.Stopbtn = new System.Windows.Forms.Button();
             this.silo10 = new System.Windows.Forms.PictureBox();
+            this.StartBtn1 = new System.Windows.Forms.Button();
             this.silo3 = new System.Windows.Forms.PictureBox();
             this.silo2 = new System.Windows.Forms.PictureBox();
             this.MX002_gif = new System.Windows.Forms.PictureBox();
@@ -223,25 +223,17 @@
             this.WoGrid.Size = new System.Drawing.Size(1528, 91);
             this.WoGrid.TabIndex = 19;
             // 
-            // StartBtn1
-            // 
-            this.StartBtn1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
-            this.StartBtn1.Location = new System.Drawing.Point(781, 741);
-            this.StartBtn1.Name = "StartBtn1";
-            this.StartBtn1.Size = new System.Drawing.Size(84, 86);
-            this.StartBtn1.TabIndex = 35;
-            this.StartBtn1.Text = "1호\r\n배합\r\n시작";
-            this.StartBtn1.UseVisualStyleBackColor = true;
-            this.StartBtn1.Click += new System.EventHandler(this.StartBtn1_Click);
-            // 
             // StartBtn2
             // 
+            this.StartBtn2.BackgroundImage = global::MESProject.Properties.Resources.start2;
+            this.StartBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StartBtn2.FlatAppearance.BorderSize = 0;
+            this.StartBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartBtn2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
-            this.StartBtn2.Location = new System.Drawing.Point(772, 649);
+            this.StartBtn2.Location = new System.Drawing.Point(707, 413);
             this.StartBtn2.Name = "StartBtn2";
-            this.StartBtn2.Size = new System.Drawing.Size(84, 86);
+            this.StartBtn2.Size = new System.Drawing.Size(65, 65);
             this.StartBtn2.TabIndex = 36;
-            this.StartBtn2.Text = "2호\r\n배합\r\n시작";
             this.StartBtn2.UseVisualStyleBackColor = true;
             this.StartBtn2.Click += new System.EventHandler(this.StartBtn2_Click);
             // 
@@ -464,7 +456,7 @@
             this.silo1_Qty.BackColor = System.Drawing.Color.White;
             this.silo1_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.silo1_Qty.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 14F);
-            this.silo1_Qty.Location = new System.Drawing.Point(33, 113);
+            this.silo1_Qty.Location = new System.Drawing.Point(25, 113);
             this.silo1_Qty.Name = "silo1_Qty";
             this.silo1_Qty.Size = new System.Drawing.Size(98, 28);
             this.silo1_Qty.TabIndex = 60;
@@ -476,7 +468,7 @@
             this.silo3_Qty.BackColor = System.Drawing.Color.White;
             this.silo3_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.silo3_Qty.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 14F);
-            this.silo3_Qty.Location = new System.Drawing.Point(353, 114);
+            this.silo3_Qty.Location = new System.Drawing.Point(358, 114);
             this.silo3_Qty.Name = "silo3_Qty";
             this.silo3_Qty.Size = new System.Drawing.Size(98, 28);
             this.silo3_Qty.TabIndex = 61;
@@ -488,7 +480,7 @@
             this.siloName10.BackColor = System.Drawing.Color.White;
             this.siloName10.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 13F);
             this.siloName10.ForeColor = System.Drawing.Color.Black;
-            this.siloName10.Location = new System.Drawing.Point(497, 719);
+            this.siloName10.Location = new System.Drawing.Point(603, 633);
             this.siloName10.Name = "siloName10";
             this.siloName10.Size = new System.Drawing.Size(86, 25);
             this.siloName10.TabIndex = 63;
@@ -505,7 +497,7 @@
             this.silo10_Qty.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.silo10_Qty.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 14F);
             this.silo10_Qty.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.silo10_Qty.Location = new System.Drawing.Point(605, 649);
+            this.silo10_Qty.Location = new System.Drawing.Point(605, 669);
             this.silo10_Qty.Name = "silo10_Qty";
             this.silo10_Qty.Size = new System.Drawing.Size(98, 28);
             this.silo10_Qty.TabIndex = 64;
@@ -540,22 +532,56 @@
             this.CurDTTM.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.CurDTTM.AutoSize = true;
             this.CurDTTM.BackColor = System.Drawing.Color.White;
-            this.CurDTTM.Font = new System.Drawing.Font("문체부 돋음체", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.CurDTTM.Location = new System.Drawing.Point(95, 618);
+            this.CurDTTM.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CurDTTM.Location = new System.Drawing.Point(53, 714);
             this.CurDTTM.Name = "CurDTTM";
-            this.CurDTTM.Size = new System.Drawing.Size(0, 24);
+            this.CurDTTM.Size = new System.Drawing.Size(0, 26);
             this.CurDTTM.TabIndex = 68;
             // 
             // timer8
             // 
             this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
             // 
+            // Stopbtn
+            // 
+            this.Stopbtn.BackgroundImage = global::MESProject.Properties.Resources.stop2;
+            this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Stopbtn.FlatAppearance.BorderSize = 0;
+            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Stopbtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.Stopbtn.Location = new System.Drawing.Point(774, 415);
+            this.Stopbtn.Name = "Stopbtn";
+            this.Stopbtn.Size = new System.Drawing.Size(65, 65);
+            this.Stopbtn.TabIndex = 79;
+            this.Stopbtn.TabStop = false;
+            this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Stopbtn.UseVisualStyleBackColor = true;
+            this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
+            // 
+            // stopbtn2
+            // 
+            this.stopbtn2.BackgroundImage = global::MESProject.Properties.Resources.stop2;
+            this.stopbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.stopbtn2.FlatAppearance.BorderSize = 0;
+            this.stopbtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.stopbtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.stopbtn2.ForeColor = System.Drawing.Color.White;
+            this.stopbtn2.Location = new System.Drawing.Point(293, 415);
+            this.stopbtn2.Name = "stopbtn2";
+            this.stopbtn2.Size = new System.Drawing.Size(65, 65);
+            this.stopbtn2.TabIndex = 119;
+            this.stopbtn2.TabStop = false;
+            this.stopbtn2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.stopbtn2.UseVisualStyleBackColor = true;
+            this.stopbtn2.Click += new System.EventHandler(this.stopbtn2_Click);
+            // 
             // silo10_gif
             // 
-            this.silo10_gif.Image = ((System.Drawing.Image)(resources.GetObject("silo10_gif.Image")));
-            this.silo10_gif.Location = new System.Drawing.Point(462, 592);
+            this.silo10_gif.Image = global::MESProject.Properties.Resources.silo10_G;
+            this.silo10_gif.Location = new System.Drawing.Point(462, 605);
             this.silo10_gif.Name = "silo10_gif";
-            this.silo10_gif.Size = new System.Drawing.Size(134, 154);
+            this.silo10_gif.Size = new System.Drawing.Size(134, 179);
             this.silo10_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.silo10_gif.TabIndex = 118;
             this.silo10_gif.TabStop = false;
@@ -563,8 +589,8 @@
             // 
             // Silo3_gif
             // 
-            this.Silo3_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo3_gif.Image")));
-            this.Silo3_gif.Location = new System.Drawing.Point(318, 133);
+            this.Silo3_gif.Image = global::MESProject.Properties.Resources.silo_G;
+            this.Silo3_gif.Location = new System.Drawing.Point(318, 144);
             this.Silo3_gif.Name = "Silo3_gif";
             this.Silo3_gif.Size = new System.Drawing.Size(134, 154);
             this.Silo3_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -574,32 +600,14 @@
             // 
             // Silo2_gif
             // 
-            this.Silo2_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo2_gif.Image")));
-            this.Silo2_gif.Location = new System.Drawing.Point(194, 133);
+            this.Silo2_gif.Image = global::MESProject.Properties.Resources.silo_G;
+            this.Silo2_gif.Location = new System.Drawing.Point(194, 144);
             this.Silo2_gif.Name = "Silo2_gif";
             this.Silo2_gif.Size = new System.Drawing.Size(134, 154);
             this.Silo2_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Silo2_gif.TabIndex = 116;
             this.Silo2_gif.TabStop = false;
             this.Silo2_gif.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Enabled = false;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(709, 401);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 70);
-            this.button1.TabIndex = 112;
-            this.button1.TabStop = false;
-            this.button1.Text = "ON  ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // s10
             // 
@@ -781,39 +789,35 @@
             this.pictureBox5.TabIndex = 91;
             this.pictureBox5.TabStop = false;
             // 
-            // Stopbtn
-            // 
-            this.Stopbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Stopbtn.BackgroundImage")));
-            this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stopbtn.Enabled = false;
-            this.Stopbtn.FlatAppearance.BorderSize = 0;
-            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Stopbtn.ForeColor = System.Drawing.Color.White;
-            this.Stopbtn.Location = new System.Drawing.Point(774, 402);
-            this.Stopbtn.Name = "Stopbtn";
-            this.Stopbtn.Size = new System.Drawing.Size(70, 70);
-            this.Stopbtn.TabIndex = 79;
-            this.Stopbtn.TabStop = false;
-            this.Stopbtn.Text = "OFF\r\n";
-            this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Stopbtn.UseVisualStyleBackColor = true;
-            this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
-            // 
             // silo10
             // 
-            this.silo10.Image = ((System.Drawing.Image)(resources.GetObject("silo10.Image")));
-            this.silo10.Location = new System.Drawing.Point(462, 592);
+            this.silo10.Image = global::MESProject.Properties.Resources.silo10;
+            this.silo10.Location = new System.Drawing.Point(462, 605);
             this.silo10.Name = "silo10";
-            this.silo10.Size = new System.Drawing.Size(134, 154);
+            this.silo10.Size = new System.Drawing.Size(134, 167);
             this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.silo10.TabIndex = 62;
             this.silo10.TabStop = false;
             // 
+            // StartBtn1
+            // 
+            this.StartBtn1.BackColor = System.Drawing.Color.White;
+            this.StartBtn1.BackgroundImage = global::MESProject.Properties.Resources.start2;
+            this.StartBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StartBtn1.FlatAppearance.BorderSize = 0;
+            this.StartBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartBtn1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
+            this.StartBtn1.Location = new System.Drawing.Point(223, 415);
+            this.StartBtn1.Name = "StartBtn1";
+            this.StartBtn1.Size = new System.Drawing.Size(65, 65);
+            this.StartBtn1.TabIndex = 35;
+            this.StartBtn1.UseVisualStyleBackColor = false;
+            this.StartBtn1.Click += new System.EventHandler(this.StartBtn1_Click);
+            // 
             // silo3
             // 
-            this.silo3.Image = ((System.Drawing.Image)(resources.GetObject("silo3.Image")));
-            this.silo3.Location = new System.Drawing.Point(318, 133);
+            this.silo3.Image = global::MESProject.Properties.Resources.silo;
+            this.silo3.Location = new System.Drawing.Point(318, 144);
             this.silo3.Name = "silo3";
             this.silo3.Size = new System.Drawing.Size(134, 154);
             this.silo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -822,8 +826,8 @@
             // 
             // silo2
             // 
-            this.silo2.Image = ((System.Drawing.Image)(resources.GetObject("silo2.Image")));
-            this.silo2.Location = new System.Drawing.Point(194, 133);
+            this.silo2.Image = global::MESProject.Properties.Resources.silo;
+            this.silo2.Location = new System.Drawing.Point(194, 144);
             this.silo2.Name = "silo2";
             this.silo2.Size = new System.Drawing.Size(134, 154);
             this.silo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -832,7 +836,7 @@
             // 
             // MX002_gif
             // 
-            this.MX002_gif.Image = ((System.Drawing.Image)(resources.GetObject("MX002_gif.Image")));
+            this.MX002_gif.Image = global::MESProject.Properties.Resources.mixing_G;
             this.MX002_gif.Location = new System.Drawing.Point(604, 344);
             this.MX002_gif.Name = "MX002_gif";
             this.MX002_gif.Size = new System.Drawing.Size(99, 172);
@@ -843,7 +847,7 @@
             // 
             // MX001_gif
             // 
-            this.MX001_gif.Image = ((System.Drawing.Image)(resources.GetObject("MX001_gif.Image")));
+            this.MX001_gif.Image = global::MESProject.Properties.Resources.mixing_G;
             this.MX001_gif.Location = new System.Drawing.Point(363, 344);
             this.MX001_gif.Name = "MX001_gif";
             this.MX001_gif.Size = new System.Drawing.Size(99, 172);
@@ -854,7 +858,7 @@
             // 
             // MixingMachine2
             // 
-            this.MixingMachine2.Image = ((System.Drawing.Image)(resources.GetObject("MixingMachine2.Image")));
+            this.MixingMachine2.Image = global::MESProject.Properties.Resources.mixing1;
             this.MixingMachine2.Location = new System.Drawing.Point(604, 344);
             this.MixingMachine2.Name = "MixingMachine2";
             this.MixingMachine2.Size = new System.Drawing.Size(99, 172);
@@ -874,8 +878,8 @@
             // 
             // Silo1_gif
             // 
-            this.Silo1_gif.Image = ((System.Drawing.Image)(resources.GetObject("Silo1_gif.Image")));
-            this.Silo1_gif.Location = new System.Drawing.Point(72, 133);
+            this.Silo1_gif.Image = global::MESProject.Properties.Resources.silo_G;
+            this.Silo1_gif.Location = new System.Drawing.Point(72, 144);
             this.Silo1_gif.Name = "Silo1_gif";
             this.Silo1_gif.Size = new System.Drawing.Size(134, 154);
             this.Silo1_gif.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -885,8 +889,8 @@
             // 
             // silo1
             // 
-            this.silo1.Image = ((System.Drawing.Image)(resources.GetObject("silo1.Image")));
-            this.silo1.Location = new System.Drawing.Point(72, 133);
+            this.silo1.Image = global::MESProject.Properties.Resources.silo;
+            this.silo1.Location = new System.Drawing.Point(72, 144);
             this.silo1.Name = "silo1";
             this.silo1.Size = new System.Drawing.Size(134, 154);
             this.silo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -899,6 +903,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1552, 858);
+            this.Controls.Add(this.siloName3);
+            this.Controls.Add(this.siloName2);
+            this.Controls.Add(this.siloName1);
+            this.Controls.Add(this.LotDelBtn);
+            this.Controls.Add(this.FaultyBtn);
+            this.Controls.Add(this.stopbtn2);
             this.Controls.Add(this.siloName10);
             this.Controls.Add(this.silo10_Qty);
             this.Controls.Add(this.silo3_Qty);
@@ -907,7 +917,6 @@
             this.Controls.Add(this.silo10_gif);
             this.Controls.Add(this.Silo3_gif);
             this.Controls.Add(this.Silo2_gif);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.s10);
             this.Controls.Add(this.p2);
             this.Controls.Add(this.ms2);
@@ -939,9 +948,6 @@
             this.Controls.Add(this.Mixing2);
             this.Controls.Add(this.Mixing1);
             this.Controls.Add(this.silo10);
-            this.Controls.Add(this.siloName3);
-            this.Controls.Add(this.siloName2);
-            this.Controls.Add(this.siloName1);
             this.Controls.Add(this.pass2);
             this.Controls.Add(this.Mixing_End2);
             this.Controls.Add(this.Mixing_Start2);
@@ -952,8 +958,6 @@
             this.Controls.Add(this.StartBtn1);
             this.Controls.Add(this.silo3);
             this.Controls.Add(this.silo2);
-            this.Controls.Add(this.FaultyBtn);
-            this.Controls.Add(this.LotDelBtn);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.EndBtn);
             this.Controls.Add(this.LotaddBtn);
@@ -968,7 +972,7 @@
             this.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Startworking";
-            this.Text = "sForm1";
+            this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Startworking_FormClosing);
             this.Load += new System.EventHandler(this.Startworking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
@@ -1051,7 +1055,6 @@
         private System.Windows.Forms.Label Mixing2;
         private System.Windows.Forms.Label CurDTTM;
         private System.Windows.Forms.Timer timer8;
-        private System.Windows.Forms.Button Stopbtn;
         private System.Windows.Forms.PictureBox s1;
         private System.Windows.Forms.PictureBox s2;
         private System.Windows.Forms.PictureBox s3;
@@ -1072,12 +1075,13 @@
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox MX002_gif;
         private System.Windows.Forms.PictureBox MX001_gif;
         private System.Windows.Forms.PictureBox Silo1_gif;
         private System.Windows.Forms.PictureBox Silo2_gif;
         private System.Windows.Forms.PictureBox Silo3_gif;
         private System.Windows.Forms.PictureBox silo10_gif;
+        private System.Windows.Forms.Button stopbtn2;
+        private System.Windows.Forms.Button Stopbtn;
     }
 }
