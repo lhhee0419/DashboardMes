@@ -98,6 +98,8 @@
             this.MixingMachine1 = new System.Windows.Forms.PictureBox();
             this.Silo1_gif = new System.Windows.Forms.PictureBox();
             this.silo1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo10_gif)).BeginInit();
@@ -272,7 +274,7 @@
             this.pass1.FlatAppearance.BorderSize = 0;
             this.pass1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
             this.pass1.ForeColor = System.Drawing.Color.White;
-            this.pass1.Location = new System.Drawing.Point(319, 507);
+            this.pass1.Location = new System.Drawing.Point(319, 522);
             this.pass1.Name = "pass1";
             this.pass1.Size = new System.Drawing.Size(81, 74);
             this.pass1.TabIndex = 42;
@@ -286,7 +288,7 @@
             this.Mixing_End1.FlatAppearance.BorderSize = 0;
             this.Mixing_End1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
             this.Mixing_End1.ForeColor = System.Drawing.Color.White;
-            this.Mixing_End1.Location = new System.Drawing.Point(239, 507);
+            this.Mixing_End1.Location = new System.Drawing.Point(239, 522);
             this.Mixing_End1.Name = "Mixing_End1";
             this.Mixing_End1.Size = new System.Drawing.Size(81, 74);
             this.Mixing_End1.TabIndex = 41;
@@ -300,7 +302,7 @@
             this.Mixing_Start1.FlatAppearance.BorderSize = 0;
             this.Mixing_Start1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
             this.Mixing_Start1.ForeColor = System.Drawing.Color.White;
-            this.Mixing_Start1.Location = new System.Drawing.Point(160, 507);
+            this.Mixing_Start1.Location = new System.Drawing.Point(160, 522);
             this.Mixing_Start1.Name = "Mixing_Start1";
             this.Mixing_Start1.Size = new System.Drawing.Size(81, 74);
             this.Mixing_Start1.TabIndex = 40;
@@ -355,7 +357,7 @@
             this.pass2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.pass2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
             this.pass2.ForeColor = System.Drawing.Color.White;
-            this.pass2.Location = new System.Drawing.Point(833, 507);
+            this.pass2.Location = new System.Drawing.Point(833, 522);
             this.pass2.Name = "pass2";
             this.pass2.Size = new System.Drawing.Size(81, 74);
             this.pass2.TabIndex = 54;
@@ -368,7 +370,7 @@
             this.Mixing_End2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing_End2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
             this.Mixing_End2.ForeColor = System.Drawing.Color.White;
-            this.Mixing_End2.Location = new System.Drawing.Point(754, 507);
+            this.Mixing_End2.Location = new System.Drawing.Point(754, 522);
             this.Mixing_End2.Name = "Mixing_End2";
             this.Mixing_End2.Size = new System.Drawing.Size(81, 74);
             this.Mixing_End2.TabIndex = 53;
@@ -381,7 +383,7 @@
             this.Mixing_Start2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Mixing_Start2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 9F);
             this.Mixing_Start2.ForeColor = System.Drawing.Color.White;
-            this.Mixing_Start2.Location = new System.Drawing.Point(675, 507);
+            this.Mixing_Start2.Location = new System.Drawing.Point(675, 522);
             this.Mixing_Start2.Name = "Mixing_Start2";
             this.Mixing_Start2.Size = new System.Drawing.Size(81, 74);
             this.Mixing_Start2.TabIndex = 52;
@@ -530,14 +532,13 @@
             // 
             // stopbtn2
             // 
-            this.stopbtn2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.stopbtn2.BackColor = System.Drawing.Color.White;
             this.stopbtn2.BackgroundImage = global::MESProject.Properties.Resources.stop2;
             this.stopbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.stopbtn2.FlatAppearance.BorderSize = 0;
-            this.stopbtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopbtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopbtn2.ForeColor = System.Drawing.Color.White;
-            this.stopbtn2.Location = new System.Drawing.Point(293, 413);
+            this.stopbtn2.Location = new System.Drawing.Point(292, 441);
             this.stopbtn2.Name = "stopbtn2";
             this.stopbtn2.Size = new System.Drawing.Size(65, 65);
             this.stopbtn2.TabIndex = 119;
@@ -761,14 +762,13 @@
             // 
             // Stopbtn
             // 
-            this.Stopbtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Stopbtn.BackColor = System.Drawing.Color.White;
             this.Stopbtn.BackgroundImage = global::MESProject.Properties.Resources.stop2;
             this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Stopbtn.FlatAppearance.BorderSize = 0;
-            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Stopbtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.Stopbtn.Location = new System.Drawing.Point(771, 413);
+            this.Stopbtn.Location = new System.Drawing.Point(771, 441);
             this.Stopbtn.Name = "Stopbtn";
             this.Stopbtn.Size = new System.Drawing.Size(65, 65);
             this.Stopbtn.TabIndex = 79;
@@ -782,20 +782,19 @@
             this.silo10.Image = global::MESProject.Properties.Resources.silo10;
             this.silo10.Location = new System.Drawing.Point(462, 605);
             this.silo10.Name = "silo10";
-            this.silo10.Size = new System.Drawing.Size(134, 167);
+            this.silo10.Size = new System.Drawing.Size(134, 179);
             this.silo10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.silo10.TabIndex = 62;
             this.silo10.TabStop = false;
             // 
             // StartBtn2
             // 
-            this.StartBtn2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StartBtn2.BackColor = System.Drawing.Color.White;
             this.StartBtn2.BackgroundImage = global::MESProject.Properties.Resources.start2;
             this.StartBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.StartBtn2.FlatAppearance.BorderSize = 0;
-            this.StartBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartBtn2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
-            this.StartBtn2.Location = new System.Drawing.Point(707, 413);
+            this.StartBtn2.Location = new System.Drawing.Point(707, 441);
             this.StartBtn2.Name = "StartBtn2";
             this.StartBtn2.Size = new System.Drawing.Size(65, 65);
             this.StartBtn2.TabIndex = 36;
@@ -804,13 +803,12 @@
             // 
             // StartBtn1
             // 
-            this.StartBtn1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StartBtn1.BackColor = System.Drawing.Color.White;
             this.StartBtn1.BackgroundImage = global::MESProject.Properties.Resources.start2;
             this.StartBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.StartBtn1.FlatAppearance.BorderSize = 0;
-            this.StartBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartBtn1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
-            this.StartBtn1.Location = new System.Drawing.Point(228, 413);
+            this.StartBtn1.Location = new System.Drawing.Point(228, 441);
             this.StartBtn1.Name = "StartBtn1";
             this.StartBtn1.Size = new System.Drawing.Size(65, 65);
             this.StartBtn1.TabIndex = 35;
@@ -900,6 +898,32 @@
             this.silo1.TabIndex = 28;
             this.silo1.TabStop = false;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 12F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(707, 417);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 24);
+            this.label1.TabIndex = 120;
+            this.label1.Text = "2호기 작동";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 12F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(229, 417);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(128, 24);
+            this.label2.TabIndex = 121;
+            this.label2.Text = "1호기 작동";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Startworking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -909,6 +933,18 @@
             this.Controls.Add(this.siloName3);
             this.Controls.Add(this.siloName2);
             this.Controls.Add(this.siloName1);
+            this.Controls.Add(this.m1);
+            this.Controls.Add(this.p1);
+            this.Controls.Add(this.s3);
+            this.Controls.Add(this.s2);
+            this.Controls.Add(this.s1);
+            this.Controls.Add(this.pictureBox6);
+            this.Controls.Add(this.pictureBox7);
+            this.Controls.Add(this.pictureBox8);
+            this.Controls.Add(this.pictureBox9);
+            this.Controls.Add(this.pictureBox10);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.LotDelBtn);
             this.Controls.Add(this.FaultyBtn);
             this.Controls.Add(this.stopbtn2);
@@ -925,17 +961,7 @@
             this.Controls.Add(this.ms2);
             this.Controls.Add(this.ms1);
             this.Controls.Add(this.m2);
-            this.Controls.Add(this.m1);
-            this.Controls.Add(this.p1);
-            this.Controls.Add(this.s3);
-            this.Controls.Add(this.s2);
-            this.Controls.Add(this.s1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.pictureBox6);
-            this.Controls.Add(this.pictureBox7);
-            this.Controls.Add(this.pictureBox8);
-            this.Controls.Add(this.pictureBox9);
-            this.Controls.Add(this.pictureBox10);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox4);
@@ -1086,5 +1112,7 @@
         private System.Windows.Forms.PictureBox silo10_gif;
         private System.Windows.Forms.Button stopbtn2;
         private System.Windows.Forms.Button Stopbtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
