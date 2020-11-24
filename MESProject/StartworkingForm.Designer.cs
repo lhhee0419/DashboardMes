@@ -37,7 +37,6 @@
             this.LotaddBtn = new System.Windows.Forms.Button();
             this.LotGrid = new System.Windows.Forms.DataGridView();
             this.WoGrid = new System.Windows.Forms.DataGridView();
-            this.StartBtn2 = new System.Windows.Forms.Button();
             this.Mixing1_1 = new System.Windows.Forms.Button();
             this.Mixing1_2 = new System.Windows.Forms.Button();
             this.Mixing1_3 = new System.Windows.Forms.Button();
@@ -63,7 +62,6 @@
             this.Mixing2 = new System.Windows.Forms.Label();
             this.CurDTTM = new System.Windows.Forms.Label();
             this.timer8 = new System.Windows.Forms.Timer(this.components);
-            this.Stopbtn = new System.Windows.Forms.Button();
             this.stopbtn2 = new System.Windows.Forms.Button();
             this.silo10_gif = new System.Windows.Forms.PictureBox();
             this.Silo3_gif = new System.Windows.Forms.PictureBox();
@@ -88,7 +86,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.Stopbtn = new System.Windows.Forms.Button();
             this.silo10 = new System.Windows.Forms.PictureBox();
+            this.StartBtn2 = new System.Windows.Forms.Button();
             this.StartBtn1 = new System.Windows.Forms.Button();
             this.silo3 = new System.Windows.Forms.PictureBox();
             this.silo2 = new System.Windows.Forms.PictureBox();
@@ -222,20 +222,6 @@
             this.WoGrid.RowTemplate.Height = 27;
             this.WoGrid.Size = new System.Drawing.Size(1528, 91);
             this.WoGrid.TabIndex = 19;
-            // 
-            // StartBtn2
-            // 
-            this.StartBtn2.BackgroundImage = global::MESProject.Properties.Resources.start2;
-            this.StartBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.StartBtn2.FlatAppearance.BorderSize = 0;
-            this.StartBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.StartBtn2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
-            this.StartBtn2.Location = new System.Drawing.Point(707, 413);
-            this.StartBtn2.Name = "StartBtn2";
-            this.StartBtn2.Size = new System.Drawing.Size(65, 65);
-            this.StartBtn2.TabIndex = 36;
-            this.StartBtn2.UseVisualStyleBackColor = true;
-            this.StartBtn2.Click += new System.EventHandler(this.StartBtn2_Click);
             // 
             // Mixing1_1
             // 
@@ -542,38 +528,22 @@
             // 
             this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
             // 
-            // Stopbtn
-            // 
-            this.Stopbtn.BackgroundImage = global::MESProject.Properties.Resources.stop2;
-            this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Stopbtn.FlatAppearance.BorderSize = 0;
-            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Stopbtn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.Stopbtn.Location = new System.Drawing.Point(774, 415);
-            this.Stopbtn.Name = "Stopbtn";
-            this.Stopbtn.Size = new System.Drawing.Size(65, 65);
-            this.Stopbtn.TabIndex = 79;
-            this.Stopbtn.TabStop = false;
-            this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Stopbtn.UseVisualStyleBackColor = true;
-            this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
-            // 
             // stopbtn2
             // 
+            this.stopbtn2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.stopbtn2.BackgroundImage = global::MESProject.Properties.Resources.stop2;
             this.stopbtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.stopbtn2.FlatAppearance.BorderSize = 0;
             this.stopbtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.stopbtn2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.stopbtn2.ForeColor = System.Drawing.Color.White;
-            this.stopbtn2.Location = new System.Drawing.Point(293, 415);
+            this.stopbtn2.Location = new System.Drawing.Point(293, 413);
             this.stopbtn2.Name = "stopbtn2";
             this.stopbtn2.Size = new System.Drawing.Size(65, 65);
             this.stopbtn2.TabIndex = 119;
             this.stopbtn2.TabStop = false;
             this.stopbtn2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.stopbtn2.UseVisualStyleBackColor = true;
+            this.stopbtn2.UseVisualStyleBackColor = false;
             this.stopbtn2.Click += new System.EventHandler(this.stopbtn2_Click);
             // 
             // silo10_gif
@@ -789,6 +759,24 @@
             this.pictureBox5.TabIndex = 91;
             this.pictureBox5.TabStop = false;
             // 
+            // Stopbtn
+            // 
+            this.Stopbtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.Stopbtn.BackgroundImage = global::MESProject.Properties.Resources.stop2;
+            this.Stopbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Stopbtn.FlatAppearance.BorderSize = 0;
+            this.Stopbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Stopbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Stopbtn.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.Stopbtn.Location = new System.Drawing.Point(771, 413);
+            this.Stopbtn.Name = "Stopbtn";
+            this.Stopbtn.Size = new System.Drawing.Size(65, 65);
+            this.Stopbtn.TabIndex = 79;
+            this.Stopbtn.TabStop = false;
+            this.Stopbtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Stopbtn.UseVisualStyleBackColor = false;
+            this.Stopbtn.Click += new System.EventHandler(this.Stopbtn_Click);
+            // 
             // silo10
             // 
             this.silo10.Image = global::MESProject.Properties.Resources.silo10;
@@ -799,15 +787,30 @@
             this.silo10.TabIndex = 62;
             this.silo10.TabStop = false;
             // 
+            // StartBtn2
+            // 
+            this.StartBtn2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StartBtn2.BackgroundImage = global::MESProject.Properties.Resources.start2;
+            this.StartBtn2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.StartBtn2.FlatAppearance.BorderSize = 0;
+            this.StartBtn2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.StartBtn2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
+            this.StartBtn2.Location = new System.Drawing.Point(707, 413);
+            this.StartBtn2.Name = "StartBtn2";
+            this.StartBtn2.Size = new System.Drawing.Size(65, 65);
+            this.StartBtn2.TabIndex = 36;
+            this.StartBtn2.UseVisualStyleBackColor = false;
+            this.StartBtn2.Click += new System.EventHandler(this.StartBtn2_Click);
+            // 
             // StartBtn1
             // 
-            this.StartBtn1.BackColor = System.Drawing.Color.White;
+            this.StartBtn1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.StartBtn1.BackgroundImage = global::MESProject.Properties.Resources.start2;
             this.StartBtn1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.StartBtn1.FlatAppearance.BorderSize = 0;
             this.StartBtn1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartBtn1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 11F);
-            this.StartBtn1.Location = new System.Drawing.Point(223, 415);
+            this.StartBtn1.Location = new System.Drawing.Point(228, 413);
             this.StartBtn1.Name = "StartBtn1";
             this.StartBtn1.Size = new System.Drawing.Size(65, 65);
             this.StartBtn1.TabIndex = 35;
