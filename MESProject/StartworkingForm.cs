@@ -18,8 +18,10 @@ namespace MESProject
         public static string Selected_woid { get; set; }
         public static string EQPTID { get; set; }
         public static string PRODID  {get; set; }
-        //1200000
-        int mixing_time = 5000, delaytime = 5, delay =2200;
+
+        /*int mixing_time = 5000;*/
+        int mixing_time = 1200000;
+        int delaytime = 5, delay =2200;
         string Userid, Lotid, CurrQty, woid;
         int Temp, Press, ProdWeight;
         Size orj_s1, orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
@@ -532,48 +534,120 @@ namespace MESProject
             {
                 if (EQPTID == "MX001")
                 {
-                    //1호 이송
-                    Silo1_gif.Visible = true;
-                    Mixing1_1.BackColor = Oncolor;
-                    UpToDown(s1, orj_s1);
-                    DrawLeftToRight(p1, orj_p1, 220, new Point(113, 250));
-                    UpToDown(m1, orj_m1);
-                    clear_Color_all();
-                    Update_store('-', ProdWeight/3, "SL001");
-                    Select_store("SL001");
-                    silo1_Qty.Text = "저장량: " + CurrQty;
-                    Delay(delay);
-                    Silo1_gif.Visible = false;
+                    /* //1호 이송
+                     Silo1_gif.Visible = true;
+                     Mixing1_1.BackColor = Oncolor;
+                     UpToDown(s1, orj_s1);
+                     DrawLeftToRight(p1, orj_p1, 220, new Point(113, 250));
+                     UpToDown(m1, orj_m1);
+                     clear_Color_all();
+                     Update_store('-', ProdWeight/3, "SL001");
+                     Select_store("SL001");
+                     silo1_Qty.Text = "저장량: " + CurrQty;
+                     Delay(delay);
+                     Silo1_gif.Visible = false;
 
-                    //2호 이송
-                    Silo2_gif.Visible = true;
-                    Mixing1_1.BackColor = Offcolor;
-                    Mixing1_2.BackColor = Oncolor;
-                    UpToDown(s2, orj_s2);
-                    DrawLeftToRight(p1, orj_p1, 120, new Point(212, 250));
-                    UpToDown(m1, orj_m1);
-                    clear_Color_all();
-                    Update_store('-', ProdWeight / 3, "SL002");
-                    Select_store("SL002");
-                    silo2_Qty.Text = "저장량: " + CurrQty;
-                    Delay(delay);
-                    Silo2_gif.Visible = false;
+                     //2호 이송
+                     Silo2_gif.Visible = true;
+                     Mixing1_1.BackColor = Offcolor;
+                     Mixing1_2.BackColor = Oncolor;
+                     UpToDown(s2, orj_s2);
+                     DrawLeftToRight(p1, orj_p1, 120, new Point(212, 250));
+                     UpToDown(m1, orj_m1);
+                     clear_Color_all();
+                     Update_store('-', ProdWeight / 3, "SL002");
+                     Select_store("SL002");
+                     silo2_Qty.Text = "저장량: " + CurrQty;
+                     Delay(delay);
+                     Silo2_gif.Visible = false;
 
 
-                    //3호 이송
-                    Silo3_gif.Visible = true;
-                    Mixing1_2.BackColor = Offcolor;
-                    Mixing1_3.BackColor = Oncolor;
-                    UpToDown(s3, orj_s3);
-                    DrawLeftToRight(p1, orj_p1, 25, new Point(310, 250));
-                    UpToDown(m1, orj_m1);
-                    clear_Color_all();
-                    Update_store('-', ProdWeight / 3, "SL003");
-                    Select_store("SL003");
-                    silo3_Qty.Text = "저장량: " + CurrQty;
-                    Delay(delay);
-                    Silo3_gif.Visible = false;
+                     //3호 이송
+                     Silo3_gif.Visible = true;
+                     Mixing1_2.BackColor = Offcolor;
+                     Mixing1_3.BackColor = Oncolor;
+                     UpToDown(s3, orj_s3);
+                     DrawLeftToRight(p1, orj_p1, 25, new Point(310, 250));
+                     UpToDown(m1, orj_m1);
+                     clear_Color_all();
+                     Update_store('-', ProdWeight / 3, "SL003");
+                     Select_store("SL003");
+                     silo3_Qty.Text = "저장량: " + CurrQty;
+                     Delay(delay);
+                     Silo3_gif.Visible = false;
 
+                     //배합 시작
+                     MX001_gif.Visible = true;
+                     Mixing1_3.BackColor = Offcolor;
+                     Mixing_Start1.BackColor = Oncolor;
+                     Create_Lot();
+                     if (Lotid != null)
+                     {
+                         string eqpt_value = $"SELECT EQPTITEMID,EQPTITEMVALUE FROM EQPTDATACOLLECT WHERE LOTID= '{Lotid}'";
+                         DataTable dataTable = Common.DB_Connection(eqpt_value);
+                         Temp = Convert.ToInt32(dataTable.Rows[0][1].ToString());
+                         Press = Convert.ToInt32(dataTable.Rows[1][1].ToString());
+                     }
+                     Delay(mixing_time);
+
+                     //배합 완료
+                     Mixing_Start1.BackColor = Offcolor;
+                     Mixing_End1.BackColor = Oncolor;
+                     MX001_gif.Visible = false;
+                     int k = random1.Next(0, 4);
+                     if (Lotid != null)
+                     {
+                         if (Temp >= 145 || Press >= 155)
+                         {
+                             string Defectid = Defect[k];
+                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',{ProdWeight},TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
+                             Common.DB_Connection(add_defectlot);
+
+                             string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{Lotid}'";
+                             Common.DB_Connection(update_lotqty);
+
+                         }
+                         string lot_eddttm = $"UPDATE " +
+                                                 $"LOT " +
+                                             $"SET " +
+                                                 $"LOTEDDTTM = TO_CHAR(SYSDATE ,'YY/MM/DD HH24:MI:SS')" +
+                                                 $",LOTSTAT = 'E' " +
+                                             $"WHERE LOTID = '{Lotid}' ";
+                         Common.DB_Connection(lot_eddttm);
+                         Inquiry_Lot();
+                         ProdWeight = Convert.ToInt32(LotGrid.Rows[0].Cells[3].Value.ToString());
+                     }
+                     Delay(delay);
+
+                     //배출 완료
+                     silo10_gif.Visible = true;
+                     Mixing_End1.BackColor = Offcolor;
+                     pass1.BackColor = Oncolor;
+                     UpToDown(ms1, orj_ms1);
+                     DrawLeftToRight(p2, orj_p2, 108, new Point(330, 438));
+                     UpToDown(s10, orj_s10);
+                     clear_Color_all();
+                     if (silo10_Qty.Text.Length > 4)
+                     {
+                         int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
+                         if (silo10_currQty + ProdWeight > 10000)
+                         {
+                             ProdWeight = 10000 - silo10_currQty;
+                             Update_store('+', ProdWeight, "SL010");
+                             Select_store("SL010");
+                             silo10_Qty.Text = "저장량: " + CurrQty;
+                             MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
+                         }
+                         else
+                         {
+                             Update_store('+', ProdWeight, "SL010");
+                             Select_store("SL010");
+                             silo10_Qty.Text = "저장량: " + CurrQty;
+                         }
+                     }
+                     Delay(delay);
+                     silo10_gif.Visible = false;
+                     pass1.BackColor = Offcolor;*/
                     //배합 시작
                     MX001_gif.Visible = true;
                     Mixing1_3.BackColor = Offcolor;
@@ -598,7 +672,7 @@ namespace MESProject
                         if (Temp >= 145 || Press >= 155)
                         {
                             string Defectid = Defect[k];
-                            string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
+                            string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',{ProdWeight},TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
                             Common.DB_Connection(add_defectlot);
 
                             string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{Lotid}'";
@@ -615,36 +689,6 @@ namespace MESProject
                         ProdWeight = Convert.ToInt32(LotGrid.Rows[0].Cells[3].Value.ToString());
                     }
                     Delay(delay);
-
-                    //배출 완료
-                    silo10_gif.Visible = true;
-                    Mixing_End1.BackColor = Offcolor;
-                    pass1.BackColor = Oncolor;
-                    UpToDown(ms1, orj_ms1);
-                    DrawLeftToRight(p2, orj_p2, 108, new Point(330, 438));
-                    UpToDown(s10, orj_s10);
-                    clear_Color_all();
-                    if (silo10_Qty.Text.Length > 4)
-                    {
-                        int silo10_currQty = Convert.ToInt32((silo10_Qty.Text).Substring(4));
-                        if (silo10_currQty + ProdWeight > 10000)
-                        {
-                            ProdWeight = 10000 - silo10_currQty;
-                            Update_store('+', ProdWeight, "SL010");
-                            Select_store("SL010");
-                            silo10_Qty.Text = "저장량: " + CurrQty;
-                            MessageBox.Show("SILO#10의 저장소가 꽉 찼습니다.");
-                        }
-                        else
-                        {
-                            Update_store('+', ProdWeight, "SL010");
-                            Select_store("SL010");
-                            silo10_Qty.Text = "저장량: " + CurrQty;
-                        }
-                    }
-                    Delay(delay);
-                    silo10_gif.Visible = false;
-                    pass1.BackColor = Offcolor;
                 }
                 else if (EQPTID == "MX002")
                 {
