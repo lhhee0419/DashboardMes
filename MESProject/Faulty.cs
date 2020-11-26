@@ -25,6 +25,7 @@ namespace MESProject
         Startworking startworking = new Startworking();
         StartWorkingFormIM startWorkingFormIM = new StartWorkingFormIM();
         string procid;
+        string prodid;
         string lotcrqty;
 
         public Faulty(string workid)
@@ -39,9 +40,11 @@ namespace MESProject
             //DataGridView 디자인
             Common.SetGridDesign(LotID_Grid);
 
-            string select_procid = $"SELECT PROCID FROM WORKORDER WHERE WOID='{woid}'";
+            string select_procid = $"SELECT PROCID,PRODID FROM WORKORDER WHERE WOID='{woid}'";
             DataTable dataTable = Common.DB_Connection(select_procid);
             procid = dataTable.Rows[0][0].ToString();
+            prodid = dataTable.Rows[0][1].ToString();
+
             if (procid == "P0001")
             {
                 D_Name3.Text = "원재료불량";
@@ -56,7 +59,7 @@ namespace MESProject
 
             Inquiry_LotGrid();
 
-            string select_lotcrqty = $"SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{procid}'";
+            string select_lotcrqty = $"SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{prodid}'";
             DataTable dataTable1 = Common.DB_Connection(select_lotcrqty);
             lotcrqty = dataTable1.Rows[0][0].ToString();
         }
@@ -87,7 +90,7 @@ namespace MESProject
                 }
 
             }
-            LotID_Grid.Font = new Font("나눔스퀘어 Bord", 16, FontStyle.Regular);
+            LotID_Grid.Font = new Font("나눔스퀘어라운드", 16, FontStyle.Regular);
 
         }
         private void RadClick(object sender, EventArgs e, string name, string code)
