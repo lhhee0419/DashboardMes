@@ -600,7 +600,7 @@ namespace MESProject
                          if (Temp >= 145 || Press >= 155)
                          {
                              string Defectid = Defect[k];
-                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',0,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
+                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',{ProdWeight},TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
                              Common.DB_Connection(add_defectlot);
 
                              string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{Lotid}'";
@@ -672,7 +672,7 @@ namespace MESProject
                         if (Temp >= 145 || Press >= 155)
                         {
                             string Defectid = Defect[k];
-                            string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',1,TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
+                            string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',{ProdWeight},TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
                             Common.DB_Connection(add_defectlot);
 
                             string update_lotqty = $"UPDATE LOT SET LOTQTY= 0,LOTCRQTY= 0 WHERE LOTID ='{Lotid}'";
