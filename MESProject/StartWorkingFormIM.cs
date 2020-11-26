@@ -514,6 +514,11 @@ namespace MESProject
                         DataTable dataTable4 = Common.DB_Connection(Select_Press);
                         int select_press = Convert.ToInt32(dataTable4.Rows[0][0].ToString());
 
+                        //해당하는 prodid에 맞는 prodweight 저장
+                        string Select_Prodweight = $"SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{prodID}'";
+                        DataTable dataTable5 = Common.DB_Connection(Select_Prodweight);
+                        int prodweight = Convert.ToInt32(dataTable5.Rows[0][0].ToString());
+
                         if (select_temp > 240 || select_press > 1000)
                         {
                             string[] error = new string[] { "DF001", "DF002", "DF003", "DF004", "DF005", "DF006", "DF007" };
@@ -523,7 +528,7 @@ namespace MESProject
 
                             string add_defectlot = $"INSERT INTO DEFECTLOT(DEFECT_LOTID,DEFECT_QTY,DEFECT_DTTM,DEFECTID)" +
                                                    $" VALUES ('{LAST_LOTID}'" +
-                                                   $",1,TO_CHAR(SYSDATE" +
+                                                   $",{prodweight},TO_CHAR(SYSDATE" +
                                                    $",'YY/MM/DD HH24:MI:SS')" +
                                                    $",'{DEFECTID}')";
                             Common.DB_Connection(add_defectlot);
