@@ -129,6 +129,7 @@ namespace MESProject
                                             $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                         $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
                                             $"AND W.PROCID = 'P0001' \n" +
+                                            $"AND W.WOSTAT <> 'D' \n" +
                                             $"OR (W.PROCID = 'P0001' AND W.WOSTAT ='S') \n" +
                                         $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY,W.PLANDTTM, W.ETC \n" +
                                         $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) ,W.WOID\n";
@@ -163,6 +164,7 @@ namespace MESProject
                                                 $"LEFT JOIN DEFECTLOT D ON L.LOTID = D.DEFECT_LOTID \n" +
                                             $"WHERE W.plandttm BETWEEN '{date1.Year}/{date1.Month}/{date1.Day}' AND TO_DATE('{date2.Year}/{date2.Month}/{date2.Day}')+1 \n" +
                                                 $"AND W.PROCID = 'P0002' \n" +
+                                                $"AND W.WOSTAT <> 'D' \n" +
                                                 $"OR (W.PROCID = 'P0002' AND W.WOSTAT ='S') \n" +
                                             $"GROUP BY W.WOID, W.PRODID, P.PRODNAME, WOSTAT, W.WOSTAT,W.PLANQTY, W.PRODQTY,W.PLANDTTM, W.ETC \n" +
                                             $"ORDER BY(DECODE(WOSTAT, '진행중', 0, 1)) ,W.WOID\n";
