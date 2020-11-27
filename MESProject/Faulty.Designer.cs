@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CheckBtn = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Faulty));
             this.ExitBtn = new System.Windows.Forms.Button();
             this.LotID_Grid = new System.Windows.Forms.DataGridView();
             this.D_Name1 = new System.Windows.Forms.RadioButton();
@@ -37,31 +37,28 @@
             this.D_Name4 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.D_Name5 = new System.Windows.Forms.RadioButton();
+            this.CheckBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LotID_Grid)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CheckBtn
-            // 
-            this.CheckBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F);
-            this.CheckBtn.Location = new System.Drawing.Point(297, 565);
-            this.CheckBtn.Name = "CheckBtn";
-            this.CheckBtn.Size = new System.Drawing.Size(237, 101);
-            this.CheckBtn.TabIndex = 0;
-            this.CheckBtn.Text = "확인";
-            this.CheckBtn.UseVisualStyleBackColor = true;
-            this.CheckBtn.Click += new System.EventHandler(this.CheckBtn_Click);
-            // 
             // ExitBtn
             // 
-            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 16.2F);
-            this.ExitBtn.Location = new System.Drawing.Point(831, 565);
+            this.ExitBtn.BackgroundImage = global::MESProject.Properties.Resources.btn;
+            this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExitBtn.FlatAppearance.BorderSize = 0;
+            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ExitBtn.ForeColor = System.Drawing.Color.White;
+            this.ExitBtn.Location = new System.Drawing.Point(831, 568);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(237, 101);
+            this.ExitBtn.Size = new System.Drawing.Size(212, 81);
             this.ExitBtn.TabIndex = 1;
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            this.ExitBtn.MouseLeave += new System.EventHandler(this.ExitBtn_MouseLeave);
+            this.ExitBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ExitBtn_MouseMove);
             // 
             // LotID_Grid
             // 
@@ -154,6 +151,24 @@
             this.D_Name5.Text = "기타";
             this.D_Name5.UseVisualStyleBackColor = true;
             this.D_Name5.Click += new System.EventHandler(this.D_Name5_Click);
+            // 
+            // CheckBtn
+            // 
+            this.CheckBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CheckBtn.BackgroundImage")));
+            this.CheckBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.CheckBtn.FlatAppearance.BorderSize = 0;
+            this.CheckBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CheckBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.CheckBtn.ForeColor = System.Drawing.Color.White;
+            this.CheckBtn.Location = new System.Drawing.Point(303, 568);
+            this.CheckBtn.Name = "CheckBtn";
+            this.CheckBtn.Size = new System.Drawing.Size(212, 81);
+            this.CheckBtn.TabIndex = 0;
+            this.CheckBtn.Text = "확 인";
+            this.CheckBtn.UseVisualStyleBackColor = true;
+            this.CheckBtn.Click += new System.EventHandler(this.CheckBtn_Click);
+            this.CheckBtn.MouseLeave += new System.EventHandler(this.CheckBtn_MouseLeave);
+            this.CheckBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CheckBtn_MouseMove);
             // 
             // Faulty
             // 

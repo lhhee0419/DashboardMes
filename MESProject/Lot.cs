@@ -118,5 +118,24 @@ namespace MESProject
                 Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
         }
 
+        private void AddBtn_MouseLeave(object sender, EventArgs e)
+        {
+            AddBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void AddBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            AddBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
+        private void ExitBtn_MouseLeave(object sender, EventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void ExitBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn2;
+        }
     }
 }

@@ -229,7 +229,37 @@ namespace MESProject
             startWorkingFormIM.Inquiry_Lot();
             startWorkingFormIM.Inquiry_Woid();*/
         }
+        private static DateTime Delay(int MS)
+        {
+            DateTime ThisMoment = DateTime.Now;
+            TimeSpan duration = new TimeSpan(0, 0, 0, 0, MS);
+            DateTime AfterWards = ThisMoment.Add(duration);
 
-    
+            while (AfterWards >= ThisMoment)
+            {
+                System.Windows.Forms.Application.DoEvents();
+                ThisMoment = DateTime.Now;
+            }
+
+            return DateTime.Now;
+        }
+        private void CheckBtn_MouseLeave(object sender, EventArgs e)
+        {
+            CheckBtn.BackgroundImage = Properties.Resources.btn;
+        }
+        private void CheckBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            CheckBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
+        private void ExitBtn_MouseLeave(object sender, EventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void ExitBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn2;
+        }
     }
 }

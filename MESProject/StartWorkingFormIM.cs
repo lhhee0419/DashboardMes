@@ -363,22 +363,8 @@ namespace MESProject
             Timer_Start();
         }
 
-        private void EndBtn_MouseDown(object sender, MouseEventArgs e)
-        {
-            isMove = true;
-            fpt = new Point(e.X, e.Y);
-        }
 
-        private void EndBtn_MouseUp(object sender, MouseEventArgs e)
-        {
-            isMove = false;
-        }
-
-        private void EndBtn_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (isMove && (e.Button & MouseButtons.Left) == MouseButtons.Left)
-                Location = new Point(this.Left - (fpt.X - e.X), this.Top - (fpt.Y - e.Y));
-        }
+       
         private void STOP_BTN_Click(object sender, EventArgs e)
         {
             stop_timer_flag = 1;
@@ -702,6 +688,58 @@ namespace MESProject
             clear_Color_all();
 
         }
+
+
+        private void LotaddBtn_MouseLeave(object sender, EventArgs e)
+        {
+            LotaddBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void LotaddBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            LotaddBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
+        private void LotDelBtn_MouseLeave(object sender, EventArgs e)
+        {
+            LotDelBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void LotDelBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            LotDelBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
+        private void FaultyBtn_MouseLeave(object sender, EventArgs e)
+        {
+            FaultyBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void FaultyBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            FaultyBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
+        private void EndBtn_MouseLeave(object sender, EventArgs e)
+        {
+            EndBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void EndBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            EndBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
+        private void ExitBtn_MouseLeave(object sender, EventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void ExitBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
     }
 }
 

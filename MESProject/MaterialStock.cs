@@ -122,5 +122,14 @@ namespace MESProject
             SetProcessBar();
         }
 
+        private void ExitBtn_MouseLeave(object sender, EventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void ExitBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn2;
+        }
     }
 }

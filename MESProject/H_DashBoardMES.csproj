@@ -161,6 +161,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MetroFramework.txt" />
+    <None Include="Resources\LoginBth.png" />
+    <None Include="Resources\CloseBtn.png" />
+    <None Include="Resources\btn2.png" />
+    <None Include="Resources\btn.png" />
     <None Include="Resources\stop2.png" />
     <None Include="Resources\start2.png" />
     <None Include="Resources\IM_G.gif" />

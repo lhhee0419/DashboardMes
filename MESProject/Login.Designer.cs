@@ -33,9 +33,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.IDtextBox = new System.Windows.Forms.TextBox();
             this.PWDtextBox = new System.Windows.Forms.TextBox();
-            this.LoginButton = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.LoginButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,41 +94,23 @@
             this.PWDtextBox.Text = "123456";
             this.PWDtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PwdTextbox_Enter);
             // 
-            // LoginButton
-            // 
-            this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.LoginButton.BackColor = System.Drawing.Color.LightGray;
-            this.LoginButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.LoginButton.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
-            this.LoginButton.ForeColor = System.Drawing.Color.Black;
-            this.LoginButton.Location = new System.Drawing.Point(177, 395);
-            this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(172, 71);
-            this.LoginButton.TabIndex = 4;
-            this.LoginButton.Text = "로그인";
-            this.LoginButton.UseVisualStyleBackColor = false;
-            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
-            // 
             // ExitBtn
             // 
             this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitBtn.BackColor = System.Drawing.Color.LightGray;
-            this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ExitBtn.BackColor = System.Drawing.Color.Black;
+            this.ExitBtn.BackgroundImage = global::MESProject.Properties.Resources.CloseBtn;
+            this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ExitBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.ExitBtn.FlatAppearance.BorderSize = 3;
-            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.ExitBtn.FlatAppearance.BorderSize = 0;
+            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
             this.ExitBtn.ForeColor = System.Drawing.Color.DimGray;
-            this.ExitBtn.Location = new System.Drawing.Point(475, 395);
+            this.ExitBtn.Location = new System.Drawing.Point(460, 395);
             this.ExitBtn.Name = "ExitBtn";
-            this.ExitBtn.Size = new System.Drawing.Size(172, 71);
+            this.ExitBtn.Size = new System.Drawing.Size(195, 58);
             this.ExitBtn.TabIndex = 5;
-            this.ExitBtn.Text = "종료";
             this.ExitBtn.UseVisualStyleBackColor = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
@@ -144,6 +126,25 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
+            // 
+            // LoginButton
+            // 
+            this.LoginButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.LoginButton.BackColor = System.Drawing.Color.Black;
+            this.LoginButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LoginButton.BackgroundImage")));
+            this.LoginButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LoginButton.FlatAppearance.BorderSize = 0;
+            this.LoginButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LoginButton.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 19.8F);
+            this.LoginButton.ForeColor = System.Drawing.Color.Black;
+            this.LoginButton.Location = new System.Drawing.Point(210, 395);
+            this.LoginButton.Name = "LoginButton";
+            this.LoginButton.Size = new System.Drawing.Size(195, 58);
+            this.LoginButton.TabIndex = 4;
+            this.LoginButton.UseVisualStyleBackColor = false;
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // Login
             // 
