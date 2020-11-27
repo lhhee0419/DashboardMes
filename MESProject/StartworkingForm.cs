@@ -460,7 +460,16 @@ namespace MESProject
             //DB에 WORKORDER_PRODQTY 업데이트
             Update_prodQty();
 
-            string DD = $"SELECT LOTID FROM LOT WHERE WOID = '{Selected_woid}' AND ROWNUM = 1 ORDER BY LOTID DESC ";
+            // 생성된 LOTID 조회
+            string DD = $"SELECT LOTID FROM \n" +
+                        $"( \n" +
+                            $"SELECT \n" +
+                            $"LOTID \n" +
+                            $"FROM LOT \n" +
+                            $"WHERE WOID = '{Selected_woid}' \n" +
+                            $"ORDER BY LOTID DESC \n" +
+                        $") \n" +
+                        $"WHERE ROWNUM = 1 \n";
             DataTable dataTable1 = Common.DB_Connection(DD);
             Lotid = dataTable1.Rows[0][0].ToString();
             EQPTDATA_TEMP();
@@ -669,8 +678,10 @@ namespace MESProject
                     int k = random1.Next(0, 4);
                     if (Lotid != null)
                     {
+                        //온도, 압력 불량이면
                         if (Temp >= 145 || Press >= 155)
-                        {
+                        {   
+                            
                             string Defectid = Defect[k];
                             string add_defectlot = $"INSERT INTO DEFECTLOT VALUES ('{Lotid}',{ProdWeight},TO_CHAR(SYSDATE, 'YY/MM/DD HH24:MI:SS'),'{Defectid}')";
                             Common.DB_Connection(add_defectlot);

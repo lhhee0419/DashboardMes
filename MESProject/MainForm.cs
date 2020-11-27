@@ -54,6 +54,7 @@ namespace MESProject
             ProcCombo.SelectedIndex = 0; //콤보박스 초기값설정
             Check_Admin();
             Common.SetGridDesign(WoGrid);
+            dateTimePicker1.Value = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, DateTime.Now.Day);
             DataSearch();
             if (WoGrid.Rows.Count > 0)
             {
