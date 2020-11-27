@@ -34,6 +34,9 @@ namespace MESProject
             ProcCombo.SelectedIndex = 0;
             Check_Admin();
 
+            //날짜 한달 전부터 설정
+            dateTimePicker1.Value = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, DateTime.Now.Day);
+
             //WLGrid (작업지시서) 조회
             DataSearch();
 
