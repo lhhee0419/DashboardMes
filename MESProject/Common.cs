@@ -23,7 +23,7 @@ namespace MESProject
             Grid.BackgroundColor = Color.White;
             Grid.EnableHeadersVisualStyles = false;
             Grid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
+            Grid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
             Grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             Grid.Font = new Font("Fixsys", 19, FontStyle.Regular);
 

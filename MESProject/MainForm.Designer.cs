@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.maintab = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
@@ -99,7 +100,12 @@
             // MaterialBtn
             // 
             this.MaterialBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.MaterialBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MaterialBtn.BackgroundImage")));
+            this.MaterialBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.MaterialBtn.FlatAppearance.BorderSize = 0;
+            this.MaterialBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.MaterialBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.MaterialBtn.ForeColor = System.Drawing.Color.White;
             this.MaterialBtn.Location = new System.Drawing.Point(517, 700);
             this.MaterialBtn.Name = "MaterialBtn";
             this.MaterialBtn.Size = new System.Drawing.Size(229, 97);
@@ -107,11 +113,18 @@
             this.MaterialBtn.Text = "원재료 재고 관리";
             this.MaterialBtn.UseVisualStyleBackColor = true;
             this.MaterialBtn.Click += new System.EventHandler(this.MaterialBtn_Click);
+            this.MaterialBtn.MouseLeave += new System.EventHandler(this.MaterialBtn_MouseLeave);
+            this.MaterialBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MaterialBtn_MouseMove);
             // 
             // logoutbtn
             // 
             this.logoutbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.logoutbtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("logoutbtn.BackgroundImage")));
+            this.logoutbtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.logoutbtn.FlatAppearance.BorderSize = 0;
+            this.logoutbtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.logoutbtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.logoutbtn.ForeColor = System.Drawing.Color.White;
             this.logoutbtn.Location = new System.Drawing.Point(1296, 700);
             this.logoutbtn.Name = "logoutbtn";
             this.logoutbtn.Size = new System.Drawing.Size(229, 97);
@@ -119,6 +132,8 @@
             this.logoutbtn.Text = "로그아웃";
             this.logoutbtn.UseVisualStyleBackColor = true;
             this.logoutbtn.Click += new System.EventHandler(this.logoutbtn_Click);
+            this.logoutbtn.MouseLeave += new System.EventHandler(this.logoutbtn_MouseLeave);
+            this.logoutbtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.logoutbtn_MouseMove);
             // 
             // ProcCombo
             // 
@@ -161,38 +176,60 @@
             // WoLogBtn
             // 
             this.WoLogBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.WoLogBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WoLogBtn.BackgroundImage")));
+            this.WoLogBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.WoLogBtn.FlatAppearance.BorderSize = 0;
+            this.WoLogBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WoLogBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.WoLogBtn.ForeColor = System.Drawing.Color.White;
             this.WoLogBtn.Location = new System.Drawing.Point(270, 700);
             this.WoLogBtn.Name = "WoLogBtn";
             this.WoLogBtn.Size = new System.Drawing.Size(229, 97);
             this.WoLogBtn.TabIndex = 49;
-            this.WoLogBtn.Text = "작업일지";
+            this.WoLogBtn.Text = "작업 일지";
             this.WoLogBtn.UseVisualStyleBackColor = true;
             this.WoLogBtn.Click += new System.EventHandler(this.WoLogBtn_Click);
+            this.WoLogBtn.MouseLeave += new System.EventHandler(this.WoLogBtn_MouseLeave);
+            this.WoLogBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.WoLogBtn_MouseMove);
             // 
             // WostBtn
             // 
             this.WostBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.WostBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("WostBtn.BackgroundImage")));
+            this.WostBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.WostBtn.FlatAppearance.BorderSize = 0;
+            this.WostBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.WostBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.WostBtn.ForeColor = System.Drawing.Color.White;
             this.WostBtn.Location = new System.Drawing.Point(23, 700);
             this.WostBtn.Name = "WostBtn";
             this.WostBtn.Size = new System.Drawing.Size(229, 97);
             this.WostBtn.TabIndex = 48;
-            this.WostBtn.Text = "작업시작";
+            this.WostBtn.Text = "작업 시작";
             this.WostBtn.UseVisualStyleBackColor = true;
             this.WostBtn.Click += new System.EventHandler(this.WostBtn_Click);
+            this.WostBtn.MouseLeave += new System.EventHandler(this.WostBtn_MouseLeave);
+            this.WostBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.WostBtn_MouseMove);
             // 
             // InquiryBtn
             // 
             this.InquiryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.InquiryBtn.BackColor = System.Drawing.Color.White;
+            this.InquiryBtn.BackgroundImage = global::MESProject.Properties.Resources.btn;
+            this.InquiryBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.InquiryBtn.FlatAppearance.BorderSize = 0;
+            this.InquiryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.InquiryBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 17F);
+            this.InquiryBtn.ForeColor = System.Drawing.Color.White;
             this.InquiryBtn.Location = new System.Drawing.Point(1307, 21);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(213, 97);
             this.InquiryBtn.TabIndex = 47;
             this.InquiryBtn.Text = "조회";
-            this.InquiryBtn.UseVisualStyleBackColor = true;
+            this.InquiryBtn.UseVisualStyleBackColor = false;
             this.InquiryBtn.Click += new System.EventHandler(this.InquiryBtn_Click);
+            this.InquiryBtn.MouseLeave += new System.EventHandler(this.InquiryBtn_MouseLeave);
+            this.InquiryBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.InquiryBtn_MouseMove);
             // 
             // WoGrid
             // 

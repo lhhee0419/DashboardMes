@@ -25,7 +25,7 @@ namespace MESProject
             // Grid 디자인 세팅
             Common.SetGridDesign(WLGrid);
             Common.SetGridDesign(LotGrid);
-            WLGrid.Font = new Font("Fixsys", 18, FontStyle.Regular);
+            WLGrid.Font = new Font("Fixsys", 16, FontStyle.Regular);
             LotGrid.Font = new Font("Fixsys", 18, FontStyle.Regular);
 
             //콤보박스 초기값설정
@@ -50,7 +50,7 @@ namespace MESProject
                 }
             }
             // 컬럼 폭 설정
-            int[] WLGrid_SetColumnWidth = new int[] { 130, 140, 45, 40, 40, 40, 140, 140, 140, 40 };
+            int[] WLGrid_SetColumnWidth = new int[] { 130, 140, 50, 45, 45, 45, 160, 160, 160, 40 };
             for (int i = 0; i < WLGrid_SetColumnWidth.Length; i++)
             {
                 Common.SetColumnWidth(WLGrid, i, WLGrid_SetColumnWidth[i]);
@@ -237,6 +237,26 @@ namespace MESProject
                     }
                 }
             }
+        }
+
+        private void ExitBtn_MouseLeave(object sender, EventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void ExitBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            ExitBtn.BackgroundImage = Properties.Resources.btn2;
+        }
+
+        private void InquiryBtn_MouseLeave(object sender, EventArgs e)
+        {
+            InquiryBtn.BackgroundImage = Properties.Resources.btn;
+        }
+
+        private void InquiryBtn_MouseMove(object sender, MouseEventArgs e)
+        {
+            InquiryBtn.BackgroundImage = Properties.Resources.btn2;
         }
     }
 }

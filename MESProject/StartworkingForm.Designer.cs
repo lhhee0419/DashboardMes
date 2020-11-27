@@ -62,6 +62,18 @@
             this.Mixing2 = new System.Windows.Forms.Label();
             this.CurDTTM = new System.Windows.Forms.Label();
             this.timer8 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.m1 = new System.Windows.Forms.PictureBox();
+            this.p1 = new System.Windows.Forms.PictureBox();
+            this.s3 = new System.Windows.Forms.PictureBox();
+            this.s2 = new System.Windows.Forms.PictureBox();
+            this.s1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.stopbtn2 = new System.Windows.Forms.Button();
             this.silo10_gif = new System.Windows.Forms.PictureBox();
             this.Silo3_gif = new System.Windows.Forms.PictureBox();
@@ -71,17 +83,7 @@
             this.ms2 = new System.Windows.Forms.PictureBox();
             this.ms1 = new System.Windows.Forms.PictureBox();
             this.m2 = new System.Windows.Forms.PictureBox();
-            this.m1 = new System.Windows.Forms.PictureBox();
-            this.p1 = new System.Windows.Forms.PictureBox();
-            this.s3 = new System.Windows.Forms.PictureBox();
-            this.s2 = new System.Windows.Forms.PictureBox();
-            this.s1 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -98,10 +100,18 @@
             this.MixingMachine1 = new System.Windows.Forms.PictureBox();
             this.Silo1_gif = new System.Windows.Forms.PictureBox();
             this.silo1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo10_gif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Silo3_gif)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Silo2_gif)).BeginInit();
@@ -110,17 +120,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ms2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ms1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.m1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -139,7 +139,11 @@
             // FaultyBtn
             // 
             this.FaultyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.FaultyBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
+            this.FaultyBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FaultyBtn.BackgroundImage")));
+            this.FaultyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FaultyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FaultyBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.FaultyBtn.ForeColor = System.Drawing.Color.White;
             this.FaultyBtn.Location = new System.Drawing.Point(496, 756);
             this.FaultyBtn.Name = "FaultyBtn";
             this.FaultyBtn.Size = new System.Drawing.Size(229, 93);
@@ -147,11 +151,17 @@
             this.FaultyBtn.Text = "불량\r\n등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
             this.FaultyBtn.Click += new System.EventHandler(this.FaultyBtn_Click);
+            this.FaultyBtn.MouseLeave += new System.EventHandler(this.FaultyBtn_MouseLeave);
+            this.FaultyBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FaultyBtn_MouseMove);
             // 
             // LotDelBtn
             // 
             this.LotDelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LotDelBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
+            this.LotDelBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LotDelBtn.BackgroundImage")));
+            this.LotDelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LotDelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LotDelBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.LotDelBtn.ForeColor = System.Drawing.Color.White;
             this.LotDelBtn.Location = new System.Drawing.Point(261, 756);
             this.LotDelBtn.Name = "LotDelBtn";
             this.LotDelBtn.Size = new System.Drawing.Size(229, 93);
@@ -159,11 +169,17 @@
             this.LotDelBtn.Text = "LOT\r\n삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
             this.LotDelBtn.Click += new System.EventHandler(this.LotDelBtn_Click);
+            this.LotDelBtn.MouseLeave += new System.EventHandler(this.LotDelBtn_MouseLeave);
+            this.LotDelBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LotDelBtn_MouseMove);
             // 
             // ExitBtn
             // 
             this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
+            this.ExitBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitBtn.BackgroundImage")));
+            this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.ExitBtn.ForeColor = System.Drawing.Color.White;
             this.ExitBtn.Location = new System.Drawing.Point(1311, 756);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(229, 93);
@@ -171,11 +187,17 @@
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            this.ExitBtn.MouseLeave += new System.EventHandler(this.ExitBtn_MouseLeave);
+            this.ExitBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ExitBtn_MouseMove);
             // 
             // EndBtn
             // 
             this.EndBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EndBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
+            this.EndBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EndBtn.BackgroundImage")));
+            this.EndBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EndBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EndBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.EndBtn.ForeColor = System.Drawing.Color.White;
             this.EndBtn.Location = new System.Drawing.Point(1076, 756);
             this.EndBtn.Name = "EndBtn";
             this.EndBtn.Size = new System.Drawing.Size(229, 93);
@@ -183,11 +205,17 @@
             this.EndBtn.Text = "작업\r\n종료";
             this.EndBtn.UseVisualStyleBackColor = true;
             this.EndBtn.Click += new System.EventHandler(this.EndBtn_Click);
+            this.EndBtn.MouseLeave += new System.EventHandler(this.EndBtn_MouseLeave);
+            this.EndBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseMove);
             // 
             // LotaddBtn
             // 
             this.LotaddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LotaddBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F);
+            this.LotaddBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LotaddBtn.BackgroundImage")));
+            this.LotaddBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LotaddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LotaddBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.LotaddBtn.ForeColor = System.Drawing.Color.White;
             this.LotaddBtn.Location = new System.Drawing.Point(25, 756);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(229, 93);
@@ -195,6 +223,8 @@
             this.LotaddBtn.Text = "LOT\r\n추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
             this.LotaddBtn.Click += new System.EventHandler(this.LotaddBtn_Click);
+            this.LotaddBtn.MouseLeave += new System.EventHandler(this.LotaddBtn_MouseLeave);
+            this.LotaddBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LotaddBtn_MouseMove);
             // 
             // LotGrid
             // 
@@ -530,6 +560,122 @@
             // 
             this.timer8.Tick += new System.EventHandler(this.timer8_Tick);
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 12F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(707, 417);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 24);
+            this.label1.TabIndex = 120;
+            this.label1.Text = "2호기 작동";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Black;
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 12F);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(229, 417);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(128, 24);
+            this.label2.TabIndex = 121;
+            this.label2.Text = "1호기 작동";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // m1
+            // 
+            this.m1.BackColor = System.Drawing.Color.Lime;
+            this.m1.Location = new System.Drawing.Point(414, 313);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(15, 39);
+            this.m1.TabIndex = 84;
+            this.m1.TabStop = false;
+            // 
+            // p1
+            // 
+            this.p1.BackColor = System.Drawing.Color.Lime;
+            this.p1.Location = new System.Drawing.Point(140, 312);
+            this.p1.Name = "p1";
+            this.p1.Size = new System.Drawing.Size(530, 14);
+            this.p1.TabIndex = 83;
+            this.p1.TabStop = false;
+            // 
+            // s3
+            // 
+            this.s3.BackColor = System.Drawing.Color.Lime;
+            this.s3.Location = new System.Drawing.Point(385, 285);
+            this.s3.Name = "s3";
+            this.s3.Size = new System.Drawing.Size(15, 41);
+            this.s3.TabIndex = 82;
+            this.s3.TabStop = false;
+            // 
+            // s2
+            // 
+            this.s2.BackColor = System.Drawing.Color.Lime;
+            this.s2.Location = new System.Drawing.Point(262, 285);
+            this.s2.Name = "s2";
+            this.s2.Size = new System.Drawing.Size(15, 41);
+            this.s2.TabIndex = 81;
+            this.s2.TabStop = false;
+            // 
+            // s1
+            // 
+            this.s1.BackColor = System.Drawing.Color.Lime;
+            this.s1.Location = new System.Drawing.Point(140, 285);
+            this.s1.Name = "s1";
+            this.s1.Size = new System.Drawing.Size(15, 41);
+            this.s1.TabIndex = 80;
+            this.s1.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox6.Location = new System.Drawing.Point(414, 313);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(15, 39);
+            this.pictureBox6.TabIndex = 103;
+            this.pictureBox6.TabStop = false;
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox7.Location = new System.Drawing.Point(140, 312);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(530, 14);
+            this.pictureBox7.TabIndex = 102;
+            this.pictureBox7.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox8.Location = new System.Drawing.Point(385, 285);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(15, 41);
+            this.pictureBox8.TabIndex = 101;
+            this.pictureBox8.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox9.Location = new System.Drawing.Point(262, 285);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(15, 41);
+            this.pictureBox9.TabIndex = 100;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackColor = System.Drawing.Color.Silver;
+            this.pictureBox10.Location = new System.Drawing.Point(140, 285);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(15, 41);
+            this.pictureBox10.TabIndex = 99;
+            this.pictureBox10.TabStop = false;
+            // 
             // stopbtn2
             // 
             this.stopbtn2.BackColor = System.Drawing.Color.White;
@@ -625,51 +771,6 @@
             this.m2.TabIndex = 85;
             this.m2.TabStop = false;
             // 
-            // m1
-            // 
-            this.m1.BackColor = System.Drawing.Color.Lime;
-            this.m1.Location = new System.Drawing.Point(414, 313);
-            this.m1.Name = "m1";
-            this.m1.Size = new System.Drawing.Size(15, 39);
-            this.m1.TabIndex = 84;
-            this.m1.TabStop = false;
-            // 
-            // p1
-            // 
-            this.p1.BackColor = System.Drawing.Color.Lime;
-            this.p1.Location = new System.Drawing.Point(140, 312);
-            this.p1.Name = "p1";
-            this.p1.Size = new System.Drawing.Size(530, 14);
-            this.p1.TabIndex = 83;
-            this.p1.TabStop = false;
-            // 
-            // s3
-            // 
-            this.s3.BackColor = System.Drawing.Color.Lime;
-            this.s3.Location = new System.Drawing.Point(385, 285);
-            this.s3.Name = "s3";
-            this.s3.Size = new System.Drawing.Size(15, 41);
-            this.s3.TabIndex = 82;
-            this.s3.TabStop = false;
-            // 
-            // s2
-            // 
-            this.s2.BackColor = System.Drawing.Color.Lime;
-            this.s2.Location = new System.Drawing.Point(262, 285);
-            this.s2.Name = "s2";
-            this.s2.Size = new System.Drawing.Size(15, 41);
-            this.s2.TabIndex = 81;
-            this.s2.TabStop = false;
-            // 
-            // s1
-            // 
-            this.s1.BackColor = System.Drawing.Color.Lime;
-            this.s1.Location = new System.Drawing.Point(140, 285);
-            this.s1.Name = "s1";
-            this.s1.Size = new System.Drawing.Size(15, 41);
-            this.s1.TabIndex = 80;
-            this.s1.TabStop = false;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Silver;
@@ -678,51 +779,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(15, 39);
             this.pictureBox1.TabIndex = 104;
             this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox6.Location = new System.Drawing.Point(414, 313);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(15, 39);
-            this.pictureBox6.TabIndex = 103;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox7.Location = new System.Drawing.Point(140, 312);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(530, 14);
-            this.pictureBox7.TabIndex = 102;
-            this.pictureBox7.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox8.Location = new System.Drawing.Point(385, 285);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(15, 41);
-            this.pictureBox8.TabIndex = 101;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox9.Location = new System.Drawing.Point(262, 285);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(15, 41);
-            this.pictureBox9.TabIndex = 100;
-            this.pictureBox9.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.BackColor = System.Drawing.Color.Silver;
-            this.pictureBox10.Location = new System.Drawing.Point(140, 285);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(15, 41);
-            this.pictureBox10.TabIndex = 99;
-            this.pictureBox10.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -898,32 +954,6 @@
             this.silo1.TabIndex = 28;
             this.silo1.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Black;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 12F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(707, 417);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 24);
-            this.label1.TabIndex = 120;
-            this.label1.Text = "2호기 작동";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 12F);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(229, 417);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(128, 24);
-            this.label2.TabIndex = 121;
-            this.label2.Text = "1호기 작동";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Startworking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -1006,6 +1036,16 @@
             this.Load += new System.EventHandler(this.Startworking_Load);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.m1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.p1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.s1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo10_gif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Silo3_gif)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Silo2_gif)).EndInit();
@@ -1014,17 +1054,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ms2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ms1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.m2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.m1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.p1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.s1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();

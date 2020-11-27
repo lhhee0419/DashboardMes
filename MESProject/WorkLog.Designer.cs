@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WorkLog));
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -70,7 +71,12 @@
             // InquiryBtn
             // 
             this.InquiryBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.InquiryBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 15F);
+            this.InquiryBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("InquiryBtn.BackgroundImage")));
+            this.InquiryBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.InquiryBtn.FlatAppearance.BorderSize = 0;
+            this.InquiryBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.InquiryBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 17F, System.Drawing.FontStyle.Bold);
+            this.InquiryBtn.ForeColor = System.Drawing.Color.White;
             this.InquiryBtn.Location = new System.Drawing.Point(1322, 30);
             this.InquiryBtn.Name = "InquiryBtn";
             this.InquiryBtn.Size = new System.Drawing.Size(199, 91);
@@ -78,6 +84,8 @@
             this.InquiryBtn.Text = "조회";
             this.InquiryBtn.UseVisualStyleBackColor = true;
             this.InquiryBtn.Click += new System.EventHandler(this.InquiryBtn_Click);
+            this.InquiryBtn.MouseLeave += new System.EventHandler(this.InquiryBtn_MouseLeave);
+            this.InquiryBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.InquiryBtn_MouseMove);
             // 
             // WLGrid
             // 
@@ -99,7 +107,12 @@
             // ExitBtn
             // 
             this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 15F);
+            this.ExitBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitBtn.BackgroundImage")));
+            this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExitBtn.FlatAppearance.BorderSize = 0;
+            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 17F, System.Drawing.FontStyle.Bold);
+            this.ExitBtn.ForeColor = System.Drawing.Color.White;
             this.ExitBtn.Location = new System.Drawing.Point(1322, 755);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(199, 91);
@@ -107,6 +120,8 @@
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            this.ExitBtn.MouseLeave += new System.EventHandler(this.ExitBtn_MouseLeave);
+            this.ExitBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ExitBtn_MouseMove);
             // 
             // ProcCombo
             // 

@@ -29,14 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartWorkingFormIM));
             this.CurTime = new System.Windows.Forms.Label();
             this.IM1_ProdQty_Value = new System.Windows.Forms.Label();
             this.IM2_ProdQty_Value = new System.Windows.Forms.Label();
             this.IM1_ProdQty = new System.Windows.Forms.Label();
             this.IM2_ProdQty = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.IM1_STOPBTN = new System.Windows.Forms.Button();
-            this.IM1_STBtn = new System.Windows.Forms.Button();
             this.FaultyBtn = new System.Windows.Forms.Button();
             this.LotDelBtn = new System.Windows.Forms.Button();
             this.ExitBtn = new System.Windows.Forms.Button();
@@ -54,39 +53,41 @@
             this.IM2_2 = new System.Windows.Forms.Button();
             this.IM2_1 = new System.Windows.Forms.Button();
             this.SL010_CURRQTY = new System.Windows.Forms.Label();
+            this.Create_Lot_Label = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.IM2_STOPBTN = new System.Windows.Forms.Button();
+            this.IM2_STBtn = new System.Windows.Forms.Button();
+            this.silo_run = new System.Windows.Forms.PictureBox();
+            this.sm2_3 = new System.Windows.Forms.PictureBox();
+            this.IM2_Run = new System.Windows.Forms.PictureBox();
+            this.IM1_Run = new System.Windows.Forms.PictureBox();
+            this.sm2_2 = new System.Windows.Forms.PictureBox();
+            this.sm2_1 = new System.Windows.Forms.PictureBox();
+            this.sm1_3 = new System.Windows.Forms.PictureBox();
+            this.sm1_2 = new System.Windows.Forms.PictureBox();
+            this.sm1_1 = new System.Windows.Forms.PictureBox();
             this.IM1_STOP = new System.Windows.Forms.PictureBox();
             this.IM2_STOP = new System.Windows.Forms.PictureBox();
+            this.IM1_STOPBTN = new System.Windows.Forms.Button();
+            this.IM1_STBtn = new System.Windows.Forms.Button();
             this.silo_stop = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.sm1_1 = new System.Windows.Forms.PictureBox();
-            this.sm1_2 = new System.Windows.Forms.PictureBox();
-            this.sm1_3 = new System.Windows.Forms.PictureBox();
-            this.sm2_1 = new System.Windows.Forms.PictureBox();
-            this.sm2_2 = new System.Windows.Forms.PictureBox();
-            this.sm2_3 = new System.Windows.Forms.PictureBox();
-            this.Create_Lot_Label = new System.Windows.Forms.Label();
-            this.IM1_Run = new System.Windows.Forms.PictureBox();
-            this.IM2_Run = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.silo_run = new System.Windows.Forms.PictureBox();
-            this.IM2_STBtn = new System.Windows.Forms.Button();
-            this.IM2_STOPBTN = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo_run)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm2_3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IM2_Run)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IM1_Run)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm2_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm2_1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm1_3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm1_2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm1_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1_STOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM2_STOP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo_stop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm1_1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm1_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm1_3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm2_1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm2_2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm2_3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IM1_Run)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IM2_Run)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo_run)).BeginInit();
             this.SuspendLayout();
             // 
             // CurTime
@@ -158,36 +159,15 @@
             this.label9.Size = new System.Drawing.Size(0, 29);
             this.label9.TabIndex = 59;
             // 
-            // IM1_STOPBTN
-            // 
-            this.IM1_STOPBTN.BackColor = System.Drawing.Color.White;
-            this.IM1_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop2;
-            this.IM1_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.IM1_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IM1_STOPBTN.Location = new System.Drawing.Point(496, 368);
-            this.IM1_STOPBTN.Name = "IM1_STOPBTN";
-            this.IM1_STOPBTN.Size = new System.Drawing.Size(80, 80);
-            this.IM1_STOPBTN.TabIndex = 54;
-            this.IM1_STOPBTN.UseVisualStyleBackColor = false;
-            this.IM1_STOPBTN.Click += new System.EventHandler(this.STOP_BTN_Click);
-            // 
-            // IM1_STBtn
-            // 
-            this.IM1_STBtn.BackColor = System.Drawing.Color.White;
-            this.IM1_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start2;
-            this.IM1_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.IM1_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IM1_STBtn.Location = new System.Drawing.Point(416, 368);
-            this.IM1_STBtn.Name = "IM1_STBtn";
-            this.IM1_STBtn.Size = new System.Drawing.Size(80, 80);
-            this.IM1_STBtn.TabIndex = 53;
-            this.IM1_STBtn.UseVisualStyleBackColor = false;
-            this.IM1_STBtn.Click += new System.EventHandler(this.IM1_STBtn_Click);
-            // 
             // FaultyBtn
             // 
             this.FaultyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.FaultyBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FaultyBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("FaultyBtn.BackgroundImage")));
+            this.FaultyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.FaultyBtn.FlatAppearance.BorderSize = 0;
+            this.FaultyBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FaultyBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.FaultyBtn.ForeColor = System.Drawing.Color.White;
             this.FaultyBtn.Location = new System.Drawing.Point(480, 704);
             this.FaultyBtn.Name = "FaultyBtn";
             this.FaultyBtn.Size = new System.Drawing.Size(229, 97);
@@ -195,11 +175,18 @@
             this.FaultyBtn.Text = "불량\r\n등록";
             this.FaultyBtn.UseVisualStyleBackColor = true;
             this.FaultyBtn.Click += new System.EventHandler(this.FaultyBtn_Click);
+            this.FaultyBtn.MouseLeave += new System.EventHandler(this.FaultyBtn_MouseLeave);
+            this.FaultyBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FaultyBtn_MouseMove);
             // 
             // LotDelBtn
             // 
             this.LotDelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LotDelBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LotDelBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LotDelBtn.BackgroundImage")));
+            this.LotDelBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LotDelBtn.FlatAppearance.BorderSize = 0;
+            this.LotDelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LotDelBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.LotDelBtn.ForeColor = System.Drawing.Color.White;
             this.LotDelBtn.Location = new System.Drawing.Point(248, 704);
             this.LotDelBtn.Name = "LotDelBtn";
             this.LotDelBtn.Size = new System.Drawing.Size(229, 97);
@@ -207,11 +194,18 @@
             this.LotDelBtn.Text = "LOT\r\n삭제";
             this.LotDelBtn.UseVisualStyleBackColor = true;
             this.LotDelBtn.Click += new System.EventHandler(this.LotDelBtn_Click);
+            this.LotDelBtn.MouseLeave += new System.EventHandler(this.LotDelBtn_MouseLeave);
+            this.LotDelBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LotDelBtn_MouseMove);
             // 
             // ExitBtn
             // 
             this.ExitBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ExitBtn.BackgroundImage")));
+            this.ExitBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ExitBtn.FlatAppearance.BorderSize = 0;
+            this.ExitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.ExitBtn.ForeColor = System.Drawing.Color.White;
             this.ExitBtn.Location = new System.Drawing.Point(1288, 704);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.Size = new System.Drawing.Size(229, 97);
@@ -219,11 +213,18 @@
             this.ExitBtn.Text = "닫기";
             this.ExitBtn.UseVisualStyleBackColor = true;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
+            this.ExitBtn.MouseLeave += new System.EventHandler(this.ExitBtn_MouseLeave);
+            this.ExitBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ExitBtn_MouseMove);
             // 
             // EndBtn
             // 
             this.EndBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.EndBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EndBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EndBtn.BackgroundImage")));
+            this.EndBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EndBtn.FlatAppearance.BorderSize = 0;
+            this.EndBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EndBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.EndBtn.ForeColor = System.Drawing.Color.White;
             this.EndBtn.Location = new System.Drawing.Point(1056, 704);
             this.EndBtn.Name = "EndBtn";
             this.EndBtn.Size = new System.Drawing.Size(229, 97);
@@ -231,14 +232,18 @@
             this.EndBtn.Text = "작업\r\n종료";
             this.EndBtn.UseVisualStyleBackColor = true;
             this.EndBtn.Click += new System.EventHandler(this.EndBtn_Click);
-            this.EndBtn.MouseDown += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseDown);
+            this.EndBtn.MouseLeave += new System.EventHandler(this.EndBtn_MouseLeave);
             this.EndBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseMove);
-            this.EndBtn.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EndBtn_MouseUp);
             // 
             // LotaddBtn
             // 
             this.LotaddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.LotaddBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 19.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LotaddBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LotaddBtn.BackgroundImage")));
+            this.LotaddBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.LotaddBtn.FlatAppearance.BorderSize = 0;
+            this.LotaddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LotaddBtn.Font = new System.Drawing.Font("나눔스퀘어라운드 ExtraBold", 18F, System.Drawing.FontStyle.Bold);
+            this.LotaddBtn.ForeColor = System.Drawing.Color.White;
             this.LotaddBtn.Location = new System.Drawing.Point(13, 702);
             this.LotaddBtn.Name = "LotaddBtn";
             this.LotaddBtn.Size = new System.Drawing.Size(229, 97);
@@ -246,6 +251,8 @@
             this.LotaddBtn.Text = "LOT\r\n추가";
             this.LotaddBtn.UseVisualStyleBackColor = true;
             this.LotaddBtn.Click += new System.EventHandler(this.LotaddBtn_Click);
+            this.LotaddBtn.MouseLeave += new System.EventHandler(this.LotaddBtn_MouseLeave);
+            this.LotaddBtn.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LotaddBtn_MouseMove);
             // 
             // LotGrid
             // 
@@ -396,6 +403,157 @@
             this.SL010_CURRQTY.TabIndex = 77;
             this.SL010_CURRQTY.Text = "[저장량]";
             // 
+            // Create_Lot_Label
+            // 
+            this.Create_Lot_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Create_Lot_Label.AutoSize = true;
+            this.Create_Lot_Label.BackColor = System.Drawing.Color.White;
+            this.Create_Lot_Label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Create_Lot_Label.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Create_Lot_Label.Location = new System.Drawing.Point(808, 728);
+            this.Create_Lot_Label.Name = "Create_Lot_Label";
+            this.Create_Lot_Label.Size = new System.Drawing.Size(152, 35);
+            this.Create_Lot_Label.TabIndex = 66;
+            this.Create_Lot_Label.Text = "제품생산중";
+            this.Create_Lot_Label.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(416, 336);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 31);
+            this.label1.TabIndex = 94;
+            this.label1.Text = "1호기 작동";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label2.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(416, 592);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(160, 31);
+            this.label2.TabIndex = 94;
+            this.label2.Text = "2호기 작동";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // IM2_STOPBTN
+            // 
+            this.IM2_STOPBTN.BackColor = System.Drawing.Color.White;
+            this.IM2_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop2;
+            this.IM2_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.IM2_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.IM2_STOPBTN.Location = new System.Drawing.Point(496, 624);
+            this.IM2_STOPBTN.Name = "IM2_STOPBTN";
+            this.IM2_STOPBTN.Size = new System.Drawing.Size(80, 80);
+            this.IM2_STOPBTN.TabIndex = 54;
+            this.IM2_STOPBTN.UseVisualStyleBackColor = false;
+            this.IM2_STOPBTN.Click += new System.EventHandler(this.STOP_BTN_Click);
+            // 
+            // IM2_STBtn
+            // 
+            this.IM2_STBtn.BackColor = System.Drawing.Color.White;
+            this.IM2_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start2;
+            this.IM2_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.IM2_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.IM2_STBtn.Location = new System.Drawing.Point(416, 624);
+            this.IM2_STBtn.Name = "IM2_STBtn";
+            this.IM2_STBtn.Size = new System.Drawing.Size(80, 80);
+            this.IM2_STBtn.TabIndex = 53;
+            this.IM2_STBtn.UseVisualStyleBackColor = false;
+            this.IM2_STBtn.Click += new System.EventHandler(this.IM2_STBtn_Click);
+            // 
+            // silo_run
+            // 
+            this.silo_run.Image = global::MESProject.Properties.Resources.silo_G;
+            this.silo_run.Location = new System.Drawing.Point(96, 144);
+            this.silo_run.Name = "silo_run";
+            this.silo_run.Size = new System.Drawing.Size(114, 144);
+            this.silo_run.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.silo_run.TabIndex = 95;
+            this.silo_run.TabStop = false;
+            this.silo_run.Visible = false;
+            // 
+            // sm2_3
+            // 
+            this.sm2_3.BackColor = System.Drawing.Color.Lime;
+            this.sm2_3.Location = new System.Drawing.Point(763, 562);
+            this.sm2_3.Name = "sm2_3";
+            this.sm2_3.Size = new System.Drawing.Size(20, 37);
+            this.sm2_3.TabIndex = 91;
+            this.sm2_3.TabStop = false;
+            // 
+            // IM2_Run
+            // 
+            this.IM2_Run.Image = global::MESProject.Properties.Resources.IM_G;
+            this.IM2_Run.Location = new System.Drawing.Point(624, 592);
+            this.IM2_Run.Name = "IM2_Run";
+            this.IM2_Run.Size = new System.Drawing.Size(296, 176);
+            this.IM2_Run.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.IM2_Run.TabIndex = 93;
+            this.IM2_Run.TabStop = false;
+            this.IM2_Run.Visible = false;
+            // 
+            // IM1_Run
+            // 
+            this.IM1_Run.Image = global::MESProject.Properties.Resources.IM_G;
+            this.IM1_Run.Location = new System.Drawing.Point(624, 336);
+            this.IM1_Run.Name = "IM1_Run";
+            this.IM1_Run.Size = new System.Drawing.Size(296, 176);
+            this.IM1_Run.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.IM1_Run.TabIndex = 92;
+            this.IM1_Run.TabStop = false;
+            this.IM1_Run.Visible = false;
+            // 
+            // sm2_2
+            // 
+            this.sm2_2.BackColor = System.Drawing.Color.Lime;
+            this.sm2_2.Location = new System.Drawing.Point(148, 562);
+            this.sm2_2.Name = "sm2_2";
+            this.sm2_2.Size = new System.Drawing.Size(636, 16);
+            this.sm2_2.TabIndex = 90;
+            this.sm2_2.TabStop = false;
+            // 
+            // sm2_1
+            // 
+            this.sm2_1.BackColor = System.Drawing.Color.Lime;
+            this.sm2_1.Location = new System.Drawing.Point(148, 288);
+            this.sm2_1.Name = "sm2_1";
+            this.sm2_1.Size = new System.Drawing.Size(20, 290);
+            this.sm2_1.TabIndex = 89;
+            this.sm2_1.TabStop = false;
+            // 
+            // sm1_3
+            // 
+            this.sm1_3.BackColor = System.Drawing.Color.Lime;
+            this.sm1_3.Location = new System.Drawing.Point(763, 304);
+            this.sm1_3.Name = "sm1_3";
+            this.sm1_3.Size = new System.Drawing.Size(20, 33);
+            this.sm1_3.TabIndex = 88;
+            this.sm1_3.TabStop = false;
+            // 
+            // sm1_2
+            // 
+            this.sm1_2.BackColor = System.Drawing.Color.Lime;
+            this.sm1_2.Location = new System.Drawing.Point(148, 304);
+            this.sm1_2.Name = "sm1_2";
+            this.sm1_2.Size = new System.Drawing.Size(636, 16);
+            this.sm1_2.TabIndex = 83;
+            this.sm1_2.TabStop = false;
+            // 
+            // sm1_1
+            // 
+            this.sm1_1.BackColor = System.Drawing.Color.Lime;
+            this.sm1_1.Location = new System.Drawing.Point(148, 288);
+            this.sm1_1.Name = "sm1_1";
+            this.sm1_1.Size = new System.Drawing.Size(20, 34);
+            this.sm1_1.TabIndex = 82;
+            this.sm1_1.TabStop = false;
+            // 
             // IM1_STOP
             // 
             this.IM1_STOP.Image = global::MESProject.Properties.Resources.IJ_process;
@@ -415,6 +573,32 @@
             this.IM2_STOP.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.IM2_STOP.TabIndex = 70;
             this.IM2_STOP.TabStop = false;
+            // 
+            // IM1_STOPBTN
+            // 
+            this.IM1_STOPBTN.BackColor = System.Drawing.Color.White;
+            this.IM1_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop2;
+            this.IM1_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.IM1_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.IM1_STOPBTN.Location = new System.Drawing.Point(496, 368);
+            this.IM1_STOPBTN.Name = "IM1_STOPBTN";
+            this.IM1_STOPBTN.Size = new System.Drawing.Size(80, 80);
+            this.IM1_STOPBTN.TabIndex = 54;
+            this.IM1_STOPBTN.UseVisualStyleBackColor = false;
+            this.IM1_STOPBTN.Click += new System.EventHandler(this.STOP_BTN_Click);
+            // 
+            // IM1_STBtn
+            // 
+            this.IM1_STBtn.BackColor = System.Drawing.Color.White;
+            this.IM1_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start2;
+            this.IM1_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.IM1_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.IM1_STBtn.Location = new System.Drawing.Point(416, 368);
+            this.IM1_STBtn.Name = "IM1_STBtn";
+            this.IM1_STBtn.Size = new System.Drawing.Size(80, 80);
+            this.IM1_STBtn.TabIndex = 53;
+            this.IM1_STBtn.UseVisualStyleBackColor = false;
+            this.IM1_STBtn.Click += new System.EventHandler(this.IM1_STBtn_Click);
             // 
             // silo_stop
             // 
@@ -437,157 +621,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 52;
             this.pictureBox1.TabStop = false;
-            // 
-            // sm1_1
-            // 
-            this.sm1_1.BackColor = System.Drawing.Color.Lime;
-            this.sm1_1.Location = new System.Drawing.Point(148, 288);
-            this.sm1_1.Name = "sm1_1";
-            this.sm1_1.Size = new System.Drawing.Size(20, 34);
-            this.sm1_1.TabIndex = 82;
-            this.sm1_1.TabStop = false;
-            // 
-            // sm1_2
-            // 
-            this.sm1_2.BackColor = System.Drawing.Color.Lime;
-            this.sm1_2.Location = new System.Drawing.Point(148, 304);
-            this.sm1_2.Name = "sm1_2";
-            this.sm1_2.Size = new System.Drawing.Size(636, 16);
-            this.sm1_2.TabIndex = 83;
-            this.sm1_2.TabStop = false;
-            // 
-            // sm1_3
-            // 
-            this.sm1_3.BackColor = System.Drawing.Color.Lime;
-            this.sm1_3.Location = new System.Drawing.Point(763, 304);
-            this.sm1_3.Name = "sm1_3";
-            this.sm1_3.Size = new System.Drawing.Size(20, 33);
-            this.sm1_3.TabIndex = 88;
-            this.sm1_3.TabStop = false;
-            // 
-            // sm2_1
-            // 
-            this.sm2_1.BackColor = System.Drawing.Color.Lime;
-            this.sm2_1.Location = new System.Drawing.Point(148, 288);
-            this.sm2_1.Name = "sm2_1";
-            this.sm2_1.Size = new System.Drawing.Size(20, 290);
-            this.sm2_1.TabIndex = 89;
-            this.sm2_1.TabStop = false;
-            // 
-            // sm2_2
-            // 
-            this.sm2_2.BackColor = System.Drawing.Color.Lime;
-            this.sm2_2.Location = new System.Drawing.Point(148, 562);
-            this.sm2_2.Name = "sm2_2";
-            this.sm2_2.Size = new System.Drawing.Size(636, 16);
-            this.sm2_2.TabIndex = 90;
-            this.sm2_2.TabStop = false;
-            // 
-            // sm2_3
-            // 
-            this.sm2_3.BackColor = System.Drawing.Color.Lime;
-            this.sm2_3.Location = new System.Drawing.Point(763, 562);
-            this.sm2_3.Name = "sm2_3";
-            this.sm2_3.Size = new System.Drawing.Size(20, 37);
-            this.sm2_3.TabIndex = 91;
-            this.sm2_3.TabStop = false;
-            // 
-            // Create_Lot_Label
-            // 
-            this.Create_Lot_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Create_Lot_Label.AutoSize = true;
-            this.Create_Lot_Label.BackColor = System.Drawing.Color.White;
-            this.Create_Lot_Label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Create_Lot_Label.Font = new System.Drawing.Font("나눔스퀘어라운드 Bold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Create_Lot_Label.Location = new System.Drawing.Point(808, 728);
-            this.Create_Lot_Label.Name = "Create_Lot_Label";
-            this.Create_Lot_Label.Size = new System.Drawing.Size(152, 35);
-            this.Create_Lot_Label.TabIndex = 66;
-            this.Create_Lot_Label.Text = "제품생산중";
-            this.Create_Lot_Label.Visible = false;
-            // 
-            // IM1_Run
-            // 
-            this.IM1_Run.Image = global::MESProject.Properties.Resources.IM_G;
-            this.IM1_Run.Location = new System.Drawing.Point(624, 336);
-            this.IM1_Run.Name = "IM1_Run";
-            this.IM1_Run.Size = new System.Drawing.Size(296, 176);
-            this.IM1_Run.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IM1_Run.TabIndex = 92;
-            this.IM1_Run.TabStop = false;
-            this.IM1_Run.Visible = false;
-            // 
-            // IM2_Run
-            // 
-            this.IM2_Run.Image = global::MESProject.Properties.Resources.IM_G;
-            this.IM2_Run.Location = new System.Drawing.Point(624, 592);
-            this.IM2_Run.Name = "IM2_Run";
-            this.IM2_Run.Size = new System.Drawing.Size(296, 176);
-            this.IM2_Run.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.IM2_Run.TabIndex = 93;
-            this.IM2_Run.TabStop = false;
-            this.IM2_Run.Visible = false;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(416, 336);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 31);
-            this.label1.TabIndex = 94;
-            this.label1.Text = "1호기 작동";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // silo_run
-            // 
-            this.silo_run.Image = global::MESProject.Properties.Resources.silo_G;
-            this.silo_run.Location = new System.Drawing.Point(96, 144);
-            this.silo_run.Name = "silo_run";
-            this.silo_run.Size = new System.Drawing.Size(114, 144);
-            this.silo_run.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.silo_run.TabIndex = 95;
-            this.silo_run.TabStop = false;
-            this.silo_run.Visible = false;
-            // 
-            // IM2_STBtn
-            // 
-            this.IM2_STBtn.BackColor = System.Drawing.Color.White;
-            this.IM2_STBtn.BackgroundImage = global::MESProject.Properties.Resources.start2;
-            this.IM2_STBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.IM2_STBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IM2_STBtn.Location = new System.Drawing.Point(416, 624);
-            this.IM2_STBtn.Name = "IM2_STBtn";
-            this.IM2_STBtn.Size = new System.Drawing.Size(80, 80);
-            this.IM2_STBtn.TabIndex = 53;
-            this.IM2_STBtn.UseVisualStyleBackColor = false;
-            this.IM2_STBtn.Click += new System.EventHandler(this.IM2_STBtn_Click);
-            // 
-            // IM2_STOPBTN
-            // 
-            this.IM2_STOPBTN.BackColor = System.Drawing.Color.White;
-            this.IM2_STOPBTN.BackgroundImage = global::MESProject.Properties.Resources.stop2;
-            this.IM2_STOPBTN.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.IM2_STOPBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.IM2_STOPBTN.Location = new System.Drawing.Point(496, 624);
-            this.IM2_STOPBTN.Name = "IM2_STOPBTN";
-            this.IM2_STOPBTN.Size = new System.Drawing.Size(80, 80);
-            this.IM2_STOPBTN.TabIndex = 54;
-            this.IM2_STOPBTN.UseVisualStyleBackColor = false;
-            this.IM2_STOPBTN.Click += new System.EventHandler(this.STOP_BTN_Click);
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("나눔스퀘어라운드 Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(416, 592);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 31);
-            this.label2.TabIndex = 94;
-            this.label2.Text = "2호기 작동";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // StartWorkingFormIM
             // 
@@ -646,19 +679,19 @@
             this.Click += new System.EventHandler(this.STOP_BTN_Click);
             ((System.ComponentModel.ISupportInitialize)(this.LotGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WoGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.silo_run)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm2_3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IM2_Run)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IM1_Run)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm2_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm2_1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm1_3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm1_2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sm1_1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM1_STOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.IM2_STOP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.silo_stop)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm1_1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm1_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm1_3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm2_1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm2_2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sm2_3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IM1_Run)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.IM2_Run)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.silo_run)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
