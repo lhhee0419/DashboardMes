@@ -56,10 +56,11 @@ namespace MESProject
             Common.SetGridDesign(WoGrid);
             dateTimePicker1.Value = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(-1).Month, DateTime.Now.Day);
             DataSearch();
+            WoGrid.Font = new Font("Fixsys", 17, FontStyle.Regular);
             if (WoGrid.Rows.Count > 0)
             {
                 string[] header = new string[] { "작업코드", "제품코드", "제품명", "작업상태", "계획수량", "생산수량", "불량수량", "계획날짜", "비고" };
-                int[] SetCoiumnWidth_WoGrid = new int[] { 70, 45, 80, 45, 25, 25, 25, 70, 50 };
+                int[] SetCoiumnWidth_WoGrid = new int[] { 70, 45, 80, 45, 25, 25, 25, 90, 50 };
                 for (int i = 0; i < header.Length; i++)
                 {
                     WoGrid.Columns[i].HeaderText = $"{header[i]}";

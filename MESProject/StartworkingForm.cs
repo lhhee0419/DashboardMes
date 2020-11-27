@@ -22,7 +22,7 @@ namespace MESProject
         /*int mixing_time = 5000;*/
         int mixing_time = 1200000;
         int delaytime = 5, delay =2200;
-        string Userid, Lotid, CurrQty, woid;
+        string Userid, Lotid, CurrQty,lotid;
         int Temp, Press, ProdWeight;
         Size orj_s1, orj_s2, orj_s3, orj_p1, orj_m1, orj_m2, orj_ms1, orj_ms2, orj_p2, orj_s10;
         Color Offcolor = Color.FromArgb(51, 153, 255);
@@ -321,10 +321,10 @@ namespace MESProject
 
                 if (LotGrid.Rows[i].Selected == true)
                 {
-                    woid = LotGrid.Rows[i].Cells[0].FormattedValue.ToString();
+                    lotid = LotGrid.Rows[i].Cells[0].FormattedValue.ToString();
                 }
             }
-            string delete_lot = $" UPDATE LOT SET LOTSTAT = 'D' WHERE LOTID = '{woid}'";
+            string delete_lot = $" UPDATE LOT SET LOTSTAT = 'D' WHERE LOTID = '{lotid}'";
             Common.DB_Connection(delete_lot);
             Inquiry_Lot();
             Inquiry_Woid();
