@@ -247,16 +247,16 @@ namespace MESProject
             string IM_PRODQTY_VALUE = $"SELECT COUNT(*) FROM LOT WHERE EQPTID = '{EQPTID}' AND " +
                                       $"SUBSTR(LOTCRDTTM,1,8) = TO_CHAR(SYSDATE, 'YY/MM/DD') AND" +
                                       $" WOID = '{Selected_woid}'";
-            DataTable dataTable5 = Common.DB_Connection(IM_PRODQTY_VALUE);
+            DataTable dataTable = Common.DB_Connection(IM_PRODQTY_VALUE);
 
             if (EQPTID == "IM001")
             {
-                IM1_ProdQty_Value.Text = $"{dataTable5.Rows[0][0].ToString()} EA";
+                IM1_ProdQty_Value.Text = $"{dataTable.Rows[0][0].ToString()} EA";
                 IM1_4.BackColor = Color.FromArgb(51, 153, 255);
             }
             else if (EQPTID == "IM002")
             {
-                IM2_ProdQty_Value.Text = $"{dataTable5.Rows[0][0].ToString()} EA";
+                IM2_ProdQty_Value.Text = $"{dataTable.Rows[0][0].ToString()} EA";
                 IM2_4.BackColor = Color.FromArgb(51, 153, 255);
             }
         }
@@ -485,8 +485,11 @@ namespace MESProject
                         DataTable dataTable2 = Common.DB_Connection(last_LOTID);
                         LAST_LOTID = dataTable2.Rows[0][0].ToString();
 
-                        Inquiry_Lot();
-                        Inquiry_Woid();
+                        if(LotGrid.Columns.Count != 0 && WoGrid.Columns.Count != 0)
+                        {
+                            Inquiry_Lot();
+                            Inquiry_Woid();
+                        }
                         EQPTDATA_TEMP();
                         EQPTDATA_PRESS();
 
@@ -550,8 +553,11 @@ namespace MESProject
                         IM2_Run.Visible = false;
 
                         //LOTGRID 재조회 및 버튼과 라벨 표시
-                        Inquiry_Lot();
-                        Inquiry_Woid();
+                        if (LotGrid.Columns.Count != 0 && WoGrid.Columns.Count != 0)
+                        {
+                            Inquiry_Lot();
+                            Inquiry_Woid();
+                        }
 
                         if (SL010_QTY < need_siloQty + Min_siloQty)
                         {
