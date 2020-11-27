@@ -441,7 +441,7 @@ namespace MESProject
 
                     if( SL010_QTY >= need_siloQty + Min_siloQty)
                     {
-                        timer1.Interval = 9000;
+                        timer1.Interval = 13000;
 
                         silo_run.Visible = true;
                         //사일로 현재량 MINUS
@@ -464,6 +464,7 @@ namespace MESProject
                             B_Backcolor(IM2_1, IM2_2, IM2_3, IM2_4);
                         }
                         silo_run.Visible = false;
+
                         //LOT생성
                         string IM_lotCreate = $"INSERT INTO LOT( \n" +
                                                         $"LOTID  \n" +
@@ -512,7 +513,7 @@ namespace MESProject
                         DataTable dataTable4 = Common.DB_Connection(Select_Press);
                         int select_press = Convert.ToInt32(dataTable4.Rows[0][0].ToString());
 
-                        //해당하는 prodid에 맞는 prodweight 저장
+                        //해당하는 prodid의 prodweight 저장
                         string Select_Prodweight = $"SELECT PRODWEIGHT FROM PRODUCT WHERE PRODID = '{prodID}'";
                         DataTable dataTable5 = Common.DB_Connection(Select_Prodweight);
                         int prodweight = Convert.ToInt32(dataTable5.Rows[0][0].ToString());
@@ -540,7 +541,7 @@ namespace MESProject
                         Create_Lot_Label.Visible = true;
 
                         //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-                        Delay(1000);
+                        Delay(5000);
 
                         //LOT EDDTTM 업데이트
                         string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{LAST_LOTID}'";
@@ -561,6 +562,7 @@ namespace MESProject
                         Create_Lot_Label.Visible = false;
                         IM1_Run.Visible = false;
                         IM2_Run.Visible = false;
+
                         //LOTGRID 재조회 및 버튼과 라벨 표시
                         Inquiry_Lot();
                         Inquiry_Woid();
@@ -574,7 +576,6 @@ namespace MESProject
                     }
                     else
                     {
-                        
                         MessageBox.Show("저장량이 부족합니다.");
                         Timer_Stop();
                     }

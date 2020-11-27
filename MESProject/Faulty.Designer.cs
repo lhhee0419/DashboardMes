@@ -165,7 +165,7 @@
             this.Controls.Add(this.LotID_Grid);
             this.Controls.Add(this.ExitBtn);
             this.Controls.Add(this.CheckBtn);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Faulty";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Faulty_FormClosing);

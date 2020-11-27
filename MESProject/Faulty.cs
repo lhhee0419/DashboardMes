@@ -229,7 +229,5 @@ namespace MESProject
             startWorkingFormIM.Inquiry_Lot();
             startWorkingFormIM.Inquiry_Woid();*/
         }
-
-    
     }
 }
