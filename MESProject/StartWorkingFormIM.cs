@@ -85,6 +85,7 @@ namespace MESProject
                 IM1_STOPBTN.Enabled = false;
                 IM2_STBtn.Enabled = false;
                 IM2_STOPBTN.Enabled = false;
+                FaultyBtn.Enabled = false;
             }
 
             //1,2호기의 생산량 조회
@@ -336,6 +337,7 @@ namespace MESProject
         }
         private void IM1_STBtn_Click(object sender, EventArgs e)
         {
+            stop_timer_flag = 0;
             EQPTID = "IM001";
             //EQPTID에 EQPTSTATS를 RUN으로 변경
             Update_EQPTStats("RUN");
@@ -344,11 +346,7 @@ namespace MESProject
             IM1_STOPBTN.Enabled = true;
             IM2_STBtn.Enabled = false;
             IM2_STOPBTN.Enabled = false;
-            stop_timer_flag = 0;
-
             Timer_Start();
-
-
         }
 
         private void IM2_STBtn_Click(object sender, EventArgs e)
@@ -443,7 +441,7 @@ namespace MESProject
 
                     if( SL010_QTY >= need_siloQty + Min_siloQty)
                     {
-                        timer1.Interval = 1300000;
+                        timer1.Interval = 9000;
 
                         silo_run.Visible = true;
                         //사일로 현재량 MINUS
@@ -523,13 +521,13 @@ namespace MESProject
                         {
                             string[] error = new string[] { "DF001", "DF002", "DF003", "DF004", "DF005", "DF006", "DF007" };
                             Random rand = new Random();
-                            int index_num = rand.Next(1, 7);
+                            int index_num = rand.Next(0,6);
                             string DEFECTID = error[index_num];
 
                             string add_defectlot = $"INSERT INTO DEFECTLOT(DEFECT_LOTID,DEFECT_QTY,DEFECT_DTTM,DEFECTID)" +
                                                    $" VALUES ('{LAST_LOTID}'" +
-                                                   $",{prodweight},TO_CHAR(SYSDATE" +
-                                                   $",'YY/MM/DD HH24:MI:SS')" +
+                                                   $",{prodweight}" +
+                                                   $",TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS')" +
                                                    $",'{DEFECTID}')";
                             Common.DB_Connection(add_defectlot);
 
@@ -542,7 +540,7 @@ namespace MESProject
                         Create_Lot_Label.Visible = true;
 
                         //딜레이 // 시작 시간과 완료 시간에 텀을 주기위한 딜레이
-                        Delay(1280000);
+                        Delay(1000);
 
                         //LOT EDDTTM 업데이트
                         string UPDATE_LOT_EDDTTM = $"UPDATE LOT SET LOTEDDTTM = TO_CHAR(SYSDATE,'YY/MM/DD HH24:MI:SS'), LOTSTAT = 'E' WHERE LOTID = '{LAST_LOTID}'";
